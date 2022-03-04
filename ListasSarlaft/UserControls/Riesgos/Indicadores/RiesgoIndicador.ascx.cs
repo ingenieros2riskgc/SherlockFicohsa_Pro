@@ -948,7 +948,7 @@ namespace ListasSarlaft.UserControls.Riesgos.Indicadores
 
             BodyGridRI.Visible = false;
             BodyFormRI.Visible = true;
-            
+
 
             #region DatosControl
             clsDTOprocesoRiesgoIndicador objProceso = new clsDTOprocesoRiesgoIndicador();
@@ -1940,10 +1940,10 @@ namespace ListasSarlaft.UserControls.Riesgos.Indicadores
         {
             var colsNoVisible = GridViewMetas.DataKeys[RowGrid].Values;
 
-            string idMeta= colsNoVisible[0].ToString().Trim();
+            string idMeta = colsNoVisible[0].ToString().Trim();
             clsDALmetaRiesgoIndicador cDALmeta = new clsDALmetaRiesgoIndicador();
             DataTable dtlGridLog = new DataTable();
-            dtlGridLog = cDALmeta.CambiosMetaLogs(idMeta,ref strErrMsg);
+            dtlGridLog = cDALmeta.CambiosMetaLogs(idMeta, ref strErrMsg);
             GridView6.DataSource = dtlGridLog;
             GridView6.DataBind();
         }
@@ -1963,7 +1963,7 @@ namespace ListasSarlaft.UserControls.Riesgos.Indicadores
                 ddlDetalleFrecuencias.SelectedIndex = index;
             }
             lblIdMeta.Text = colsNoVisible[0].ToString().Trim();
-            
+
 
             int IdFrecuencia = Convert.ToInt32(ddlFrecuenciaMedicion.SelectedValue);
             if (IdFrecuencia == 2)
@@ -2064,13 +2064,13 @@ namespace ListasSarlaft.UserControls.Riesgos.Indicadores
                 objMetaRiesgoInd.strValorOtraFrecuencia = Sanitizer.GetSafeHtmlFragment(txtFrecuenciaAno.Text);
                 objMetaRiesgoInd.strAño = Sanitizer.GetSafeHtmlFragment(txtFrecuenciaAno.Text);
             }
-            
+
             booResult = cMetaRiesgoInd.mtdActualizarMetaRiesgoIndicador(objMetaRiesgoInd, ref strErrMsg);
-            
+
             clsDALmetaRiesgoIndicador cDALmeta = new clsDALmetaRiesgoIndicador();
             string UserName = Session["nombreUsuario"].ToString();
             string justificacion = TextBox11.Text;
-            boolResulLog = cDALmeta.logCambioMeta(objMetaRiesgoInd.intIdMeta, UserName, justificacion,ref strErrMsg);
+            boolResulLog = cDALmeta.logCambioMeta(objMetaRiesgoInd.intIdMeta, UserName, justificacion, ref strErrMsg);
 
             if (booResult == true)
             {
@@ -2115,8 +2115,8 @@ namespace ListasSarlaft.UserControls.Riesgos.Indicadores
         #endregion Metodos Metas
 
         protected void GridView6_RowCommand(object sender, GridViewCommandEventArgs e)
-        { 
-        
+        {
+
         }
         protected void BtnAdicionaMeta_Click(object sender, ImageClickEventArgs e)
         {
@@ -2185,7 +2185,7 @@ namespace ListasSarlaft.UserControls.Riesgos.Indicadores
             switch (e.CommandName)
             {
                 case "ModificarMeta":
-                    mtdShowUpdateMeta(RowGrid);                    
+                    mtdShowUpdateMeta(RowGrid);
                     loadGridModificiacionMetas(RowGrid, ref strErrMsg);
                     break;
                 case "EliminarMeta":

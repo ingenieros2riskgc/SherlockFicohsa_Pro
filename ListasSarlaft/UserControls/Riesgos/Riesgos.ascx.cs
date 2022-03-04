@@ -5009,7 +5009,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DataTable dtInfo = new DataTable();
                 dtInfo = cRiesgo.ReporteRiesgos("---", "---", "---", "---", "---", "---", "---", "---", "3",
-                    InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim(), "---", cbEstado.SelectedIndex.ToString(), DropDownList52.SelectedItem.ToString().Trim(), DropDownList53.SelectedItem.ToString().Trim());
+                    InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim(), "---", cbEstado.SelectedIndex.ToString());
                 DataTable InfoGridReporteRiesgosEventos = new DataTable();
                 InfoGridReporteRiesgosEventos = loadGridReporteRiesgosEventos();
 

@@ -784,7 +784,7 @@ namespace ListasSarlaft.UserControls
                 dt.TableName = "Reporte-Usuarios";
                 //if (dt.Rows.Count > 0)
                 //{
-                    //exportExcel(dt, Response, "Reporte Usuarios " + DateTime.Now + "");
+                //exportExcel(dt, Response, "Reporte Usuarios " + DateTime.Now + "");
                 exportExcel(dt, Response, "Reporte Usuarios ");
                 //}
                 //else

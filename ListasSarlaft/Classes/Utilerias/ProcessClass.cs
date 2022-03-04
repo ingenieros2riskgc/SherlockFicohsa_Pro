@@ -233,7 +233,7 @@ namespace ListasSarlaft.Classes.Utilerias
                     color = objSeguimiento.strColor;
                     seguimiento = objSeguimiento.strDescripcionSeguimiento;
                 }
-                if(resultFormula == 0 && resultFormula >= objSeguimiento.dblValorMinimo && resultFormula <= objSeguimiento.dblValorMaximo)
+                if (resultFormula == 0 && resultFormula >= objSeguimiento.dblValorMinimo && resultFormula <= objSeguimiento.dblValorMaximo)
                 {
                     //color = "Rojo";
                     //seguimiento = "No cumplió";

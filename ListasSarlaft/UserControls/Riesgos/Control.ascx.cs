@@ -943,8 +943,8 @@ namespace ListasSarlaft.UserControls.Riesgos
             try
             {
                 Session["ControlCambios"] = false;
-                if (Sanitizer.GetSafeHtmlFragment(TextBox14.Text.Trim()) == "" && 
-                    Sanitizer.GetSafeHtmlFragment(TextBox15.Text.Trim()) == "" && 
+                if (Sanitizer.GetSafeHtmlFragment(TextBox14.Text.Trim()) == "" &&
+                    Sanitizer.GetSafeHtmlFragment(TextBox15.Text.Trim()) == "" &&
                     Sanitizer.GetSafeHtmlFragment(TextBox21.Text.Trim()) == "" &&
                     Sanitizer.GetSafeHtmlFragment(DDLArea.Text.Trim()) == "---")
                     Mensaje("Debe ingresar por lo menos un parámetro de consulta.");
@@ -1198,8 +1198,8 @@ namespace ListasSarlaft.UserControls.Riesgos
         private void loadInfoControles()
         {
             DataTable dtInfo = new DataTable();
-            dtInfo = cControl.loadInfoControles1(Sanitizer.GetSafeHtmlFragment(TextBox14.Text.Trim()), 
-                Sanitizer.GetSafeHtmlFragment(TextBox15.Text.Trim()), 
+            dtInfo = cControl.loadInfoControles1(Sanitizer.GetSafeHtmlFragment(TextBox14.Text.Trim()),
+                Sanitizer.GetSafeHtmlFragment(TextBox15.Text.Trim()),
                 lblIdDependencia3.Text.Trim(),
                 DDLArea.SelectedValue.Trim()
                 );
@@ -2714,7 +2714,8 @@ namespace ListasSarlaft.UserControls.Riesgos
                 {
                     Mensaje("Error al modificar el plan evaluación. " + ex.Message);
                 }
-            }else if (DropDownList7.Text != "3")
+            }
+            else if (DropDownList7.Text != "3")
             {
                 try
                 {
@@ -2755,37 +2756,37 @@ namespace ListasSarlaft.UserControls.Riesgos
         protected void ImageButton13_Click(object sender, ImageClickEventArgs e)
         {
             //if (DropDownList7.Text == "1" && TextBox10.Text != "") {
-                try
+            try
+            {
+                if (cCuenta.permisosAgregar(IdFormulario) == "False")
+                    Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
+                else
                 {
-                    if (cCuenta.permisosAgregar(IdFormulario) == "False")
-                        Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
+                    if (Convert.ToInt64(Sanitizer.GetSafeHtmlFragment(TextBox6.Text.Trim().Replace("-", ""))) <= Convert.ToInt64(DateTime.Now.Date.ToString("yyyy-MM-dd").Replace("-", "")))
+                        Mensaje("Debe ingresar una fecha proyectada fin valida.");
                     else
                     {
-                        if (Convert.ToInt64(Sanitizer.GetSafeHtmlFragment(TextBox6.Text.Trim().Replace("-", ""))) <= Convert.ToInt64(DateTime.Now.Date.ToString("yyyy-MM-dd").Replace("-", "")))
-                            Mensaje("Debe ingresar una fecha proyectada fin valida.");
-                        else
-                        {
-                            int IdRegistro = mtdAgregarPlanEvaluacion();
-                            boolEnviarNotificacion(8, IdRegistro, Convert.ToInt16(lblIdDependencia2.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox6.Text.Trim()) + " 12:00:00:000",
-                                "Fecha Inicio: " + Sanitizer.GetSafeHtmlFragment(TextBox5.Text.Trim()) +
-                                "<br />Fecha Proyectada: " + Sanitizer.GetSafeHtmlFragment(TextBox6.Text.Trim()) +
-                                "<br />Descripcion Evaluacion: " + Sanitizer.GetSafeHtmlFragment(TextBox7.Text.Trim()) +
-                                "<br />Número del control al que está asociado el Plan de Evaluación: " + InfoGridControles.Rows[RowGridControles]["CodigoControl"].ToString().Trim() + "<br /><br />" +
-                                "<br />Para mayor información del Plan de Evaluación ingresar a: " + ConfigurationManager.AppSettings.Get("URL").ToString() + "<br />" +
-                                "<br />En el Modulo Riesgo/Controles Pestaña Plan de Evaluación <br />");
-                            resetValuesCamposDetalleEvaluacion();
-                            resetValuesJustificacionPlanEvaluacion();
-                            trGridDetalleEvaluacion.Visible = true;
-                            loadGridPlanEvaluacion();
-                            loadInfoPlanEvaluacion();
-                            Mensaje("Plan de evaluación agregado con éxito.");
-                        }
+                        int IdRegistro = mtdAgregarPlanEvaluacion();
+                        boolEnviarNotificacion(8, IdRegistro, Convert.ToInt16(lblIdDependencia2.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox6.Text.Trim()) + " 12:00:00:000",
+                            "Fecha Inicio: " + Sanitizer.GetSafeHtmlFragment(TextBox5.Text.Trim()) +
+                            "<br />Fecha Proyectada: " + Sanitizer.GetSafeHtmlFragment(TextBox6.Text.Trim()) +
+                            "<br />Descripcion Evaluacion: " + Sanitizer.GetSafeHtmlFragment(TextBox7.Text.Trim()) +
+                            "<br />Número del control al que está asociado el Plan de Evaluación: " + InfoGridControles.Rows[RowGridControles]["CodigoControl"].ToString().Trim() + "<br /><br />" +
+                            "<br />Para mayor información del Plan de Evaluación ingresar a: " + ConfigurationManager.AppSettings.Get("URL").ToString() + "<br />" +
+                            "<br />En el Modulo Riesgo/Controles Pestaña Plan de Evaluación <br />");
+                        resetValuesCamposDetalleEvaluacion();
+                        resetValuesJustificacionPlanEvaluacion();
+                        trGridDetalleEvaluacion.Visible = true;
+                        loadGridPlanEvaluacion();
+                        loadInfoPlanEvaluacion();
+                        Mensaje("Plan de evaluación agregado con éxito.");
                     }
                 }
-                catch (Exception ex)
-                {
-                    Mensaje("Error al agregar el plan evaluación. " + ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje("Error al agregar el plan evaluación. " + ex.Message);
+            }
             //}
         }
 

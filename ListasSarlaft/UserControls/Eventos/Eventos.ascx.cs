@@ -5741,7 +5741,7 @@ namespace ListasSarlaft.UserControls.Eventos
             DataTable dtInfo = new DataTable();
             string strNombreArchivo = string.Empty, strIdControl = "6";
             #endregion Vars
-            
+
             dtInfo = cControl.loadCodigoArchivoControl();
 
             #region Nombre Archivo

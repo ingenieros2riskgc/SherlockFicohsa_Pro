@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace ListasSarlaft.Classes
 {
@@ -249,7 +248,7 @@ namespace ListasSarlaft.Classes
                         new SqlParameter() { ParameterName = "@IdEvsEIncs", SqlDbType = SqlDbType.Int, Value = idEvsEIncs },
                         new SqlParameter() { ParameterName = "@IdRiesgo", SqlDbType = SqlDbType.Int, Value = IdRiesgo },
                     };
-                    
+
                     dtInformacion = cDataBase.EjecutarSPParametrosReturnDatatable("[Riesgos].[DesEnlazarRiesgo]", parametros);
 
                     if (dtInformacion.Rows.Count > 0)
@@ -1116,7 +1115,7 @@ namespace ListasSarlaft.Classes
                         $" FROM Procesos.vwDetalle pp WHERE 1 = 1 ";
                 }
 
-                if (IdMacroProceso != "0")                
+                if (IdMacroProceso != "0")
                     consulta += $" AND IdMacroProceso = '{IdMacroProceso}' ";
 
                 if (!Nombre.Equals(""))
@@ -1257,9 +1256,9 @@ namespace ListasSarlaft.Classes
             DataTable dtInformacion = new DataTable();
             try
             {
-               cDataBase.conectar();
+                cDataBase.conectar();
                 string Consulta = $"SELECT IdDescSeveridad FROM Eventos.MtGblSeveridad WHERE Minimo <= {MontoExpoInvolucrado} AND Maximo >={MontoExpoInvolucrado}";
-               dtInformacion = cDataBase.ejecutarConsulta(Consulta);
+                dtInformacion = cDataBase.ejecutarConsulta(Consulta);
                 cDataBase.desconectar();
 
             }
@@ -1309,7 +1308,7 @@ namespace ListasSarlaft.Classes
                 cDataBase.conectar();
                 string Consulta = $"SELECT  IdDescSeveridad FROM Eventos.MtEspSeveridad mef " +
                     $"WHERE mef.IdTipoRiesgo = {IdTipoRiesgo} AND(Minimo <= '{MontoExpoInvolucrado}' AND Maximo >= '{MontoExpoInvolucrado}')";
-                
+
                 dtInformacion = cDataBase.ejecutarConsulta(Consulta);
                 cDataBase.desconectar();
 

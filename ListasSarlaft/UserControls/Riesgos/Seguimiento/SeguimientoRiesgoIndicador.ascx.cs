@@ -653,11 +653,11 @@ namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
             try
             {
                 DataTable dtExc = new DataTable();
-                dtExc = mtdConsultarRiesgosIndicadores1(ref strErrMsg, CodRiesgo, IdProceso, 
+                dtExc = mtdConsultarRiesgosIndicadores1(ref strErrMsg, CodRiesgo, IdProceso,
                     Responsable, IdFactorRiesgo);
 
                 dtExc.TableName = "Seguimiento Indicadores";
-                
+
                 if (dtExc.Rows.Count > 0)
                 {
                     exportExcel(dtExc, Response, "Seguimiento Indicadores " + DateTime.Now + "");
@@ -669,7 +669,7 @@ namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
             }
         }
 
-        public DataTable mtdConsultarRiesgosIndicadores1(ref string strErrMsg, string CodRiesgo, int IdProceso, 
+        public DataTable mtdConsultarRiesgosIndicadores1(ref string strErrMsg, string CodRiesgo, int IdProceso,
             int Responsable, int IdFactorRiesgo)
         {
             #region Vars
@@ -728,12 +728,12 @@ namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
 
                 cDataBase.conectar();
                 dtInfo = cDataBase.ejecutarConsulta(strConsulta);
-                
+
             }
             catch (Exception ex)
             {
                 strErrMsg = string.Format("Error al consultar los indicadores de riesgos. [{0}]", ex.Message);
-                
+
             }
             finally
             {
