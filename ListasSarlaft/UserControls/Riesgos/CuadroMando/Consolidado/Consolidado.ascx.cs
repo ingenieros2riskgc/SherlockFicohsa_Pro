@@ -1,7 +1,7 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using ListasSarlaft.Classes;
-using Microsoft.Office.Interop.Excel;
+//using Microsoft.Office.Interop.Excel;
 using Microsoft.Security.Application;
 using System;
 using System.Collections.Generic;

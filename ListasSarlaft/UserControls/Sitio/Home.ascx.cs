@@ -1,7 +1,7 @@
 ﻿using ListasSarlaft.Classes;
 using ListasSarlaft.Classes.DAL.Dashboard;
 
-using Microsoft.Office.Interop.Excel;
+//using Microsoft.Office.Interop.Excel;
 
 using System;
 using System.Collections.Generic;
