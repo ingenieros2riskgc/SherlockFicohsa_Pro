@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Sherlock" MaintainScrollPositionOnPostback="true" Language="C#" MasterPageFile="~/MastersPages/Dashboard.Master" AutoEventWireup="true" CodeBehind="EventosEIncidentes.aspx.cs" Inherits="ListasSarlaft.Formularios.Eventos.EvsEIncs" %>
+﻿<%@ Page Title="Sherlock" MaintainScrollPositionOnPostback="true" Language="C#" MasterPageFile="~/MastersPages/Dashboard.Master" AutoEventWireup="true" CodeBehind="EvsEIncs.aspx.cs" Inherits="ListasSarlaft.Formularios.Eventos.EvsEIncs" %>
 <%@ OutputCache Location="None" %>
 <%@ Register TagPrefix="CCE" TagName="EvsEIncss" Src="~/UserControls/Eventos/EventosEIncidentes.ascx" %>
 
