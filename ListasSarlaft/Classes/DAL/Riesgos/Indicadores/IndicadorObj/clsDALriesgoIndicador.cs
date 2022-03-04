@@ -139,16 +139,16 @@ namespace ListasSarlaft.Classes
             {
                 if (!string.IsNullOrEmpty(CodRiesgo))
                 {
-<<<<<<< HEAD
+
                     string aux = CodRiesgo.Replace("R", string.Empty);
                     CodRiesgo.Replace("R", string.Empty);
                     CodRiesgo.Replace("r", string.Empty);
 
 
                     condicion = string.Format(" and ( b.IdRiesgoAsociado = '{0}')", aux);
-=======
+
                     condicion = string.Format(" and ( Codigo = '{0}')", CodRiesgo);
->>>>>>> parent of e7f7747 (Se corrige seguimiento de indicadores)
+
                 }
                 if (IdProceso != 0)
                 {

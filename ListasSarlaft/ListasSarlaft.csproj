@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ListasSarlaft</RootNamespace>
     <AssemblyName>ListasSarlaft</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <UseIISExpress>true</UseIISExpress>
     <FileUpgradeFlags>
@@ -21151,12 +21151,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DSHallazgoVsPlanAccion.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DSImagenes.cs">
-      <DependentUpon>DSImagenes.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DSImagenes.Designer.cs">
-      <DependentUpon>DSImagenes.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DSImagenes1.Designer.cs">
       <AutoGen>True</AutoGen>

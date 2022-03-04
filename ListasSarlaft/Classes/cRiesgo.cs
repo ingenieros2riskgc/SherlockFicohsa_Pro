@@ -5639,11 +5639,11 @@ namespace ListasSarlaft.Classes
         public DataTable ReporteRiesgos(String IdCadenaValor, String IdMacroProceso,
             String IdProceso, String IdClasificacionRiesgo, String IdClasificacionGeneralRiesgo,
             String NombreRiesgoInherente, String NombreRiesgoResidual, String IdEmpresa,
-            String numeroQuery, String IdRiesgo, String IdArea, string estado, string idResponsable = "0", string IdProductoAfectado = "---", string IdActivoAfectado = "---")
+            String numeroQuery, String IdRiesgo, String IdArea, string estado, string idResponsable = "0", string IdProductoAfectado = "---", string IdActivoAfectado = "---", string txtCadenavalor = "", string txtMacroproceso = "")
         {
             #region Variables
             DataTable dtInformacion = new DataTable();
-            String condicion = string.Empty, strConsulta = string.Empty, strFrom = string.Empty, strSelect = string.Empty;
+            String condicion = string.Empty, strConsulta = string.Empty, strFrom = string.Empty, strSelect = string.Empty, strWhere = string.Empty;
             #endregion Variables
 
             try
@@ -5854,7 +5854,21 @@ namespace ListasSarlaft.Classes
                     case "2":
                         #region Riesgos-Controles
 
+
                         strSelect = "SELECT RVCR.*, '' AS CalificacionControl FROM Riesgos.vwRiesgoControlReporte RVCR WHERE CodigoControl != '' ";
+
+                        if (txtCadenavalor != "---")
+                        {
+                            strSelect += $" AND (CadenaValor='{txtCadenavalor}')";
+                        }
+
+                        if (txtMacroproceso != "---")
+                        {
+                            strSelect += $" AND (Macroproceso='{txtMacroproceso}')";
+                        }
+
+
+                        //strSelect = "SELECT RVCR.*, '' AS CalificacionControl FROM Riesgos.vwRiesgoControlReporte RVCR WHERE CodigoControl != '' ";
 
                         if (!idResponsable.Equals(""))
                         {
@@ -5928,9 +5942,7 @@ namespace ListasSarlaft.Classes
                         strFrom += " LEFT JOIN Parametrizacion.JerarquiaOrganizacional PJOPA ON PJOPA.NombreHijo = RP.Responsable"
                                + " LEFT JOIN Parametrizacion.DetalleJerarquiaOrg PDJPA ON PDJPA.idHijo = PJOPA.idHijo";
                         strFrom += " LEFT JOIN [Parametrizacion].[DetalleJerarquiaOrg] AS PDJ ON PDJ.idHijo = PJO.idHijo"
-                                + " LEFT JOIN Parametrizacion.Area as Parea on Parea.IdArea = PDJ.IdArea"
-                                + " LEFT JOIN Procesos.CadenaValor AS PCV ON PCV.IdCadenaValor = RR.IdCadenaValor"
-                                + " LEFT JOIN Procesos.Macroproceso AS PM ON RR.IdMacroproceso = PM.IdMacroProceso";
+                                + " LEFT JOIN Parametrizacion.Area as Parea on Parea.IdArea = PDJ.IdArea";
                         strConsulta = string.Format("{0} {1} {2} ORDER BY RR.IdRiesgo", strSelect, strFrom, condicion);
 
                         dtInformacion = cDataBase.ejecutarConsulta(strConsulta);
