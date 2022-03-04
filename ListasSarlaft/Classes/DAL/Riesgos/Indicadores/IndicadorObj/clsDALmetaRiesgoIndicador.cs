@@ -41,7 +41,7 @@ namespace ListasSarlaft.Classes
                     int idMax = 0;
                     string strconsulta3 = string.Empty;
                     strconsulta3 = string.Format("SELECT max([IdMeta]) LastId FROM [Riesgos].[RiesgosIndicadoresMetas]");
-                    
+
                     dtCaracOut1 = cDatabase.ejecutarConsulta(strconsulta3);
                     idMax = Convert.ToInt32(dtCaracOut1.Rows[0]["LastId"].ToString());
 
@@ -131,7 +131,7 @@ namespace ListasSarlaft.Classes
             {
                 cDataBase.desconectar();
             }
-            
+
             return booResult;
         }
         public bool mtdActualizarMetaRiesgoIndicador(clsDTOmetasRiesgoIndicador objMeta, ref string strErrMsg)
@@ -146,7 +146,7 @@ namespace ListasSarlaft.Classes
 
             #endregion Vars
 
-            
+
             strConsulta1 = string.Format("select IdFrecuenciaMedicion from Riesgos.RiesgosIndicadores where IdRiesgoIndicador = {0}",
                 objMeta.intIdRiesgoIndicador);
 
@@ -159,7 +159,7 @@ namespace ListasSarlaft.Classes
             {
 
                 strConsulta = string.Format("UPDATE [Riesgos].[RiesgosIndicadoresMetas] SET [Meta] = {0} ,[IdDetalleFrecuenciaMedicion] = {1}" +
-                    ",[ValorOtraFrecuencia] = '{2}', [Año] = '{4}', [mes] = '{5}' WHERE IdMeta = {3} ", objMeta.dblMeta, objMeta.intIdDetalleFrecuencia, 
+                    ",[ValorOtraFrecuencia] = '{2}', [Año] = '{4}', [mes] = '{5}' WHERE IdMeta = {3} ", objMeta.dblMeta, objMeta.intIdDetalleFrecuencia,
                     objMeta.strValorOtraFrecuencia, objMeta.intIdMeta,
                     objMeta.strAño, objMeta.strMes
                     );
@@ -187,20 +187,20 @@ namespace ListasSarlaft.Classes
             finally
             {
                 cDatabase.desconectar();
-            }   
+            }
             return booResult;
         }
 
-        public bool logCambioMeta(int idmeta,string NombreUsuario,string Justificaion,ref string strErrMsg)
+        public bool logCambioMeta(int idmeta, string NombreUsuario, string Justificaion, ref string strErrMsg)
         {
             bool booResult = false;
-            string strConsulta = string.Empty;           
+            string strConsulta = string.Empty;
             cDataBase cDatabase = new cDataBase();
             try
-            {      
-                cDatabase.conectar();    
+            {
+                cDatabase.conectar();
 
-                strConsulta = string.Format("Insert into [Riesgos].[RiesgosModificacionMetasLog] (IdMeta,NombreUsuario,JustificacionCambio,FechaModificacion) values ({0},'{1}','{2}',getdate())",idmeta,NombreUsuario,Justificaion);
+                strConsulta = string.Format("Insert into [Riesgos].[RiesgosModificacionMetasLog] (IdMeta,NombreUsuario,JustificacionCambio,FechaModificacion) values ({0},'{1}','{2}',getdate())", idmeta, NombreUsuario, Justificaion);
 
                 //cDatabase.conectar();
                 cDatabase.ejecutarQuery(strConsulta);
@@ -216,7 +216,7 @@ namespace ListasSarlaft.Classes
                 cDatabase.desconectar();
             }
             return booResult;
-          }
+        }
 
 
         public DataTable CambiosMetaLogs(string idmeta, ref string strErrMsg)
@@ -227,7 +227,7 @@ namespace ListasSarlaft.Classes
             try
             {
                 cDataBase.conectar();
-                dtLogCambios = cDataBase.ejecutarConsulta("select Id,NombreUsuario, JustificacionCambio, FechaModificacion from [Riesgos].[RiesgosModificacionMetasLog] where IdMeta="+idmeta);
+                dtLogCambios = cDataBase.ejecutarConsulta("select Id,NombreUsuario, JustificacionCambio, FechaModificacion from [Riesgos].[RiesgosModificacionMetasLog] where IdMeta=" + idmeta);
                 cDataBase.desconectar();
             }
             catch (Exception ex)
@@ -241,8 +241,8 @@ namespace ListasSarlaft.Classes
 
 
 
-            public bool mtdEliminaMeta(string IdMeta, ref string strErrMsg)
-             {
+        public bool mtdEliminaMeta(string IdMeta, ref string strErrMsg)
+        {
             #region Vars
             bool booResult = false;
             string strConsulta = string.Empty;

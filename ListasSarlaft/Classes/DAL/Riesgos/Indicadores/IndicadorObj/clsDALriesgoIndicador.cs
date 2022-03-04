@@ -139,10 +139,10 @@ namespace ListasSarlaft.Classes
             {
                 if (!string.IsNullOrEmpty(CodRiesgo))
                 {
-                    string aux= CodRiesgo.Replace("R", string.Empty);
+                    string aux = CodRiesgo.Replace("R", string.Empty);
                     CodRiesgo.Replace("R", string.Empty);
                     CodRiesgo.Replace("r", string.Empty);
-                   
+
 
                     condicion = string.Format(" and ( b.IdRiesgoAsociado = '{0}')", aux);
                 }
@@ -510,12 +510,12 @@ namespace ListasSarlaft.Classes
                 if (TipoArea == "R")
                 {
                     if (Responsable != "")
-                    { 
+                    {
                         strConsulta = string.Format("SELECT [IdRiesgoIndicador],[NombreIndicador],[ObjetivoIndicador],[IdProcesoIndicador]"
                             + ",[IdProceso],[NombreProceso],[IdResponsableMedicion],[NombreHijo],[IdFrecuenciaMedicion],[FrecuenciaMedicion],[IdRiesgoAsociado],"
                             + "[Codigo],[Nombre],[IdFormula],[Nominador],[Denominador],[IdMeta],[Meta],[IdEsquemaSeguimiento],[ValorMinimo]"
                             + ",[ValorMaximo],[DescripcionSeguimiento],[Usuario],[FechaCreacion],[Activo],[IdUsuario]"
-                            + " FROM [Riesgos].[vwRiesgosIndicadoresCreate] where Activo = 1 and IdResponsableMedicion = {0}",Responsable
+                            + " FROM [Riesgos].[vwRiesgosIndicadoresCreate] where Activo = 1 and IdResponsableMedicion = {0}", Responsable
                             );
                     }
                     else

@@ -1814,7 +1814,7 @@ new SqlParameter() { ParameterName = "@fechaEvento ", SqlDbType = SqlDbType.Date
             return dtInformacion;
         }
 
-        
+
 
         public DataTable LoadDDLModalidad()
         {

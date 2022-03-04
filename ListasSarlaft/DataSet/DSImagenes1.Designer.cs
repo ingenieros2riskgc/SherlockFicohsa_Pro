@@ -20,17 +20,17 @@ namespace ListasSarlaft.DataSet {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DSConclusion")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DSImagenes")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DSConclusion : global::System.Data.DataSet {
+    public partial class DSImagenes : global::System.Data.DataSet {
         
-        private SP_ConclusionAuditoriaDataTable tableSP_ConclusionAuditoria;
+        private SP_ImagenesAuditoriaDataTable tableSP_ImagenesAuditoria;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public DSConclusion() {
+        public DSImagenes() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace ListasSarlaft.DataSet {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected DSConclusion(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DSImagenes(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace ListasSarlaft.DataSet {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["SP_ConclusionAuditoria"] != null)) {
-                    base.Tables.Add(new SP_ConclusionAuditoriaDataTable(ds.Tables["SP_ConclusionAuditoria"]));
+                if ((ds.Tables["SP_ImagenesAuditoria"] != null)) {
+                    base.Tables.Add(new SP_ImagenesAuditoriaDataTable(ds.Tables["SP_ImagenesAuditoria"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace ListasSarlaft.DataSet {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SP_ConclusionAuditoriaDataTable SP_ConclusionAuditoria {
+        public SP_ImagenesAuditoriaDataTable SP_ImagenesAuditoria {
             get {
-                return this.tableSP_ConclusionAuditoria;
+                return this.tableSP_ImagenesAuditoria;
             }
         }
         
@@ -127,7 +127,7 @@ namespace ListasSarlaft.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DSConclusion cln = ((DSConclusion)(base.Clone()));
+            DSImagenes cln = ((DSImagenes)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace ListasSarlaft.DataSet {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["SP_ConclusionAuditoria"] != null)) {
-                    base.Tables.Add(new SP_ConclusionAuditoriaDataTable(ds.Tables["SP_ConclusionAuditoria"]));
+                if ((ds.Tables["SP_ImagenesAuditoria"] != null)) {
+                    base.Tables.Add(new SP_ImagenesAuditoriaDataTable(ds.Tables["SP_ImagenesAuditoria"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace ListasSarlaft.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableSP_ConclusionAuditoria = ((SP_ConclusionAuditoriaDataTable)(base.Tables["SP_ConclusionAuditoria"]));
+            this.tableSP_ImagenesAuditoria = ((SP_ImagenesAuditoriaDataTable)(base.Tables["SP_ImagenesAuditoria"]));
             if ((initTable == true)) {
-                if ((this.tableSP_ConclusionAuditoria != null)) {
-                    this.tableSP_ConclusionAuditoria.InitVars();
+                if ((this.tableSP_ImagenesAuditoria != null)) {
+                    this.tableSP_ImagenesAuditoria.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace ListasSarlaft.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DSConclusion";
+            this.DataSetName = "DSImagenes";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DSConclusion.xsd";
+            this.Namespace = "http://tempuri.org/DSImagenes.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableSP_ConclusionAuditoria = new SP_ConclusionAuditoriaDataTable();
-            base.Tables.Add(this.tableSP_ConclusionAuditoria);
+            this.tableSP_ImagenesAuditoria = new SP_ImagenesAuditoriaDataTable();
+            base.Tables.Add(this.tableSP_ImagenesAuditoria);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeSP_ConclusionAuditoria() {
+        private bool ShouldSerializeSP_ImagenesAuditoria() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace ListasSarlaft.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DSConclusion ds = new DSConclusion();
+            DSImagenes ds = new DSImagenes();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,25 +270,27 @@ namespace ListasSarlaft.DataSet {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void SP_ConclusionAuditoriaRowChangeEventHandler(object sender, SP_ConclusionAuditoriaRowChangeEvent e);
+        public delegate void SP_ImagenesAuditoriaRowChangeEventHandler(object sender, SP_ImagenesAuditoriaRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SP_ConclusionAuditoriaDataTable : global::System.Data.TypedTableBase<SP_ConclusionAuditoriaRow> {
+        public partial class SP_ImagenesAuditoriaDataTable : global::System.Data.TypedTableBase<SP_ImagenesAuditoriaRow> {
             
-            private global::System.Data.DataColumn columnConclusion;
+            private global::System.Data.DataColumn columnIdArchivoAuditoria;
             
-            private global::System.Data.DataColumn columnSeguimiento;
+            private global::System.Data.DataColumn columnIdAuditoria;
             
-            private global::System.Data.DataColumn columnFechaSeguimiento;
+            private global::System.Data.DataColumn columnarchivo;
+            
+            private global::System.Data.DataColumn columnSecuencia;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SP_ConclusionAuditoriaDataTable() {
-                this.TableName = "SP_ConclusionAuditoria";
+            public SP_ImagenesAuditoriaDataTable() {
+                this.TableName = "SP_ImagenesAuditoria";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -296,7 +298,7 @@ namespace ListasSarlaft.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal SP_ConclusionAuditoriaDataTable(global::System.Data.DataTable table) {
+            internal SP_ImagenesAuditoriaDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -313,32 +315,40 @@ namespace ListasSarlaft.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected SP_ConclusionAuditoriaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected SP_ImagenesAuditoriaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ConclusionColumn {
+            public global::System.Data.DataColumn IdArchivoAuditoriaColumn {
                 get {
-                    return this.columnConclusion;
+                    return this.columnIdArchivoAuditoria;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn SeguimientoColumn {
+            public global::System.Data.DataColumn IdAuditoriaColumn {
                 get {
-                    return this.columnSeguimiento;
+                    return this.columnIdAuditoria;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn FechaSeguimientoColumn {
+            public global::System.Data.DataColumn archivoColumn {
                 get {
-                    return this.columnFechaSeguimiento;
+                    return this.columnarchivo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SecuenciaColumn {
+                get {
+                    return this.columnSecuencia;
                 }
             }
             
@@ -353,47 +363,55 @@ namespace ListasSarlaft.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SP_ConclusionAuditoriaRow this[int index] {
+            public SP_ImagenesAuditoriaRow this[int index] {
                 get {
-                    return ((SP_ConclusionAuditoriaRow)(this.Rows[index]));
+                    return ((SP_ImagenesAuditoriaRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SP_ConclusionAuditoriaRowChangeEventHandler SP_ConclusionAuditoriaRowChanging;
+            public event SP_ImagenesAuditoriaRowChangeEventHandler SP_ImagenesAuditoriaRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SP_ConclusionAuditoriaRowChangeEventHandler SP_ConclusionAuditoriaRowChanged;
+            public event SP_ImagenesAuditoriaRowChangeEventHandler SP_ImagenesAuditoriaRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SP_ConclusionAuditoriaRowChangeEventHandler SP_ConclusionAuditoriaRowDeleting;
+            public event SP_ImagenesAuditoriaRowChangeEventHandler SP_ImagenesAuditoriaRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SP_ConclusionAuditoriaRowChangeEventHandler SP_ConclusionAuditoriaRowDeleted;
+            public event SP_ImagenesAuditoriaRowChangeEventHandler SP_ImagenesAuditoriaRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddSP_ConclusionAuditoriaRow(SP_ConclusionAuditoriaRow row) {
+            public void AddSP_ImagenesAuditoriaRow(SP_ImagenesAuditoriaRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SP_ConclusionAuditoriaRow AddSP_ConclusionAuditoriaRow(string Conclusion, string Seguimiento, string FechaSeguimiento) {
-                SP_ConclusionAuditoriaRow rowSP_ConclusionAuditoriaRow = ((SP_ConclusionAuditoriaRow)(this.NewRow()));
+            public SP_ImagenesAuditoriaRow AddSP_ImagenesAuditoriaRow(decimal IdAuditoria, byte[] archivo, decimal Secuencia) {
+                SP_ImagenesAuditoriaRow rowSP_ImagenesAuditoriaRow = ((SP_ImagenesAuditoriaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Conclusion,
-                        Seguimiento,
-                        FechaSeguimiento};
-                rowSP_ConclusionAuditoriaRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSP_ConclusionAuditoriaRow);
-                return rowSP_ConclusionAuditoriaRow;
+                        null,
+                        IdAuditoria,
+                        archivo,
+                        Secuencia};
+                rowSP_ImagenesAuditoriaRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSP_ImagenesAuditoriaRow);
+                return rowSP_ImagenesAuditoriaRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SP_ImagenesAuditoriaRow FindByIdArchivoAuditoria(decimal IdArchivoAuditoria) {
+                return ((SP_ImagenesAuditoriaRow)(this.Rows.Find(new object[] {
+                            IdArchivoAuditoria})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                SP_ConclusionAuditoriaDataTable cln = ((SP_ConclusionAuditoriaDataTable)(base.Clone()));
+                SP_ImagenesAuditoriaDataTable cln = ((SP_ImagenesAuditoriaDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -401,53 +419,63 @@ namespace ListasSarlaft.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new SP_ConclusionAuditoriaDataTable();
+                return new SP_ImagenesAuditoriaDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnConclusion = base.Columns["Conclusion"];
-                this.columnSeguimiento = base.Columns["Seguimiento"];
-                this.columnFechaSeguimiento = base.Columns["FechaSeguimiento"];
+                this.columnIdArchivoAuditoria = base.Columns["IdArchivoAuditoria"];
+                this.columnIdAuditoria = base.Columns["IdAuditoria"];
+                this.columnarchivo = base.Columns["archivo"];
+                this.columnSecuencia = base.Columns["Secuencia"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnConclusion = new global::System.Data.DataColumn("Conclusion", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnConclusion);
-                this.columnSeguimiento = new global::System.Data.DataColumn("Seguimiento", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSeguimiento);
-                this.columnFechaSeguimiento = new global::System.Data.DataColumn("FechaSeguimiento", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFechaSeguimiento);
-                this.columnConclusion.MaxLength = 2147483647;
+                this.columnIdArchivoAuditoria = new global::System.Data.DataColumn("IdArchivoAuditoria", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdArchivoAuditoria);
+                this.columnIdAuditoria = new global::System.Data.DataColumn("IdAuditoria", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdAuditoria);
+                this.columnarchivo = new global::System.Data.DataColumn("archivo", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnarchivo);
+                this.columnSecuencia = new global::System.Data.DataColumn("Secuencia", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSecuencia);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnIdArchivoAuditoria}, true));
+                this.columnIdArchivoAuditoria.AutoIncrement = true;
+                this.columnIdArchivoAuditoria.AutoIncrementSeed = -1;
+                this.columnIdArchivoAuditoria.AutoIncrementStep = -1;
+                this.columnIdArchivoAuditoria.AllowDBNull = false;
+                this.columnIdArchivoAuditoria.ReadOnly = true;
+                this.columnIdArchivoAuditoria.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SP_ConclusionAuditoriaRow NewSP_ConclusionAuditoriaRow() {
-                return ((SP_ConclusionAuditoriaRow)(this.NewRow()));
+            public SP_ImagenesAuditoriaRow NewSP_ImagenesAuditoriaRow() {
+                return ((SP_ImagenesAuditoriaRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SP_ConclusionAuditoriaRow(builder);
+                return new SP_ImagenesAuditoriaRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(SP_ConclusionAuditoriaRow);
+                return typeof(SP_ImagenesAuditoriaRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.SP_ConclusionAuditoriaRowChanged != null)) {
-                    this.SP_ConclusionAuditoriaRowChanged(this, new SP_ConclusionAuditoriaRowChangeEvent(((SP_ConclusionAuditoriaRow)(e.Row)), e.Action));
+                if ((this.SP_ImagenesAuditoriaRowChanged != null)) {
+                    this.SP_ImagenesAuditoriaRowChanged(this, new SP_ImagenesAuditoriaRowChangeEvent(((SP_ImagenesAuditoriaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -455,8 +483,8 @@ namespace ListasSarlaft.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.SP_ConclusionAuditoriaRowChanging != null)) {
-                    this.SP_ConclusionAuditoriaRowChanging(this, new SP_ConclusionAuditoriaRowChangeEvent(((SP_ConclusionAuditoriaRow)(e.Row)), e.Action));
+                if ((this.SP_ImagenesAuditoriaRowChanging != null)) {
+                    this.SP_ImagenesAuditoriaRowChanging(this, new SP_ImagenesAuditoriaRowChangeEvent(((SP_ImagenesAuditoriaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -464,8 +492,8 @@ namespace ListasSarlaft.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.SP_ConclusionAuditoriaRowDeleted != null)) {
-                    this.SP_ConclusionAuditoriaRowDeleted(this, new SP_ConclusionAuditoriaRowChangeEvent(((SP_ConclusionAuditoriaRow)(e.Row)), e.Action));
+                if ((this.SP_ImagenesAuditoriaRowDeleted != null)) {
+                    this.SP_ImagenesAuditoriaRowDeleted(this, new SP_ImagenesAuditoriaRowChangeEvent(((SP_ImagenesAuditoriaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -473,14 +501,14 @@ namespace ListasSarlaft.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.SP_ConclusionAuditoriaRowDeleting != null)) {
-                    this.SP_ConclusionAuditoriaRowDeleting(this, new SP_ConclusionAuditoriaRowChangeEvent(((SP_ConclusionAuditoriaRow)(e.Row)), e.Action));
+                if ((this.SP_ImagenesAuditoriaRowDeleting != null)) {
+                    this.SP_ImagenesAuditoriaRowDeleting(this, new SP_ImagenesAuditoriaRowChangeEvent(((SP_ImagenesAuditoriaRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveSP_ConclusionAuditoriaRow(SP_ConclusionAuditoriaRow row) {
+            public void RemoveSP_ImagenesAuditoriaRow(SP_ImagenesAuditoriaRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -489,7 +517,7 @@ namespace ListasSarlaft.DataSet {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSConclusion ds = new DSConclusion();
+                DSImagenes ds = new DSImagenes();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -507,7 +535,7 @@ namespace ListasSarlaft.DataSet {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SP_ConclusionAuditoriaDataTable";
+                attribute2.FixedValue = "SP_ImagenesAuditoriaDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -551,102 +579,111 @@ namespace ListasSarlaft.DataSet {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class SP_ConclusionAuditoriaRow : global::System.Data.DataRow {
+        public partial class SP_ImagenesAuditoriaRow : global::System.Data.DataRow {
             
-            private SP_ConclusionAuditoriaDataTable tableSP_ConclusionAuditoria;
+            private SP_ImagenesAuditoriaDataTable tableSP_ImagenesAuditoria;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal SP_ConclusionAuditoriaRow(global::System.Data.DataRowBuilder rb) : 
+            internal SP_ImagenesAuditoriaRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableSP_ConclusionAuditoria = ((SP_ConclusionAuditoriaDataTable)(this.Table));
+                this.tableSP_ImagenesAuditoria = ((SP_ImagenesAuditoriaDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Conclusion {
+            public decimal IdArchivoAuditoria {
+                get {
+                    return ((decimal)(this[this.tableSP_ImagenesAuditoria.IdArchivoAuditoriaColumn]));
+                }
+                set {
+                    this[this.tableSP_ImagenesAuditoria.IdArchivoAuditoriaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal IdAuditoria {
                 get {
                     try {
-                        return ((string)(this[this.tableSP_ConclusionAuditoria.ConclusionColumn]));
+                        return ((decimal)(this[this.tableSP_ImagenesAuditoria.IdAuditoriaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Conclusion\' de la tabla \'SP_ConclusionAuditoria\' es DBNul" +
-                                "l.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdAuditoria\' de la tabla \'SP_ImagenesAuditoria\' es DBNull" +
+                                ".", e);
                     }
                 }
                 set {
-                    this[this.tableSP_ConclusionAuditoria.ConclusionColumn] = value;
+                    this[this.tableSP_ImagenesAuditoria.IdAuditoriaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Seguimiento {
+            public byte[] archivo {
                 get {
                     try {
-                        return ((string)(this[this.tableSP_ConclusionAuditoria.SeguimientoColumn]));
+                        return ((byte[])(this[this.tableSP_ImagenesAuditoria.archivoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Seguimiento\' de la tabla \'SP_ConclusionAuditoria\' es DBNu" +
-                                "ll.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'archivo\' de la tabla \'SP_ImagenesAuditoria\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSP_ConclusionAuditoria.SeguimientoColumn] = value;
+                    this[this.tableSP_ImagenesAuditoria.archivoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string FechaSeguimiento {
+            public decimal Secuencia {
                 get {
                     try {
-                        return ((string)(this[this.tableSP_ConclusionAuditoria.FechaSeguimientoColumn]));
+                        return ((decimal)(this[this.tableSP_ImagenesAuditoria.SecuenciaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaSeguimiento\' de la tabla \'SP_ConclusionAuditoria\' es" +
-                                " DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Secuencia\' de la tabla \'SP_ImagenesAuditoria\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSP_ConclusionAuditoria.FechaSeguimientoColumn] = value;
+                    this[this.tableSP_ImagenesAuditoria.SecuenciaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsConclusionNull() {
-                return this.IsNull(this.tableSP_ConclusionAuditoria.ConclusionColumn);
+            public bool IsIdAuditoriaNull() {
+                return this.IsNull(this.tableSP_ImagenesAuditoria.IdAuditoriaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetConclusionNull() {
-                this[this.tableSP_ConclusionAuditoria.ConclusionColumn] = global::System.Convert.DBNull;
+            public void SetIdAuditoriaNull() {
+                this[this.tableSP_ImagenesAuditoria.IdAuditoriaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSeguimientoNull() {
-                return this.IsNull(this.tableSP_ConclusionAuditoria.SeguimientoColumn);
+            public bool IsarchivoNull() {
+                return this.IsNull(this.tableSP_ImagenesAuditoria.archivoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSeguimientoNull() {
-                this[this.tableSP_ConclusionAuditoria.SeguimientoColumn] = global::System.Convert.DBNull;
+            public void SetarchivoNull() {
+                this[this.tableSP_ImagenesAuditoria.archivoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFechaSeguimientoNull() {
-                return this.IsNull(this.tableSP_ConclusionAuditoria.FechaSeguimientoColumn);
+            public bool IsSecuenciaNull() {
+                return this.IsNull(this.tableSP_ImagenesAuditoria.SecuenciaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFechaSeguimientoNull() {
-                this[this.tableSP_ConclusionAuditoria.FechaSeguimientoColumn] = global::System.Convert.DBNull;
+            public void SetSecuenciaNull() {
+                this[this.tableSP_ImagenesAuditoria.SecuenciaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -654,22 +691,22 @@ namespace ListasSarlaft.DataSet {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class SP_ConclusionAuditoriaRowChangeEvent : global::System.EventArgs {
+        public class SP_ImagenesAuditoriaRowChangeEvent : global::System.EventArgs {
             
-            private SP_ConclusionAuditoriaRow eventRow;
+            private SP_ImagenesAuditoriaRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SP_ConclusionAuditoriaRowChangeEvent(SP_ConclusionAuditoriaRow row, global::System.Data.DataRowAction action) {
+            public SP_ImagenesAuditoriaRowChangeEvent(SP_ImagenesAuditoriaRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SP_ConclusionAuditoriaRow Row {
+            public SP_ImagenesAuditoriaRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -685,7 +722,7 @@ namespace ListasSarlaft.DataSet {
         }
     }
 }
-namespace ListasSarlaft.DataSet.DSConclusionTableAdapters {
+namespace ListasSarlaft.DataSet.DSImagenesTableAdapters {
     
     
     /// <summary>
@@ -697,7 +734,7 @@ namespace ListasSarlaft.DataSet.DSConclusionTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SP_ConclusionAuditoriaTableAdapter : global::System.ComponentModel.Component {
+    public partial class SP_ImagenesAuditoriaTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -711,7 +748,7 @@ namespace ListasSarlaft.DataSet.DSConclusionTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public SP_ConclusionAuditoriaTableAdapter() {
+        public SP_ImagenesAuditoriaTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -808,8 +845,11 @@ namespace ListasSarlaft.DataSet.DSConclusionTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "SP_ConclusionAuditoria";
-            tableMapping.ColumnMappings.Add("Conclusion", "Conclusion");
+            tableMapping.DataSetTable = "SP_ImagenesAuditoria";
+            tableMapping.ColumnMappings.Add("IdArchivoAuditoria", "IdArchivoAuditoria");
+            tableMapping.ColumnMappings.Add("IdAuditoria", "IdAuditoria");
+            tableMapping.ColumnMappings.Add("archivo", "archivo");
+            tableMapping.ColumnMappings.Add("Secuencia", "Secuencia");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -826,23 +866,30 @@ namespace ListasSarlaft.DataSet.DSConclusionTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.SP_ConclusionAuditoria";
+            this._commandCollection[0].CommandText = "dbo.SP_ImagenesAuditoria";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdAuditoria", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Secuencia", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSConclusion.SP_ConclusionAuditoriaDataTable dataTable, global::System.Nullable<int> IdAuditoria) {
+        public virtual int Fill(DSImagenes.SP_ImagenesAuditoriaDataTable dataTable, global::System.Nullable<int> IdAuditoria, global::System.Nullable<int> Secuencia) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((IdAuditoria.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((int)(IdAuditoria.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((Secuencia.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(Secuencia.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -855,7 +902,7 @@ namespace ListasSarlaft.DataSet.DSConclusionTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSConclusion.SP_ConclusionAuditoriaDataTable GetData(global::System.Nullable<int> IdAuditoria) {
+        public virtual DSImagenes.SP_ImagenesAuditoriaDataTable GetData(global::System.Nullable<int> IdAuditoria, global::System.Nullable<int> Secuencia) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((IdAuditoria.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((int)(IdAuditoria.Value));
@@ -863,7 +910,13 @@ namespace ListasSarlaft.DataSet.DSConclusionTableAdapters {
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            DSConclusion.SP_ConclusionAuditoriaDataTable dataTable = new DSConclusion.SP_ConclusionAuditoriaDataTable();
+            if ((Secuencia.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(Secuencia.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            DSImagenes.SP_ImagenesAuditoriaDataTable dataTable = new DSImagenes.SP_ImagenesAuditoriaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -937,7 +990,7 @@ namespace ListasSarlaft.DataSet.DSConclusionTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(DSConclusion dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DSImagenes dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -947,7 +1000,7 @@ namespace ListasSarlaft.DataSet.DSConclusionTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(DSConclusion dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DSImagenes dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -957,7 +1010,7 @@ namespace ListasSarlaft.DataSet.DSConclusionTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(DSConclusion dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DSImagenes dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -991,7 +1044,7 @@ namespace ListasSarlaft.DataSet.DSConclusionTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(DSConclusion dataSet) {
+        public virtual int UpdateAll(DSImagenes dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

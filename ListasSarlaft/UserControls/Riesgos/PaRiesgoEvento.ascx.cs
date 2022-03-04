@@ -1213,8 +1213,15 @@ namespace ListasSarlaft.UserControls.Riesgos
                 objPlanes.IdDependencia = lblIdDependencia.Text;
                 if (objPlanes.IdDependencia == "")
                 {
-                    DataTable dt = mtdconsultaResponsable(objPlanes.Codigo);
-                    objPlanes.IdDependencia = dt.Rows[0]["IdResponsable"].ToString();
+                    if (objPlanes.Codigo.Equals(""))
+                    {
+                        throw new Exception("Se debe asignar el responsable de decisión del plan de acción.");
+                    }
+                    else
+                    {
+                        DataTable dt = mtdconsultaResponsable(objPlanes.Codigo);
+                        objPlanes.IdDependencia = dt.Rows[0]["IdResponsable"].ToString();
+                    }
                 }else{
                     objPlanes.IdDependencia = lblIdDependencia.Text;
                 }
@@ -1627,61 +1634,64 @@ namespace ListasSarlaft.UserControls.Riesgos
                                                 omb.ShowMessage("Se ha realizado el registrado exitosamente! ", 3, "Atención");
 
                                                 DataTable dt = ResponsablePlan(Convert.ToInt32(objPlanes.IdDependencia));
-                                                string idResponsable = dt.Rows[0]["IdPadre"].ToString();
-                                                string CuerpoCorreo = string.Empty;
-
-                                                if (!string.IsNullOrEmpty(RiesgoAsociar.Text))
+                                                if (dt.Rows.Count > 0)
                                                 {
-                                                    CuerpoCorreo = "<B> Código del plan: </B>" + CodigoPlan.Text +
-                                                             "<br /><B> Nombre del plan: </B>" + objPlanes.NombrePlan +
-                                                             "<br /><B> Descripción de la Acción: </B>" + objPlanes.DescripcionPlan +
-                                                             "<br /><B> Estado: </B>" + objPlanes.Estado +
-                                                             "<br /><B> Riesgo Asociado: </B>" + RiesgoAsociar.Text +
-                                                             "<br /><B> Fecha de Compromiso: </B>" + objPlanes.FechaCompromiso.ToString() +
-                                                             "<br />";
-                                                    EnviarNotificacion(6, 0, Convert.ToInt32(idResponsable), "", CuerpoCorreo);
-                                                }
-                                                if (!string.IsNullOrEmpty(AsociarEvento.Text))
-                                                {
-                                                    CuerpoCorreo = "<B> Código del plan: </B>" + CodigoPlan.Text +
-                                                              "<br /><B> Nombre del plan: </B>" + objPlanes.NombrePlan +
-                                                              "<br /><B> Descripción de la Acción: </B>" + objPlanes.DescripcionPlan +
-                                                              "<br /><B> Estado: </B>" + objPlanes.Estado +
-                                                              "<br /><B> Evento asociado: </B>" + AsociarEvento.Text +
-                                                              "<br /><B> Fecha de Compromiso: </B>" + objPlanes.FechaCompromiso.ToString() +
-                                                              "<br />";
-                                                    EnviarNotificacion(10, 0, Convert.ToInt32(idResponsable), "", CuerpoCorreo);
-                                                }
+                                                    string idResponsable = dt.Rows[0]["IdPadre"].ToString();
+                                                    string CuerpoCorreo = string.Empty;
 
-                                                GrillaPlanes();
-                                                GrillaArchivoPlanes();
-                                                CargaArchivosPlanes();
-                                                CargarGrillaPlanes();
-                                                GrillaJustificacion();
-                                                CargaGrillaJustificacion();
-                                                CargaGvRiesgos(); // Filtro
-                                                InicializarValoresGvRiesgosAsociados();
-                                                CargaGvRiesgosAsociados();
-                                                LlenarGvRiesgosAsociados();
-                                                CargaGvEventos(); // Filtro
-                                                InicializarValoresGvEventosAsociados();
-                                                CargaGvEventosAsociados();
-                                                LlenarGvEventosAsociados();
-                                                GrillaCumplimiento();
-                                                CargarGrillaCumplimiento();
-                                                GrillaSeguimiento();
-                                                CargarGrillaSeguimiento();
-                                                LimpiarCamposPlanes();
-                                                LimpiarFiltroRiesgos();
-                                                LimpiarFiltroEventos();
-                                                LimpiarCumplimiento();
-                                                LimpiarSeguimiento();
-                                                TbCarga.Visible = true;
-                                                EtiquetaJustificacion.Visible = true;
-                                                JustificacionCambios.Visible = true;
-                                                TablaJustificacion.Visible = true;
-                                                PanelJustificacion.Visible = true;
-                                                TcPrincipal.ActiveTabIndex = 0;
+                                                    if (!string.IsNullOrEmpty(RiesgoAsociar.Text))
+                                                    {
+                                                        CuerpoCorreo = "<B> Código del plan: </B>" + CodigoPlan.Text +
+                                                                 "<br /><B> Nombre del plan: </B>" + objPlanes.NombrePlan +
+                                                                 "<br /><B> Descripción de la Acción: </B>" + objPlanes.DescripcionPlan +
+                                                                 "<br /><B> Estado: </B>" + objPlanes.Estado +
+                                                                 "<br /><B> Riesgo Asociado: </B>" + RiesgoAsociar.Text +
+                                                                 "<br /><B> Fecha de Compromiso: </B>" + objPlanes.FechaCompromiso.ToString() +
+                                                                 "<br />";
+                                                        EnviarNotificacion(6, 0, Convert.ToInt32(idResponsable), "", CuerpoCorreo);
+                                                    }
+                                                    if (!string.IsNullOrEmpty(AsociarEvento.Text))
+                                                    {
+                                                        CuerpoCorreo = "<B> Código del plan: </B>" + CodigoPlan.Text +
+                                                                  "<br /><B> Nombre del plan: </B>" + objPlanes.NombrePlan +
+                                                                  "<br /><B> Descripción de la Acción: </B>" + objPlanes.DescripcionPlan +
+                                                                  "<br /><B> Estado: </B>" + objPlanes.Estado +
+                                                                  "<br /><B> Evento asociado: </B>" + AsociarEvento.Text +
+                                                                  "<br /><B> Fecha de Compromiso: </B>" + objPlanes.FechaCompromiso.ToString() +
+                                                                  "<br />";
+                                                        EnviarNotificacion(10, 0, Convert.ToInt32(idResponsable), "", CuerpoCorreo);
+                                                    }
+
+                                                    GrillaPlanes();
+                                                    GrillaArchivoPlanes();
+                                                    CargaArchivosPlanes();
+                                                    CargarGrillaPlanes();
+                                                    GrillaJustificacion();
+                                                    CargaGrillaJustificacion();
+                                                    CargaGvRiesgos(); // Filtro
+                                                    InicializarValoresGvRiesgosAsociados();
+                                                    CargaGvRiesgosAsociados();
+                                                    LlenarGvRiesgosAsociados();
+                                                    CargaGvEventos(); // Filtro
+                                                    InicializarValoresGvEventosAsociados();
+                                                    CargaGvEventosAsociados();
+                                                    LlenarGvEventosAsociados();
+                                                    GrillaCumplimiento();
+                                                    CargarGrillaCumplimiento();
+                                                    GrillaSeguimiento();
+                                                    CargarGrillaSeguimiento();
+                                                    LimpiarCamposPlanes();
+                                                    LimpiarFiltroRiesgos();
+                                                    LimpiarFiltroEventos();
+                                                    LimpiarCumplimiento();
+                                                    LimpiarSeguimiento();
+                                                    TbCarga.Visible = true;
+                                                    EtiquetaJustificacion.Visible = true;
+                                                    JustificacionCambios.Visible = true;
+                                                    TablaJustificacion.Visible = true;
+                                                    PanelJustificacion.Visible = true;
+                                                    TcPrincipal.ActiveTabIndex = 0;
+                                                }
                                             }
                                         }
                                     }

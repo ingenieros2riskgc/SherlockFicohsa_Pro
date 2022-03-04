@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Globalization;
 using System.IO;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
@@ -330,7 +329,7 @@ namespace ListasSarlaft.UserControls.Eventos
                         DDLEstadoReporte.SelectedValue.ToString().Trim(),
                         DDLCodigoBanco.SelectedValue.ToString().Trim(),
                         TBFechaOcurrencia.Text.ToString().Trim(),
-                        TBFechaDescubrimiento.Text.ToString().Trim(), 
+                        TBFechaDescubrimiento.Text.ToString().Trim(),
                         TBDescripcionEvento.Text.ToString().Trim(),
                         TBTituloEvento.Text.ToString().Trim(),
                         DDLCategoria.SelectedValue.ToString().Trim(),
@@ -364,7 +363,7 @@ namespace ListasSarlaft.UserControls.Eventos
                         TBJustificacion.Text.ToString().Trim());
 
                     string codigoEvsEIncs = TBHiddenCodigoEvsEIncs.Text.ToString().Trim();
-                    codigoEvsEIncs = codigoEvsEIncs.Equals("") ? "EI"+TBIdEvsEIncs.Text : codigoEvsEIncs;
+                    codigoEvsEIncs = codigoEvsEIncs.Equals("") ? "EI" + TBIdEvsEIncs.Text : codigoEvsEIncs;
 
                     ShowMessage($"Evento/Incidente {codigoEvsEIncs} Creado correctamente", 3, "Atención");
                     TBHiddenCodigoEvsEIncs.Text = codigoEvsEIncs;
@@ -372,7 +371,7 @@ namespace ListasSarlaft.UserControls.Eventos
                     MostrarTablasMultiples();
 
                     string CodigoEvento = TBHiddenCodigoEvsEIncs.Text;
-                    
+
                     mtdGenerarNotificacionCreaccionEvento(CodigoEvento, string.Empty, string.Empty, 37, 0);
                 }
 
@@ -1140,7 +1139,7 @@ namespace ListasSarlaft.UserControls.Eventos
                 PageValidate_Addne();
                 PageValidate_AddneCamposDecimal();
                 PageValidate_TabRiesgo();
-                
+
 
                 if (string.IsNullOrEmpty(TBHiddenCodigoEvsEIncs.Text))
                 {
@@ -1241,9 +1240,9 @@ namespace ListasSarlaft.UserControls.Eventos
 
                 if (!TBIdRiesgo.Text.Equals(""))
                 {
-                    if(cEvsEIncs.RelacionarRiesgos(TBIdEvsEIncs.Text.ToString(), TBIdRiesgo.Text).Equals("0"))
+                    if (cEvsEIncs.RelacionarRiesgos(TBIdEvsEIncs.Text.ToString(), TBIdRiesgo.Text).Equals("0"))
                     {
-                        ShowMessage("No se puede asociar el riesgo. Supera el límite de eventos relacionados", 1, "Atención"); 
+                        ShowMessage("No se puede asociar el riesgo. Supera el límite de eventos relacionados", 1, "Atención");
                     }
                     else
                     {
@@ -2714,7 +2713,7 @@ namespace ListasSarlaft.UserControls.Eventos
                 DDLCuentasPerdida.Enabled = TBFRegistroPerdida.Enabled = TBRecuperaciones.Enabled =
                     TBRecuperacionSeguro.Enabled = TBFRegistroContable.Enabled = TBCuentaRecuperacion.Enabled = enabled;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw (ex);
             }
@@ -2729,7 +2728,7 @@ namespace ListasSarlaft.UserControls.Eventos
                 {
                     DDLFiltroLineaDos.SelectedValue = "9";
 
-                    if(cargarLineas) loadDescripcionLineas(DDLLineaNegocioDos, DDLFiltroLineaDos.SelectedValue);
+                    if (cargarLineas) loadDescripcionLineas(DDLLineaNegocioDos, DDLFiltroLineaDos.SelectedValue);
 
                     DDLLineaNegocioDos.SelectedValue = "21";
                 }
@@ -2741,7 +2740,7 @@ namespace ListasSarlaft.UserControls.Eventos
 
                 DDLFiltroLineaDos.Enabled = DDLLineaNegocioDos.Enabled = enabled;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -2824,7 +2823,7 @@ namespace ListasSarlaft.UserControls.Eventos
                     case "DesEnlazar":
 
                         string IdRiesgo = colsNoVisible[0].ToString();
-                        if(cEvsEIncs.RelacionarRiesgos(TBIdEvsEIncs.Text.ToString(), IdRiesgo).Equals("0"))
+                        if (cEvsEIncs.RelacionarRiesgos(TBIdEvsEIncs.Text.ToString(), IdRiesgo).Equals("0"))
                         {
                             ShowMessage("No se puede asociar el riesgo. Supera el límite de eventos relacionados", 1, "Atención");
                         }

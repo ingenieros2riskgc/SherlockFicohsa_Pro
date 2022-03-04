@@ -821,14 +821,14 @@ namespace ListasSarlaft.UserControls.Riesgos.Gestion
 
         protected void IBconsultar_Click(object sender, ImageClickEventArgs e)
         {
-            
+
             string strErrMsg = string.Empty;
             int ResponsableInt = 0;
             if (lblIdDependencia4.Text != "")
                 ResponsableInt = Convert.ToInt32(Sanitizer.GetSafeHtmlFragment(lblIdDependencia4.Text));
-                string Responsable = Convert.ToString(ResponsableInt);
+            string Responsable = Convert.ToString(ResponsableInt);
             Session["Responsable"] = Responsable;
-            
+
             if (!mtdLoadRiesgosIndicadores(ref strErrMsg, Responsable))
                 omb.ShowMessage(strErrMsg, 1, "Atención");
         }

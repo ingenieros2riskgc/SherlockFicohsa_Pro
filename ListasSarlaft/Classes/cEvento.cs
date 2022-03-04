@@ -1133,7 +1133,7 @@ namespace ListasSarlaft.Classes
                 }
                 else
                 {
-                    
+
                 }
 
                 if (selectedProc != "---")
@@ -1287,7 +1287,7 @@ namespace ListasSarlaft.Classes
                     condicion = " AND (rei.CodigoEvsEIncs = '" + CodigoEvento + "') ";
                 if (DescripcionEvento != "")
                     condicion += " AND (rei.DescripcionEvento LIKE '%" + DescripcionEvento + "%') ";
-                
+
 
                 #endregion Filtros
                 CondicionOtroFiltro = "SELECT rei.IdEvsEIncs AS IdEvento, rei.CodigoEvsEIncs AS CodigoEvento, rei.DescripcionEvento, rei.FechaRegistro, CONCAT(lu.Nombres, ' ', lu.Apellidos) AS Usuario  " +

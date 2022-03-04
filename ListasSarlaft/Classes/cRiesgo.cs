@@ -916,13 +916,14 @@ namespace ListasSarlaft.Classes
         }
 
         public DataTable validarTablasMultiples(string idRiesgo, string tabla)
-         {
+        {
             string consulta = "";
             DataTable dtInformacion = new DataTable();
-            try {
+            try
+            {
 
                 consulta = $"SELECT * FROM Riesgos.{tabla} WHERE IdRiesgo = {idRiesgo}";
-                
+
                 cDataBase.conectar();
                 dtInformacion = cDataBase.ejecutarConsulta(consulta);
                 cDataBase.desconectar();
@@ -1482,7 +1483,7 @@ namespace ListasSarlaft.Classes
             }
             return dtInformacion;
         }
-         
+
 
         public DataTable loadDDLProductoAfectado()
         {
@@ -5495,7 +5496,7 @@ namespace ListasSarlaft.Classes
             String IdProbabilidad, String OcurrenciaEventoDesde, String OcurrenciaEventoHasta, String IdImpacto, String PerdidaEconomicaDesde,
             String PerdidaEconomicaHasta, String ListaTratamiento, String responsableTratamiento, String EstadoRiesgo, String TipoMedicion, String IdFactorRO)
         {
-          
+
             #region Variables
             string strConsultaInsert = string.Empty, strCamposInsert = string.Empty, strValoresInsert = string.Empty, strCodigoRiesgo = string.Empty, strIdRiesgo = string.Empty;
             /*string strCodigoRiesgo = "(SELECT CASE ISNULL(MAX(IdRiesgo),'') WHEN '' THEN 'R1' ELSE (SELECT 'R'+ CAST((SELECT MAX(CAST(SUBSTRING(Codigo, 2, 10)AS INT)) + 1 FROM Riesgos.Riesgo WHERE Codigo LIKE 'R%') AS NVARCHAR(50))) END FROM Riesgos.Riesgo)",
@@ -5546,7 +5547,7 @@ namespace ListasSarlaft.Classes
                 #endregion Inserts
 
                 DataTable dtInformacionRiesgo = new DataTable();
-                
+
                 cDataBase.conectar();
                 cDataBase.ejecutarConsulta(strConsultaModificacion);
                 dtInformacionRiesgo = cDataBase.ejecutarConsulta(strConsultaInsert);
@@ -5638,11 +5639,11 @@ namespace ListasSarlaft.Classes
         public DataTable ReporteRiesgos(String IdCadenaValor, String IdMacroProceso,
             String IdProceso, String IdClasificacionRiesgo, String IdClasificacionGeneralRiesgo,
             String NombreRiesgoInherente, String NombreRiesgoResidual, String IdEmpresa,
-            String numeroQuery, String IdRiesgo, String IdArea, string estado, string idResponsable = "0", string IdProductoAfectado = "---", string IdActivoAfectado = "---", string txtCadenavalor="", string txtMacroproceso="")
+            String numeroQuery, String IdRiesgo, String IdArea, string estado, string idResponsable = "0", string IdProductoAfectado = "---", string IdActivoAfectado = "---")
         {
             #region Variables
             DataTable dtInformacion = new DataTable();
-            String condicion = string.Empty, strConsulta = string.Empty, strFrom = string.Empty, strSelect = string.Empty, strWhere=string.Empty;
+            String condicion = string.Empty, strConsulta = string.Empty, strFrom = string.Empty, strSelect = string.Empty;
             #endregion Variables
 
             try
@@ -5812,7 +5813,7 @@ namespace ListasSarlaft.Classes
                 {
                     if (string.IsNullOrEmpty(condicion.Trim()))
                     {
-                        condicion = "WHERE (RR.IdActivoAfectado = " + IdActivoAfectado + ") "; 
+                        condicion = "WHERE (RR.IdActivoAfectado = " + IdActivoAfectado + ") ";
                     }
                     else
                     {
@@ -5838,7 +5839,7 @@ namespace ListasSarlaft.Classes
                 {
                     case "1":
                         #region Riesgos
-                        strSelect = "SELECT LTRIM(RTRIM(RR.Codigo)) CodigoRiesgo, LTRIM(RTRIM(LU.Nombres)) + ' ' + LTRIM(RTRIM(LU.Apellidos)) Usuario, LTRIM(RTRIM(RR.Nombre)) NombreRiesgo, LTRIM(RTRIM(RR.Descripcion)) DescripcionRiesgo, PJO.NombreHijo ResponsableRiesgo, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RR.FechaRegistro, 23), ''))) FechaRegistroRiesgo, LTRIM(RTRIM(ISNULL(PCR.NombreClasificacionRiesgo, ''))) ClasificacionRiesgo, LTRIM(RTRIM(ISNULL(PCGR.NombreClasificacionGeneralRiesgo, ''))) ClasificacionGeneralRiesgo, LTRIM(RTRIM(ISNULL(PCPR.NombreClasificacionParticularRiesgo, ''))) ClasificacionParticularRiesgo, LTRIM(RTRIM(ISNULL(PTEO.NombreTipoEventoOperativo, ''))) TipoEvento, LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionListCausas](RR.ListaCausas, '|'), ''))) Causas, LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionListConsecuencias](RR.ListaConsecuencias, '|'), ''))) Consecuencias, LTRIM(RTRIM(ISNULL(PCV.NombreCadenaValor, ''))) CadenaValor, LTRIM(RTRIM(ISNULL(PM.Nombre, ''))) Macroproceso, LTRIM(RTRIM(ISNULL(PP.Nombre, ''))) Proceso, LTRIM(RTRIM(ISNULL(PS.Nombre, ''))) Subproceso, LTRIM(RTRIM(ISNULL(PA.Nombre, ''))) Actividad, LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionListTreatment](RR.ListaTratamiento, '|'), ''))) ListaTratamiento, LTRIM(RTRIM(ISNULL(PPr.NombreProbabilidad, ''))) FrecuenciaInherente, LTRIM(RTRIM(ISNULL(PPr.ValorProbabilidad, ''))) CodigoFrecuenciaInherente, LTRIM(RTRIM(ISNULL(PIm.NombreImpacto, ''))) ImpactoInherente, LTRIM(RTRIM(ISNULL(PIm.ValorImpacto, ''))) CodigoImpactoInherente, LTRIM(RTRIM(ISNULL(PRI.NombreRiesgoInherente, ''))) RiesgoInherente, LTRIM(RTRIM(ISNULL(PRI.ValorRiesgoInherente, ''))) CodigoRiesgoInherente, LTRIM(RTRIM(ISNULL(pr.NombreProbabilidad, ''))) FrecuenciaResidual, LTRIM(RTRIM(ISNULL(pr.ValorProbabilidad, ''))) CodigoFrecuenciaResidual, LTRIM(RTRIM(ISNULL(im.NombreImpacto, ''))) ImpactoResidual, LTRIM(RTRIM(ISNULL(im.ValorImpacto, ''))) CodigoImpactoResidual, LTRIM(RTRIM(ISNULL(RiesgoResidual.NombreRiesgoInherente, ''))) RiesgoResidual, LTRIM(RTRIM(ISNULL(RiesgoResidual.ValorRiesgoInherente, ''))) CodigoRiesgoResidual,LTRIM(RTRIM(ISNULL(PFRO.NombreFactorRiesgoOperativo, ''))) FactorRiesgoOperativo, LTRIM(RTRIM(ISNULL(PRAO.NombreRiesgoAsociadoOperativo, ''))) RiesgoAsociadoOperativo, LTRIM(RTRIM(ISNULL(PTRO.NombreTipoRiesgoOperativo, ''))) SubFactorRiesgoOperativo, LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionList](RR.LISTARIESGOASOCIADOLA, '|'), ''))) ListaRiesgoAsociadoLA, LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionListLAFT](RR.LISTAFACTORRIESGOLAFT, '|'), ''))) ListaFactorRiesgoLAFT, 'Region:' + LTRIM(RTRIM(ISNULL(PReg.NombreRegion, ''))) + ' - Pais:' + LTRIM(RTRIM(ISNULL(PPai.NombrePais, ''))) + ' - Depto:' + LTRIM(RTRIM(ISNULL([NombreDepartamento], ''))) + ' - Ciudad:' + LTRIM(RTRIM(ISNULL([NombreCiudad], ''))) + ' - Of:' + LTRIM(RTRIM(ISNULL([NombreOficinaSucursal], ''))) Ubicacion,Parea.NombreArea, PER.NombreEstado 'EstadoRiesgo', ISNULL(RR.TipoMedicion,0) as TipoMedicion, RR.IdRiesgo,LTRIM(RTRIM(ISNULL(EF.Descripcion, ''))) FactorRO,STUFF( (SELECT ', ' + LTRIM(RTRIM(Descripcion)) FROM Eventos.DescLineaUno EDL INNER JOIN Riesgos.Riesgos_LineaNegocios RRL ON EDL.IdDescLineaUno = RRL.IdLineaNegocios WHERE RRL.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Linea Negocio',STUFF( (SELECT ', ' + LTRIM(RTRIM(Producto)) FROM Eventos.ProductoAfectado EPA INNER JOIN Riesgos.Riesgos_Productos RRP ON EPA.IdProductoAfectado = RRP.IdProducto WHERE RRP.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Producto',STUFF( (SELECT ', ' + LTRIM(RTRIM(ETA.Tipo)) FROM Eventos.TipoActivo ETA INNER JOIN Eventos.ActivoAfectado EAA ON ETA.IdTipoActivo = EAA.IdTipoActivo INNER JOIN Riesgos.Riesgos_ActivoAfectado ERA ON ERA.IdActivoAfectado = EAA.IdActivoAfectado WHERE ERA.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Tipo Activo',STUFF( (SELECT ', ' + LTRIM(RTRIM(EAA.Activo)) FROM Eventos.ActivoAfectado EAA INNER JOIN Riesgos.Riesgos_ActivoAfectado RAA ON EAA.IdActivoAfectado = RAA.IdActivoAfectado WHERE RAA.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Activo Afectado',STUFF( (SELECT ', ' + LTRIM(RTRIM(EDV.Dimensiones)) FROM Eventos.DimValoracion EDV INNER JOIN Riesgos.Riesgos_DimValoracion RDV ON EDV.IdDimValoracion = RDV.IdDimValoracion WHERE RDV.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Dimensión Valoración'  ";                        
+                        strSelect = "SELECT LTRIM(RTRIM(RR.Codigo)) CodigoRiesgo, LTRIM(RTRIM(LU.Nombres)) + ' ' + LTRIM(RTRIM(LU.Apellidos)) Usuario, LTRIM(RTRIM(RR.Nombre)) NombreRiesgo, LTRIM(RTRIM(RR.Descripcion)) DescripcionRiesgo, PJO.NombreHijo ResponsableRiesgo, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RR.FechaRegistro, 23), ''))) FechaRegistroRiesgo, LTRIM(RTRIM(ISNULL(PCR.NombreClasificacionRiesgo, ''))) ClasificacionRiesgo, LTRIM(RTRIM(ISNULL(PCGR.NombreClasificacionGeneralRiesgo, ''))) ClasificacionGeneralRiesgo, LTRIM(RTRIM(ISNULL(PCPR.NombreClasificacionParticularRiesgo, ''))) ClasificacionParticularRiesgo, LTRIM(RTRIM(ISNULL(PTEO.NombreTipoEventoOperativo, ''))) TipoEvento, LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionListCausas](RR.ListaCausas, '|'), ''))) Causas, LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionListConsecuencias](RR.ListaConsecuencias, '|'), ''))) Consecuencias, LTRIM(RTRIM(ISNULL(PCV.NombreCadenaValor, ''))) CadenaValor, LTRIM(RTRIM(ISNULL(PM.Nombre, ''))) Macroproceso, LTRIM(RTRIM(ISNULL(PP.Nombre, ''))) Proceso, LTRIM(RTRIM(ISNULL(PS.Nombre, ''))) Subproceso, LTRIM(RTRIM(ISNULL(PA.Nombre, ''))) Actividad, LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionListTreatment](RR.ListaTratamiento, '|'), ''))) ListaTratamiento, LTRIM(RTRIM(ISNULL(PPr.NombreProbabilidad, ''))) FrecuenciaInherente, LTRIM(RTRIM(ISNULL(PPr.ValorProbabilidad, ''))) CodigoFrecuenciaInherente, LTRIM(RTRIM(ISNULL(PIm.NombreImpacto, ''))) ImpactoInherente, LTRIM(RTRIM(ISNULL(PIm.ValorImpacto, ''))) CodigoImpactoInherente, LTRIM(RTRIM(ISNULL(PRI.NombreRiesgoInherente, ''))) RiesgoInherente, LTRIM(RTRIM(ISNULL(PRI.ValorRiesgoInherente, ''))) CodigoRiesgoInherente, LTRIM(RTRIM(ISNULL(pr.NombreProbabilidad, ''))) FrecuenciaResidual, LTRIM(RTRIM(ISNULL(pr.ValorProbabilidad, ''))) CodigoFrecuenciaResidual, LTRIM(RTRIM(ISNULL(im.NombreImpacto, ''))) ImpactoResidual, LTRIM(RTRIM(ISNULL(im.ValorImpacto, ''))) CodigoImpactoResidual, LTRIM(RTRIM(ISNULL(RiesgoResidual.NombreRiesgoInherente, ''))) RiesgoResidual, LTRIM(RTRIM(ISNULL(RiesgoResidual.ValorRiesgoInherente, ''))) CodigoRiesgoResidual,LTRIM(RTRIM(ISNULL(PFRO.NombreFactorRiesgoOperativo, ''))) FactorRiesgoOperativo, LTRIM(RTRIM(ISNULL(PRAO.NombreRiesgoAsociadoOperativo, ''))) RiesgoAsociadoOperativo, LTRIM(RTRIM(ISNULL(PTRO.NombreTipoRiesgoOperativo, ''))) SubFactorRiesgoOperativo, LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionList](RR.LISTARIESGOASOCIADOLA, '|'), ''))) ListaRiesgoAsociadoLA, LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionListLAFT](RR.LISTAFACTORRIESGOLAFT, '|'), ''))) ListaFactorRiesgoLAFT, 'Region:' + LTRIM(RTRIM(ISNULL(PReg.NombreRegion, ''))) + ' - Pais:' + LTRIM(RTRIM(ISNULL(PPai.NombrePais, ''))) + ' - Depto:' + LTRIM(RTRIM(ISNULL([NombreDepartamento], ''))) + ' - Ciudad:' + LTRIM(RTRIM(ISNULL([NombreCiudad], ''))) + ' - Of:' + LTRIM(RTRIM(ISNULL([NombreOficinaSucursal], ''))) Ubicacion,Parea.NombreArea, PER.NombreEstado 'EstadoRiesgo', ISNULL(RR.TipoMedicion,0) as TipoMedicion, RR.IdRiesgo,LTRIM(RTRIM(ISNULL(EF.Descripcion, ''))) FactorRO,STUFF( (SELECT ', ' + LTRIM(RTRIM(Descripcion)) FROM Eventos.DescLineaUno EDL INNER JOIN Riesgos.Riesgos_LineaNegocios RRL ON EDL.IdDescLineaUno = RRL.IdLineaNegocios WHERE RRL.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Linea Negocio',STUFF( (SELECT ', ' + LTRIM(RTRIM(Producto)) FROM Eventos.ProductoAfectado EPA INNER JOIN Riesgos.Riesgos_Productos RRP ON EPA.IdProductoAfectado = RRP.IdProducto WHERE RRP.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Producto',STUFF( (SELECT ', ' + LTRIM(RTRIM(ETA.Tipo)) FROM Eventos.TipoActivo ETA INNER JOIN Eventos.ActivoAfectado EAA ON ETA.IdTipoActivo = EAA.IdTipoActivo INNER JOIN Riesgos.Riesgos_ActivoAfectado ERA ON ERA.IdActivoAfectado = EAA.IdActivoAfectado WHERE ERA.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Tipo Activo',STUFF( (SELECT ', ' + LTRIM(RTRIM(EAA.Activo)) FROM Eventos.ActivoAfectado EAA INNER JOIN Riesgos.Riesgos_ActivoAfectado RAA ON EAA.IdActivoAfectado = RAA.IdActivoAfectado WHERE RAA.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Activo Afectado',STUFF( (SELECT ', ' + LTRIM(RTRIM(EDV.Dimensiones)) FROM Eventos.DimValoracion EDV INNER JOIN Riesgos.Riesgos_DimValoracion RDV ON EDV.IdDimValoracion = RDV.IdDimValoracion WHERE RDV.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Dimensión Valoración'  ";
                         strFrom = "FROM Riesgos.Riesgo AS RR  LEFT JOIN Parametrizacion.ClasificacionRiesgo AS PCR ON RR.IdClasificacionRiesgo = PCR.IdClasificacionRiesgo  LEFT JOIN Parametrizacion.ClasificacionGeneralRiesgo AS PCGR ON RR.IdClasificacionGeneralRiesgo = PCGR.IdClasificacionGeneralRiesgo  LEFT JOIN Parametrizacion.ClasificacionParticularRiesgo AS PCPR ON RR.IdClasificacionParticularRiesgo = PCPR.IdClasificacionParticularRiesgo  LEFT JOIN Parametrizacion.TipoRiesgoOperativo AS PTRO ON RR.IdTipoRiesgoOperativo = PTRO.IdTipoRiesgoOperativo  LEFT JOIN Parametrizacion.TipoEventoOperativo AS PTEO ON RR.IdTipoEventoOperativo = PTEO.IdTipoEventoOperativo  LEFT JOIN Procesos.CadenaValor AS PCV ON PCV.IdCadenaValor = RR.IdCadenaValor  LEFT JOIN Procesos.Macroproceso AS PM ON RR.IdMacroproceso = PM.IdMacroProceso  LEFT JOIN Procesos.Proceso AS PP ON RR.IdProceso = PP.IdProceso  LEFT JOIN Procesos.Subproceso AS PS ON PS.IdSubProceso = RR.IdSubProceso  LEFT JOIN Procesos.Actividad AS PA ON RR.IdActividad = PA.IdActividad  LEFT JOIN Parametrizacion.Probabilidad AS PPr ON PPr.IdProbabilidad = RR.IdProbabilidad  LEFT JOIN Parametrizacion.Probabilidad AS pr ON pr.IdProbabilidad = RR.IdProbabilidadResidual  LEFT JOIN Parametrizacion.Impacto AS PIm ON PIm.IdImpacto = RR.IdImpacto  LEFT JOIN Parametrizacion.Impacto AS im ON im.IdImpacto = RR.IdImpactoResidual  LEFT JOIN Parametrizacion.RiesgoInherente AS PRI ON PRI.IdProbabilidad = RR.IdProbabilidad AND PRI.IdImpacto = RR.IdImpacto  LEFT JOIN Parametrizacion.RiesgoInherente AS RiesgoResidual ON RR.IdProbabilidadResidual = RiesgoResidual.IdProbabilidad AND RR.IdImpactoResidual = RiesgoResidual.IdImpacto  LEFT JOIN Parametrizacion.JerarquiaOrganizacional AS PJO ON PJO.idHijo = RR.IdResponsableRiesgo  LEFT JOIN Parametrizacion.FactorRiesgoOperativo AS PFRO ON RR.IdFactorRiesgoOperativo = PFRO.IdFactorRiesgoOperativo  LEFT JOIN Parametrizacion.RiesgoAsociadoOperativo AS PRAO ON RR.IdRiesgoAsociadoOperativo = PRAO.IdRiesgoAsociadoOperativo  LEFT JOIN Parametrizacion.Regiones AS PReg ON RR.IdRegion = PReg.IdRegion  LEFT JOIN Parametrizacion.Paises AS PPai ON RR.IdPais = PPai.IdPais AND PReg.IdRegion = PPai.IdRegion  LEFT JOIN Parametrizacion.Departamentos AS PDep ON RR.IdDepartamento = PDep.IdDepartamento AND PPai.IdPais = PDep.IdPais  LEFT JOIN Parametrizacion.Ciudades AS PCiu ON RR.IdCiudad = PCiu.IdCiudad AND PDep.IdDepartamento = PCiu.IdDepartamento  LEFT JOIN Parametrizacion.OficinaSucursal AS POSuc ON RR.IdOficinaSucursal = POSuc.IdOficinaSucursal AND PCiu.IdCiudad = POSuc.IdCiudad INNER JOIN Listas.Usuarios LU ON RR.IdUsuario = LU.IdUsuario  left JOIN [Parametrizacion].[DetalleJerarquiaOrg] AS PDJ ON PDJ.idHijo = PJO.idHijo  left JOIN Parametrizacion.Area as Parea on Parea.IdArea = PDJ.IdArea  LEFT JOIN Parametrizacion.EstadosRiesgo PER ON RR.Estado = PER.IdEstado LEFT JOIN Eventos.ActivoAfectado EA ON RR.IdActivoAfectado = EA.IdActivoAfectado  LEFT JOIN Eventos.DesFactorRO EF ON RR.IdFactorRO = EF.IdDesFactorRO LEFT JOIN Eventos.TipoActivo ET ON RR.IdTipoActivo = ET.IdTipoActivo LEFT JOIN Eventos.DimValoracion ED ON RR.IdDimensiones = ED.IdDimValoracion ";
                         if (IdProductoAfectado != "---")
                         {
@@ -5853,21 +5854,7 @@ namespace ListasSarlaft.Classes
                     case "2":
                         #region Riesgos-Controles
 
-                       
-                            strSelect = "SELECT RVCR.*, '' AS CalificacionControl FROM Riesgos.vwRiesgoControlReporte RVCR WHERE CodigoControl != '' ";
-
-                        if (txtCadenavalor != "---")
-                        {
-                            strSelect += $" AND (CadenaValor='{txtCadenavalor}')";
-                        }
-
-                        if (txtMacroproceso != "---")
-                        {
-                            strSelect += $" AND (Macroproceso='{txtMacroproceso}')";
-                        }
-
-
-                        //strSelect = "SELECT RVCR.*, '' AS CalificacionControl FROM Riesgos.vwRiesgoControlReporte RVCR WHERE CodigoControl != '' ";
+                        strSelect = "SELECT RVCR.*, '' AS CalificacionControl FROM Riesgos.vwRiesgoControlReporte RVCR WHERE CodigoControl != '' ";
 
                         if (!idResponsable.Equals(""))
                         {
@@ -5941,7 +5928,9 @@ namespace ListasSarlaft.Classes
                         strFrom += " LEFT JOIN Parametrizacion.JerarquiaOrganizacional PJOPA ON PJOPA.NombreHijo = RP.Responsable"
                                + " LEFT JOIN Parametrizacion.DetalleJerarquiaOrg PDJPA ON PDJPA.idHijo = PJOPA.idHijo";
                         strFrom += " LEFT JOIN [Parametrizacion].[DetalleJerarquiaOrg] AS PDJ ON PDJ.idHijo = PJO.idHijo"
-                                + " LEFT JOIN Parametrizacion.Area as Parea on Parea.IdArea = PDJ.IdArea";
+                                + " LEFT JOIN Parametrizacion.Area as Parea on Parea.IdArea = PDJ.IdArea"
+                                + " LEFT JOIN Procesos.CadenaValor AS PCV ON PCV.IdCadenaValor = RR.IdCadenaValor"
+                                + " LEFT JOIN Procesos.Macroproceso AS PM ON RR.IdMacroproceso = PM.IdMacroProceso";
                         strConsulta = string.Format("{0} {1} {2} ORDER BY RR.IdRiesgo", strSelect, strFrom, condicion);
 
                         dtInformacion = cDataBase.ejecutarConsulta(strConsulta);

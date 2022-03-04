@@ -1077,7 +1077,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                             cCargaMasivaRCE Carga = new cCargaMasivaRCE();
                             DataTable dt = Carga.NumeroActual();
                             string UltimoEvento = dt.Rows[0][0].ToString();
-                            LoadFilePlantillaEventos();                            
+                            LoadFilePlantillaEventos();
                             LoadGridEventosMasivosCarga(UltimoEvento);
                         }
                         if (DDLopciones.SelectedValue == "5")
@@ -1139,13 +1139,13 @@ namespace ListasSarlaft.UserControls.Riesgos
 
             cCargaMasivaRCE Carga = new cCargaMasivaRCE();
             DataTable dtEventos = new DataTable();
-            
-           
+
+
             if (DDLopciones.SelectedValue == "3" || DDLopciones.SelectedValue == "6")
             {
                 DataTable dt = Carga.NumeroActual();
                 string idROIs = dt.Rows[0][0].ToString();
-               
+
                 dtEventos = Carga.GridEventos(idROIs);
             }
             else
@@ -1166,11 +1166,11 @@ namespace ListasSarlaft.UserControls.Riesgos
         {
 
             cCargaMasivaRCE Carga = new cCargaMasivaRCE();
-            DataTable dtEventos = new DataTable(); 
+            DataTable dtEventos = new DataTable();
 
             dtEventos = Carga.GridEventos(num);
-            
-         
+
+
             GVeventos.DataSource = dtEventos;
             GVeventos.PageIndex = pagIndex;
             GVeventos.DataBind();
@@ -1285,7 +1285,7 @@ namespace ListasSarlaft.UserControls.Riesgos
          *                     -Campos básicos para creación de eventos no esten vacíos
          */
 
-        
+
         //private void LoadFilePlantillaEventos()
         //{
         //    #region variables
@@ -1734,7 +1734,7 @@ namespace ListasSarlaft.UserControls.Riesgos
         //                    s.Append(IdUsuario); s.Append(Constantes.TAB);
         //                    s.Append(hoy);*/
         //                    /************* Se elimina de la creacion inicial **********
-                            
+
         //                    s.Append(cadenaValor); s.Append(Constantes.TAB);
         //                    s.Append(macroProceso); s.Append(Constantes.TAB);
         //                    s.Append(proceso); s.Append(Constantes.TAB);
@@ -1759,7 +1759,7 @@ namespace ListasSarlaft.UserControls.Riesgos
         //                    s.Append(Recuperacion); s.Append(Constantes.TAB);
         //                    s.Append(fechaContabilidad); s.Append(Constantes.TAB);
         //                    s.Append(HoraContabilidad); s.Append(Constantes.TAB);
-                            
+
         //                    */
         //                    /*writer.WriteLine(s.ToString());
         //                    */
@@ -1945,8 +1945,8 @@ namespace ListasSarlaft.UserControls.Riesgos
         //    }
         //}
 
-        
-         private void LoadFilePlantillaEventos()
+
+        private void LoadFilePlantillaEventos()
         {
             #region variables
             string path_planos = System.Configuration.ConfigurationManager.AppSettings["PATH_PLANOS"].ToString();
@@ -2090,7 +2090,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                             FechaCierre = string.Format("{0:yyyy-MM-dd}", Convert.ToDateTime(FechaInicioCm));
                         }
 
-                    
+
 
                         s = new StringBuilder();
                         try
@@ -2127,17 +2127,17 @@ namespace ListasSarlaft.UserControls.Riesgos
                             s.Append("El Evento o Insidente en la linea: " + i + "Genero error, por favor validar. " + ex.Message); s.Append(Constantes.TAB);
                             writer.WriteLine(s.ToString());
                             ContadorBad++;
-                        }               
+                        }
 
-                     }
-                 }
+                    }
+                }
                 writer.Flush();
                 writer.Close();
                 excelReader.Close();
 
                 boolEnviarNotificacion(17, Convert.ToInt16("0"), Convert.ToInt16(Session["IdJerarquia"]), "",
                                        "<B>Se han creado los siguientes Eventos por carga masiva:</B> <br /><br /><B>Descripción de los Eventos: </B> <br />" + descripcionEvento.Trim() + " <B> <br/><br/>Total Eventos creados: </B> " + ContadorOk + "<br /> " + " <B> <br/><br/>Total De lineas Erroneas: </B> " + ContadorBad + "<br /> ");
-;
+                ;
 
 
             }
@@ -2162,7 +2162,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             cCargaMasivaRCE CargaMasiva = new cCargaMasivaRCE();
             System.Data.DataSet ds = new System.Data.DataSet();
             cambiaCultura cc = new cambiaCultura();
-            
+
             #endregion variables
             try
             {

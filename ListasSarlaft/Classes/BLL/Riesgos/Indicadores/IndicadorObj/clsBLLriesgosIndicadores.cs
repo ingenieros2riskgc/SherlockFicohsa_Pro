@@ -150,7 +150,7 @@ namespace ListasSarlaft.Classes
         /// </summary>
         /// <param name="strErrMsg">Mensaje de error</param>
         /// <returns>Retorna si el proceso fue exitoso o no</returns>
-        public List<clsDTOriesgosIndicadores> mtdConsultarRiesgosIndicadores(bool booEstado, ref string strErrMsg, string CodRiesgo, int IdProceso,  int Responsable, int IdFactorRiesgo)
+        public List<clsDTOriesgosIndicadores> mtdConsultarRiesgosIndicadores(bool booEstado, ref string strErrMsg, string CodRiesgo, int IdProceso, int Responsable, int IdFactorRiesgo)
         {
             #region Vars
             bool booResult = false;
@@ -463,7 +463,7 @@ namespace ListasSarlaft.Classes
         /// </summary>
         /// <param name="strErrMsg">Mensaje de error</param>
         /// <returns>Retorna si el proceso fue exitoso o no</returns>
-        public List<clsDTOriesgosIndicadores> mtdConsultarRiesgosIndicadoresGestion(bool booEstado, ref string strErrMsg, int IdUsuario,string Responsable)
+        public List<clsDTOriesgosIndicadores> mtdConsultarRiesgosIndicadoresGestion(bool booEstado, ref string strErrMsg, int IdUsuario, string Responsable)
         {
             #region Vars
             bool booResult = false;
