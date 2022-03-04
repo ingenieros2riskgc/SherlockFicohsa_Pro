@@ -1,0 +1,905 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.master.cs" Inherits="ListasSarlaft.MastersPages.Dashboard" %>
+<!DOCTYPE html>
+<html>
+   <head runat="server">
+      <meta http-equiv="Content-Type" content="text/html; charset="utf-8" />
+      <title>Sherlock</title>
+      <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+      <meta content="Nueva version del aplicativo Sherlock" name="description" />
+      <meta content="Jhon Restrepo" name="author" />
+      <!-- ================== BEGIN BASE CSS STYLE ================== -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+      <link href="../Styles/fonts/Roboto-Regular.ttf" rel="stylesheet" />
+      <link href="/../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+      <link href="/../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+      <link href="/../assets/plugins/font-awesome/css/all.css" rel="stylesheet" />
+      <link href="/../assets/plugins/animate/animate.min.css" rel="stylesheet" />
+      <link href="/../assets/css/transparent/style.css" rel="stylesheet" />
+      <link href="/../assets/css/transparent/style-responsive.css" rel="stylesheet" />
+      <link href="/../assets/css/transparent/theme/default.css" rel="stylesheet" id="theme" />
+      <link href="../Styles/MyStyleSheet.css" rel="stylesheet" />
+      <!-- ================== END BASE CSS STYLE ================== -->
+      <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+      <link href="/../assets/plugins/jquery-jvectormap/jquery-jvectormap.css" rel="stylesheet" />
+      <link href="/../assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+      <link href="/../assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+      <!-- ================== END PAGE LEVEL STYLE ================== -->
+      <!-- ================== BEGIN BASE JS ================== -->
+      <script src="/../assets/plugins/pace/pace.min.js"></script>
+      <!-- ================== END BASE JS ================== -->
+      <asp:ContentPlaceHolder ID="head" runat="server">
+      </asp:ContentPlaceHolder>
+      <%--<style>
+         .orange-color {
+         color:#fb6b00;
+         }
+         </style>--%>
+   </head>
+   <body>
+      <form id="form1" runat="server">
+         <!-- begin page-cover -->
+         <div class="page-cover"></div>
+         <!-- end page-cover -->
+         <!-- begin #page-loader -->
+         <div id="page-loader" class="fade show"><span class="spinner"></span></div>
+         <!-- end #page-loader -->
+         <!-- begin #page-container -->
+         <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+            <!-- begin #header -->
+            <div id="header" class="header navbar-default" >
+               <!-- begin navbar-header -->
+               <%-- <div class="navbar-header">
+                  <div class="row">
+                      <div class="col-lg-2" style="background-color:white">
+                          <asp:Image ID="Image3" runat="server" ImageUrl="~/Imagenes/Logos/LogoSE.png" />
+                  
+                      </div>
+                      <asp:Image ID="imgLogoRisk" runat="server" ImageUrl="~/Imagenes/Logos/Logos-internos-2.png"  />
+                      
+                      <div class="col-lg-2" style="background-color:white"></div>
+                      <div class="col-lg-4" style="background-color:white">
+                          <asp:Image ID="imgLogoSherlock" runat="server" ImageUrl="~/Imagenes/Logos/LogoSherlock.jpg" Width="280px"
+                       />
+                      </div>
+                      <div class="col-lg-1" style="background-color:white"></div>
+                  <div class="col-lg-1">
+                  
+                  <asp:Image ID="imgLogoRisk" runat="server" ImageUrl="~/Imagenes/Logos/Risk.png" Width="150px" />
+                  </div>
+                      
+                  </div>
+                  </div>--%>
+               <!-- end navbar-header -->
+               <!-- begin header-nav -->
+               <ul class="navbar-nav navbar-right">
+                  <li class="dropdown navbar-user" >
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                        <span class="d-none d-md-inline">
+                           <asp:Label ID="LblUsuarioDato" runat="server" Font-Names="Calibri" 
+                              Font-Size="Small" ForeColor="black" Height="16px"></asp:Label>
+                        </span>
+                        <b class="caret"></b>
+                     </a>
+                     <div class="dropdown-menu dropdown-menu-right">
+                        <a href="javascript:;" class="dropdown-item">
+                           <asp:Label ID="LblNombreDato" runat="server" Font-Names="Calibri"
+                              Font-Size="Small" ForeColor="Black"></asp:Label>
+                        </a>
+                        <a href="javascript:;" class="dropdown-item">
+                           <asp:Label ID="LblNombreTime" runat="server" Font-Names="Calibri"
+                              Font-Size="Small" ForeColor="Black" ToolTip="Fecha y hora de ingreso"></asp:Label>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                     </div>
+                  </li>
+                  <asp:LinkButton ID="LinkButton8" runat="server" Font-Underline="False" OnClick="LinkButton8_Click"
+                     Font-Bold="True" Font-Names="Calibri" Font-Overline="False" Font-Strikeout="False" style="vertical-align:central"
+                     ForeColor="DarkBlue" Font-Size="Medium">Exit</asp:LinkButton>
+                  <asp:ImageButton ID="ImageButton8" runat="server" ImageUrl="~/Imagenes/Icons/exit.png" BorderWidth="7px" BorderColor="White"
+                     OnClick="ImageButton8_Click" Width="40px" style="vertical-align:middle" />
+                  <%--<li class="dropdown navbar-user">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                         
+                         <span class="d-none d-md-inline"><asp:Label ID="LblUsuarioDato" runat="server" Font-Names="Calibri"
+                     Font-Size="Small" ForeColor="Black" Height="16px"></asp:Label></span> <b class="caret"></b>
+                     </a>
+                     <div class="dropdown-menu dropdown-menu-right">
+                         <a href="javascript:;" class="dropdown-item"><asp:Label ID="LblNombreDato" runat="server" Font-Names="Calibri"
+                     Font-Size="Small" ForeColor="Black"></asp:Label></a>
+                         <a href="javascript:;" class="dropdown-item"><asp:Label ID="LblNombreTime" runat="server" Font-Names="Calibri"
+                     Font-Size="Small" ForeColor="Black" ToolTip="Fecha y hora de ingreso"></asp:Label></a>
+                         
+                         <div class="dropdown-divider"></div>
+                         <asp:LinkButton ID="LinkButton8" runat="server" Font-Underline="False" OnClick="LinkButton8_Click"
+                             Font-Bold="True" Font-Names="Calibri" Font-Overline="False" Font-Strikeout="False"
+                             ForeColor="DarkBlue" Font-Size="Small">Exit</asp:LinkButton><asp:ImageButton ID="ImageButton8" runat="server" ImageUrl="~/Imagenes/Icons/exit.png"
+                             OnClick="ImageButton8_Click" Width="20px" />
+                     </div>
+                     </li>--%>
+               </ul>
+               <!-- end header navigation right -->
+            </div>
+            <!-- end #header -->
+            <!-- begin #sidebar -->
+            <div id="sidebar" class="sidebar">
+               <!-- begin sidebar scrollbar -->
+               <div data-height="100%">
+                  <!-- begin sidebar nav -->
+                  <ul class="nav">
+                     <!-- <asp:Image ID="imgLogoCliente" runat="server" ImageUrl="~/Imagenes/Logos/LogoSE.gif" Width="150px" Height="50px" />-->
+                     <br />
+                     <br />
+                     <asp:Image ID="imgLogoSherlock" runat="server" ImageUrl="~/Imagenes/Logos/LogoSherlock_Fondo.jpg" Width="165px" />
+                     <br />
+                     <br />
+                     <li class="nav-header">Menú</li>
+                     <li class="has-sub active">
+                        <a href="../../../Formularios/Sarlaft/Admin/HomeAdmin.aspx" ><%--style="color:#fb6b00"--%>
+                        <%--<b class="caret"></b>--%>
+                        <%--<i class="fa fa-th-large"></i>--%>
+                        <span>Dashboard</span>
+                        </a>
+                     </li>
+                     <li class="has-sub">
+                        <a href="javascript:;">
+                        <b class="caret"></b>
+                        <%--<i class="fa fa-gem"></i>--%>
+                        <span>Mi Cuenta</span>
+                        </a>
+                        <ul class="sub-menu" style="display: block;">
+                           <li><a href="../../../Formularios/AdminUsers/CambioContrasena.aspx">Cambio contraseña <%----%></a></li>
+                        </ul>
+                     </li>
+                     <li class="has-sub">
+                        <a href="javascript:;">
+                        <b class="caret"></b>
+                        <%--<i class="fa fa-cogs"></i>--%>
+                        <span>Parametrización General</span>
+                        </a>
+                        <ul class="sub-menu" style="display: block;">
+                           <li><a href="../../../Formularios/Riesgos/Admin/AdminAreas.aspx">Áreas</a></li>
+                           <li>
+                              <a href="../../../Formularios/Parametrizacion/Admin/PrmAdmCargos.aspx"><%--<i class="fas fa-lg fa-fw m-r-10 fa-male"></i>--%>Cargos </a>
+                           </li>
+                           <li><a href="../../../Formularios/Proceso/Admin/PrcAdmCadenaValor.aspx">Cadena de Valor</a></li>
+                           <li><a href="../../../Formularios/Proceso/Admin/PrcAdmMacroproceso.aspx">Macroproceso</a></li>
+                           <li><a href="../../../Formularios/Proceso/Admin/PrcAdmProceso.aspx">Proceso</a></li>
+                           <li><a href="../../../Formularios/Proceso/Admin/PrcAdmSubproceso.aspx">Subproceso</a></li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              <%--<i class="fas fa-lg fa-fw m-r-10 fa-envelope"></i>--%>
+                              Notificaciones
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Notificaciones/Admin/NtfAdmCorreosDestino.aspx">Correos Destino</a></li>
+                                 <li><a href="../../../Formularios/Notificaciones/Admin/NtfAdmCorreosEnviados.aspx">Correos Enviados</a></li>
+                              </ul>
+                           </li>
+                           <li>
+                              <a href="../../../Formularios/Parametrizacion/Admin/PrmAdmOtrosTipos.aspx"><%--<i class="far fa-lg fa-fw m-r-10 fa-list-alt"></i>--%>Otros Tipos</a>
+                           </li>
+                           <li>
+                              <a href="../../../Formularios/Parametrizacion/Admin/PrmAdmJerarquiaOrg.aspx"><%--<i class="fas fa-lg fa-fw m-r-10 fa-sitemap"></i>--%>Jerarquía Organizacional</a>
+                           </li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              Ubicación Geográfica
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Parametrizacion/Admin/PrmAdmRegiones.aspx">Regiones</a></li>
+                                 <li><a href="../../../Formularios/Parametrizacion/Admin/PrmAdmPaises.aspx">Países</a></li>
+                                 <li><a href="../../../Formularios/Parametrizacion/Admin/PrmAdmDepartamentos.aspx">Departamentos</a></li>
+                                 <li><a href="../../../Formularios/Parametrizacion/Admin/PrmAdmCiudades.aspx">Ciudades</a></li>
+                                 <li><a href="../../../Formularios/Parametrizacion/Admin/PrmAdmOficinas.aspx">Oficinas</a></li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </li>
+                     <li class="has-sub">
+                        <a href="javascript:;">
+                        <b class="caret"></b>
+                        <%--<i class="fas fa-lg fa-fw m-r-10 fa-shield-alt"></i>--%>
+                        <span>Seguridad</span>
+                        </a>
+                        <ul class="sub-menu" style="display: block;">
+                           <li><a href="../../../Formularios/AdminUsers/Roles.aspx">Roles </a></li>
+                           <li><a href="../../../Formularios/AdminUsers/AgregarUsuario.aspx">Agregar usuario </a></li>
+                           <li><a href="../../../Formularios/AdminUsers/ConsultarUsuario.aspx">Consultar usuario </a></li>
+                        </ul>
+                     </li>
+                     <li class="has-sub">
+                        <a href="javascript:;">
+                        <b class="caret"></b>
+                        <%--<i class="fa fa-list-ol"></i>--%>
+                        <span>Gestión Estratégica</span>
+                        </a>
+                        <ul class="sub-menu" style="display: block;">
+                           <li><a href="../../../Formularios/Gestion/Parametrizacion.aspx">Parametrización <%----%></a></li>
+                           <li><a href="../../../Formularios/Gestion/VisionEmpresa.aspx">Visión de la Empresa <%----%></a></li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              Plan Estratégico
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Gestion/PlanEstrategico.aspx">Definición Plan Estratégico</a></li>
+                                 <li class="has-sub">
+                                    <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    Objetivos Estratégicos
+                                    </a>
+                                    <ul class="sub-menu">
+                                       <li><a href="../../../Formularios/Gestion/ObjetivoEstrategico.aspx">Definición Objetivos Estratégicos</a></li>
+                                       <li><a href="../../../Formularios/Gestion/CausaEfecto.aspx">Causa y Efecto</a></li>
+                                    </ul>
+                                 </li>
+                                 <li><a href="../../../Formularios/Gestion/Estrategia.aspx">Estrategias</a></li>
+                                 <li><a href="../../../Formularios/Gestion/PlanAccion.aspx">Planes de Acción</a></li>
+                              </ul>
+                           </li>
+                           <li><a href="../../../Formularios/Gestion/Indicadores.aspx">Indicadores</a></li>
+                           <li><a href="../../../Formularios/Gestion/Seguimiento.aspx">Seguimiento</a></li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              Gestión
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Gestion/Gestion.aspx">Gestión</a></li>
+                                 <li><a href="../../../Formularios/Gestion/CerrarPeriodo.aspx">Cerrar Periodos</a></li>
+                              </ul>
+                           </li>
+                           <li><a href="../../../Formularios/Gestion/MenuCMI.aspx">Cuadro de Mando Integral</a></li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              Reportes
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Gestion/RptObjetivos.aspx">Objetivos x Perspectivas</a></li>
+                                 <li><a href="../../../Formularios/Gestion/RptObjetivosEstrategicos.aspx">Objetivos Estratégicos</a></li>
+                                 <li><a href="../../../Formularios/Gestion/RptObjetivosVrsRiesgos.aspx">Objetivos vrs Riesgos</a></li>
+                                 <li><a href="../../../Formularios/Gestion/RptCuadorMandoIntegral.aspx">Reporte Indicadores</a></li>
+                                 <li><a href="../../../Formularios/Gestion/RptIndicadoresSinResultado.aspx">Indicadores sin Resultado</a></li>
+                                 <li><a href="../../../Formularios/Gestion/RptPlanesResponsales.aspx">Planes de Acción por Responsable</a></li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </li>
+                     <li class="has-sub">
+                        <a href="javascript:;">
+                        <b class="caret"></b>
+                        <%--<i class="fa fa-table"></i>--%>
+                        <span>Riesgos</span>
+                        </a>
+                        <ul class="sub-menu" style="display: block;">
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              Parametrización
+                              </a>
+                              <ul class="sub-menu">
+                                 <li class="has-sub">
+                                    <a href="javascript:;"><b class="caret pull-right"></b>Eventos</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="../../../Formularios/Eventos/LimEspFrecuencia.aspx">Lím. Esp. Frecuencia</a></li>
+                                        <li><a href="../../../Formularios/Eventos/LimEspSeveridad.aspx">Lím. Esp. Severidad</a></li>
+                                       <hr>
+                                       <%-- -----------------------------------------------------%>
+                                       <li><a href="../../../Formularios/Eventos/Anios.aspx">Años</a></li>
+                                        <li><a href="../../../Formularios/Eventos/EstadoEvsEIncs.aspx">Estado</a></li>
+                                        <li><a href="../../../Formularios/Eventos/Categoria.aspx">Categoría</a></li>
+                                        <li><a href="../../../Formularios/Eventos/Modalidad.aspx">Modalidad</a></li>
+                                        <li><a href="../../../Formularios/Eventos/Origen.aspx">Origen</a></li>
+                                       <li><a href="../../../Formularios/Eventos/DescFrecuencia.aspx">Desc. Frecuencia</a></li>
+                                       <li><a href="../../../Formularios/Eventos/Frecuencia.aspx">Frecuencia</a></li>
+                                       <li><a href="../../../Formularios/Eventos/FuenteReporte.aspx">Fuente del Reporte</a></li>
+                                       <li><a href="../../../Formularios/Eventos/RiesgoGlobal.aspx">Riesgo Global</a></li>
+                                       <li><a href="../../../Formularios/Eventos/EstadoReporte.aspx">Estado del Reporte</a></li>
+                                       <li><a href="../../../Formularios/Eventos/CodigoBanco.aspx">Código Banco</a></li>
+                                       <li><a href="../../../Formularios/Eventos/DescLineaUno.aspx">Línea Negocio</a></li>
+                                       <li><a href="../../../Formularios/Eventos/DescLineaDos.aspx">Sublínea de Negocio</a></li>
+                                       <li><a href="../../../Formularios/Eventos/ProductoAfectado.aspx">Productos</a></li>
+                                       <li><a href="../../../Formularios/Eventos/DesFactorRO.aspx">Factor RO</a></li>
+                                       <li><a href="../../../Formularios/Eventos/TipoActivo.aspx">Tipo Activo</a></li>
+                                       <li><a href="../../../Formularios/Eventos/ActivoAfectado.aspx">Activos</a></li>
+                                       <li><a href="../../../Formularios/Eventos/CuentasContablesPerdida.aspx">Cuentas C. de Pérdida</a></li>
+                                       <li><a href="../../../Formularios/Eventos/DescSeveridad.aspx">Desc. Severidad</a></li>
+                                       <li><a href="../../../Formularios/Eventos/Severidad.aspx">Severidad</a></li>
+                                       <li><a href="../../../Formularios/Eventos/TipoRiesgo.aspx">Tipo de Riesgo</a></li>
+                                       <li><a href="../../../Formularios/Eventos/DesCausaNUno.aspx">Desc. Causa Nivel 1</a></li>
+                                       <li><a href="../../../Formularios/Eventos/DesCausaNDos.aspx">Desc. Causa Nivel 2</a></li>
+                                    </ul>
+                                 </li>
+                                 <li class="has-sub">
+                                    <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    Controles
+                                    </a>
+                                    <ul class="sub-menu">
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParConPeriodicidad.aspx">Periodicidad</a></li>
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParConDesviaciones.aspx">Desviaciones</a></li>
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParConLimites.aspx">Configurar Limites</a></li>
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParGruposTrabajo.aspx">Grupos de Trabajo</a></li>
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParGruposTrabajoParam.aspx">Recursos Externos</a></li>
+                                       <li><a href="../../../Formularios/Riesgos/Admin/VariablesCalificacionControl.aspx">Variables de Calificación Control</a></li>
+                                       <li><a href="../../../Formularios/Riesgos/Admin/CategoriaVariablesControl.aspx">Categoría de las Variables de Calificación</a></li>
+                                    </ul>
+                                 </li>
+                                 <li class="has-sub">
+                                    <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    Legislación
+                                    </a>
+                                    <ul class="sub-menu">
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParLegTipoLegislacion.aspx">Tipo de legislación</a></li>
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParLegEstado.aspx">Estado legislación</a></li>
+                                    </ul>
+                                 </li>
+                                 <li class="has-sub">
+                                    <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    Planes de evaluación
+                                    </a>
+                                    <ul class="sub-menu">
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParPlaEvaTipoPrueba.aspx">Tipo de prueba</a></li>
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParPlaEvaEstado.aspx">Estado plan evaluación</a></li>
+                                    </ul>
+                                 </li>
+                                 <li class="has-sub">
+                                    <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    Planes de acción
+                                    </a>
+                                    <ul class="sub-menu">
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParPlaAccTipoRecurso.aspx">Tipo de recurso</a></li>
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParPlaAccEstado.aspx">Estado plan de acción</a></li>
+                                    </ul>
+                                 </li>
+                                 <li class="has-sub">
+                                    <a href="javascript:;"><b class="caret pull-right"></b>Riesgos</a>
+                                    <ul class="sub-menu">
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParRieCausas.aspx">Causas</a></li>
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParRieConsecuencias.aspx">Consecuencias</a></li>
+                                       <li class="has-sub">
+                                          <a href="javascript:;">
+                                          <b class="caret"></b>
+                                          SARO
+                                          </a>
+                                          <ul class="sub-menu">
+                                             <li><a href="../../../Formularios/Riesgos/Admin/ParRieTipoEventoSaro.aspx">Tipo de evento</a></li>
+                                             <li><a href="../../../Formularios/Riesgos/Admin/ParRieRiesgoAsociadoSaro.aspx">Riesgo asociado</a></li>
+                                             <li><a href="../../../Formularios/Riesgos/Admin/ParRieFactorRiesgoOperativo.aspx">Factor riesgo operativo</a></li>
+                                             <li><a href="../../../Formularios/Riesgos/Admin/ParRieSubFactorRiesgoOperativo.aspx">Sub factor riesgo operativo</a></li>
+                                          </ul>
+                                       </li>
+                                       <li class="has-sub">
+                                          <a href="javascript:;">
+                                          <b class="caret"></b>
+                                          AML
+                                          </a>
+                                          <ul class="sub-menu">
+                                             <li><a href="../../../Formularios/Riesgos/Admin/ParRieFactorRiesgoLaft.aspx">Factor riesgo LAFT</a></li>
+                                             <li><a href="../../../Formularios/Riesgos/Admin/ParRieRiesgoAsociadoSarlaft.aspx">Riesgo asociado</a></li>
+                                          </ul>
+                                       </li>
+                                       <li class="has-sub">
+                                          <a href="javascript:;">
+                                          <b class="caret"></b>
+                                          Clasificación
+                                          </a>
+                                          <ul class="sub-menu">
+                                             <li><a href="../../../Formularios/Riesgos/Admin/ParRieClasificacionRiesgo.aspx">Clasificación global</a></li>
+                                             <li><a href="../../../Formularios/Riesgos/Admin/ParRieClasificacionGeneralRiesgo.aspx">Clasificación general</a></li>
+                                             <li><a href="../../../Formularios/Riesgos/Admin/ParRieClasificacionParticularRiesgo.aspx">Clasificación particular</a></li>
+                                          </ul>
+                                       </li>
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParRieProbabilidad.aspx">Frecuencia</a></li>
+                                       <li><a href="../../../Formularios/Eventos/DimValoracion.aspx">Dimensiones de Valoración</a></li>
+                                       <li><a href="../../../Formularios/Riesgos/Admin/ParRieImpacto.aspx">Impacto</a></li>
+                                       <li><a href="../../../Formularios/Riesgos/Admin/EstadoRiesgo.aspx">Estados</a></li>
+                                    </ul>
+                                 </li>
+                                 <li class="has-sub">
+                                    <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    Calificación Cuantitativa
+                                    </a>
+                                    <ul class="sub-menu">
+                                       <li class="has-sub">
+                                          <a href="javascript:;">
+                                          <b class="caret"></b>
+                                          Frecuencia
+                                          </a>
+                                          <ul class="sub-menu">
+                                             <li><a href="../../../Formularios/Riesgos/Admin/CalificacionExpVarCat.aspx">Variables</a></li>
+                                             <li><a href="../../../Formularios/Riesgos/Admin/CalificacionExpCategoria.aspx">Categorías</a></li>
+                                             <li><a href="../../../Formularios/Riesgos/Admin/CalificacionPuntosdeCorte.aspx">Puntos de Corte</a></li>
+                                          </ul>
+                                       </li>
+                                       <li class="has-sub">
+                                          <a href="javascript:;">
+                                          <b class="caret"></b>
+                                          Impacto
+                                          </a>
+                                          <ul class="sub-menu">
+                                             <li><a href="../../../Formularios/Riesgos/Admin/CalificacionExpVarImpacto.aspx">Variables</a></li>
+                                          </ul>
+                                       </li>
+                                    </ul>
+                                 <li><a href="../../../Formularios/Riesgos/Admin/AdminMapaRiesgos.aspx">Mapa de Riesgos</a></li>
+                                 <%--<li><a href="../../../Formularios/Riesgos/Admin/AdminAreas.aspx">Áreas</a></li>--%>
+                                 <li><a href="../../../Formularios/Riesgos/Admin/FrecuenciavsEventos.aspx">Frecuencia vs Eventos</a></li>
+                                 <li><a href="../../../Formularios/Riesgos/Admin/Tratamientos.aspx">Tratamientos</a></li>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li><a href="../../../Formularios/Riesgos/Admin/AdminCumplimiento.aspx">Legislación</a></li>
+                           <li><a href="../../../Formularios/Riesgos/Admin/AdminRiesgos.aspx">Riesgos</a></li>
+                           <li><a href="../../../Formularios/Riesgos/Admin/AdminAnulacionRiesgo.aspx">Anulación de riesgo</a></li>
+                           <li><a href="../../../Formularios/Riesgos/Admin/paRiesgoEvento.aspx">Planes de Accion</a></li>
+                           <li><a href="../../../Formularios/Riesgos/Admin/AdminControles.aspx">Registro de Controles</a></li>
+                           <%--<li><a href="../../../Formularios/Riesgos/Admin/AdminControles.aspx">Registro de Controles</a></li>--%>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              Eventos
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Eventos/EventosEIncidentes.aspx">Eventos e Incidentes</a></li>
+                                 <li><a href="../../../Formularios/Eventos/ReporteEventos.aspx">Reportes</a></li>
+                              </ul>
+                           </li>
+                           <li><a href="../../../Formularios/Riesgos/Admin/AdminConsolidadoRiesgos.aspx">Mapa riesgos</a></li>
+                           <li><a href="../../../Formularios/Riesgos/Admin/AdminReporte.aspx">Reporte</a></li>
+                           <li><a href="../../../Formularios/Riesgos/Admin/HistoricoRiesgo.aspx">Histórico riesgos</a></li>
+                           <li><a href="../../../Formularios/Riesgos/Admin/ParCargaMasiva.aspx">Carga Masiva</a></li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              Indicadores
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Riesgos/Indicadores/RiesgoIndicador.aspx">Registro de Indicador</a></li>
+                                 <li><a href="../../../Formularios/Riesgos/Gestion/GestionRiesgoIndicador.aspx">Gestión Indicadores</a></li>
+                                 <li><a href="../../../Formularios/Riesgos/Seguimiento/SeguimientoRiesgoIndicador.aspx">Seguimiento</a></li>
+                              </ul>
+                           </li>
+                           <li><a href="../../../Formularios/Riesgos/CuadroMando/CuadroMando.aspx">Cuadro de Mando</a></li>
+                        </ul>
+                     </li>
+                     <li class="has-sub">
+                        <a href="javascript:;">
+                        <b class="caret"></b>
+                        <%--<i class="fa fa-star"></i>--%>
+                        <span>AML</span>
+                        </a>
+                        <ul class="sub-menu" style="display: block;">
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              Parametrización General
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/ConfigEstructura/PrmVariables.aspx">Configuración Variables</a></li>
+                                 <li><a href="../../../Formularios/ConfigEstructura/PrmCategorias.aspx">Configuración Categorias</a></li>
+                                 <li><a href="../../../Formularios/Perfilamiento/PrmPerfiles.aspx">Configuración Perfiles</a></li>
+                                 <li><a href="../../../Formularios/ConfigEstructura/PrmEstructuraArchivo.aspx">Configuración Estructura Archivo</a></li>
+                              </ul>
+                           </li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              Señales de Alerta
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/ConfigEstructura/PrmSenales.aspx">Configuración Señales de Alerta</a></li>
+                                 <li><a href="../../../Formularios/Perfilamiento/SenalAlertaManual.aspx">Señales de alerta manuales</a></li>
+                                 <li><a href="../../../Formularios/Perfilamiento/CargueArchivo.aspx">Cargue de archivos</a></li>
+                                 <li><a href="../../../Formularios/ConfigEstructura/ConfFactorRiesgo.aspx">Configuración Factor de Riesgo</a></li>
+                              </ul>
+                           </li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              Instrumentos SARLAFT
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Sarlaft/Admin/AdminSegmentacion.aspx">Segmentación</a></li>
+                                 <li><a href="../../../Formularios/Sarlaft/Admin/AdminRegistroOperacion.aspx">Consultar registro operaciones</a></li>
+                                 <li><a href="../../../Formularios/Sarlaft/Admin/AdminROIManual.aspx">Ingresar ROI</a></li>
+                              </ul>
+                           </li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              Conocimiento de cliente
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Sarlaft/Admin/AdminFormClienteWillisFCC.aspx">Conocimiento cliente</a></li>
+                                 <li><a href="../../../Formularios/Sarlaft/Admin/ConsultarFormClienteWillis.aspx">Consultar cliente</a></li>
+                              </ul>
+                           </li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              Reportes
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Perfilamiento/ReporteModificaciones.aspx">Reporte Modificaciones</a></li>
+                                 <li class="has-sub">
+                                    <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    Reportes de Perfilamiento
+                                    </a>
+                                    <ul class="sub-menu">
+                                       <li><a href="../../../Formularios/Perfilamiento/ReportePerfiles.aspx">Reporte Perfiles</a></li>
+                                       <li><a href="../../../Formularios/Perfilamiento/ReportePerfilesDetallado.aspx">Reporte Perfiles Detallado</a></li>
+                                       <li><a href="../../../Formularios/Perfilamiento/ReporteHistInspektor.aspx">Reporte Histórico Inspektor</a></li>
+                                       <li><a href="../../../Formularios/Perfilamiento/ReporteDetalleCalificacion.aspx">Reporte Detalle Calificación</a></li>
+                                    </ul>
+                                 </li>
+                                 <li class="has-sub">
+                                    <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    Reportes Operaciones Inusuales
+                                    </a>
+                                    <ul class="sub-menu">
+                                       <li><a href="../../../Formularios/Sarlaft/Admin/RpteConsolidadoSarlaft.aspx">Reporte Consolidado Operaciones Inusuales</a></li>
+                                       <li><a href="../../../Formularios/Sarlaft/Admin/RpteDetalleSarlaft.aspx">Reporte Detallado Operaciones Inusuales</a></li>
+                                       <li><a href="../../../Formularios/Sarlaft/Admin/RpteRegistroSarlaft.aspx">Reporte Por Registro</a></li>
+                                       <li><a href="../../../Formularios/Sarlaft/Admin/RpteTrazaSarlaft.aspx">Reporte Trazabilidad Consolidado</a></li>
+                                    </ul>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </li>
+                     <li class="has-sub">
+                        <a href="javascript:;">
+                        <b class="caret"></b>
+                        <%--<i class="fab fa-lg fa-fw m-r-10 fa-buysellads"></i>--%>
+                        <span>Auditoría</span>
+                        </a>
+                        <ul class="sub-menu" style="display: block;">
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              <%--<i class="fas fa-cogs"></i>--%>
+                              Parametrización
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Parametrizacion/Admin/PrmAdmDiasNoLaborables.aspx">Días No Laborables</a></li>
+                                 <li><a href="../../../Formularios/Parametrizacion/Admin/PrmAdmHorasLaborables.aspx">Horas Laborables</a></li>
+                                 <li><a href="../../../Formularios/Auditoria/Admin/AudAdmTipoEstandar.aspx">Tipo de Estándar</a></li>
+                                 <li><a href="../../../Formularios/Auditoria/Admin/AudAdmEstandar.aspx">Estándar</a></li>
+                                 <li><a href="../../../Formularios/Auditoria/Admin/AudAdmObjetivo.aspx">Objetivo</a></li>
+                                 <li><a href="../../../Formularios/Auditoria/Admin/AudAdmEnfoque.aspx">Enfoque</a></li>
+                                 <li><a href="../../../Formularios/Auditoria/Admin/AudAdmGruposAuditoria.aspx">Grupos de Auditoría</a></li>
+                              </ul>
+                           </li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              Universo Auditable
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Auditoria/Admin/AudAdmCiclo.aspx">Ciclo</a></li>
+                                 <li><a href="../../../Formularios/Auditoria/Admin/AudAdmCalificacionControl.aspx">Calificación de Control</a></li>
+                                 <li><a href="../../../Formularios/Auditoria/Admin/AudAdmRiesgoInherente.aspx">Riesgo Inherente</a></li>
+                                 <li><a href="../../../Formularios/Auditoria/Admin/AudAdmOtrosFactores.aspx">Otros Factores</a></li>
+                                 <li><a href="../../../Formularios/Parametrizacion/Admin/PrmAdmParamColores.aspx">Colorimetría</a></li>
+                              </ul>
+                           </li>
+                           <li>
+                              <a href="../../../Formularios/Auditoria/Admin/AudAdmPlaneacion.aspx"><%--<i class="fas fa-lg fa-fw m-r-10 fa-clipboard"></i>--%>Planeación </a>
+                           </li>
+                           <li>
+                              <a href="../../../Formularios/Auditoria/Admin/AudAdmAuditoria.aspx"><%--<i class="fas fa-lg fa-fw m-r-10 fa-list-alt"></i>--%>Temas a Auditar </a>
+                           </li>
+                           <li>
+                              <a href="../../../Formularios/Auditoria/Admin/AudAdmGestionAuditoria.aspx"><%--<i class="fas fa-lg fa-fw m-r-10 fa-spinner"></i>--%>Gestion de Auditoria </a>
+                           </li>
+                           <li>
+                              <a href="../../../Formularios/Auditoria/Admin/AudAdmVerificacion.aspx"><%--<i class="fas fa-lg fa-fw m-r-10 fa-check"></i>--%>Verificación </a>
+                           </li>
+                           <li>
+                              <a href="../../../Formularios/Auditoria/Admin/AudAdmRecomendaciones.aspx"><%--<i class="fas fa-lg fa-fw m-r-10 fa-columns"></i>--%>Recomendaciones </a>
+                           </li>
+                           <li>
+                              <a href="../../../Formularios/Auditoria/Admin/AudAdmPlanesAccion.aspx"><%--<i class="fas fa-lg fa-fw m-r-10 fa-list-ol"></i>--%>Plan de Acción </a>
+                           </li>
+                           <li>
+                              <a href="../../../Formularios/Auditoria/Admin/AudAdmSeguimiento.aspx"><%--<i class="fas fa-lg fa-fw m-r-10 fa-tasks"></i>--%>Seguimiento </a>
+                           </li>
+                           <li>
+                              <a href="../../../Formularios/Auditoria/Admin/AudAdmPlanAuditoria.aspx"><%--<i class="fas fa-lg fa-fw m-r-10 fa-window-restore"></i>--%>Plan de Auditoría </a>
+                           </li>
+                           <li>
+                              <a href="../../../Formularios/Auditoria/Admin/AudAdmReporteAuditoriaAnulada.aspx"><%--<i class="fas fa-lg fa-fw m-r-10 fa-window-restore"></i>--%>Auditorías Anuladas </a>
+                           </li>
+                           <li>
+                              <a href="../../../Formularios/Auditoria/Admin/AudAdmHistorial.aspx"><%--<i class="fas fa-lg fa-fw m-r-10 fa-window-restore"></i>--%>Historico de Auditoria </a>
+                           </li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              <%--<i class="fas fa-cogs"></i>--%>
+                              Reportes
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Auditoria/Reportes/ReporteHallazgos.aspx">Reporte Hallazgos <%----%></a></li>
+                                 <li><a href="../../../Formularios/Auditoria/Reportes/ReporteRecomendaciones.aspx">Reporte Recomendaciones</a></li>
+                                 <li><a href="../../../Formularios/Auditoria/Reportes/GestionAuditoria.aspx">Gestion Auditoría <%----%></a></li>
+                                 <li><a href="../../../Formularios/Auditoria/Admin/AudAdmReporteHallazgoVsPlanAccion.aspx">Reporte Hallazgo VS Plan de acción</a></li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </li>
+                     <li class="has-sub">
+                        <a href="javascript:;">
+                        <b class="caret"></b>
+                        <%--<i class="fa fa-gem"></i>--%>
+                        <span>Calidad</span>
+                        </a>
+                        <ul class="sub-menu" style="display: block;">
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              <%--<i class="fas fa-cogs"></i>--%>
+                              Parametrización
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmPoliticaCalidad.aspx">Política de Calidad</a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmObjetivoCalidad.aspx">Objetivo de Calidad</a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmPerfilCalidad.aspx">Perfil</a></li>
+                                 <li class="has-sub">
+                                    <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <%--<i class="fas fa-code-branch"></i>--%>
+                                    Requisitos
+                                    </a>
+                                    <ul class="sub-menu">
+                                       <li><a href="../../../Formularios/Proceso/Admin/PrcAdmEntrada.aspx">Entrada</a></li>
+                                       <li><a href="../../../Formularios/Proceso/Admin/PrcAdmSalida.aspx">Salida</a></li>
+                                       <li><a href="../../../Formularios/Proceso/Admin/PrcAdmActividad.aspx">Actividad</a></li>
+                                       <li><a href="../../../Formularios/Proceso/Admin/PrcAdmProcedimiento.aspx">Procedimientos</a></li>
+                                       <li><a href="../../../Formularios/Proceso/Admin/PrcAdmIndicador.aspx">Indicadores</a></li>
+                                       <li><a href="../../../Formularios/Proceso/Admin/PrcAdmValorVariable.aspx">Gestión de Valor de Variables</a></li>
+                                    </ul>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              <%--<i class="fas fa-cogs"></i>--%>
+                              Parámetros ACM
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Proceso/Admin/OrigenNoConformidad.aspx">Origen no Conformidad </a></li>
+                              </ul>
+                           </li>
+                           <li><a href="../../../Formularios/Proceso/Admin/PrcAdmAsocCaracterizacion.aspx">Asociación Caracterización</a></li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              <%--<i class="fas fa-cogs"></i>--%>
+                              Criterios de Evaluación
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmCalificacionEvaluaciones.aspx">Gestionar Calificación de Evaluaciones </a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmCriterioCompetencias.aspx">Gestionar criterios evaluación de competencia</a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmCriteriosDesempeno.aspx">Gestionar criterios evaluación de desempeño </a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmCriterioProveedor.aspx">Gestionar criterios evaluación de proveedores</a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmCriterioServicio.aspx">Gestionar criterios evaluación de Servicio</a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmEncuestas.aspx">Encuestas  </a></li>
+                              </ul>
+                           </li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              <%--<i class="fas fa-cogs"></i>--%>
+                              Procesos
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmMapaProceso.aspx">Ver Mapa de Procesos </a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcVerCaracterizacion.aspx">Ver Caracterización</a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmSeguimientoIndicador.aspx">Seguimiento Indicadores </a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmMatrizIndicadores.aspx">Matriz de Indicadores</a></li>
+                              </ul>
+                           </li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              <%--<i class="fas fa-cogs"></i>--%>
+                              Administrativo
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcCrlInfraestructura.aspx">Control Infraestructura </a></li>
+                                 <li class="has-sub">
+                                    <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <%--<i class="fas fa-code-branch"></i>--%>
+                                    Plan de Formación
+                                    </a>
+                                    <ul class="sub-menu">
+                                       <li><a href="../../../Formularios/Proceso/Admin/PrcAdmGestionEvaluacionCompetencia.aspx">Gestión Evaluación Competencias</a></li>
+                                       <li><a href="../../../Formularios/Proceso/Admin/PrcAdmGestionEvaluacionDesempeño.aspx">Gestión Evaluación Desempeño</a></li>
+                                       <li><a href="../../../Formularios/Proceso/Admin/PrcAdmGestionEvaluacionProveedor.aspx">Gestión Evaluación Proveedor</a></li>
+                                    </ul>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              <%--<i class="fas fa-cogs"></i>--%>
+                              Gestión Calidad
+                              </a>
+                              <ul class="sub-menu">
+                                 <li class="has-sub">
+                                    <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <%--<i class="fas fa-code-branch"></i>--%>
+                                    Auditoría
+                                    </a>
+                                    <ul class="sub-menu">
+                                       <li><a href="../../../Formularios/Proceso/Admin/PrcAdminRegistroNoConformidad.aspx">Control no conformidad</a></li>
+                                       <li><a href="../../../Formularios/Proceso/Admin/PrcProgramaCapacitacion.aspx">Programación de Capacitaciones</a></li>
+                                       <li><a href="../../../Formularios/Proceso/Acm/GestionAcm.aspx">Gestión de ACM</a></li>
+                                    </ul>
+                                 </li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmCrlDocument.aspx">Control Documentos y Versiones </a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcAdmGestionEvaluacionServicio.aspx">Gestión Evaluación Servicio</a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcCrlProductoNoConforme.aspx">Control Producto no conforme </a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/PrcCrlPropiedadClienteProveedor.aspx">Control Propiedad del Cliente o Proveedor </a></li>
+                              </ul>
+                           </li>
+                           <li><a href="../../../Formularios/Proceso/Admin/PrcAdminPlanMejoramiento.aspx">Plan de mejoramiento</a></li>
+                           <li class="has-sub">
+                              <a href="javascript:;">
+                              <b class="caret"></b>
+                              <%--<i class="fas fa-cogs"></i>--%>
+                              Reportes
+                              </a>
+                              <ul class="sub-menu">
+                                 <li><a href="../../../Formularios/Reportes/RPTreporteDocumentosVigentes.aspx">Reporte Documentos y Registros Vigentes </a></li>
+                                 <li><a href="../../../Formularios/Proceso/Admin/RPTreporteNoConformidades.aspx">Reporte No Conformidades</a></li>
+                                 <li><a href="../../../Formularios/Proceso/Reportes/RPTreporteIndicadoresMetasCumplidas.aspx">Reporte Indicadores Metas Cumplidas </a></li>
+                                 <li><a href="../../../Formularios/Proceso/Reportes/RPTreporteIndicadoresMetasIncumplidas.aspx">Reporte Indicadores Metas Incumplidas</a></li>
+                                 <li><a href="../../../Formularios/Proceso/Reportes/RPTreporteIndicadoresPorProceso.aspx">Reporte indicadores por proceso </a></li>
+                                 <li><a href="../../../Formularios/Proceso/Reportes/RPTreporteSeguimientoPlanFormacion.aspx">Reporte Seguimiento plan de formación</a></li>
+                                 <li><a href="../../../Formularios/Proceso/Reportes/RPTreporteSeguimientoEvaluacionDesempeño.aspx">Reporte Seguimiento Evaluación de desempeño </a></li>
+                                 <li><a href="../../../Formularios/Proceso/Reportes/RPTreporteInformacionGeneral.aspx">Reporte Información Gerencial</a></li>
+                                 <li><a href="../../../Formularios/Proceso/Reportes/RPTreporteControlInfraestructura.aspx">Reporte Control Infraestructura</a></li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </li>
+                     <!-- begin sidebar minify button -->
+                     <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+                     <!-- end sidebar minify button -->
+                  </ul>
+                  <!-- end sidebar nav -->
+               </div>
+               <!-- end sidebar scrollbar -->
+            </div>
+            <div class="sidebar-bg"></div>
+            <!-- end #sidebar -->
+            <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="600">
+            </asp:ScriptManager>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+            <table width="100%">
+               <tr style="width: 100%;">
+                  <td id="mainContent" valign="top">
+                     <table width="100%">
+                        <tr>
+                           <td>
+                              <h3>
+                                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                 </asp:ContentPlaceHolder>
+                              </h3>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <p>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <p>
+                                 <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                                 </asp:ContentPlaceHolder>
+                              </p>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr>
+                  <td id="mainContent" valign="top">
+                     <table width="100%">
+                        <tr>
+                           <td>
+                              <h1>
+                                 <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+                                 </asp:ContentPlaceHolder>
+                              </h1>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <p>
+                                 <asp:ContentPlaceHolder ID="ContentPlaceHolder5" runat="server">
+                                 </asp:ContentPlaceHolder>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <h2>
+                                 <asp:ContentPlaceHolder ID="ContentPlaceHolder6" runat="server">
+                                 </asp:ContentPlaceHolder>
+                              </h2>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <p>
+                                 <asp:ContentPlaceHolder ID="ContentPlaceHolder7" runat="server">
+                                 </asp:ContentPlaceHolder>
+                              </p>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+            <!-- begin scroll to top btn -->
+            <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+            <!-- end scroll to top btn -->
+         </div>
+         <!-- end page container -->
+      </form>
+      <!-- ================== BEGIN BASE JS ================== -->
+      <script src="/../assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+      <script src="/../assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+      <script src="/../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!--[if lt IE 9]>
+      <script src="/../assets/crossbrowserjs/html5shiv.js"></script>
+      <script src="/../assets/crossbrowserjs/respond.min.js"></script>
+      <script src="/../assets/crossbrowserjs/excanvas.min.js"></script>
+      <![endif]-->
+      <script src="/../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+      <script src="/../assets/plugins/js-cookie/js.cookie.js"></script>
+      <script src="/../assets/js/theme/transparent.min.js"></script>
+      <script src="/../assets/js/apps.min.js"></script>
+      <!-- ================== END BASE JS ================== -->
+      <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+      <%--<script src="/../assets/plugins/gritter/js/jquery.gritter.js"></script>--%>
+      <script src="/../assets/plugins/flot/jquery.flot.min.js"></script>
+      <script src="/../assets/plugins/flot/jquery.flot.time.min.js"></script>
+      <script src="/../assets/plugins/flot/jquery.flot.resize.min.js"></script>
+      <script src="/../assets/plugins/flot/jquery.flot.pie.min.js"></script>
+      <script src="/../assets/plugins/sparkline/jquery.sparkline.js"></script>
+      <script src="/../assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js"></script>
+      <script src="/../assets/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+      <script src="/../assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+      <script src="/../assets/js/demo/dashboard.min.js"></script>
+      <!-- ================== END PAGE LEVEL JS ================== -->
+      <script>
+          $(document).ready(function () {
+              COLOR_BLACK_TRANSPARENT_2 = 'rgba(255,255,255,0.15)';
+              COLOR_WHITE = '#333';
+              App.init();
+              Dashboard.init();
+          });
+      </script>
+   </body>
+</html>

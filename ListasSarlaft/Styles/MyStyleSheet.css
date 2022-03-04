@@ -1,0 +1,21 @@
+﻿body 
+{
+    
+}
+
+.Apariencia {
+    font-family: Calibri;
+    font-style: normal;
+    font-size: small;
+    color: black;
+}
+
+.AparienciaTitulo
+{
+    font-family: Calibri;
+    font-style: normal;
+    font-size: medium;
+}
+#lblMsgBox {
+    color: black;
+}
