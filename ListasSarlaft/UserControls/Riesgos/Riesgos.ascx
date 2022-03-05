@@ -3505,6 +3505,8 @@
                                                       Font-Names="Calibri" Font-Size="Small" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
                                                       <asp:ListItem Value="0">---</asp:ListItem>
                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ControlToValidate="DropDownList2"
+                                                      InitialValue="---" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
                                                 </td>
                                              </tr>
                                              <tr align="left">
@@ -3517,6 +3519,8 @@
                                                       Font-Size="Small">
                                                       <asp:ListItem Value="0">---</asp:ListItem>
                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ControlToValidate="DropDownList3"
+                                                      InitialValue="---" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
                                                 </td>
                                              </tr>
                                              <tr id="tr1" runat="server">
