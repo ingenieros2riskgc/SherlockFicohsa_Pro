@@ -143,27 +143,52 @@ namespace ListasSarlaft.Classes
             cDataBase cDataBase = new cDataBase();
             DataTable dtCaracOut = new DataTable();
             double valorVariable = 0;
+            string Condicionmonthyear = string.Empty;
             #endregion Vars
 
             try
             {
+                if (!string.IsNullOrEmpty(año))
+                {
+                    Condicionmonthyear += "and Año='" + año+"' ";
+                }
+                if (!string.IsNullOrEmpty(mes))
+                {
+                    Condicionmonthyear += "and Mes='" + mes+"'";
+
+                }
+
                 if (IdDetalleFrecuencia == 0)
                 {
+
                     strConsulta = string.Format("SELECT RRIVV.[valorVariable]"
                         + " FROM [Riesgos].[RiesgosIndicadoresValorVariables] as RRIVV"
                         + " INNER JOIN Riesgos.RiesgosIndicadoresVariables as RRIV on RRIV.IdRiesgoIndicadorVariable = RRIVV.IdVariable"
-                        + " where RRIVV.IdRiesgoIndicador = {1} and RRIV.Descripcion = '{0}' and RRIVV.valorFrecuencia = '{2}'"
-                        + " and Año='{3}' and Mes='{4}'", NombreVariable, IdRiesgoIndicador, ValorFrecuencia, año, mes
+                        + " where RRIVV.IdRiesgoIndicador = {1} and RRIV.Descripcion = '{0}' and RRIVV.valorFrecuencia = '{2}' {3} "
+                        , NombreVariable, IdRiesgoIndicador, ValorFrecuencia, Condicionmonthyear
                         );
+
+                    //strConsulta = string.Format("SELECT RRIVV.[valorVariable]"
+                    //    + " FROM [Riesgos].[RiesgosIndicadoresValorVariables] as RRIVV"
+                    //    + " INNER JOIN Riesgos.RiesgosIndicadoresVariables as RRIV on RRIV.IdRiesgoIndicadorVariable = RRIVV.IdVariable"
+                    //    + " where RRIVV.IdRiesgoIndicador = {1} and RRIV.Descripcion = '{0}' and RRIVV.valorFrecuencia = '{2}'"
+                    //    + " and Año='{3}' and Mes='{4}'", NombreVariable, IdRiesgoIndicador, ValorFrecuencia, año, mes
+                    //    );
                 }
                 else
                 {
                     strConsulta = string.Format("SELECT RRIVV.[valorVariable]"
-                                            + " FROM [Riesgos].[RiesgosIndicadoresValorVariables] as RRIVV"
-                                            + " INNER JOIN Riesgos.RiesgosIndicadoresVariables as RRIV on RRIV.IdRiesgoIndicadorVariable = RRIVV.IdVariable"
-                                            + " where RRIVV.IdRiesgoIndicador = {1} and RRIV.Descripcion = '{0}' and RRIVV.IdDetalleFrecuencia = {2}"
-                                            + " and Año='{3}' and Mes='{4}'", NombreVariable, IdRiesgoIndicador, IdDetalleFrecuencia, año, mes
-                                            );
+                                           + " FROM [Riesgos].[RiesgosIndicadoresValorVariables] as RRIVV"
+                                           + " INNER JOIN Riesgos.RiesgosIndicadoresVariables as RRIV on RRIV.IdRiesgoIndicadorVariable = RRIVV.IdVariable"
+                                           + " where RRIVV.IdRiesgoIndicador = {1} and RRIV.Descripcion = '{0}' and RRIVV.IdDetalleFrecuencia = {2} {3}"
+                                           , NombreVariable, IdRiesgoIndicador, IdDetalleFrecuencia, Condicionmonthyear
+                                           );
+                    //strConsulta = string.Format("SELECT RRIVV.[valorVariable]"
+                    //                        + " FROM [Riesgos].[RiesgosIndicadoresValorVariables] as RRIVV"
+                    //                        + " INNER JOIN Riesgos.RiesgosIndicadoresVariables as RRIV on RRIV.IdRiesgoIndicadorVariable = RRIVV.IdVariable"
+                    //                        + " where RRIVV.IdRiesgoIndicador = {1} and RRIV.Descripcion = '{0}' and RRIVV.IdDetalleFrecuencia = {2}"
+                    //                        + " and Año='{3}' and Mes='{4}'", NombreVariable, IdRiesgoIndicador, IdDetalleFrecuencia, año, mes
+                    //                        );
                 }
                 cDataBase.conectar();
                 dtCaracOut = cDataBase.ejecutarConsulta(strConsulta);

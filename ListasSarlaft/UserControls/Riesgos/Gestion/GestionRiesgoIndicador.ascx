@@ -140,7 +140,7 @@ div.ajax__calendar_container{width: 225px;}
                                     <HeaderStyle Wrap="false" HorizontalAlign="center" />
                                     <ItemStyle Wrap="false" />
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Código Riesgo" ItemStyle-HorizontalAlign="center">
+                                <asp:TemplateField HeaderText="Código Riesgo" ItemStyle-HorizontalAlign="center" Visible="false">
                                     <ItemTemplate>
                                         <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 70px">
                                             <asp:Label ID="strCodRiesgo" runat="server" Text='<% # Bind("strCodRiesgo")%>'></asp:Label>
@@ -149,7 +149,7 @@ div.ajax__calendar_container{width: 225px;}
                                     <HeaderStyle Wrap="false" HorizontalAlign="center" />
                                     <ItemStyle Wrap="false" />
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Nombre Riesgo" ItemStyle-HorizontalAlign="center">
+                                <asp:TemplateField HeaderText="Nombre Riesgo" ItemStyle-HorizontalAlign="center" Visible="false">
                                     <ItemTemplate>
                                         <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px">
                                             <asp:Label ID="strNombreRiesgo" runat="server" Text='<% # Bind("strNombreRiesgo")%>'></asp:Label>

@@ -48,7 +48,15 @@ namespace ListasSarlaft.Classes
                         objMeta.intIdRiesgoIndicador = Convert.ToInt32(dr["IdRiesgoIndicador"].ToString().Trim());
                         objMeta.dblMeta = Convert.ToDouble(dr["Meta"].ToString().Trim());
                         objMeta.intIdDetalleFrecuencia = Convert.ToInt32(dr["IdDetalleFrecuenciaMedicion"].ToString().Trim());
-                        objMeta.strDetalleFrecuencia = dr["Descripcion"].ToString().Trim();
+                        //objMeta.strDetalleFrecuencia = dr["Descripcion"].ToString().Trim();
+                        if (string.IsNullOrEmpty(dr["Descripcion"].ToString()))
+                        {
+                            objMeta.strDetalleFrecuencia = dr["ValorOtraFrecuencia"].ToString().Trim();
+                        }
+                        else {
+                            objMeta.strDetalleFrecuencia = dr["Descripcion"].ToString().Trim();
+
+                        }
                         objMeta.strValorOtraFrecuencia = dr["ValorOtraFrecuencia"].ToString().Trim();
                         objMeta.strAño = dr["Año"].ToString().Trim();
                         objMeta.strMes = dr["mes"].ToString().Trim();

@@ -147,7 +147,7 @@ namespace ListasSarlaft.Classes
 
                     condicion = string.Format(" and ( b.IdRiesgoAsociado = '{0}')", aux);
 
-                    condicion = string.Format(" and ( Codigo = '{0}')", CodRiesgo);
+                    //condicion = string.Format(" and ( Codigo = '{0}')", CodRiesgo);
 
                 }
                 if (IdProceso != 0)
@@ -183,11 +183,18 @@ namespace ListasSarlaft.Classes
                         condicion += string.Format(" AND (IdClasificacionRiesgo = {0})", IdFactorRiesgo);
                     }
                 }
-                strConsulta = string.Format("SELECT [IdRiesgoIndicador],[NombreIndicador],[ObjetivoIndicador],[IdProcesoIndicador]"
-                    + ",[IdProceso],[NombreProceso],[IdResponsableMedicion],[NombreHijo],[IdFrecuenciaMedicion],[FrecuenciaMedicion],[Descripcion],[IdRiesgoAsociado],"
-                    + "[Codigo],[Nombre],[IdFormula],[Nominador],[Denominador],[IdMeta],[Meta],[IdEsquemaSeguimiento],[ValorMinimo]"
-                    + ",[ValorMaximo],[DescripcionSeguimiento],[Usuario],[FechaCreacion],[Activo],[IdClasificacionRiesgo], Año, mes, porcentaje"
-                    + " FROM [Riesgos].[vwRiesgosIndicadores] where Activo = 1 {0}  ", condicion
+                //strConsulta = string.Format("SELECT [IdRiesgoIndicador],[NombreIndicador],[ObjetivoIndicador],[IdProcesoIndicador]"
+                //    + ",[IdProceso],[NombreProceso],[IdResponsableMedicion],[NombreHijo],[IdFrecuenciaMedicion],[FrecuenciaMedicion],[Descripcion],[IdRiesgoAsociado],"
+                //    + "[Codigo],[Nombre],[IdFormula],[Nominador],[Denominador],[IdMeta],[Meta],[IdEsquemaSeguimiento],[ValorMinimo]"
+                //    + ",[ValorMaximo],[DescripcionSeguimiento],[Usuario],[FechaCreacion],[Activo],[IdClasificacionRiesgo], Año, mes, porcentaje"
+                //    + " FROM [Riesgos].[vwRiesgosIndicadores] where Activo = 1 {0}", condicion
+                //    );
+
+                strConsulta = string.Format("SELECT a.[IdRiesgoIndicador],a.[NombreIndicador],a.[ObjetivoIndicador],a.[IdProcesoIndicador]"
+                    + ",a.[IdProceso],a.[NombreProceso],a.[IdResponsableMedicion],a.[NombreHijo],a.[IdFrecuenciaMedicion],a.[FrecuenciaMedicion],a.[Descripcion],a.[IdRiesgoAsociado],"
+                    + "a.[Codigo],a.[Nombre],a.[IdFormula],a.[Nominador],a.[Denominador],a.[IdMeta],a.[Meta],a.[IdEsquemaSeguimiento],a.[ValorMinimo]"
+                    + ",a.[ValorMaximo],a.[DescripcionSeguimiento],a.[Usuario],a.[FechaCreacion],a.[Activo],a.[IdClasificacionRiesgo], a.Año,a.mes, a.porcentaje"
+                    + " FROM [Riesgos].[vwRiesgosIndicadores] as a inner join [Riesgos].[RiesgosIndicadoresAsociados] as b on(a.IdRiesgoIndicador=b.IdIndicador) where Activo = 1 {0}  ", condicion
                     );
 
                 cDataBase.conectar();

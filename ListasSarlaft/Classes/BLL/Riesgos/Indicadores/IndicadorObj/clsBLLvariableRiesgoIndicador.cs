@@ -152,7 +152,15 @@ namespace ListasSarlaft.Classes
                         objVariable.strValorFrecuencia = dr["valorFrecuencia"].ToString().Trim();
                         objVariable.dblValorVariable = Convert.ToDouble(dr["valorVariable"].ToString().Trim());
                         objVariable.intIdDetalleFrecuencia = Convert.ToInt32(dr["IdDetalleFrecuencia"].ToString().Trim());
-                        objVariable.strDescripcionDetalle = dr["Descripcion"].ToString().Trim();
+                        if (string.IsNullOrEmpty(dr["Descripcion"].ToString()))
+                        {
+                            objVariable.strDescripcionDetalle = dr["valorFrecuencia"].ToString().Trim();
+                        }
+                        else
+                        {
+                            objVariable.strDescripcionDetalle = dr["Descripcion"].ToString().Trim();
+                        }
+                        //objVariable.strDescripcionDetalle = dr["Descripcion"].ToString().Trim();
                         objVariable.strAño = dr["Año"].ToString().Trim();
                         objVariable.strMes = dr["Mes"].ToString().Trim();
                         lstVariables.Add(objVariable);
