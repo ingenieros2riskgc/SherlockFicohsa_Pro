@@ -192,8 +192,16 @@ namespace ListasSarlaft.Classes
                         objRiesgoIndicador.intIdResponsableMedicion = Convert.ToInt32(dr["IdResponsableMedicion"].ToString().Trim());
                         objRiesgoIndicador.strResponsableMedicion = dr["NombreHijo"].ToString().Trim();
                         objRiesgoIndicador.intIdFrecuenciaMedicion = Convert.ToInt32(dr["IdFrecuenciaMedicion"].ToString().Trim());
+                        if (string.IsNullOrEmpty(dr["Descripcion"].ToString()))
+                        {
+                            objRiesgoIndicador.strDescripcionFrecuencia = dr["ValorOtraFrecuencia"].ToString().Trim();
+                        }
+                        else {
+
+                            objRiesgoIndicador.strDescripcionFrecuencia = dr["Descripcion"].ToString().Trim();
+                        }
                         objRiesgoIndicador.strFrecuenciaMedicion = dr["FrecuenciaMedicion"].ToString().Trim();
-                        objRiesgoIndicador.strDescripcionFrecuencia = dr["Descripcion"].ToString().Trim();
+                        //objRiesgoIndicador.strDescripcionFrecuencia = dr["Descripcion"].ToString().Trim();
                         objRiesgoIndicador.intIdRiesgoAsociado = Convert.ToInt32(dr["IdRiesgoAsociado"].ToString().Trim());
                         objRiesgoIndicador.strCodRiesgo = dr["Codigo"].ToString().Trim();
                         objRiesgoIndicador.strNombreRiesgo = dr["Nombre"].ToString().Trim();

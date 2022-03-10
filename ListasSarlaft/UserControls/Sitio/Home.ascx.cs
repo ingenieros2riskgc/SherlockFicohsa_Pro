@@ -1,8 +1,6 @@
 ﻿using ListasSarlaft.Classes;
 using ListasSarlaft.Classes.DAL.Dashboard;
-
-//using Microsoft.Office.Interop.Excel;
-
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,14 +22,14 @@ namespace ListasSarlaft.UserControls
                 bool booResult = false;
                 string strErrMsg = string.Empty;
                 //booResult = mtdLoadReportNLZ(ref strErrMsg);
-                //booResult = LoadInfoGraficoNumeroRos(ref strErrMsg);
-                //booResult = LoadInfoGraficoEstadosRoi(ref strErrMsg);
-                //booResult = LoadInfoGraficoRiesgosCadenaValor(ref strErrMsg);
-                ////booResult = mtdLoadReporteRiesgos(ref strErrMsg);
+                booResult = LoadInfoGraficoNumeroRos(ref strErrMsg);
+                booResult = LoadInfoGraficoEstadosRoi(ref strErrMsg);
+                booResult = LoadInfoGraficoRiesgosCadenaValor(ref strErrMsg);
+                //booResult = mtdLoadReporteRiesgos(ref strErrMsg);
 
-                ////booResult = mtdLoadGraficoObjetivovsPerspectiva();
-                //LoadInfoReporteRiesgosPlanes(ref strErrMsg);
-                //LoadInfoReporteInhenrente(ref strErrMsg);
+                //booResult = mtdLoadGraficoObjetivovsPerspectiva();
+                LoadInfoReporteRiesgosPlanes(ref strErrMsg);
+                LoadInfoReporteInhenrente(ref strErrMsg);
             }
         }
 
@@ -956,14 +954,14 @@ namespace ListasSarlaft.UserControls
             if (e.ChartElement is System.Web.UI.DataVisualization.Charting.ChartArea)
             {
                 var ta = new TextAnnotation();
-                //ta.Text = Session["TotalSaro"].ToString();
-                //ta.Width = e.Position.Width;
-                //ta.Height = e.Position.Height;
-                //ta.X = e.Position.X;
-                //ta.Y = e.Position.Y;
-                //ta.Font = new System.Drawing.Font("Ms Sans Serif", 16, System.Drawing.FontStyle.Bold);
+                ta.Text = Session["TotalSaro"].ToString();
+                ta.Width = e.Position.Width;
+                ta.Height = e.Position.Height;
+                ta.X = e.Position.X;
+                ta.Y = e.Position.Y;
+                ta.Font = new System.Drawing.Font("Ms Sans Serif", 16, System.Drawing.FontStyle.Bold);
 
-                //ChartSaro.Annotations.Add(ta);
+                ChartSaro.Annotations.Add(ta);
             }
         }
 
@@ -1092,14 +1090,14 @@ namespace ListasSarlaft.UserControls
             if (e.ChartElement is System.Web.UI.DataVisualization.Charting.ChartArea)
             {
                 var ta = new TextAnnotation();
-                //ta.Text = Session["TotalInherente"].ToString();
-                //ta.Width = e.Position.Width;
-                //ta.Height = e.Position.Height;
-                //ta.X = e.Position.X;
-                //ta.Y = e.Position.Y;
-                //ta.Font = new System.Drawing.Font("Ms Sans Serif", 16, System.Drawing.FontStyle.Bold);
+                ta.Text = Session["TotalInherente"].ToString();
+                ta.Width = e.Position.Width;
+                ta.Height = e.Position.Height;
+                ta.X = e.Position.X;
+                ta.Y = e.Position.Y;
+                ta.Font = new System.Drawing.Font("Ms Sans Serif", 16, System.Drawing.FontStyle.Bold);
 
-                //ChartInh.Annotations.Add(ta);
+                ChartInh.Annotations.Add(ta);
             }
         }
 
@@ -1108,14 +1106,14 @@ namespace ListasSarlaft.UserControls
             if (e.ChartElement is System.Web.UI.DataVisualization.Charting.ChartArea)
             {
                 var ta = new TextAnnotation();
-                //ta.Text = Session["TotalEstadosRoi"].ToString();
-                //ta.Width = e.Position.Width;
-                //ta.Height = e.Position.Height;
-                //ta.X = e.Position.X;
-                //ta.Y = e.Position.Y;
-                //ta.Font = new System.Drawing.Font("Ms Sans Serif", 16, System.Drawing.FontStyle.Bold);
+                ta.Text = Session["TotalEstadosRoi"].ToString();
+                ta.Width = e.Position.Width;
+                ta.Height = e.Position.Height;
+                ta.X = e.Position.X;
+                ta.Y = e.Position.Y;
+                ta.Font = new System.Drawing.Font("Ms Sans Serif", 16, System.Drawing.FontStyle.Bold);
 
-                //ChartEstadoRoi.Annotations.Add(ta);
+                ChartEstadoRoi.Annotations.Add(ta);
             }
         }
     }

@@ -20139,9 +20139,6 @@
     <None Include="Properties\PublishProfiles\Sherlock.pubxml" />
     <None Include="Properties\PublishProfiles\Sherlock3.5.0.pubxml" />
     <None Include="Properties\PublishProfiles\Sherlock340.pubxml" />
-    <None Include="Properties\PublishProfiles\Sherlock340_LinQ.pubxml" />
-    <None Include="Properties\PublishProfiles\Sherlock41.pubxml" />
-    <None Include="Properties\PublishProfiles\SherlockSE.pubxml" />
     <Content Include="ReporteDataSer.xsc">
       <DependentUpon>ReporteDataSer.xsd</DependentUpon>
     </Content>
@@ -20150,7 +20147,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </Content>
-    <None Include="Properties\PublishProfiles\SherlockV4.0_Riesgos.pubxml" />
     <None Include="ReporteDataSer.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ReporteDataSer.Designer.cs</LastGenOutput>
