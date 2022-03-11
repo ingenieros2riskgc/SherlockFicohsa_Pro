@@ -357,7 +357,7 @@
                         <table id="TbConEventos" runat="server" visible="false" align="center">
                            <tr>
                               <td align="center">
-                                 <asp:TabContainer ID="TabContainerEventos" runat="server" ActiveTabIndex="0" Font-Names="Calibri" Font-Size="Small" Width="800px" aling="left" AutoPostBack="true" style="margin-bottom: 0px;">
+                                 <asp:TabContainer ID="TabContainerEventos" runat="server" ActiveTabIndex="2" Font-Names="Calibri" Font-Size="Small" Width="800px" aling="left" AutoPostBack="true" style="margin-bottom: 0px;">
                                     <asp:TabPanel ID="TabPanelCreaEvento"  runat="server" HeaderText="Creación Evento" Font-Names="Calibri" Font-Size="Small">
                                        <HeaderTemplate>
                                           Creación Evento

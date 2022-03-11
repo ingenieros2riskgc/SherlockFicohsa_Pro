@@ -435,6 +435,8 @@ namespace ListasSarlaft.UserControls.Eventos
                         TBNotas.Text.ToString().Trim(),
                         TBJustificacion.Text.ToString().Trim());
 
+                    String Justificacion = TBJustificacion.Text.ToString().Trim();
+
                     string codigoEvsEIncs = TBHiddenCodigoEvsEIncs.Text.ToString().Trim();
                     codigoEvsEIncs = codigoEvsEIncs.Equals("") ? "EI" + TBIdEvsEIncs.Text : codigoEvsEIncs;
 
@@ -445,7 +447,7 @@ namespace ListasSarlaft.UserControls.Eventos
 
                     string CodigoEvento = TBHiddenCodigoEvsEIncs.Text;
 
-                    mtdGenerarNotificacionModificacionEvento(CodigoEvento, string.Empty, string.Empty, 37, 0, TBJustificacion.Text.ToString().Trim());
+                    mtdGenerarNotificacionModificacionEvento(CodigoEvento, string.Empty, string.Empty, 37, 0, Justificacion);
                 }
 
 
