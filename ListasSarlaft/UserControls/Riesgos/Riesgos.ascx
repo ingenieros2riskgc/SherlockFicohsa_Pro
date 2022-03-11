@@ -748,6 +748,8 @@
                                                                   Font-Names="Calibri" Font-Size="Small" OnSelectedIndexChanged="DropDownList57_SelectedIndexChanged">
                                                                   <asp:ListItem Value="0">---</asp:ListItem>
                                                                </asp:DropDownList>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator37" runat="server" ControlToValidate="DropDownList57"
+                                                      InitialValue="---" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
                                                             </td>
                                                          </tr>
                                                          <tr align="left">
@@ -760,6 +762,8 @@
                                                                   Font-Size="Small">
                                                                   <asp:ListItem Value="0">---</asp:ListItem>
                                                                </asp:DropDownList>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator38" runat="server" ControlToValidate="DropDownList57"
+                                                      InitialValue="---" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
                                                             </td>
                                                          </tr>
                                                          <tr id="tr14" runat="server">
@@ -3197,7 +3201,7 @@
                         <table id="tbAgregarRiesgo" runat="server" visible="false">
                            <tr>
                               <td class="auto-style10">
-                                 <asp:TabContainer ID="TabContainer2" runat="server" ActiveTabIndex="4" Font-Names="Calibri"
+                                 <asp:TabContainer ID="TabContainer2" runat="server" ActiveTabIndex="2" Font-Names="Calibri"
                                     Font-Size="Small" Width="900px">
                                     <asp:TabPanel ID="TabPanel8" runat="server" HeaderText="Ubicación" Font-Names="Calibri"
                                        Font-Size="Small">
@@ -3505,7 +3509,7 @@
                                                       Font-Names="Calibri" Font-Size="Small" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
                                                       <asp:ListItem Value="0">---</asp:ListItem>
                                                    </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ControlToValidate="DropDownList2"
+                                                   <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ControlToValidate="DropDownList2"
                                                       InitialValue="---" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
                                                 </td>
                                              </tr>
@@ -3519,7 +3523,7 @@
                                                       Font-Size="Small">
                                                       <asp:ListItem Value="0">---</asp:ListItem>
                                                    </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ControlToValidate="DropDownList3"
+                                                   <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ControlToValidate="DropDownList3"
                                                       InitialValue="---" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
                                                 </td>
                                              </tr>

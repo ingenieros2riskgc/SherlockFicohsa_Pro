@@ -1392,7 +1392,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                 dtInfo = cRiesgo.ReporteRiesgos(DropDownList52.SelectedValue.ToString().Trim(), DropDownList53.SelectedValue.ToString().Trim(),
                     DropDownList54.SelectedValue.ToString().Trim(), DropDownList56.SelectedValue.ToString().Trim(), DropDownList57.SelectedValue.ToString().Trim(),
                     DropDownList2.SelectedValue.ToString().Trim(), DropDownList3.SelectedValue.ToString().Trim(), DropDownList4.SelectedValue.ToString().Trim(), "2", "---",
-                    DDLareas.SelectedValue.ToString().Trim(), cbEstado.SelectedIndex.ToString(), TBIdResponsable.Text, DDLProductoAfectado.SelectedValue.ToString().Trim(), DDLActivoAfectado.SelectedValue.ToString().Trim(), DropDownList52.SelectedItem.ToString().Trim(), DropDownList53.SelectedItem.ToString().Trim());
+                    DDLareas.SelectedValue.ToString().Trim(), cbEstado.SelectedIndex.ToString(), TBIdResponsable.Text, DDLProductoAfectado.SelectedValue.ToString().Trim(), DDLActivoAfectado.SelectedValue.ToString().Trim(), DropDownList52.SelectedItem.ToString().Trim(), DropDownList53.SelectedItem.ToString().Trim(), DropDownList54.SelectedItem.ToString().Trim());
 
                 if (dtInfo.Rows.Count > 0)
                 {
@@ -1553,6 +1553,12 @@ namespace ListasSarlaft.UserControls.Riesgos
             grid.Columns.Add("FechaOcurrencia", typeof(string));
             grid.Columns.Add("FechaDescubrimiento", typeof(string));
             grid.Columns.Add("NombreArea", typeof(string));
+            grid.Columns.Add("Riesgo FactorRO", typeof(string));
+            grid.Columns.Add("Riesgo Linea Negocio", typeof(string));
+            grid.Columns.Add("Riesgo Producto", typeof(string));
+            grid.Columns.Add("Riesgo Tipo Activo", typeof(string));
+            grid.Columns.Add("Riesgo Activo Afectado", typeof(string));
+            grid.Columns.Add("Riesgo Dimensión Valoración", typeof(string));
             #endregion Grid
 
             InfoGridReporteRiesgosEventos = grid;
@@ -1617,7 +1623,13 @@ namespace ListasSarlaft.UserControls.Riesgos
                         dtInfo.Rows[rows]["FechaRegistroEvento"].ToString().Trim(),
                         dtInfo.Rows[rows]["FechaOcurrencia"].ToString().Trim(),
                         dtInfo.Rows[rows]["FechaDescubrimiento"].ToString().Trim(),
-                        dtInfo.Rows[rows]["NombreArea"].ToString().Trim()
+                        dtInfo.Rows[rows]["NombreArea"].ToString().Trim(),
+                        dtInfo.Rows[rows]["Riesgo FactorRO"].ToString().Trim(),
+                        dtInfo.Rows[rows]["Riesgo Linea Negocio"].ToString().Trim(),
+                        dtInfo.Rows[rows]["Riesgo Producto"].ToString().Trim(),
+                        dtInfo.Rows[rows]["Riesgo Tipo Activo"].ToString().Trim(),
+                        dtInfo.Rows[rows]["Riesgo Activo Afectado"].ToString().Trim(),
+                        dtInfo.Rows[rows]["Riesgo Dimensión Valoración"].ToString().Trim()
                     });
                 }
                 #endregion Recorrido para llenar informacion

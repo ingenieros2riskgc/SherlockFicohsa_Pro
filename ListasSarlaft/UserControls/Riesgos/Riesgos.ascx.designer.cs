@@ -951,6 +951,15 @@ namespace ListasSarlaft.UserControls.Riesgos
         protected global::System.Web.UI.WebControls.DropDownList DropDownList57;
 
         /// <summary>
+        /// Control RequiredFieldValidator37.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator37;
+
+        /// <summary>
         /// Control Label159.
         /// </summary>
         /// <remarks>
@@ -967,6 +976,15 @@ namespace ListasSarlaft.UserControls.Riesgos
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList58;
+
+        /// <summary>
+        /// Control RequiredFieldValidator38.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator38;
 
         /// <summary>
         /// Control tr14.

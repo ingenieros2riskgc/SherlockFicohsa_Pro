@@ -5009,7 +5009,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DataTable dtInfo = new DataTable();
                 dtInfo = cRiesgo.ReporteRiesgos("---", "---", "---", "---", "---", "---", "---", "---", "3",
-                    InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim(), "---", cbEstado.SelectedIndex.ToString());
+                    InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim(), "---", cbEstado.SelectedIndex.ToString(), DropDownList52.SelectedItem.ToString().Trim(), DropDownList53.SelectedItem.ToString().Trim());
                 DataTable InfoGridReporteRiesgosEventos = new DataTable();
                 InfoGridReporteRiesgosEventos = loadGridReporteRiesgosEventos();
 
@@ -6286,6 +6286,8 @@ namespace ListasSarlaft.UserControls.Riesgos
             cbEstado.Items.Insert(0, new ListItem("---", "0"));
             cbEstadoRiesgo.Items.Clear();
             cbEstadoRiesgo.Items.Insert(0, new ListItem("---", "0"));
+            DDLFactorRO.Items.Clear();
+            DDLFactorRO.Items.Insert(0, new ListItem("---", "0"));
 
             #endregion DROPDOWNS
 

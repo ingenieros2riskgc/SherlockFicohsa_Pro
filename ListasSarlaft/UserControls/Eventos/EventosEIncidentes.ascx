@@ -357,7 +357,7 @@
                         <table id="TbConEventos" runat="server" visible="false" align="center">
                            <tr>
                               <td align="center">
-                                 <asp:TabContainer ID="TabContainerEventos" runat="server" ActiveTabIndex="2" Font-Names="Calibri" Font-Size="Small" Width="800px" aling="left" AutoPostBack="true" style="margin-bottom: 0px;">
+                                 <asp:TabContainer ID="TabContainerEventos" runat="server" ActiveTabIndex="0" Font-Names="Calibri" Font-Size="Small" Width="800px" aling="left" AutoPostBack="true" style="margin-bottom: 0px;">
                                     <asp:TabPanel ID="TabPanelCreaEvento"  runat="server" HeaderText="Creación Evento" Font-Names="Calibri" Font-Size="Small">
                                        <HeaderTemplate>
                                           Creación Evento
@@ -660,7 +660,7 @@
                                                    <asp:Label ID="Label40" runat="server" Text="Monto Bruto de Exposición:" Font-Names="Calibri" Font-Size="Small"></asp:Label>
                                                 </td>
                                                 <td runat="server">
-                                                   <asp:TextBox OnTextChanged="TBMontoExposicion_TextChanged" ID="TBMontoExposicion" runat="server" Font-Names="Calibri" Font-Size="Small" TextMode="MultiLine" Width="194px"></asp:TextBox>
+                                                   <asp:TextBox OnTextChanged="TBMontoExposicion_TextChanged" AutoPostBack="true" ID="TBMontoExposicion" runat="server" Font-Names="Calibri" Font-Size="Small" TextMode="MultiLine" Width="194px"></asp:TextBox>
                                                    <asp:Label ID="Label130" runat="server" Text="*" CssClass="text-red" Font-Names="Calibri" Font-Size="Small"></asp:Label>
                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TBMontoExposicion" ForeColor="Red" ValidationGroup="Addne">
                                                       Campo obligatorio
