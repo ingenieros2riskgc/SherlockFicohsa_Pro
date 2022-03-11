@@ -204,7 +204,7 @@ namespace ListasSarlaft.Classes
                         //objRiesgoIndicador.strDescripcionFrecuencia = dr["Descripcion"].ToString().Trim();
                         objRiesgoIndicador.intIdRiesgoAsociado = Convert.ToInt32(dr["IdRiesgoAsociado"].ToString().Trim());
                         objRiesgoIndicador.strCodRiesgo = dr["Codigo"].ToString().Trim();
-                        objRiesgoIndicador.strNombreRiesgo = dr["Nombre"].ToString().Trim();
+                        objRiesgoIndicador.strNombreRiesgo = dr["CodRiesgo"].ToString().Trim();
                         objRiesgoIndicador.intIdFormula = Convert.ToInt32(dr["IdFormula"].ToString().Trim());
                         objRiesgoIndicador.booPorcentaje = (Convert.ToBoolean(dr["porcentaje"].ToString().Trim()) == true) ? 1 : 0;
                         objRiesgoIndicador.intIdMeta = Convert.ToInt32(dr["IdMeta"].ToString().Trim());

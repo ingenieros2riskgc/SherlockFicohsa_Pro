@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace ListasSarlaft.Classes
 {
@@ -140,12 +141,24 @@ namespace ListasSarlaft.Classes
                 if (!string.IsNullOrEmpty(CodRiesgo))
                 {
 
-                    string aux = CodRiesgo.Replace("R", string.Empty);
-                    CodRiesgo.Replace("R", string.Empty);
-                    CodRiesgo.Replace("r", string.Empty);
+                    string texto = CodRiesgo;
+                    Match m = Regex.Match(texto, "(\\d+)");
+                    string num = string.Empty;
+
+                    if (m.Success)
+                    {
+                        num = m.Value;
+                    }
+
+                    
+
+                    //string aux = CodRiesgo.Replace("R", string.Empty);
+                    // aux = aux.Replace("r", string.Empty);
+                    //CodRiesgo.Replace("R", string.Empty);
+                    //CodRiesgo.Replace("r", string.Empty);
 
 
-                    condicion = string.Format(" and ( b.IdRiesgoAsociado = '{0}')", aux);
+                    condicion = string.Format(" and ( b.IdRiesgoAsociado = {0})", num);
 
                     //condicion = string.Format(" and ( Codigo = '{0}')", CodRiesgo);
 
@@ -154,33 +167,33 @@ namespace ListasSarlaft.Classes
                 {
                     if (string.IsNullOrEmpty(condicion))
                     {
-                        condicion = string.Format(" and ( IdProceso = {0})", IdProceso);
+                        condicion = string.Format(" and ( a.IdProceso = {0})", IdProceso);
                     }
                     else
                     {
-                        condicion += string.Format(" AND (IdProceso = {0})", IdProceso);
+                        condicion += string.Format(" AND (a.IdProceso = {0})", IdProceso);
                     }
                 }
                 if (Responsable != 0)
                 {
                     if (string.IsNullOrEmpty(condicion))
                     {
-                        condicion = string.Format(" and (IdResponsableMedicion = {0})", Responsable);
+                        condicion = string.Format(" and (a.IdResponsableMedicion = {0})", Responsable);
                     }
                     else
                     {
-                        condicion += string.Format(" AND (IdResponsableMedicion = {0})", Responsable);
+                        condicion += string.Format(" AND (a.IdResponsableMedicion = {0})", Responsable);
                     }
                 }
                 if (IdFactorRiesgo != 0)
                 {
                     if (string.IsNullOrEmpty(condicion))
                     {
-                        condicion = string.Format(" and (IdClasificacionRiesgo = {0})", IdFactorRiesgo);
+                        condicion = string.Format(" and (a.IdClasificacionRiesgo = {0})", IdFactorRiesgo);
                     }
                     else
                     {
-                        condicion += string.Format(" AND (IdClasificacionRiesgo = {0})", IdFactorRiesgo);
+                        condicion += string.Format(" AND (a.IdClasificacionRiesgo = {0})", IdFactorRiesgo);
                     }
                 }
                 //strConsulta = string.Format("SELECT [IdRiesgoIndicador],[NombreIndicador],[ObjetivoIndicador],[IdProcesoIndicador]"
@@ -193,9 +206,10 @@ namespace ListasSarlaft.Classes
                 
 
 
-                strConsulta = string.Format("SELECT a.[IdRiesgoIndicador],a.[NombreIndicador],a.[ObjetivoIndicador],a.[IdProcesoIndicador],a.[IdProceso],a.[NombreProceso],a.[IdResponsableMedicion],a.[NombreHijo],a.[IdFrecuenciaMedicion],a.[FrecuenciaMedicion],a.[Descripcion],a.[IdRiesgoAsociado],a.[Codigo],a.[Nombre],a.[IdFormula],a.[Nominador],a.[Denominador],a.[IdMeta],a.[Meta],a.[IdEsquemaSeguimiento],a.[ValorMinimo],a.[ValorMaximo],a.[DescripcionSeguimiento],a.[Usuario],a.[FechaCreacion],a.[Activo],a.[IdClasificacionRiesgo], a.Año,a.mes, a.porcentaje, c.[ValorOtraFrecuencia]"
+                strConsulta = string.Format("SELECT a.[IdRiesgoIndicador],a.[NombreIndicador],a.[ObjetivoIndicador],a.[IdProcesoIndicador],a.[IdProceso],a.[NombreProceso],a.[IdResponsableMedicion],a.[NombreHijo],a.[IdFrecuenciaMedicion],a.[FrecuenciaMedicion],a.[Descripcion],a.[IdRiesgoAsociado],a.[Codigo],a.[Nombre],a.[IdFormula],a.[Nominador],a.[Denominador],a.[IdMeta],a.[Meta],a.[IdEsquemaSeguimiento],a.[ValorMinimo],a.[ValorMaximo],a.[DescripcionSeguimiento],a.[Usuario],a.[FechaCreacion],a.[Activo],a.[IdClasificacionRiesgo], a.Año,a.mes, a.porcentaje, c.[ValorOtraFrecuencia],d.[Codigo] as CodRiesgo"
 + " FROM[Riesgos].[vwRiesgosIndicadores] as a"
-+ " inner join[Riesgos].[RiesgosIndicadoresAsociados] as b on(a.IdRiesgoIndicador = b.IdIndicador)"
++ " left join[Riesgos].[RiesgosIndicadoresAsociados] as b on(a.IdRiesgoIndicador = b.IdIndicador)"
++ "left join [Riesgos].[Riesgo]as d on(b.IdRiesgoAsociado=d.IdRiesgo)"
 + " inner join[Riesgos].[RiesgosIndicadoresMetas] as c on a.IdMeta = c.IdMeta where a.Activo = 1 {0} ", condicion
                     );
 

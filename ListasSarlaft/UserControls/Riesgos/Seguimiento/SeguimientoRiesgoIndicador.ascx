@@ -167,13 +167,15 @@ div.ajax__calendar_container{width: 225px;}
                 <tr align="center">
                     <td>
                 <asp:GridView ID="GVseguimientoRiesgoInsicador" runat="server" CellPadding="4"
-                            ForeColor="#333333" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
+                            ForeColor="#333333" AllowSorting="True" AutoGenerateColumns="False"
                             ShowHeaderWhenEmpty="True" DataKeyNames="strUsuario,dtFechaCreacion,intIdMeta,intIdEsquemaSeguimiento,intIdFormula, intIProcesoIndicador, intIdFrecuenciaMedicion,intIdProceso,booActivo"
                             HeaderStyle-CssClass="gridViewHeader" BorderStyle="Solid" GridLines="Vertical" HeaderStyle-HorizontalAlign="Center"
                             CssClass="Apariencia" Font-Bold="False" OnPageIndexChanging="GVseguimientoRiesgoInsicador_PageIndexChanging" OnPreRender="GVseguimientoRiesgoInsicador_PreRender" PageSize="25"  >
                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                             <Columns>
-                                <asp:BoundField DataField="intIdRiesgoIndicador" HeaderText="Código" SortExpression="intIdRiesgoIndicador" ItemStyle-HorizontalAlign="Center" />
+                                <asp:BoundField DataField="intIdRiesgoIndicador" HeaderText="Código" SortExpression="intIdRiesgoIndicador" ItemStyle-HorizontalAlign="Center" >
+                                <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
                                 <asp:TemplateField HeaderText="Nombre Indicador" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
                                         <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 150px">
@@ -256,6 +258,15 @@ div.ajax__calendar_container{width: 225px;}
                                     <HeaderStyle Wrap="false" HorizontalAlign="center" />
                                     <ItemStyle Wrap="false" />
                                 </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Riesgo Asociado" ItemStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 150px">
+                                            <asp:Label ID="strRiesgoAsociado" runat="server" Text='<%# Bind("strNombreRiesgo") %>'></asp:Label><%--Text='<% # Bind("dblResultado")%>' --%>
+                                        </div>
+                                    </ItemTemplate>
+                                    <HeaderStyle Wrap="false" HorizontalAlign="center" />
+                                    <ItemStyle Wrap="false" />
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Descripción Seguimiento" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
                                         <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 150px">
@@ -275,8 +286,13 @@ div.ajax__calendar_container{width: 225px;}
                                     <HeaderStyle Wrap="false" HorizontalAlign="center" />
                                     <ItemStyle Wrap="false" />
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="dtFechaCreacion" HeaderText="fechaRegistro" ReadOnly="True" Visible="false" SortExpression="dtFechaCreacion" ItemStyle-HorizontalAlign="Center" />
-                                <asp:BoundField DataField="strUsuario" HeaderText="Usuario" ReadOnly="True" Visible="false" SortExpression="strUsuario" ItemStyle-HorizontalAlign="Center" />
+                                <asp:BoundField DataField="dtFechaCreacion" HeaderText="fechaRegistro" ReadOnly="True" Visible="false" SortExpression="dtFechaCreacion" ItemStyle-HorizontalAlign="Center" >
+                                <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="strUsuario" HeaderText="Usuario" ReadOnly="True" Visible="false" SortExpression="strUsuario" ItemStyle-HorizontalAlign="Center" >
+                                
+                                <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
                                 
                             </Columns>
                             <EditRowStyle BackColor="#999999" />

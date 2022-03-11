@@ -480,6 +480,7 @@ namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
                 mtdLoadRiesgosIndicadores();
                 mtdLoadRiesgosIndicadores(lstRiesgoInd);
                 GVseguimientoRiesgoInsicador.DataSource = lstRiesgoInd;
+                Session["view"] = lstRiesgoInd;
                 GVseguimientoRiesgoInsicador.PageIndex = pagIndexRiesgoIndicador;
                 GVseguimientoRiesgoInsicador.DataBind();
                 dvGirdData.Visible = true;
@@ -521,6 +522,7 @@ namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
             grid.Columns.Add("strAño", typeof(string));
             grid.Columns.Add("strMes", typeof(string));
             grid.Columns.Add("dblResultado", typeof(string));
+            grid.Columns.Add("strRiesgoAsociado", typeof(string));
             grid.Columns.Add("strDescripcionSeguimiento", typeof(string));
             grid.Columns.Add("strColor", typeof(string));
             grid.Columns.Add("intIdEsquemaSeguimiento", typeof(string));
@@ -581,14 +583,17 @@ namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
         protected void GVseguimientoRiesgoInsicador_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             PagIndexRiesgoIndicador = e.NewPageIndex;
+
+            GVseguimientoRiesgoInsicador.PageIndex = PagIndexRiesgoIndicador;
+            GVseguimientoRiesgoInsicador.DataSource = Session["View"].ToString();
             /*GVevaluacionDesempeño.PageIndex = PagIndex1;
             GVevaluacionDesempeño.DataBind();*/
-            string strErrMsg = "";
-            string CodRiesgo = Session["CodRiesgo"].ToString();
-            int IdProceso = Convert.ToInt32(Session["IdProceso"].ToString());
-            int Responsable = Convert.ToInt32(Session["Responsable"].ToString());
-            int IdFactorRiesgo = Convert.ToInt32(Session["IdFactorRiesgo"].ToString());
-            mtdLoadRiesgosIndicadores(ref strErrMsg, CodRiesgo, IdProceso, Responsable, IdFactorRiesgo);
+            //string strErrMsg = "";
+            //string CodRiesgo = Session["CodRiesgo"].ToString();
+            //int IdProceso = Convert.ToInt32(Session["IdProceso"].ToString());
+            //int Responsable = Convert.ToInt32(Session["Responsable"].ToString());
+            //int IdFactorRiesgo = Convert.ToInt32(Session["IdFactorRiesgo"].ToString());
+
         }
 
         protected void GVseguimientoRiesgoInsicador_PreRender(object sender, EventArgs e)
