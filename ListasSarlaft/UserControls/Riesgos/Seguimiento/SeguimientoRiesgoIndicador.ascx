@@ -155,7 +155,7 @@ div.ajax__calendar_container{width: 225px;}
                     <td style="color:black">Para exportar a Excel:
                     </td>
                     <td>
-                        <asp:ImageButton ID="ImButtonExcelExport" runat="server" ImageUrl="~/Imagenes/Icons/excel.png" OnClick="GenerarReporte_Click" />
+                        <asp:ImageButton ID="ImButtonExcelExport" runat="server" ImageUrl="~/Imagenes/Icons/excel.png" OnClick="GenerarReporte_Click" style="width: 28px" />
                     </td>
                 </tr>
             </table>

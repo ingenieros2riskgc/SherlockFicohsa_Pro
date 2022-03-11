@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 
 namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
 {
@@ -688,47 +689,71 @@ namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
             {
                 if (!string.IsNullOrEmpty(CodRiesgo))
                 {
-                    condicion = string.Format(" and ( Codigo = '{0}')", CodRiesgo);
+
+                    string texto = CodRiesgo;
+                    Match m = Regex.Match(texto, "(\\d+)");
+                    string num = string.Empty;
+
+                    if (m.Success)
+                    {
+                        num = m.Value;
+                    }
+
+
+
+                    //string aux = CodRiesgo.Replace("R", string.Empty);
+                    // aux = aux.Replace("r", string.Empty);
+                    //CodRiesgo.Replace("R", string.Empty);
+                    //CodRiesgo.Replace("r", string.Empty);
+
+
+                    condicion = string.Format(" and ( b.IdRiesgoAsociado = {0})", num);
+
+                    //condicion = string.Format(" and ( Codigo = '{0}')", CodRiesgo);
+
                 }
                 if (IdProceso != 0)
                 {
                     if (string.IsNullOrEmpty(condicion))
                     {
-                        condicion = string.Format(" and ( IdProceso = {0})", IdProceso);
+                        condicion = string.Format(" and ( a.IdProceso = {0})", IdProceso);
                     }
                     else
                     {
-                        condicion += string.Format(" AND (IdProceso = {0})", IdProceso);
+                        condicion += string.Format(" AND (a.IdProceso = {0})", IdProceso);
                     }
                 }
                 if (Responsable != 0)
                 {
                     if (string.IsNullOrEmpty(condicion))
                     {
-                        condicion = string.Format(" and (IdResponsableMedicion = {0})", Responsable);
+                        condicion = string.Format(" and (a.IdResponsableMedicion = {0})", Responsable);
                     }
                     else
                     {
-                        condicion += string.Format(" AND (IdResponsableMedicion = {0})", Responsable);
+                        condicion += string.Format(" AND (a.IdResponsableMedicion = {0})", Responsable);
                     }
                 }
                 if (IdFactorRiesgo != 0)
                 {
                     if (string.IsNullOrEmpty(condicion))
                     {
-                        condicion = string.Format(" and (IdClasificacionRiesgo = {0})", IdFactorRiesgo);
+                        condicion = string.Format(" and (a.IdClasificacionRiesgo = {0})", IdFactorRiesgo);
                     }
                     else
                     {
-                        condicion += string.Format(" AND (IdClasificacionRiesgo = {0})", IdFactorRiesgo);
+                        condicion += string.Format(" AND (a.IdClasificacionRiesgo = {0})", IdFactorRiesgo);
                     }
                 }
-                strConsulta = string.Format("SELECT [IdRiesgoIndicador],[NombreIndicador],[ObjetivoIndicador]"
-                    + ",[NombreHijo] as Responsable,[FrecuenciaMedicion]," +
-                    "[Descripcion],"
-                    + "[Meta],[ValorMinimo]"
-                    + ",[ValorMaximo],[DescripcionSeguimiento], Año, mes"
-                    + " FROM [Riesgos].[vwRiesgosIndicadores] where Activo = 1 {0}  ", condicion
+                strConsulta = string.Format("SELECT a.[IdRiesgoIndicador],a.[NombreIndicador],a.[ObjetivoIndicador]"
+                    + ",a.[NombreHijo] as Responsable,a.[FrecuenciaMedicion]," +
+                    "case  when a.[Descripcion] is not null then a.[Descripcion] ELSE c.ValorOtraFrecuencia end as Descripcion,"
+                    + "a.[Meta],a.[ValorMinimo]"
+                    + ",a.[ValorMaximo],a.[DescripcionSeguimiento], a.Año, a.mes, d.[Codigo] as CodRiesgo"
+                   + " FROM[Riesgos].[vwRiesgosIndicadores] as a"
++ " left join[Riesgos].[RiesgosIndicadoresAsociados] as b on(a.IdRiesgoIndicador = b.IdIndicador)"
++ "left join [Riesgos].[Riesgo]as d on(b.IdRiesgoAsociado=d.IdRiesgo)"
++ " inner join[Riesgos].[RiesgosIndicadoresMetas] as c on a.IdMeta = c.IdMeta where a.Activo = 1 {0} ", condicion
                     );
 
                 cDataBase.conectar();
@@ -780,5 +805,7 @@ namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
             }
 
         }
+
+       
     }
 }

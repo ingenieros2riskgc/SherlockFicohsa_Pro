@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.852
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListasSarlaft", "ListasSarlaft\ListasSarlaft.csproj", "{B2D5A845-570F-4551-B331-3F103A92F45B}"
 EndProject
@@ -39,23 +39,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6339A307-315E-46CD-9C58-A17133D5640E}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://67.210.244.157:8585/tfs/rcc_collections
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = ListasSarlaft\\ListasSarlaft.csproj
-		SccProjectName1 = ListasSarlaft
-		SccLocalPath1 = ListasSarlaft
-		SccProjectUniqueName2 = clsDatos\\DAL.csproj
-		SccProjectName2 = clsDatos
-		SccLocalPath2 = clsDatos
-		SccProjectUniqueName3 = clsDTO\\DTO.csproj
-		SccProjectName3 = clsDTO
-		SccLocalPath3 = clsDTO
-		SccProjectUniqueName4 = clsLogica\\DLL.csproj
-		SccProjectName4 = clsLogica
-		SccLocalPath4 = clsLogica
 	EndGlobalSection
 EndGlobal
