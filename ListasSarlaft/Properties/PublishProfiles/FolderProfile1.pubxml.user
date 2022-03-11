@@ -4,7 +4,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\Administrador\Desktop\publicacion Ficohsa 11 marzo</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\Administrador\Desktop\publicaicon ficohsa 11 marzo vs 2</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Archivos/Error/Error.txt">
@@ -29135,10 +29135,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/14/2022 09:35:28</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>03/10/2022 17:01:56</publishTime>
+      <publishTime>03/11/2022 17:25:31</publishTime>
     </File>
     <File Include="bin/DAL.pdb">
-      <publishTime>03/10/2022 17:01:56</publishTime>
+      <publishTime>03/11/2022 17:25:31</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.Common.resources.dll">
       <publishTime>03/04/2022 13:08:56</publishTime>
@@ -29159,10 +29159,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:56</publishTime>
     </File>
     <File Include="bin/DLL.dll">
-      <publishTime>03/10/2022 17:01:56</publishTime>
+      <publishTime>03/11/2022 17:25:31</publishTime>
     </File>
     <File Include="bin/DLL.pdb">
-      <publishTime>03/10/2022 17:01:56</publishTime>
+      <publishTime>03/11/2022 17:25:31</publishTime>
     </File>
     <File Include="bin/DocumentFormat.OpenXml.dll">
       <publishTime>09/01/2012 02:24:26</publishTime>
@@ -29279,13 +29279,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:56</publishTime>
     </File>
     <File Include="bin/ListasSarlaft.dll">
-      <publishTime>03/11/2022 12:54:11</publishTime>
+      <publishTime>03/11/2022 17:25:40</publishTime>
     </File>
     <File Include="bin/ListasSarlaft.pdb">
-      <publishTime>03/11/2022 12:54:11</publishTime>
+      <publishTime>03/11/2022 17:25:40</publishTime>
     </File>
     <File Include="bin/ListasSarlaft.XmlSerializers.dll">
-      <publishTime>03/11/2022 12:54:13</publishTime>
+      <publishTime>03/11/2022 17:25:42</publishTime>
     </File>
     <File Include="bin/Microsoft.MSXML.dll">
       <publishTime>03/04/2022 12:43:24</publishTime>
@@ -29381,40 +29381,40 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 12:43:24</publishTime>
     </File>
     <File Include="bin/System.Configuration.dll">
-      <publishTime>11/05/2015 20:36:48</publishTime>
+      <publishTime>03/26/2018 16:24:54</publishTime>
     </File>
     <File Include="bin/System.Data.dll">
-      <publishTime>11/05/2015 20:36:48</publishTime>
+      <publishTime>03/26/2018 16:24:54</publishTime>
     </File>
     <File Include="bin/System.dll">
-      <publishTime>11/05/2015 20:36:48</publishTime>
+      <publishTime>03/26/2018 16:24:54</publishTime>
     </File>
     <File Include="bin/System.Drawing.dll">
-      <publishTime>11/05/2015 20:36:48</publishTime>
+      <publishTime>03/26/2018 16:24:54</publishTime>
     </File>
     <File Include="bin/System.EnterpriseServices.dll">
-      <publishTime>11/05/2015 20:36:48</publishTime>
+      <publishTime>03/26/2018 16:24:54</publishTime>
     </File>
     <File Include="bin/System.Web.ApplicationServices.dll">
-      <publishTime>11/05/2015 20:36:48</publishTime>
+      <publishTime>03/26/2018 16:24:54</publishTime>
     </File>
     <File Include="bin/System.Web.dll">
-      <publishTime>11/05/2015 20:36:48</publishTime>
+      <publishTime>03/26/2018 16:24:54</publishTime>
     </File>
     <File Include="bin/System.Web.DynamicData.dll">
-      <publishTime>11/05/2015 20:36:48</publishTime>
+      <publishTime>03/26/2018 16:24:54</publishTime>
     </File>
     <File Include="bin/System.Web.Entity.dll">
-      <publishTime>11/05/2015 20:36:48</publishTime>
+      <publishTime>03/26/2018 16:24:54</publishTime>
     </File>
     <File Include="bin/System.Web.Mobile.dll">
-      <publishTime>11/05/2015 20:36:48</publishTime>
+      <publishTime>03/26/2018 16:24:54</publishTime>
     </File>
     <File Include="bin/System.Web.Services.dll">
-      <publishTime>11/05/2015 20:36:48</publishTime>
+      <publishTime>03/26/2018 16:24:54</publishTime>
     </File>
     <File Include="bin/System.Xml.dll">
-      <publishTime>11/05/2015 20:36:48</publishTime>
+      <publishTime>03/26/2018 16:24:54</publishTime>
     </File>
     <File Include="bin/zh-CHS/Microsoft.ReportViewer.Common.resources.dll">
       <publishTime>03/04/2022 13:08:56</publishTime>
@@ -59954,7 +59954,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:43</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>03/04/2022 17:50:38</publishTime>
+      <publishTime>03/11/2022 13:34:43</publishTime>
     </File>
     <File Include="ReporteDataSer.xsc">
       <publishTime>03/04/2022 13:08:43</publishTime>
@@ -60248,7 +60248,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:43</publishTime>
     </File>
     <File Include="UserControls/Eventos/EventosEIncidentes.ascx">
-      <publishTime>03/04/2022 13:08:43</publishTime>
+      <publishTime>03/11/2022 16:57:22</publishTime>
     </File>
     <File Include="UserControls/Eventos/EventosVsUsuario.ascx">
       <publishTime>03/04/2022 13:08:43</publishTime>
@@ -60896,10 +60896,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:44</publishTime>
     </File>
     <File Include="UserControls/Riesgos/Riesgos.ascx">
-      <publishTime>03/05/2022 09:20:37</publishTime>
+      <publishTime>03/11/2022 16:57:22</publishTime>
     </File>
     <File Include="UserControls/Riesgos/Seguimiento/SeguimientoRiesgoIndicador.ascx">
-      <publishTime>03/11/2022 12:48:09</publishTime>
+      <publishTime>03/11/2022 14:43:50</publishTime>
     </File>
     <File Include="UserControls/Riesgos/Tratamientos.ascx">
       <publishTime>03/04/2022 13:08:44</publishTime>
@@ -61052,7 +61052,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:44</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/05/2022 09:34:51</publishTime>
+      <publishTime>03/11/2022 17:25:48</publishTime>
     </File>
   </ItemGroup>
 </Project>
