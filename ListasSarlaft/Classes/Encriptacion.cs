@@ -29,6 +29,7 @@ namespace ListasSarlaft.Classes
             long j = 0;
             // Put input string in temporary byte array
             Encoding encTexto = Encoding.Default;
+           // Encoding encTexto1 = Encoding;
             #endregion Variables
 
             try

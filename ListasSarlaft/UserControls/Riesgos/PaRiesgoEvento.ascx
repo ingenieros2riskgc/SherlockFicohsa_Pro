@@ -521,7 +521,7 @@
                         <table id="TbRegistrarPlan" style="margin-left: 13%;" runat="server" visible="false">
                             <tr>
                                 <td>
-                                    <asp:TabContainer ID="TcPrincipal" runat="server" ActiveTabIndex="3" Font-Names="Calibri"
+                                    <asp:TabContainer ID="TcPrincipal" runat="server" ActiveTabIndex="0" Font-Names="Calibri"
                                         Font-Size="Small" Width="900px">
                                         <asp:TabPanel ID="tpPlanes" runat="server" HeaderText="Planes" Font-Names="Calibri" Font-Size="Small">
                                             <HeaderTemplate>
@@ -542,7 +542,7 @@
                                                             <asp:Label ID="Label142" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Nombre Plan"></asp:Label>
                                                         </td>
                                                         <td bgcolor="#f0eef0">
-                                                            <asp:TextBox ID="NombrePlan" runat="server" placeholder="Nombre del Plan"></asp:TextBox>
+                                                            <asp:TextBox ID="NombrePlan" runat="server" placeholder="Nombre del Plan" Height="23px" MaxLength="1000" TextMode="MultiLine" Width="447px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="rv2" runat="server" ControlToValidate="NombrePlan" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
                                                         </td>
                                                     </tr>
