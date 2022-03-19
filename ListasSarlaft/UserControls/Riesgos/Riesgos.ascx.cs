@@ -787,6 +787,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                             LoadDDLProbabilidad();
                             loadDDLImpacto();
                             //loadLBCadenaValor();
+                            loadDDLRiesgoTecnologico();
                             loadGridRiesgos();
                             loadInfoCalificacionControl();
                             //Camilo 12/02/2014
@@ -817,6 +818,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                             loadDDLAreas();
                             LoadDDLProbabilidad();
                             loadDDLImpacto();
+                            loadDDLRiesgoTecnologico();
                             //loadLBCadenaValor();
                             loadGridRiesgos();
                             loadInfoCalificacionControl();
@@ -865,7 +867,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                             }
                         }
 
-                        loadDDLRiesgoTecnologico();
+                        
                     }
                 }
             }
@@ -6256,6 +6258,112 @@ namespace ListasSarlaft.UserControls.Riesgos
             resetValuesJustificacionPlanAccion();
         }
 
+        //private void resetValuesAgregarRiesgo()
+        //{
+        //    #region DROPDOWNS
+        //    DropDownList41.SelectedIndex = 0;
+        //    DropDownList42.Items.Clear();
+        //    DropDownList42.Items.Insert(0, new ListItem("---", "---"));
+        //    DropDownList43.Items.Clear();
+        //    DropDownList43.Items.Insert(0, new ListItem("---", "---"));
+        //    DropDownList44.Items.Clear();
+        //    DropDownList44.Items.Insert(0, new ListItem("---", "---"));
+        //    DropDownList63.Items.Clear();
+        //    DropDownList63.Items.Insert(0, new ListItem("---", "---"));
+        //    DropDownList67.SelectedIndex = 0;
+        //    DropDownList9.Items.Clear();
+        //    DropDownList9.Items.Insert(0, new ListItem("---", "---"));
+        //    DropDownList10.Items.Clear();
+        //    DropDownList10.Items.Insert(0, new ListItem("---", "0"));
+        //    DropDownList6.Items.Clear();
+        //    DropDownList6.Items.Insert(0, new ListItem("---", "0"));
+        //    DropDownList11.Items.Clear();
+        //    DropDownList11.Items.Insert(0, new ListItem("---", "0"));
+        //    DDLRiesgosGlobales.SelectedIndex = 0;
+        //    DropDownList2.Items.Clear();
+        //    DropDownList2.Items.Insert(0, new ListItem("---", "0"));
+        //    DropDownList3.Items.Clear();
+        //    DropDownList3.Items.Insert(0, new ListItem("---", "0"));
+        //    cbEstado.Items.Clear();
+        //    cbEstado.Items.Insert(0, new ListItem("---", "0"));
+        //    cbEstadoRiesgo.Items.Clear();
+        //    cbEstadoRiesgo.Items.Insert(0, new ListItem("---", "0"));
+        //    DDLFactorRO.Items.Clear();
+        //    DDLFactorRO.Items.Insert(0, new ListItem("---", "0"));
+
+        //    #endregion DROPDOWNS
+
+        //    #region CHECKBOXLISTS
+
+        //    for (int i = 0; i < CheckBoxList1.Items.Count; i++)
+        //    {
+        //        CheckBoxList1.Items[i].Selected = false;
+        //    }
+        //    for (int i = 0; i < CheckBoxList2.Items.Count; i++)
+        //    {
+        //        CheckBoxList2.Items[i].Selected = false;
+        //    }
+        //    for (int i = 0; i < CheckBoxList9.Items.Count; i++)
+        //    {
+        //        CheckBoxList9.Items[i].Selected = false;
+        //        cuantosCheckTratamiento++;
+        //    }
+        //    #endregion CHECKBOXLISTS
+
+        //    lblIdDependencia2.Text = "";
+        //    lblIdDependencia2.Visible = false;
+        //    DropDownList45.SelectedIndex = 0;
+        //    DropDownList46.SelectedIndex = 0;
+        //    TextBox8.Text = "";
+        //    TextBox9.Text = "";
+        //    TextBox1.Text = "";
+        //    TextBox20.Text = "";
+        //    TextBox40.Text = "";
+        //    TextBox41.Text = "";
+        //    TextBox42.Text = "";
+        //    TextBox43.Text = "";
+        //    txtResponsableT.Text = "";
+        //    Label174.Text = "";
+        //    Panel1.BackColor = System.Drawing.Color.FromName("Transparent");
+        //    tbGridRiesgos.Visible = true;
+        //    tbModificarRiesgo.Visible = false;
+        //    tbAgregarRiesgo.Visible = false;
+
+        //    #region TREEVIEWS
+        //    if (TreeView1.SelectedNode != null)
+        //    {
+        //        TreeView1.SelectedNode.Selected = false;
+        //    }
+
+        //    if (TreeView2.SelectedNode != null)
+        //    {
+        //        TreeView2.SelectedNode.Selected = false;
+        //    }
+
+        //    if (TreeView3.SelectedNode != null)
+        //    {
+        //        TreeView3.SelectedNode.Selected = false;
+        //    }
+
+        //    if (TreeView4.SelectedNode != null)
+        //    {
+        //        TreeView4.SelectedNode.Selected = false;
+        //    }
+
+        //    if (TreeView5.SelectedNode != null)
+        //    {
+        //        TreeView5.SelectedNode.Selected = false;
+        //    }
+
+        //    if (TreeView6.SelectedNode != null)
+        //    {
+        //        TreeView6.SelectedNode.Selected = false;
+        //    }
+        //    #endregion TREEVIEWS
+
+        //    LoadCBEstados();
+        //}
+
         private void resetValuesAgregarRiesgo()
         {
             #region DROPDOWNS
@@ -6286,8 +6394,8 @@ namespace ListasSarlaft.UserControls.Riesgos
             cbEstado.Items.Insert(0, new ListItem("---", "0"));
             cbEstadoRiesgo.Items.Clear();
             cbEstadoRiesgo.Items.Insert(0, new ListItem("---", "0"));
-            DDLFactorRO.Items.Clear();
-            DDLFactorRO.Items.Insert(0, new ListItem("---", "0"));
+            DDLFactorRO.SelectedIndex = 0;
+
 
             #endregion DROPDOWNS
 
@@ -6361,6 +6469,7 @@ namespace ListasSarlaft.UserControls.Riesgos
 
             LoadCBEstados();
         }
+
 
         private void resetValuesModificarRiesgo()
         {

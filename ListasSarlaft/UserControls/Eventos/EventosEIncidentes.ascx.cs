@@ -504,6 +504,10 @@ namespace ListasSarlaft.UserControls.Eventos
                     TBNRiesgoPrevio.Text = "";
                 }
             }
+            catch (FormatException)
+            {
+                ShowMessage($"Error al consultar la criticidad del riesgo: uno de los valores no es un numero", 1, "Atención");
+            }
             catch (Exception ex)
             {
                 ShowMessage($"Error cargando la criticidad del riesgo: {ex}", 1, "Atención");
@@ -534,6 +538,10 @@ namespace ListasSarlaft.UserControls.Eventos
                         TBSeveridadPrevia.Text = "";
                         TBNRiesgoPrevio.Text = "";
                     }
+                }
+                catch (FormatException)
+                {
+                    ShowMessage($"Error al consultar la criticidad del riesgo: uno de los valores no es un numero", 1, "Atención");
                 }
                 catch (Exception ex)
                 {
@@ -572,6 +580,10 @@ namespace ListasSarlaft.UserControls.Eventos
                     DDLCriticidadFrecuencia.SelectedValue = cEvsEIncs.ConsultarDescFrecuencia(IdTipoRiesgo, ValorFrecuencia);
             }
             catch (IndexOutOfRangeException) { DDLCriticidadFrecuencia.SelectedValue = "4"; }
+            catch (FormatException)
+            {
+                ShowMessage($"Error al consultar Frecuencia (Límite específico): uno de los valores no es un numero", 1, "Atención");
+            }
             catch (Exception ex)
             {
                 ShowMessage($"Error al consultar Frecuencia (Límite específico): {ex}", 1, "Atención");
@@ -581,11 +593,16 @@ namespace ListasSarlaft.UserControls.Eventos
         {
             try
             {
+                PageValidateFirstMounts(true);
                 string IdTipoRiesgo = DDLTipoRiesgo.SelectedValue.ToString();
                 string MontoExposicion = TBMontoExposicion.Text.Trim().Replace(',', '.');
 
                 if (!IdTipoRiesgo.Equals("0") && !MontoExposicion.Equals(""))
                     DDLCriticidadSeveridad.SelectedValue = cEvsEIncs.ConsultarDescSeveridad(IdTipoRiesgo, MontoExposicion);
+            }
+            catch (FormatException)
+            {
+                ShowMessage($"Error al consultar Severidad (Límite específico): uno de los valores no es un numero", 1, "Atención");
             }
             catch (IndexOutOfRangeException) { DDLCriticidadSeveridad.SelectedValue = "4"; }
             catch (Exception ex)
@@ -659,6 +676,10 @@ namespace ListasSarlaft.UserControls.Eventos
                 if (DDLCausaRiesgoUno.SelectedValue != "")
                     loadDDLCausaRiesgoDos();
 
+            }
+            catch (FormatException)
+            {
+                ShowMessage($"Error al evaluar uno de los valores, no es número: 'Valor de Frecuencia no es un número entero'", 1, "Atención");
             }
             catch (Exception ex)
             {
@@ -758,6 +779,10 @@ namespace ListasSarlaft.UserControls.Eventos
                 ConsultarDescSeveridad();
                 ConsultarDescFrecuencia();
                 LoadMedicionRiesgo(DDLCriticidadFrecuencia.SelectedItem.ToString(), DDLCriticidadSeveridad.SelectedItem.ToString(), TBNRiesgoEspecifico);
+            }
+            catch (FormatException ex)
+            {
+                ShowMessage($"Error al evaluar uno de los valores, no es número: 'Valor de Frecuencia no es un número entero'", 1, "Atención");
             }
             catch (Exception ex)
             {
@@ -876,8 +901,9 @@ namespace ListasSarlaft.UserControls.Eventos
             try
             {
                 ShowMessage($"Calculando criticidad de la severidad...", 2, "Atención");
+                PageValidateFirstMounts();
 
-                PageValidate_AddneRCamposDecimal();
+               // PageValidate_AddneRCamposDecimal();
 
                 string criticidad = cEvsEIncs.ConsultarCriticidadSv(TBMontoExposicion.Text.Replace(',', '.'));
                 
@@ -1589,10 +1615,42 @@ namespace ListasSarlaft.UserControls.Eventos
                     DDLTipoRiesgo.Items.Insert(i + 1, new ListItem(dtInfoRow["TipoRiesgo"].ToString().Trim(), dtInfoRow["IdTipoRiesgo"].ToString()));
                 }
             }
+            catch (FormatException)
+            {
+                ShowMessage($"Error al evaluar la criticidad de la severidad: 'Monto Bruto de Exposición no es un número válido'", 1, "Atención");
+            }
             catch (Exception ex)
             {
                 throw (ex);
             }
+        }
+        private void PageValidateFirstMounts(bool bSeveridad = false)
+        {
+            var AddneDecimal = new Dictionary<string, string>();
+
+            if (!bSeveridad)
+            {
+                AddneDecimal.Add("Monto Bruto de Exposición Inicial", TBMontoBruto.Text.Trim());
+            }
+            AddneDecimal.Add("Monto Bruto de Exposición", TBMontoExposicion.Text.Trim());
+            loopGroupDecimal(AddneDecimal, @"^\d+$|^\d+[,{1}]\d{2}$", "Entero/Decimal (Ej. 1,00)");
+        }
+
+        private void PageValidate_AddneCamposDecimal()
+        {
+            PageValidateFirstMounts();
+
+            var AddneEntero = new Dictionary<string, string>();
+            AddneEntero.Add("Número de Eventos(Frecuencia)", TBValorFrecuencia.Text.Trim());
+            loopGroupDecimal(AddneEntero, @"^\d+$", "Entero");
+
+            //Montos mayores que 0.01
+            if (Convert.ToDouble(TBMontoBruto.Text.Trim()) < 0.01 || Convert.ToDouble(TBMontoExposicion.Text.Trim()) < 0.01)
+                throw new Exception($"Los campos de 'Monto Bruto de Exposición Inicial' y 'Monto Bruto de Exposición' deben ser mayores que 0.01");
+
+            //Frecuencia mayor que 0
+            if (Convert.ToDouble(TBValorFrecuencia.Text.Trim()) < 1)
+                throw new Exception($"El campo de 'Número de Eventos(Frecuencia)' debe ser mayor/igual a 1");
         }
 
         private void loadDDLProductoAfectado()
@@ -3149,26 +3207,8 @@ namespace ListasSarlaft.UserControls.Eventos
             }
         }
 
-        private void PageValidate_AddneCamposDecimal()
-        {
-            var AddneDecimal = new Dictionary<string, string>();
+      
 
-            AddneDecimal.Add("Monto Bruto de Exposición Inicial", TBMontoBruto.Text.Trim());
-            AddneDecimal.Add("Monto Bruto de Exposición", TBMontoExposicion.Text.Trim());
-            loopGroupDecimal(AddneDecimal, @"^\d+$|^\d+[,{1}]\d{2}$", "Entero/Decimal (Ej. 1,00)");
-
-            var AddneEntero = new Dictionary<string, string>();
-            AddneEntero.Add("Número de Eventos(Frecuencia)", TBValorFrecuencia.Text.Trim());
-            loopGroupDecimal(AddneEntero, @"^\d+$", "Entero");
-
-            //Montos mayores que 0.01
-            if (Convert.ToDouble(TBMontoBruto.Text.Trim()) < 0.01 || Convert.ToDouble(TBMontoExposicion.Text.Trim()) < 0.01)
-                throw new Exception($"Los campos de 'Monto Bruto de Exposición Inicial' y 'Monto Bruto de Exposición' deben ser mayores que 0.01");
-
-            //Frecuencia mayor que 0
-            if (Convert.ToDouble(TBValorFrecuencia.Text.Trim()) < 1)
-                throw new Exception($"El campo de 'Número de Eventos(Frecuencia)' debe ser mayor/igual a 1");
-        }
 
         private void PageValidate_AddneRCamposDecimal()
         {
