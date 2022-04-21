@@ -1017,7 +1017,7 @@
                            </tr>
                            <tr>
                               <td align="center">
-                                 <asp:TabContainer ID="TabContainer16" runat="server" ActiveTabIndex="0" Font-Names="Calibri" Font-Size="Small" Width="888px" aling="left" AutoPostBack="true" style="margin-bottom: 0px;">
+                                 <asp:TabContainer ID="TabContainer16" runat="server" ActiveTabIndex="1" Font-Names="Calibri" Font-Size="Small" Width="888px" aling="left" AutoPostBack="true" style="margin-bottom: 0px;">
                                      <asp:TabPanel ID="TabPanel7" runat="server" HeaderText="PDA" Font-Names="Calibri" Font-Size="Small">
                                        <HeaderTemplate>
                                           Documentos Adjuntos

@@ -1317,7 +1317,7 @@ namespace ListasSarlaft.UserControls.Eventos
             DDLBSubproceso.Items.Insert(0, new ListItem("---", "0"));
             DDLBActividad.Items.Insert(0, new ListItem("---", "0"));
 
-            loadInitialData();
+            loadInitialData2();
 
             TBBCodigoRiesgo.Text = "";
             TBBNombreRiesgo.Text = "";
@@ -1358,7 +1358,7 @@ namespace ListasSarlaft.UserControls.Eventos
 
             TBBPONombre.Text = "";
 
-            loadInitialData();
+            loadInitialData2();
             GVProcesoO_reload();
         }
 
@@ -1395,7 +1395,7 @@ namespace ListasSarlaft.UserControls.Eventos
 
             TBBPANombre.Text = "";
 
-            loadInitialData();
+            loadInitialData2();
             GVProcesoA_reload();
         }
 
@@ -1413,6 +1413,32 @@ namespace ListasSarlaft.UserControls.Eventos
         #endregion Buttons
 
         #region Loads
+
+        private void loadInitialData2()
+        {
+            try
+            {
+                loadDDLCuentasPerdida();
+                loadDDLFuenteReporte();
+                loadDDLRiesgoGlobal();
+                loadDDLEstadoReporte();
+                loadDDLCodigoBanco();
+                loadDDLCategoria();
+                //loadDDLModalidad();
+                loadDescripcionLineas();
+                //loadDDLTipoRiesgo();
+                loadDDLProductoAfectado();
+                loadDDLsDescFrecuencia();
+                loadDDLsDescSeveridad();
+                loadDDLBCadenaValor();
+                loadDDLBPMacroproceso();
+                loadDDLEstatus();
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Error al cargar información inicial: {ex}", 1, "Atención");
+            }
+        }
 
         private void loadInitialData()
         {
