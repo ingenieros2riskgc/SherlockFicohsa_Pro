@@ -964,8 +964,8 @@ namespace ListasSarlaft.UserControls.Riesgos
                         objPlanes.Estado = colsNoVisible[1].ToString();
                         int Transaccion = 2;
                         RegistrarPlan(ref objPlanes, Transaccion, estadoPlan); // Cargo los campos básicos
-                                                                   //EstadoPlan.Items.Clear();
-                                                                   //mtdCargarEstadosPlanAccion();
+                                                                               //EstadoPlan.Items.Clear();
+                                                                               //mtdCargarEstadosPlanAccion();
                         TbRegistrarPlan.Visible = true;
                         TcPrincipal.ActiveTabIndex = 0;
                         CodigoPlan.Focus();
@@ -995,12 +995,12 @@ namespace ListasSarlaft.UserControls.Riesgos
                         //EstadoPlan.Items.Clear();
                         //mtdCargarEstadosPlanAccion();
                         string codigoPlan = objPlanes.Codigo;
-                        
+
                         PDARiesgoGLobal.Items.Clear();
                         mtdCargarRoesgosGlobales();
                         DataTable dt1 = mtdCargarPlan(codigoPlan);
                         PDARiesgoGLobal.SelectedItem.Text = dt1.Rows[0]["RiesgoGlobal"].ToString().Trim();
-                        
+
                         int trans = 8;
                         TcPrincipal.ActiveTabIndex = 0;
                         string script = @"<script type='text/javascript'>FocusPeriodo(" + trans + ");" + "</script>";
@@ -1182,7 +1182,7 @@ namespace ListasSarlaft.UserControls.Riesgos
         protected void GvSeguimiento_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             // Para los adjuntos nada mas
-            
+
         }
 
         // Aceptar - Guardar todo
@@ -1222,7 +1222,9 @@ namespace ListasSarlaft.UserControls.Riesgos
                         DataTable dt = mtdconsultaResponsable(objPlanes.Codigo);
                         objPlanes.IdDependencia = dt.Rows[0]["IdResponsable"].ToString();
                     }
-                }else{
+                }
+                else
+                {
                     objPlanes.IdDependencia = lblIdDependencia.Text;
                 }
 
@@ -2026,7 +2028,7 @@ namespace ListasSarlaft.UserControls.Riesgos
         }
         #endregion
 
-       
+
         protected void CargarArchivo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -3156,15 +3158,15 @@ namespace ListasSarlaft.UserControls.Riesgos
                     RequiereFechaCierre = row["RequiereFechaCierre"].ToString().Trim();
                 }
 
-                selectCommand = "SELECT  Parametrizacion.DetalleJerarquiaOrg.CorreoResponsable FROM Parametrizacion.JerarquiaOrganizacional LEFT JOIN Parametrizacion.DetalleJerarquiaOrg ON Parametrizacion.JerarquiaOrganizacional.idHijo = Parametrizacion.DetalleJerarquiaOrg.idHijo where Parametrizacion.JerarquiaOrganizacional.NombreHijo='" + Responsable.Text+ "'"; 
-                 dad = new SqlDataAdapter(selectCommand, conString);
-                 dtblDiscuss = new DataTable();
+                selectCommand = "SELECT  Parametrizacion.DetalleJerarquiaOrg.CorreoResponsable FROM Parametrizacion.JerarquiaOrganizacional LEFT JOIN Parametrizacion.DetalleJerarquiaOrg ON Parametrizacion.JerarquiaOrganizacional.idHijo = Parametrizacion.DetalleJerarquiaOrg.idHijo where Parametrizacion.JerarquiaOrganizacional.NombreHijo='" + Responsable.Text + "'";
+                dad = new SqlDataAdapter(selectCommand, conString);
+                dtblDiscuss = new DataTable();
                 dad.Fill(dtblDiscuss);
                 view = new DataView(dtblDiscuss);
 
                 foreach (DataRowView row in view)
                 {
-                    Copia =Copia+", "+ row["CorreoResponsable"].ToString().Trim();            
+                    Copia = Copia + ", " + row["CorreoResponsable"].ToString().Trim();
                 }
 
 
@@ -3419,7 +3421,7 @@ namespace ListasSarlaft.UserControls.Riesgos
 
         protected void IBconsultar_Click(object sender, ImageClickEventArgs e)
         {
-            
+
             string strErrMsg = string.Empty;
 
             int IdAreaInt = 0;
@@ -3491,7 +3493,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             { listaPlanes = null; }
 
             CargaPlanesFiltro(listaPlanes);
-            
+
             GvPlanesFiltro.DataSource = listaPlanes;
             GvPlanesFiltro.PageIndex = pagIndexPlanes;
             GvPlanesFiltro.DataBind();

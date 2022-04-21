@@ -1005,6 +1005,8 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList3.SelectedIndex = 0;
             DropDownList4.SelectedIndex = 0;
             DDLareas.ClearSelection();
+            DDLProductoAfectado.ClearSelection();
+            DDLActivoAfectado.ClearSelection();
             cbEstado.ClearSelection();
             ReporteModRiesgos.Visible = false;
             ReporteCausasSinControl.Visible = false;
@@ -1397,15 +1399,11 @@ namespace ListasSarlaft.UserControls.Riesgos
                 if (dtInfo.Rows.Count > 0)
                 {
                     #region Recorrido para llenar informacion
-                    string NombreResponsableControlEjecucion = string.Empty, CodigoControl = string.Empty, Activo = string.Empty, Producto = string.Empty;
+                    string NombreResponsableControlEjecucion = string.Empty, Activo = string.Empty, Producto = string.Empty;
                     for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                     {
                         if (dtInfo != null)
                         {
-                            if (dtInfo.Rows[rows]["CodigoControl"].ToString().Trim() == "")
-                                CodigoControl = "Sin Control Asociado";
-                            else
-                                CodigoControl = dtInfo.Rows[rows]["CodigoControl"].ToString().Trim();
 
                             InfoGridReporteRiesgosControles.Rows.Add(new Object[] {
                             dtInfo.Rows[rows]["CodigoRiesgo"].ToString().Trim(),
@@ -1448,7 +1446,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                             dtInfo.Rows[rows]["Códigos Tipo Activo"].ToString().Trim(),
                             dtInfo.Rows[rows]["Códigos Activo Afectado"].ToString().Trim(),
                             dtInfo.Rows[rows]["Códigos Dimensión Valoración"].ToString().Trim(),
-                            CodigoControl,
+                            dtInfo.Rows[rows]["CodigoControl"].ToString().Trim(),
                             dtInfo.Rows[rows]["NombreControl"].ToString().Trim(),
                             Server.HtmlDecode(dtInfo.Rows[rows]["DescripcionControl"].ToString().Trim()),
                             NombreResponsableControlEjecucion = mtdBuscarNombresRespEjecucion(dtInfo.Rows[rows]["ResponsableControlEjecucion"].ToString().Trim()),

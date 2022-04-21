@@ -486,7 +486,7 @@
                         <table id="tbModificarRiesgo" runat="server" visible="false">
                            <tr>
                               <td>
-                                 <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="7" Font-Names="Calibri"
+                                 <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Font-Names="Calibri"
                                     Font-Size="Small" Width="900px">
                                     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Riesgo" Font-Names="Calibri"
                                        Font-Size="Small">
@@ -762,8 +762,8 @@
                                                                   Font-Size="Small">
                                                                   <asp:ListItem Value="0">---</asp:ListItem>
                                                                </asp:DropDownList>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator38" runat="server" ControlToValidate="DropDownList57"
-                                                      InitialValue="---" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
+                                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator38" runat="server" ControlToValidate="DropDownList57"
+                                                                InitialValue="---" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
                                                             </td>
                                                          </tr>
                                                          <tr id="tr14" runat="server">
@@ -785,7 +785,7 @@
                                                                <table id="TbConMultiple" runat="server" align="center">
                                                                   <tr runat="server">
                                                                      <td align="center" runat="server">
-                                                                        <asp:TabContainer ID="TabContainerMultiple" runat="server" ActiveTabIndex="1" Font-Names="Calibri" Font-Size="Small" Width="855px" aling="left" AutoPostBack="True" style="margin-bottom: 0px;">
+                                                                        <asp:TabContainer ID="TabContainerMultiple" runat="server" ActiveTabIndex="2" Font-Names="Calibri" Font-Size="Small" Width="855px" aling="left" AutoPostBack="True" style="margin-bottom: 0px;">
                                                                            <asp:TabPanel ID="TabPanelLineasdeNegocio"  runat="server" HeaderText="Líneas de Negocio" Font-Names="Calibri" Font-Size="Small">
                                                                               <HeaderTemplate>
                                                                                  Líneas de Negocio
@@ -3505,12 +3505,12 @@
                                                       Font-Size="Small"></asp:Label>
                                                 </td>
                                                 <td bgcolor="#f0eef0">
-                                                   <asp:DropDownList ID="DropDownList2" runat="server" Width="455px" AutoPostBack="True"
-                                                      Font-Names="Calibri" Font-Size="Small" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
+                                                   <asp:DropDownList ID="DropDownList2" runat="server" Font-Names="Calibri" Font-Size="Small"
+                                                      Width="400px" CssClass="auto-style7"  AutoPostBack="True" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
                                                       <asp:ListItem Value="0">---</asp:ListItem>
                                                    </asp:DropDownList>
                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ControlToValidate="DropDownList2"
-                                                      InitialValue="---" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
+                                                      InitialValue="0" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
                                                 </td>
                                              </tr>
                                              <tr align="left">
@@ -3520,16 +3520,16 @@
                                                 </td>
                                                 <td bgcolor="#f0eef0">
                                                    <asp:DropDownList ID="DropDownList3" runat="server" Width="455px" Font-Names="Calibri"
-                                                      Font-Size="Small">
+                                                      Font-Size="Small" CssClass="auto-style7">
                                                       <asp:ListItem Value="0">---</asp:ListItem>
                                                    </asp:DropDownList>
                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ControlToValidate="DropDownList3"
-                                                      InitialValue="---" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
+                                                      InitialValue="0" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
                                                 </td>
                                              </tr>
                                              <tr id="tr1" runat="server">
                                                 <td runat="server" class="auto-style8" bgcolor="#BBBBBB">
-                                                   <asp:Label ID="Label41" runat="server" Text="Factor RO" Font-Names="Calibri"
+                                                   <asp:Label ID="Label41" runat="server" Text="  Factor RO" Font-Names="Calibri"
                                                       Font-Size="Small"></asp:Label>
                                                 </td>
                                                 <td bgcolor="#EEEEEE" style="text-align: left;" runat="server">
@@ -3816,7 +3816,7 @@
                                                                   <ContentTemplate>
                                                                      <table>
                                                                         <tr align="Center">
-                                                                           <td colspan="2">
+                                                                           <td>
                                                                               <table id="Table15" runat="server" align="center">
                                                                                  <tr runat="server">
                                                                                     <td runat="server">
@@ -3860,7 +3860,7 @@
                                                                                        <asp:GridView ID="GVActivoAfectadoNuevo" runat="server" AutoGenerateColumns="False" CellPadding="4"
                                                                                           ForeColor="#333333" GridLines="Vertical" ShowHeaderWhenEmpty="True"
                                                                                           BorderStyle="Solid" HorizontalAlign="Justify" Font-Names="Calibri" Font-Size="Small"
-                                                                                          DataKeyNames="IdActivoAfectado,Activo, TipoActivo,FechaRegistro,Relacion" 
+                                                                                          DataKeyNames="IdActivoAfectado,Activo,TipoActivo,FechaRegistro,Relacion" 
                                                                                           OnPageIndexChanging="GVActivoAfectadoNuevo_PageIndexChanging"
                                                                                           OnRowCommand="GVActivoAfectadoNuevo_RowCommand"
                                                                                           AllowPaging="True" AllowSorting="True">
@@ -3934,7 +3934,7 @@
                                                                                        <asp:TextBox ID="TBAAFechaRegistroNuevo" Enabled="False" runat="server" Font-Names="Calibri" Font-Size="Small" TextMode="MultiLine" Width="194px" Height="22px"></asp:TextBox>
                                                                                     </td>
                                                                                  </tr>
-                                                                                 <tr>
+                                                                                 <tr runat="server">
                                                                                     <td align="center" bgcolor="#BBBBBB" runat="server">
                                                                                        <asp:Label ID="Label204" runat="server" Text="Asociar/Desasociar" Font-Names="Calibri" Font-Size="Small"></asp:Label>
                                                                                     </td>

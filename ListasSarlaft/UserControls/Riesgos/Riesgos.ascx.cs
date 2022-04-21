@@ -786,6 +786,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                             loadDDLAreas();
                             LoadDDLProbabilidad();
                             loadDDLImpacto();
+                            loadDDLRiesgoTecnologico();
                             //loadLBCadenaValor();
                             loadGridRiesgos();
                             loadInfoCalificacionControl();
@@ -817,6 +818,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                             loadDDLAreas();
                             LoadDDLProbabilidad();
                             loadDDLImpacto();
+                            loadDDLRiesgoTecnologico();
                             //loadLBCadenaValor();
                             loadGridRiesgos();
                             loadInfoCalificacionControl();
@@ -864,8 +866,6 @@ namespace ListasSarlaft.UserControls.Riesgos
                                 Mensaje1("El riesgo está anulado");
                             }
                         }
-
-                        loadDDLRiesgoTecnologico();
                     }
                 }
             }
@@ -3022,12 +3022,12 @@ namespace ListasSarlaft.UserControls.Riesgos
             if (LCodRiesgo.Text != "")
             {
                 dtInfo = cRiesgo.loadInfoRiesgos(
-                    Sanitizer.GetSafeHtmlFragment(LCodRiesgo.Text.Trim()), 
-                    Sanitizer.GetSafeHtmlFragment(TextBox17.Text.Trim()), 
-                    DropDownList19.SelectedValue.ToString().Trim(), 
-                    DropDownList20.SelectedValue.ToString().Trim(), 
-                    DropDownList21.SelectedValue.ToString().Trim(), 
-                    DropDownList22.SelectedValue.ToString().Trim(), 
+                    Sanitizer.GetSafeHtmlFragment(LCodRiesgo.Text.Trim()),
+                    Sanitizer.GetSafeHtmlFragment(TextBox17.Text.Trim()),
+                    DropDownList19.SelectedValue.ToString().Trim(),
+                    DropDownList20.SelectedValue.ToString().Trim(),
+                    DropDownList21.SelectedValue.ToString().Trim(),
+                    DropDownList22.SelectedValue.ToString().Trim(),
                     DropDownList4.SelectedValue.ToString().Trim(), DDLAreas.SelectedValue.ToString().Trim(), "");
             }
             else
@@ -3078,10 +3078,10 @@ namespace ListasSarlaft.UserControls.Riesgos
                                                            dtInfo.Rows[rows]["idResponsableTratamiento"].ToString().Trim(),
                                                            dtInfo.Rows[rows]["Estado"].ToString().Trim(),
                                                            dtInfo.Rows[rows]["TipoMedicion"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdActivoAfectado"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdFactorRO"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdTipoActivo"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdDimensiones"].ToString().Trim(),
+                                                           dtInfo.Rows[rows]["IdActivoAfectado"].ToString().Trim(),
+                                                           dtInfo.Rows[rows]["IdFactorRO"].ToString().Trim(),
+                                                           dtInfo.Rows[rows]["IdTipoActivo"].ToString().Trim(),
+                                                           dtInfo.Rows[rows]["IdDimensiones"].ToString().Trim(),
                                                           });
                 }
                 GridView1.PageIndex = PagIndexInfoGridRiesgos;
@@ -4606,7 +4606,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                         string IdRiesgo = colsNoVisible[0].ToString();
                         mtdLoadGridAudRiesgoControl();
                         mtdLoadInfoAudRiesgoControl1(IdRiesgo);
-                        
+
 
                         string IdProbabilidad = InfoGridRiesgos.Rows[RowGridRiesgos]["IdProbabilidad"].ToString().Trim();
                         string IdImpacto = InfoGridRiesgos.Rows[RowGridRiesgos]["IdImpacto"].ToString().Trim();
@@ -6286,8 +6286,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             cbEstado.Items.Insert(0, new ListItem("---", "0"));
             cbEstadoRiesgo.Items.Clear();
             cbEstadoRiesgo.Items.Insert(0, new ListItem("---", "0"));
-            DDLFactorRO.Items.Clear();
-            DDLFactorRO.Items.Insert(0, new ListItem("---", "0"));
+            DDLFactorRO.SelectedIndex = 0;
 
             #endregion DROPDOWNS
 
@@ -9503,7 +9502,7 @@ namespace ListasSarlaft.UserControls.Riesgos
         private void MtdLoadIndicadoresVsRiesgo()
         {
             DataTable grid = new DataTable();
-            
+
             grid.Columns.Add("strNombreIndicador", typeof(string));
             grid.Columns.Add("strObjetivoIndicador", typeof(string));
             grid.Columns.Add("strFrecuenciaMedicion", typeof(string));
@@ -9526,7 +9525,7 @@ namespace ListasSarlaft.UserControls.Riesgos
 
                 InfoGridIR.Rows.Add(new object[] {
                     objRiesgosIndicadores.strNombreIndicador.ToString().Trim(),
-                    objRiesgosIndicadores.strObjetivoIndicador.ToString().Trim(),                    
+                    objRiesgosIndicadores.strObjetivoIndicador.ToString().Trim(),
                     objRiesgosIndicadores.strFrecuenciaMedicion.ToString().Trim(),
                     objRiesgosIndicadores.dblResultado.ToString().Trim(),
                     objRiesgosIndicadores.strDescripcionSeguimiento.ToString().Trim(),
