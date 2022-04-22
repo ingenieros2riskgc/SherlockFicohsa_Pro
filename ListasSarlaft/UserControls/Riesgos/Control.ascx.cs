@@ -859,6 +859,23 @@ namespace ListasSarlaft.UserControls.Riesgos
 
         protected void ImageButton5_Click(object sender, ImageClickEventArgs e)
         {
+            if (TextBox2.Text.Contains("'") )
+            {
+                Mensaje("No se admite el caracter ' en el Nombre de información de control");
+               // omb.ShowMessage("No se admite el caracter ' en el Nombre de información de control", 1, "Atención");
+                return;
+            }
+            if (TextBox3.Text.Contains("'"))
+            {
+                Mensaje("No se admite caracter ' en la Descripcion de información de control");
+                return;
+            }
+            if (TextBox4.Text.Contains("'"))
+            {
+                Mensaje("No se admite caracter ' en el Objetivo de información de control");
+                return;
+            }
+
             ModificarControl();
         }
 
@@ -2692,6 +2709,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                         Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
                     else
                     {
+
                         actualizarPlanEvaluacion();
                         agregarComentarioPlanEvaluacion();
                         if (DropDownList7.SelectedItem.ToString().Trim() == "Cerrado")
@@ -2727,6 +2745,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                         Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
                     else
                     {
+
                         actualizarPlanEvaluacion();
                         agregarComentarioPlanEvaluacion();
                         if (DropDownList7.SelectedItem.ToString().Trim() == "Cerrado")
@@ -2770,6 +2789,9 @@ namespace ListasSarlaft.UserControls.Riesgos
                             Mensaje("Debe ingresar una fecha proyectada fin valida.");
                         else
                         {
+
+
+
                             int IdRegistro = mtdAgregarPlanEvaluacion();
                             boolEnviarNotificacion(8, IdRegistro, Convert.ToInt16(lblIdDependencia2.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox6.Text.Trim()) + " 12:00:00:000",
                                 "Fecha Inicio: " + Sanitizer.GetSafeHtmlFragment(TextBox5.Text.Trim()) +
