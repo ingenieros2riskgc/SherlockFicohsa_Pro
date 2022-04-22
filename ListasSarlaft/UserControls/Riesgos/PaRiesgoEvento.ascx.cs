@@ -1156,9 +1156,17 @@ namespace ListasSarlaft.UserControls.Riesgos
                         string Meta = colsNoVisible[1].ToString();
                         string Periodo = colsNoVisible[2].ToString();
 
+                        DateTime periodo2 = Convert.ToDateTime(colsNoVisible[2].ToString());
+                        string aux = periodo2.ToString("yyyy-MM-dd");
+
+
+                        
+
                         IdGestion = Convert.ToInt32(Id);
                         MetaGestion = Convert.ToInt32(Meta);
                         ModalMeta.Text = Meta + "%";
+                        Meta2.Text = Meta;
+                        Periodo2.Text = aux;
                         ModalGestion.Focus();
                         MPCumplimiento.Show();
 
@@ -3072,10 +3080,13 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 int CalculoCumplimiento = 0;
 
+                MetaGestion = Convert.ToInt32(Meta2.Text);
+
                 CalculoCumplimiento = (objPlanes.Gestion * MetaGestion) / 100;
                 if (CalculoCumplimiento <= 100)
                 {
-                    cRiesgo.GuardarGestion(IdGestion, objPlanes.Gestion, CalculoCumplimiento);
+                    //cRiesgo.GuardarGestion(IdGestion, objPlanes.Gestion, CalculoCumplimiento);
+                    cRiesgo.GuardarGestion2(IdGestion, objPlanes.Gestion, CalculoCumplimiento, Periodo2.Text, MetaGestion);
                     omb.ShowMessage("Se ha guardado la información satisfactoriamente!", 3, "Atención");
                     ModalGestion.Text = string.Empty;
                     GrillaCumplimiento();

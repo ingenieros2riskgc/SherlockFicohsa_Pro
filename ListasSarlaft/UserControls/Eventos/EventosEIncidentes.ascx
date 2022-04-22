@@ -357,7 +357,7 @@
                         <table id="TbConEventos" runat="server" visible="false" align="center">
                            <tr>
                               <td align="center">
-                                 <asp:TabContainer ID="TabContainerEventos" runat="server" ActiveTabIndex="0" Font-Names="Calibri" Font-Size="Small" Width="800px" aling="left" AutoPostBack="true" style="margin-bottom: 0px;">
+                                 <asp:TabContainer ID="TabContainerEventos" runat="server" ActiveTabIndex="2" Font-Names="Calibri" Font-Size="Small" Width="800px" aling="left" AutoPostBack="true" style="margin-bottom: 0px;">
                                     <asp:TabPanel ID="TabPanelCreaEvento"  runat="server" HeaderText="Creación Evento" Font-Names="Calibri" Font-Size="Small">
                                        <HeaderTemplate>
                                           Creación Evento
@@ -1166,8 +1166,17 @@
                                                          </asp:BoundField>
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/Literal.png" Text="Ver"
                                                             CommandName="Ver" />
-                                                         <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar"
+                                                                 <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/enlace.png" Text="DesEnlazar"
                                                             CommandName="DesEnlazar" />
+                <asp:TemplateField HeaderText="">
+                    <ItemTemplate>
+                     
+                                                                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" CommandName="DesEnlazar"
+                                                                                ImageUrl="~/Imagenes/Icons/enlace.png" Text="DesEnlazar" />
+              
+                                                                        </ItemTemplate>
+                   
+                </asp:TemplateField>
                                                       </Columns>
                                                       <EditRowStyle BackColor="#999999" />
                                                       <FooterStyle BackColor="#002649" Font-Bold="True" ForeColor="White" />

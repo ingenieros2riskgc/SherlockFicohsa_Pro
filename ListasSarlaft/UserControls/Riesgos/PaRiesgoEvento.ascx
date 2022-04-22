@@ -283,19 +283,14 @@
                                                                     <td bgcolor="#f0eef0">
                                                                         <asp:TextBox ID="Meta2" runat="server" autocomplete="off" Font-Names="Calibri" Font-Size="Small" MaxLength="3" onchange="SoloNumerosMaxCien(this);" onkeyup="SoloNumerosMaxCien(this);" placeholder="Meta" Width="150px"></asp:TextBox>
                                                                     </td>
-                                                                </tr>
-                                                                <tr class="pRiesgosAsociados" style="margin: 18px 0 7px 0;">
-                                                                    <td>
-                                                                        <asp:Label ID="Label6" runat="server" style="font-family:Calibri;font-size:Small;" Text="Indicadores Asociados "></asp:Label>
-                                                                    </td>
-                                                                </tr>
+                                                                </tr>                                                                
                                                             </table>
 
                 </div>
 
-                <div style="text-align: center; margin-top: 2%; margin-right: 25%;">
-                    <asp:Label ID="Label18" runat="server" Text="Meta:" Font-Names="Calibri" Font-Size="Small"></asp:Label>
-                    <asp:Label ID="ModalMeta" runat="server" Text="Meta" Font-Names="Calibri" Font-Size="Small" Font-Bold="true"></asp:Label>
+                <div style="text-align: center; margin-top: 2%; margin-right: 25%;>
+                    <asp:Label ID="Label18" runat="server" Text="Meta:" Font-Names="Calibri" Font-Size="Small" Visible="false"></asp:Label>
+                    <asp:Label ID="ModalMeta" runat="server" Text="Meta" Font-Names="Calibri" Font-Size="Small" Font-Bold="true" Visible="false"></asp:Label>
                 </div>
                 <div style="text-align: center; margin-top: 2%; margin-right: 25%;">
                     <asp:Label ID="MensajeModalCumplimiento" runat="server" Text="Gestión" Font-Names="Calibri" Font-Size="Small"></asp:Label>
