@@ -2881,14 +2881,22 @@ namespace ListasSarlaft.UserControls.Eventos
 
                 switch (e.CommandName)
                 {
-                    case "DesEnlazar":
-
+                    case "DesEnlazar":                    
+                        
+                          string idusuario= Session["IdUsuario"].ToString().Trim();
                         string IdPlan = colsNoVisible[0].ToString();
+                        string a1  = colsNoVisible[1].ToString();
+
+
                         cEvsEIncs.RelacionarPlanes(TBIdEvsEIncs.Text.ToString(), IdPlan);
-                        GVPlanes_reload();
+                        string justificacion = "Se a enlazado o desenlazado el id de plan: " + a1 + " al evento: "+ TBIdEvsEIncs.Text+".";
+                        cEvsEIncs.GuardarJustificacionanezaplan(TBIdEvsEIncs.Text.ToString(), justificacion, idusuario);
+                            GVPlanes_reload();
+                        loadInfoJustificacion();
 
-                        break;
-
+                            break;                        
+                       
+               
                     case "Ver":
 
                         ShowInfoPlanes(colsNoVisible);
@@ -2959,8 +2967,16 @@ namespace ListasSarlaft.UserControls.Eventos
                     case "DesEnlazar":
 
                         string IdProcesoOriginador = colsNoVisible[0].ToString();
+                        string a1 = colsNoVisible[1].ToString();
+
+                        string idusuario = Session["IdUsuario"].ToString().Trim();
+
+                        string justificacion = "Se a enlazado o desenlazado el proceso con id : " + a1 + " al evento: " + TBIdEvsEIncs.Text + ".";
+
                         cEvsEIncs.RelacionarProcesoOriginador(TBIdEvsEIncs.Text.ToString(), IdProcesoOriginador);
+                        cEvsEIncs.GuardarJustificacionanezaplan(TBIdEvsEIncs.Text.ToString(), justificacion, idusuario);
                         GVProcesoO_reload();
+                        loadInfoJustificacion();
 
                         break;
 
@@ -2996,7 +3012,12 @@ namespace ListasSarlaft.UserControls.Eventos
 
                             string IdProcesoAfectado = colsNoVisible[0].ToString();
                             cEvsEIncs.RelacionarProcesoAfectado(TBIdEvsEIncs.Text.ToString(), IdProcesoAfectado);
+                            string idusuario = Session["IdUsuario"].ToString().Trim();
+                            string a1 = colsNoVisible[1].ToString();
+                            string justificacion = "Se a enlazado o desenlazado el Proceso: " + a1 + " al evento: " + TBIdEvsEIncs.Text + ".";
+                            cEvsEIncs.GuardarJustificacionanezaplan(TBIdEvsEIncs.Text.ToString(), justificacion, idusuario);
                             GVProcesoA_reload();
+                            loadInfoJustificacion();
 
                             break;
 

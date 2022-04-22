@@ -208,6 +208,27 @@ namespace ListasSarlaft.Classes
             }
         }
 
+
+        public void GuardarJustificacionanezaplan(string IdEvsEIncs, string justificacion, string idusuario)
+        {
+            string Consulta = "";
+            try
+            {
+                Consulta = $"INSERT INTO Eventos.EvsEIncs_Justificacion VALUES ('{IdEvsEIncs}', '{justificacion}', '{DateNow}', '{idusuario}')";
+
+                cDataBase.conectar();
+                cDataBase.ejecutarConsulta(Consulta);
+                cDataBase.desconectar();
+            }
+            catch (Exception ex)
+            {
+                cDataBase.mtdDesconectarSql();
+                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
+                throw new Exception(ex.Message);
+            }
+        }
+
+
         public void RelacionarPlanes(string idEvsEIncs, string IdPlan)
         {
             try

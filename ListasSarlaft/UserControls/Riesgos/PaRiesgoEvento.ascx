@@ -127,6 +127,9 @@
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e3e3e3', endColorstr='#c9c9c9', GradientType=1 );
 
     }
+    .auto-style1 {
+        height: 34px;
+    }
 </style>
 
 <asp:SqlDataSource ID="SqlDataSource200" runat="server" ConnectionString="<%$ ConnectionStrings:Sherlock_TestConnectionString %>"
@@ -262,9 +265,32 @@
                 <asp:Image ID="Image2" runat="server" ImageUrl="~/Imagenes/Icons/icontexto-webdev-about.png" />
             </td>
             <td valign="middle" align="left">
-                <div style="text-align: center; margin-top: 2%; margin-right: 25%;">
-                    <asp:Label ID="Label18" runat="server" Text="Meta:" Font-Names="Calibri" Font-Size="Small"></asp:Label>
-                    <asp:Label ID="ModalMeta" runat="server" Text="Meta" Font-Names="Calibri" Font-Size="Small" Font-Bold="true"></asp:Label>
+                <div>
+                    <table align="Left">
+                                                                <tr>
+                                                                    <td align="center" bgcolor="#BBBBBB" style="width: 173px;">
+                                                                        <asp:Label ID="Label4" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Fecha Revisión"></asp:Label>
+                                                                    </td>
+                                                                    <td bgcolor="#f0eef0">
+                                                                        <asp:TextBox ID="Periodo2" runat="server" autocomplete="off" Font-Names="Calibri" Font-Size="Small" MaxLength="10" placeholder="AAAA/MM/dd" Width="150px"></asp:TextBox>
+                                                                        <asp:CalendarExtender ID="FehaPeriodoM" runat="server" BehaviorID="_content_FechaPeriodoM_CalendarExtender" Format="yyyy-MM-dd" TargetControlID="Periodo2" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr align="left">
+                                                                    <td align="center" bgcolor="#BBBBBB">
+                                                                        <asp:Label ID="Label5" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Meta"></asp:Label>
+                                                                    </td>
+                                                                    <td bgcolor="#f0eef0">
+                                                                        <asp:TextBox ID="Meta2" runat="server" autocomplete="off" Font-Names="Calibri" Font-Size="Small" MaxLength="3" onchange="SoloNumerosMaxCien(this);" onkeyup="SoloNumerosMaxCien(this);" placeholder="Meta" Width="150px"></asp:TextBox>
+                                                                    </td>
+                                                                </tr>                                                                
+                                                            </table>
+
+                </div>
+
+                <div style="text-align: center; margin-top: 2%; margin-right: 25%;>
+                    <asp:Label ID="Label18" runat="server" Text="Meta:" Font-Names="Calibri" Font-Size="Small" Visible="false"></asp:Label>
+                    <asp:Label ID="ModalMeta" runat="server" Text="Meta" Font-Names="Calibri" Font-Size="Small" Font-Bold="true" Visible="false"></asp:Label>
                 </div>
                 <div style="text-align: center; margin-top: 2%; margin-right: 25%;">
                     <asp:Label ID="MensajeModalCumplimiento" runat="server" Text="Gestión" Font-Names="Calibri" Font-Size="Small"></asp:Label>
@@ -521,7 +547,7 @@
                         <table id="TbRegistrarPlan" style="margin-left: 13%;" runat="server" visible="false">
                             <tr>
                                 <td>
-                                    <asp:TabContainer ID="TcPrincipal" runat="server" ActiveTabIndex="0" Font-Names="Calibri"
+                                    <asp:TabContainer ID="TcPrincipal" runat="server" ActiveTabIndex="3" Font-Names="Calibri"
                                         Font-Size="Small" Width="900px">
                                         <asp:TabPanel ID="tpPlanes" runat="server" HeaderText="Planes" Font-Names="Calibri" Font-Size="Small">
                                             <HeaderTemplate>
@@ -762,7 +788,6 @@
                                                     <tr align="center">
                                                         <td>
                                                             <table>
-                                                                <%--Codigo Riesgo--%>
                                                                 <tr align="left">
                                                                     <td bgcolor="#BBBBBB" style="width: 124px;" align="center">
                                                                         <asp:Label ID="Label69" runat="server" Text="Código Riesgo:" Font-Size="Small" Font-Names="Calibri"></asp:Label>
@@ -780,7 +805,6 @@
                                                                         <asp:TextBox ID="NombreRiesgo" runat="server" Width="300px" Font-Names="Calibri" Font-Size="Small" MaxLength="50" placeholder="Nombre Riesgo"></asp:TextBox>
                                                                     </td>
                                                                 </tr>
-                                                                <%--Cadena Valor Riesgo--%>
                                                                 <tr align="left">
                                                                     <td bgcolor="#BBBBBB" align="center">
                                                                         <asp:Label ID="Label71" runat="server" Text="Cadena de valor" Font-Names="Calibri"
@@ -805,7 +829,6 @@
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                 </tr>
-                                                                <%--Proceso Riesgo--%>
                                                                 <tr align="left">
                                                                     <td bgcolor="#BBBBBB" align="center">
                                                                         <asp:Label ID="Label73" runat="server" Text="Proceso" Font-Names="Calibri" Font-Size="Small"></asp:Label>
@@ -829,7 +852,6 @@
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                 </tr>
-                                                                <%--Riesgos Globales--%>
                                                                 <tr align="left">
                                                                     <td bgcolor="#BBBBBB" align="center">
                                                                         <asp:Label ID="Label80" runat="server" Text="Riesgos globales" Font-Names="Calibri"
@@ -853,7 +875,6 @@
                                                                 </tr>
                                                             </table>
                                                             <table>
-                                                                <%--Botones para buscar riesgos--%>
                                                                 <tr align="center">
                                                                     <td>
                                                                         <table>
@@ -878,7 +899,6 @@
                                                             <div id="EtiquetaEncontrados" style="background: #BBBBBB; margin: 18px 0 7px 0;">
                                                                 <asp:Label ID="lblRiesgosEncontrados" runat="server" Text="Riesgos Encontrados: "></asp:Label>
                                                             </div>
-                                                            <%--GridView Filtro Riesgos--%>
                                                             <table id="TbRiesgos" runat="server" visible="false">
                                                                 <tr>
                                                                     <td>
@@ -974,7 +994,6 @@
                                                     <tr align="center">
                                                         <td>
                                                             <table>
-                                                                <%--Fecha Revisión--%>
                                                                 <tr align="left">
                                                                     <td bgcolor="#BBBBBB" align="center">
                                                                         <asp:Label ID="Label1" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Código Evento:"></asp:Label>
@@ -994,7 +1013,6 @@
                                                                     </td>
                                                                 </tr>                                                               
                                                                 </table>
-                                                                <%--Grilla Cumplimiento--%>
                                                                 <table>
                                                                     <tr align="center">
                                                                         <td>
@@ -1047,7 +1065,6 @@
                                                             <div class="EAsociados" style="margin: 18px 0 7px 0;font-family: Calibri;font-size: Small;color: #4d4d4d;">
                                                                 <asp:Label ID="lblEventosAsociados" runat="server" Text="Eventos Asociados: "></asp:Label>
                                                             </div>
-                                                            <%--Grilla Eventos Relacionados--%>
                                                             <table id="TbGrillaEventosRelacionados" runat="server">
                                                                 <tr>
                                                                     <td>
@@ -1108,10 +1125,10 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr align="left">
-                                                                    <td align="center" bgcolor="#BBBBBB">
+                                                                    <td align="center" bgcolor="#BBBBBB" class="auto-style1">
                                                                         <asp:Label ID="Label8" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Meta"></asp:Label>
                                                                     </td>
-                                                                    <td bgcolor="#f0eef0">
+                                                                    <td bgcolor="#f0eef0" class="auto-style1">
                                                                         <asp:TextBox ID="Meta" runat="server" autocomplete="off" Font-Names="Calibri" Font-Size="Small" MaxLength="3" onchange="SoloNumerosMaxCien(this);" onkeyup="SoloNumerosMaxCien(this);" placeholder="Meta" Width="150px"></asp:TextBox>
                                                                     </td>
                                                                 </tr>
@@ -1249,7 +1266,7 @@
                             </tr>
                             <%--botones aceptar- cancelar--%>
                             <tr align="center">
-                                        <td colspan="2">
+                                        <td>
                                             <table class="tablaSinBordes">
                                                 <tr>
                                                     <td>
