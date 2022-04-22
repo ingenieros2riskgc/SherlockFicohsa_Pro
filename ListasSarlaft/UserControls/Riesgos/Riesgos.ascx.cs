@@ -786,8 +786,8 @@ namespace ListasSarlaft.UserControls.Riesgos
                             loadDDLAreas();
                             LoadDDLProbabilidad();
                             loadDDLImpacto();
-                            //loadLBCadenaValor();
                             loadDDLRiesgoTecnologico();
+                            //loadLBCadenaValor();
                             loadGridRiesgos();
                             loadInfoCalificacionControl();
                             //Camilo 12/02/2014
@@ -866,8 +866,6 @@ namespace ListasSarlaft.UserControls.Riesgos
                                 Mensaje1("El riesgo está anulado");
                             }
                         }
-
-                        
                     }
                 }
             }
@@ -3024,12 +3022,12 @@ namespace ListasSarlaft.UserControls.Riesgos
             if (LCodRiesgo.Text != "")
             {
                 dtInfo = cRiesgo.loadInfoRiesgos(
-                    Sanitizer.GetSafeHtmlFragment(LCodRiesgo.Text.Trim()), 
-                    Sanitizer.GetSafeHtmlFragment(TextBox17.Text.Trim()), 
-                    DropDownList19.SelectedValue.ToString().Trim(), 
-                    DropDownList20.SelectedValue.ToString().Trim(), 
-                    DropDownList21.SelectedValue.ToString().Trim(), 
-                    DropDownList22.SelectedValue.ToString().Trim(), 
+                    Sanitizer.GetSafeHtmlFragment(LCodRiesgo.Text.Trim()),
+                    Sanitizer.GetSafeHtmlFragment(TextBox17.Text.Trim()),
+                    DropDownList19.SelectedValue.ToString().Trim(),
+                    DropDownList20.SelectedValue.ToString().Trim(),
+                    DropDownList21.SelectedValue.ToString().Trim(),
+                    DropDownList22.SelectedValue.ToString().Trim(),
                     DropDownList4.SelectedValue.ToString().Trim(), DDLAreas.SelectedValue.ToString().Trim(), "");
             }
             else
@@ -3080,10 +3078,10 @@ namespace ListasSarlaft.UserControls.Riesgos
                                                            dtInfo.Rows[rows]["idResponsableTratamiento"].ToString().Trim(),
                                                            dtInfo.Rows[rows]["Estado"].ToString().Trim(),
                                                            dtInfo.Rows[rows]["TipoMedicion"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdActivoAfectado"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdFactorRO"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdTipoActivo"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdDimensiones"].ToString().Trim(),
+                                                           dtInfo.Rows[rows]["IdActivoAfectado"].ToString().Trim(),
+                                                           dtInfo.Rows[rows]["IdFactorRO"].ToString().Trim(),
+                                                           dtInfo.Rows[rows]["IdTipoActivo"].ToString().Trim(),
+                                                           dtInfo.Rows[rows]["IdDimensiones"].ToString().Trim(),
                                                           });
                 }
                 GridView1.PageIndex = PagIndexInfoGridRiesgos;
@@ -4608,7 +4606,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                         string IdRiesgo = colsNoVisible[0].ToString();
                         mtdLoadGridAudRiesgoControl();
                         mtdLoadInfoAudRiesgoControl1(IdRiesgo);
-                        
+
 
                         string IdProbabilidad = InfoGridRiesgos.Rows[RowGridRiesgos]["IdProbabilidad"].ToString().Trim();
                         string IdImpacto = InfoGridRiesgos.Rows[RowGridRiesgos]["IdImpacto"].ToString().Trim();
@@ -6258,112 +6256,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             resetValuesJustificacionPlanAccion();
         }
 
-        //private void resetValuesAgregarRiesgo()
-        //{
-        //    #region DROPDOWNS
-        //    DropDownList41.SelectedIndex = 0;
-        //    DropDownList42.Items.Clear();
-        //    DropDownList42.Items.Insert(0, new ListItem("---", "---"));
-        //    DropDownList43.Items.Clear();
-        //    DropDownList43.Items.Insert(0, new ListItem("---", "---"));
-        //    DropDownList44.Items.Clear();
-        //    DropDownList44.Items.Insert(0, new ListItem("---", "---"));
-        //    DropDownList63.Items.Clear();
-        //    DropDownList63.Items.Insert(0, new ListItem("---", "---"));
-        //    DropDownList67.SelectedIndex = 0;
-        //    DropDownList9.Items.Clear();
-        //    DropDownList9.Items.Insert(0, new ListItem("---", "---"));
-        //    DropDownList10.Items.Clear();
-        //    DropDownList10.Items.Insert(0, new ListItem("---", "0"));
-        //    DropDownList6.Items.Clear();
-        //    DropDownList6.Items.Insert(0, new ListItem("---", "0"));
-        //    DropDownList11.Items.Clear();
-        //    DropDownList11.Items.Insert(0, new ListItem("---", "0"));
-        //    DDLRiesgosGlobales.SelectedIndex = 0;
-        //    DropDownList2.Items.Clear();
-        //    DropDownList2.Items.Insert(0, new ListItem("---", "0"));
-        //    DropDownList3.Items.Clear();
-        //    DropDownList3.Items.Insert(0, new ListItem("---", "0"));
-        //    cbEstado.Items.Clear();
-        //    cbEstado.Items.Insert(0, new ListItem("---", "0"));
-        //    cbEstadoRiesgo.Items.Clear();
-        //    cbEstadoRiesgo.Items.Insert(0, new ListItem("---", "0"));
-        //    DDLFactorRO.Items.Clear();
-        //    DDLFactorRO.Items.Insert(0, new ListItem("---", "0"));
-
-        //    #endregion DROPDOWNS
-
-        //    #region CHECKBOXLISTS
-
-        //    for (int i = 0; i < CheckBoxList1.Items.Count; i++)
-        //    {
-        //        CheckBoxList1.Items[i].Selected = false;
-        //    }
-        //    for (int i = 0; i < CheckBoxList2.Items.Count; i++)
-        //    {
-        //        CheckBoxList2.Items[i].Selected = false;
-        //    }
-        //    for (int i = 0; i < CheckBoxList9.Items.Count; i++)
-        //    {
-        //        CheckBoxList9.Items[i].Selected = false;
-        //        cuantosCheckTratamiento++;
-        //    }
-        //    #endregion CHECKBOXLISTS
-
-        //    lblIdDependencia2.Text = "";
-        //    lblIdDependencia2.Visible = false;
-        //    DropDownList45.SelectedIndex = 0;
-        //    DropDownList46.SelectedIndex = 0;
-        //    TextBox8.Text = "";
-        //    TextBox9.Text = "";
-        //    TextBox1.Text = "";
-        //    TextBox20.Text = "";
-        //    TextBox40.Text = "";
-        //    TextBox41.Text = "";
-        //    TextBox42.Text = "";
-        //    TextBox43.Text = "";
-        //    txtResponsableT.Text = "";
-        //    Label174.Text = "";
-        //    Panel1.BackColor = System.Drawing.Color.FromName("Transparent");
-        //    tbGridRiesgos.Visible = true;
-        //    tbModificarRiesgo.Visible = false;
-        //    tbAgregarRiesgo.Visible = false;
-
-        //    #region TREEVIEWS
-        //    if (TreeView1.SelectedNode != null)
-        //    {
-        //        TreeView1.SelectedNode.Selected = false;
-        //    }
-
-        //    if (TreeView2.SelectedNode != null)
-        //    {
-        //        TreeView2.SelectedNode.Selected = false;
-        //    }
-
-        //    if (TreeView3.SelectedNode != null)
-        //    {
-        //        TreeView3.SelectedNode.Selected = false;
-        //    }
-
-        //    if (TreeView4.SelectedNode != null)
-        //    {
-        //        TreeView4.SelectedNode.Selected = false;
-        //    }
-
-        //    if (TreeView5.SelectedNode != null)
-        //    {
-        //        TreeView5.SelectedNode.Selected = false;
-        //    }
-
-        //    if (TreeView6.SelectedNode != null)
-        //    {
-        //        TreeView6.SelectedNode.Selected = false;
-        //    }
-        //    #endregion TREEVIEWS
-
-        //    LoadCBEstados();
-        //}
-
         private void resetValuesAgregarRiesgo()
         {
             #region DROPDOWNS
@@ -6395,7 +6287,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             cbEstadoRiesgo.Items.Clear();
             cbEstadoRiesgo.Items.Insert(0, new ListItem("---", "0"));
             DDLFactorRO.SelectedIndex = 0;
-
 
             #endregion DROPDOWNS
 
@@ -6469,7 +6360,6 @@ namespace ListasSarlaft.UserControls.Riesgos
 
             LoadCBEstados();
         }
-
 
         private void resetValuesModificarRiesgo()
         {
@@ -9612,7 +9502,7 @@ namespace ListasSarlaft.UserControls.Riesgos
         private void MtdLoadIndicadoresVsRiesgo()
         {
             DataTable grid = new DataTable();
-            
+
             grid.Columns.Add("strNombreIndicador", typeof(string));
             grid.Columns.Add("strObjetivoIndicador", typeof(string));
             grid.Columns.Add("strFrecuenciaMedicion", typeof(string));
@@ -9635,7 +9525,7 @@ namespace ListasSarlaft.UserControls.Riesgos
 
                 InfoGridIR.Rows.Add(new object[] {
                     objRiesgosIndicadores.strNombreIndicador.ToString().Trim(),
-                    objRiesgosIndicadores.strObjetivoIndicador.ToString().Trim(),                    
+                    objRiesgosIndicadores.strObjetivoIndicador.ToString().Trim(),
                     objRiesgosIndicadores.strFrecuenciaMedicion.ToString().Trim(),
                     objRiesgosIndicadores.dblResultado.ToString().Trim(),
                     objRiesgosIndicadores.strDescripcionSeguimiento.ToString().Trim(),

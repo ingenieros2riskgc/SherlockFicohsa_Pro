@@ -2,6 +2,7 @@
 using Microsoft.Security.Application;
 using System;
 using System.Data;
+using System.Globalization;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -359,6 +360,7 @@ namespace ListasSarlaft.UserControls.Eventos
         {
             DataTable grid = new DataTable();
 
+            
             grid.Columns.Add("Código", typeof(string));
             grid.Columns.Add("Fecha Registro", typeof(string));
             grid.Columns.Add("Descripción Evento", typeof(string));
@@ -990,12 +992,12 @@ namespace ListasSarlaft.UserControls.Eventos
                     case "6":
                         #region Eventos E Incidentes
                         //if (DDLCadenaValor.SelectedItem.Value != "---" && DDLMacroProceso.SelectedItem.Value != "---" && DDLProceso.SelectedItem.Value != "---") {
-                        Tr3.Visible = false;
-                        LoadGridReporteEventosIncidentes();
-                        LoadInfoReporteEventosIncidentes();
-                        ReporteEventosIncidentes.Visible = true;
-                        GridView5.Visible = true;
-                        Button4.Visible = true;
+                            Tr3.Visible = false;
+                            LoadGridReporteEventosIncidentes();
+                            LoadInfoReporteEventosIncidentes();
+                            ReporteEventosIncidentes.Visible = true;
+                            GridView5.Visible = true;
+                            Button4.Visible = true;
                         //}
                         #endregion
                         break;

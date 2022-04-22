@@ -407,9 +407,7 @@
                               <asp:BoundField DataField="Responsable Plan Acción" HeaderText="Responsable Plan Acción" >
                                  <ItemStyle HorizontalAlign="Center" />
                               </asp:BoundField>
-                              <asp:BoundField HeaderText="Fecha Registro" DataField="Fecha Registro" >
-                                 <ItemStyle HorizontalAlign="Center" />
-                              </asp:BoundField>
+                              
                            </Columns>
                            <EditRowStyle BackColor="#999999" />
                            <FooterStyle BackColor="#002649" Font-Bold="True" ForeColor="White" />
