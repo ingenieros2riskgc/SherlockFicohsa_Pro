@@ -489,7 +489,7 @@ namespace ListasSarlaft.UserControls.Riesgos
 
         private DataTable DesasociarEvento(int id, string CodigoEvento)
         {
-            string selectCommand = "DELETE FROM Riesgos.planesEventosAsociados WHERE Id = (" + id + ")";
+            string selectCommand = "DELETE FROM [Riesgos].[Planes_EvsEIncs] WHERE IdPlanes_EvsEIncs = (" + id + ")";
 
             string conString = WebConfigurationManager.ConnectionStrings["SarlaftConnectionString"].ConnectionString;
             SqlDataAdapter dad = new SqlDataAdapter(selectCommand, conString);
@@ -501,8 +501,12 @@ namespace ListasSarlaft.UserControls.Riesgos
         {
             //string selectCommand = "SELECT rpe.IdPlanes_EvsEIncs as 'Id', rp.CodigoPlan, rei.CodigoEvsEIncs as 'CodigoEvento', rpe.FechaRegistro, rpe.IdUsuario as 'Usuario' FROM Riesgos.planes rp INNER JOIN Riesgos.Planes_EvsEIncs rpe ON rp.Id = rpe.IdPlanes INNER JOIN Riesgos.EventosIncidentes rei " +
             //    "ON rei.IdEvsEIncs = rpe.IdEvsEIncs WHERE rp.CodigoPlan = '" + CodigoPlan + "'";
-            string selectCommand = "SELECT PEA.Id as 'Id', rp.CodigoPlan, rei.CodigoEvsEIncs as 'CodigoEvento', rei.FechaRegistro, CONCAT(lu.Nombres, ' ', lu.Apellidos) as 'Usuario' FROM Riesgos.PlanesEventosAsociados PEA INNER JOIN Riesgos.planes rp ON rp.CodigoPlan = PEA.CodigoPlan INNER JOIN Riesgos.EventosIncidentes rei ON rei.CodigoEvsEIncs = PEA.CodigoEvento LEFT JOIN Listas.Usuarios lu ON rei.IdUsuarioRegistro = lu.IdUsuario" +
-                " WHERE rp.CodigoPlan = '" + CodigoPlan + "'";
+            string selectCommand = "SELECT rpe.IdPlanes_EvsEIncs as 'Id', rp.CodigoPlan, rei.CodigoEvsEIncs as CodigoEvento, rpe.FechaRegistro, CONCAT(lu.Nombres, ' ', lu.Apellidos) as 'Usuario'" 
+                                   + " FROM Riesgos.Planes_EvsEIncs rpe "
+                                   + " INNER JOIN Riesgos.EventosIncidentes rei ON rpe.IdEvsEIncs = rei.IdEvsEIncs "
+                                   + " INNER JOIN Riesgos.planes rp ON rp.Id = rpe.IdPlanes "
+                                   + " INNER JOIN Listas.Usuarios lu ON lu.IdUsuario = rpe.IdUsuario "
+                                   + " WHERE CodigoPlan = '" + CodigoPlan + "'";
 
             string conString = WebConfigurationManager.ConnectionStrings["SarlaftConnectionString"].ConnectionString;
             SqlDataAdapter dad = new SqlDataAdapter(selectCommand, conString);
@@ -1156,17 +1160,9 @@ namespace ListasSarlaft.UserControls.Riesgos
                         string Meta = colsNoVisible[1].ToString();
                         string Periodo = colsNoVisible[2].ToString();
 
-                        DateTime periodo2 = Convert.ToDateTime(colsNoVisible[2].ToString());
-                        string aux = periodo2.ToString("yyyy-MM-dd");
-
-
-                        
-
                         IdGestion = Convert.ToInt32(Id);
                         MetaGestion = Convert.ToInt32(Meta);
                         ModalMeta.Text = Meta + "%";
-                        Meta2.Text = Meta;
-                        Periodo2.Text = aux;
                         ModalGestion.Focus();
                         MPCumplimiento.Show();
 
@@ -3080,13 +3076,10 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 int CalculoCumplimiento = 0;
 
-                MetaGestion = Convert.ToInt32(Meta2.Text);
-
                 CalculoCumplimiento = (objPlanes.Gestion * MetaGestion) / 100;
                 if (CalculoCumplimiento <= 100)
                 {
-                    //cRiesgo.GuardarGestion(IdGestion, objPlanes.Gestion, CalculoCumplimiento);
-                    cRiesgo.GuardarGestion2(IdGestion, objPlanes.Gestion, CalculoCumplimiento, Periodo2.Text, MetaGestion);
+                    cRiesgo.GuardarGestion(IdGestion, objPlanes.Gestion, CalculoCumplimiento);
                     omb.ShowMessage("Se ha guardado la información satisfactoriamente!", 3, "Atención");
                     ModalGestion.Text = string.Empty;
                     GrillaCumplimiento();
