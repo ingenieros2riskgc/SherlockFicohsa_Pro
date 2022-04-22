@@ -23,6 +23,13 @@
     prm.add_endRequest(EndRequestHandler);
 
 </script>
+<script type="text/javascript" language="javascript">
+    function GenerarControles(args) {
+        var idBoton = args.id;
+        var updatePanel = '<%= UpdatePanel1.UniqueID %>';
+        Sys.WebForms.PageRequestManager.getInstance()._updateControls(["t" + updatePanel], [], [idBoton], 90); //PostBack
+    }
+</script>
 <style type="text/css">
    .gridViewHeader a:link {
    text-decoration: none;
@@ -1033,6 +1040,7 @@
                                              <Triggers>
                                                 <asp:PostBackTrigger ControlID="BtnSubirArchivo" />
                                              </Triggers>
+     
                                           </asp:UpdatePanel>
                                           <table id="TbArchivos" runat="server">
                                               <tr align="center" runat="server">
@@ -1167,12 +1175,12 @@
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/Literal.png" Text="Ver"
                                                             CommandName="Ver" />
                                                                  <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/enlace.png" Text="DesEnlazar"
-                                                            CommandName="DesEnlazar" />
-                <asp:TemplateField Visible="False">
+                                                            CommandName="DesEnlazar" Visible="false" />
+                <asp:TemplateField>
                     <ItemTemplate>
                      
                                                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" CommandName="DesEnlazar"
-                                                                                ImageUrl="~/Imagenes/Icons/enlace.png" Text="DesEnlazar" CommandArgument='<%# Eval("Id") %>' />
+                                                                                ImageUrl="~/Imagenes/Icons/enlace.png" Text="DesEnlazar" CommandArgument='<%# Container.DataItemIndex %>' OnClientClick="GenerarControles(this);"  />
               
                                                                         </ItemTemplate>
                    
@@ -1191,6 +1199,7 @@
                                                    </asp:GridView>
                                                 </td>
                                              </tr>
+                                      
                                           </table>
                                           <table id="Table3" runat="server" align="center">
                                              <tr runat="server">
@@ -1286,6 +1295,7 @@
                                              </tr>
                                           </table>
                                        </ContentTemplate>
+
                                     </asp:TabPanel>
                                     <asp:TabPanel ID="TabPanel4" runat="server" HeaderText="Riesgos" Font-Names="Calibri" Font-Size="Small" OnActiveTabChanged="GVRiesgos_reload">
                                        <HeaderTemplate>
@@ -1399,7 +1409,16 @@
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/Literal.png" Text="Ver"
                                                             CommandName="Ver" />
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar"
-                                                            CommandName="DesEnlazar" />
+                                                            CommandName="DesEnlazar" Visible="false" />
+                                                          <asp:TemplateField>
+                    <ItemTemplate>
+                     
+                                                                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" CommandName="DesEnlazar"
+                                                                                ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar" CommandArgument='<%# Container.DataItemIndex %>' OnClientClick="GenerarControles(this);"  />
+              
+                                                                        </ItemTemplate>
+                   
+                </asp:TemplateField>
                                                       </Columns>
                                                       <EditRowStyle BackColor="#999999" />
                                                       <FooterStyle BackColor="#002649" Font-Bold="True" ForeColor="White" />
@@ -1580,7 +1599,16 @@
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/Literal.png" Text="Ver"
                                                             CommandName="Ver" />
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar"
-                                                            CommandName="DesEnlazar" />
+                                                            CommandName="DesEnlazar" Visible="false" />
+                                                          <asp:TemplateField>
+                    <ItemTemplate>
+                     
+                                                                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" CommandName="DesEnlazar"
+                                                                                ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar" CommandArgument='<%# Container.DataItemIndex %>' OnClientClick="GenerarControles(this);"  />
+              
+                                                                        </ItemTemplate>
+                   
+                </asp:TemplateField>
                                                       </Columns>
                                                       <EditRowStyle BackColor="#999999" />
                                                       <FooterStyle BackColor="#002649" Font-Bold="True" ForeColor="White" />
@@ -1723,7 +1751,16 @@
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/Literal.png" Text="Ver"
                                                             CommandName="Ver" />
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar"
-                                                            CommandName="DesEnlazar" />
+                                                            CommandName="DesEnlazar" Visible="false" />
+                                                          <asp:TemplateField>
+                    <ItemTemplate>
+                     
+                                                                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" CommandName="DesEnlazar"
+                                                                                ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar" CommandArgument='<%# Container.DataItemIndex %>' OnClientClick="GenerarControles(this);"  />
+              
+                                                                        </ItemTemplate>
+                   
+                </asp:TemplateField>
                                                       </Columns>
                                                       <EditRowStyle BackColor="#999999" />
                                                       <FooterStyle BackColor="#002649" Font-Bold="True" ForeColor="White" />
@@ -1832,6 +1869,8 @@
                </td>
             </tr>
          </table>
+                                  
       </asp:Panel>
+                                         
    </ContentTemplate>
 </asp:UpdatePanel>

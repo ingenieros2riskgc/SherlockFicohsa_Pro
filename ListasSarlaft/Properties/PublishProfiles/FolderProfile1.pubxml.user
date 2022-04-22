@@ -4,7 +4,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\Administrador\Desktop\publicacion ficohsa 18 marzo</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\Administrador\Desktop\publicacion ficohsa 22 de abrol</_PublishTargetUrl>
+    <History>True|2022-04-22T16:59:11.3470835Z;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Archivos/Error/Error.txt">
@@ -29123,7 +29124,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/14/2022 09:35:26</publishTime>
     </File>
     <File Include="BDupdate/CambiosBD_V2.xlsx">
-      <publishTime>03/04/2022 13:08:31</publishTime>
+      <publishTime>03/31/2022 06:59:24</publishTime>
     </File>
     <File Include="bin/AjaxControlToolkit.dll">
       <publishTime>01/14/2022 09:35:28</publishTime>
@@ -29135,10 +29136,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/14/2022 09:35:28</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>03/18/2022 23:21:37</publishTime>
+      <publishTime>04/22/2022 11:57:52</publishTime>
     </File>
     <File Include="bin/DAL.pdb">
-      <publishTime>03/18/2022 23:21:37</publishTime>
+      <publishTime>04/22/2022 11:57:52</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.Common.resources.dll">
       <publishTime>03/04/2022 13:08:56</publishTime>
@@ -29159,10 +29160,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:56</publishTime>
     </File>
     <File Include="bin/DLL.dll">
-      <publishTime>03/18/2022 23:21:38</publishTime>
+      <publishTime>04/22/2022 11:57:52</publishTime>
     </File>
     <File Include="bin/DLL.pdb">
-      <publishTime>03/18/2022 23:21:38</publishTime>
+      <publishTime>04/22/2022 11:57:52</publishTime>
     </File>
     <File Include="bin/DocumentFormat.OpenXml.dll">
       <publishTime>09/01/2012 02:24:26</publishTime>
@@ -29279,13 +29280,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:56</publishTime>
     </File>
     <File Include="bin/ListasSarlaft.dll">
-      <publishTime>03/18/2022 23:21:47</publishTime>
+      <publishTime>04/22/2022 11:58:08</publishTime>
     </File>
     <File Include="bin/ListasSarlaft.pdb">
-      <publishTime>03/18/2022 23:21:47</publishTime>
+      <publishTime>04/22/2022 11:58:08</publishTime>
     </File>
     <File Include="bin/ListasSarlaft.XmlSerializers.dll">
-      <publishTime>03/18/2022 23:21:49</publishTime>
+      <publishTime>04/22/2022 11:58:09</publishTime>
     </File>
     <File Include="bin/Microsoft.MSXML.dll">
       <publishTime>03/04/2022 12:43:24</publishTime>
@@ -60248,7 +60249,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:43</publishTime>
     </File>
     <File Include="UserControls/Eventos/EventosEIncidentes.ascx">
-      <publishTime>03/11/2022 16:57:22</publishTime>
+      <publishTime>04/22/2022 11:52:02</publishTime>
     </File>
     <File Include="UserControls/Eventos/EventosVsUsuario.ascx">
       <publishTime>03/04/2022 13:08:43</publishTime>
@@ -60284,7 +60285,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:43</publishTime>
     </File>
     <File Include="UserControls/Eventos/ReporteEventos.ascx">
-      <publishTime>03/04/2022 13:08:43</publishTime>
+      <publishTime>04/22/2022 07:21:44</publishTime>
     </File>
     <File Include="UserControls/Eventos/RiesgoGlobal.ascx">
       <publishTime>03/04/2022 13:08:43</publishTime>
@@ -60827,7 +60828,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:44</publishTime>
     </File>
     <File Include="UserControls/Riesgos/PaRiesgoEvento.ascx">
-      <publishTime>03/16/2022 17:30:20</publishTime>
+      <publishTime>04/22/2022 09:53:01</publishTime>
     </File>
     <File Include="UserControls/Riesgos/ParLegEstado.ascx">
       <publishTime>03/04/2022 13:08:44</publishTime>
@@ -60896,7 +60897,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:44</publishTime>
     </File>
     <File Include="UserControls/Riesgos/Riesgos.ascx">
-      <publishTime>03/11/2022 16:57:22</publishTime>
+      <publishTime>04/22/2022 07:21:44</publishTime>
     </File>
     <File Include="UserControls/Riesgos/Seguimiento/SeguimientoRiesgoIndicador.ascx">
       <publishTime>03/11/2022 14:43:50</publishTime>

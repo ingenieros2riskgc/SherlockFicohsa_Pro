@@ -266,6 +266,7 @@ namespace ListasSarlaft.UserControls.Eventos
                 loadInitialData();
                 mtdLoadDDLEmpresa1();
             }
+            //loadInfoJustificacion();
 
         }
 
@@ -2453,7 +2454,14 @@ namespace ListasSarlaft.UserControls.Eventos
                 dtInfo = cEvsEIncs.LoadInfoJustificacion(TBIdEvsEIncs.Text);
 
                 if (dtInfo.Rows.Count > 0)
+
+
                 {
+                    if (InfoGridJustificacion.Rows.Count > 0)
+                    {
+                        InfoGridJustificacion.Clear();
+                    }
+                    
                     for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                     {
                         TblJustificacion.Visible = true;
