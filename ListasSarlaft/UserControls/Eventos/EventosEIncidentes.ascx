@@ -1168,11 +1168,11 @@
                                                             CommandName="Ver" />
                                                                  <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/enlace.png" Text="DesEnlazar"
                                                             CommandName="DesEnlazar" />
-                <asp:TemplateField HeaderText="">
+                <asp:TemplateField Visible="False">
                     <ItemTemplate>
                      
                                                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" CommandName="DesEnlazar"
-                                                                                ImageUrl="~/Imagenes/Icons/enlace.png" Text="DesEnlazar" />
+                                                                                ImageUrl="~/Imagenes/Icons/enlace.png" Text="DesEnlazar" CommandArgument='<%# Eval("Id") %>' />
               
                                                                         </ItemTemplate>
                    
@@ -1244,7 +1244,7 @@
                                                    <asp:TextBox ID="TBFechaCompromiso" Enabled="False" runat="server" Font-Names="Calibri" Font-Size="Small" TextMode="MultiLine" Width="194px" Height="22px"></asp:TextBox>
                                                 </td>
                                              </tr>
-                                             <tr>
+                                             <tr runat="server">
                                                 <td align="center" bgcolor="#BBBBBB" runat="server">
                                                    <asp:Label ID="Label131" runat="server" Text="Fecha Extensión:" Font-Names="Calibri" Font-Size="Small"></asp:Label>
                                                 </td>

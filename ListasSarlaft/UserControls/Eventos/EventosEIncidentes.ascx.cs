@@ -2932,6 +2932,15 @@ namespace ListasSarlaft.UserControls.Eventos
                         }
                         else
                         {
+                            string idriesgo = colsNoVisible[0].ToString();
+                            string a1 = colsNoVisible[0].ToString();
+
+                            string idusuario = Session["IdUsuario"].ToString().Trim();
+
+                            string justificacion = "Se a enlazado o desenlazado el riesgo con id : " + IdRiesgo + " al evento: " + TBIdEvsEIncs.Text + ".";
+                            cEvsEIncs.GuardarJustificacionanezaplan(TBIdEvsEIncs.Text.ToString(), justificacion, idusuario);
+                          
+                            loadInfoJustificacion();
                             LoadCriticidadRiesgoByRiesgo(IdRiesgo);
                             GVRiesgos_reload(false);
                         }
@@ -2967,7 +2976,7 @@ namespace ListasSarlaft.UserControls.Eventos
                     case "DesEnlazar":
 
                         string IdProcesoOriginador = colsNoVisible[0].ToString();
-                        string a1 = colsNoVisible[1].ToString();
+                        string a1 = colsNoVisible[0].ToString();
 
                         string idusuario = Session["IdUsuario"].ToString().Trim();
 
@@ -3013,7 +3022,7 @@ namespace ListasSarlaft.UserControls.Eventos
                             string IdProcesoAfectado = colsNoVisible[0].ToString();
                             cEvsEIncs.RelacionarProcesoAfectado(TBIdEvsEIncs.Text.ToString(), IdProcesoAfectado);
                             string idusuario = Session["IdUsuario"].ToString().Trim();
-                            string a1 = colsNoVisible[1].ToString();
+                            string a1 = colsNoVisible[0].ToString();
                             string justificacion = "Se a enlazado o desenlazado el Proceso: " + a1 + " al evento: " + TBIdEvsEIncs.Text + ".";
                             cEvsEIncs.GuardarJustificacionanezaplan(TBIdEvsEIncs.Text.ToString(), justificacion, idusuario);
                             GVProcesoA_reload();
