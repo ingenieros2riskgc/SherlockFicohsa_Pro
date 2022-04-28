@@ -731,6 +731,7 @@ namespace ListasSarlaft.UserControls.Riesgos
 
         #endregion
         // private string IdFormulario_ = "5022";
+        // private string IdFormulario_ = "5022";
         private cCuenta cCuenta_ = new cCuenta();
         private cRiesgo cRiesgo_ = new cRiesgo();
         private cEvsEIncs cEvsEIncs = new cEvsEIncs();
