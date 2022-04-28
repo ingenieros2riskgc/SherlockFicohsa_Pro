@@ -1159,6 +1159,7 @@
                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                     </asp:BoundField>
                                                                     <asp:ButtonField ButtonType="Image" CommandName="Editar" HeaderText="Editar" ImageUrl="~/Imagenes/Icons/selectV5.png" Text="Editar" />
+                                                                    <asp:ButtonField ButtonType="Image" CommandName="Gestionar" HeaderText="Gestionar" ImageUrl="~/Imagenes/Icons/selectV5.png" Text="Editar" />
                                                                 </Columns>
                                                                 <EditRowStyle BackColor="#999999" />
                                                                 <FooterStyle BackColor="#002649" Font-Bold="True" ForeColor="White" />

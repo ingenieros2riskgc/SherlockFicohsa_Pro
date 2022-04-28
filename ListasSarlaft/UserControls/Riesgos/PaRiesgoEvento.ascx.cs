@@ -1160,9 +1160,21 @@ namespace ListasSarlaft.UserControls.Riesgos
                         string Meta = colsNoVisible[1].ToString();
                         string Periodo = colsNoVisible[2].ToString();
 
+
+
                         IdGestion = Convert.ToInt32(Id);
                         MetaGestion = Convert.ToInt32(Meta);
                         ModalMeta.Text = Meta + "%";
+
+                        Periodo2.Text = Periodo;
+                        Meta2.Text = Meta;
+
+                        Periodo2.Enabled = true;
+                        Meta2.Enabled = true;
+                        MensajeModalCumplimiento.Visible = false;
+                        ModalGestion.Visible = false;
+
+
                         ModalGestion.Focus();
                         MPCumplimiento.Show();
 
@@ -1171,8 +1183,44 @@ namespace ListasSarlaft.UserControls.Riesgos
 
                     }
                     break;
-            }
 
+                case "Gestionar":
+
+                    if (cCuenta.permisosActualizar(IdFormulario) == "False")
+                    {
+                        omb.ShowMessage("No tiene los permisos suficientes para llevar a cabo esta acción!", 1, "Atención");
+                    }
+                    else
+                    {
+                        int Index = Convert.ToInt16(e.CommandArgument);
+                        RowGridCumplimiento = (Convert.ToInt16(GvCumplimiento.PageSize) * pagIndexCumplimiento) + Convert.ToInt16(e.CommandArgument);
+                        System.Collections.Specialized.IOrderedDictionary colsNoVisible = GvCumplimiento.DataKeys[Index].Values;
+                        string Id = colsNoVisible[0].ToString();
+                        string Meta = colsNoVisible[1].ToString();
+                        string Periodo = colsNoVisible[2].ToString();
+
+
+                        IdGestion = Convert.ToInt32(Id);
+                        MetaGestion = Convert.ToInt32(Meta);
+                        ModalMeta.Text = Meta + "%";
+
+                        Periodo2.Text = Periodo;
+                        Meta2.Text = Meta;
+
+                        Periodo2.Enabled = false;
+                        Meta2.Enabled = false;
+
+
+                        MensajeModalCumplimiento.Visible = true;
+                        ModalGestion.Visible = true;
+
+
+                        ModalGestion.Focus();
+                        MPCumplimiento.Show();                       
+                    }
+                    break;
+
+            }
         }
 
         protected void GvSeguimiento_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -2172,10 +2220,24 @@ namespace ListasSarlaft.UserControls.Riesgos
         protected void GuardarCumplimiento_Click(object sender, EventArgs e)
         {
             try
-            {
-                string Gestion = ModalGestion.Text;
-                objPlanes.Gestion = Convert.ToInt32(Gestion);
-                GuardarGestion();
+            {    
+
+                if ((Meta.Enabled) && (Periodo2.Enabled))
+                {
+
+                    GuardarGestion();
+                }
+                else {
+                    string Gestion = ModalGestion.Text;
+                    if (string.IsNullOrEmpty(Gestion))
+                    {
+                        Gestion = "0";
+                    }
+                    objPlanes.Gestion = Convert.ToInt32(Gestion);
+                    GuardarGestion2();
+
+                }
+     
             }
             catch (Exception ex)
             {
@@ -3069,7 +3131,7 @@ namespace ListasSarlaft.UserControls.Riesgos
 
         }
 
-        private bool GuardarGestion()
+        private bool GuardarGestion2()
         {
             bool resultado = false;
             try
@@ -3084,6 +3146,8 @@ namespace ListasSarlaft.UserControls.Riesgos
                     ModalGestion.Text = string.Empty;
                     GrillaCumplimiento();
                     CargarGrillaCumplimiento();
+                    Periodo2.Text = "";
+                    Meta2.Text = "";
                 }
                 else
                 {
@@ -3095,6 +3159,33 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 omb.ShowMessage("Error en método GuardarCumplimiento: " + ex.Message.ToString(), 1, "Error");
             }
+
+
+            return resultado;
+
+
+        }
+
+        private bool GuardarGestion()
+        {
+            bool resultado = false;
+            try
+            {
+    
+                    cRiesgo.GuardarGestion2(IdGestion,Periodo2.Text,Convert.ToInt32(Meta2.Text));
+                    omb.ShowMessage("Se ha Modificado la información satisfactoriamente!", 3, "Atención");
+                    ModalGestion.Text = string.Empty;
+                    GrillaCumplimiento();
+                    CargarGrillaCumplimiento();
+                    Periodo2.Text = "";
+                    Meta2.Text = "";
+         
+            }
+            catch (Exception ex)
+            {
+                omb.ShowMessage("Error en método GuardarCumplimiento: " + ex.Message.ToString(), 1, "Error");
+            }
+            
 
             return resultado;
         }

@@ -10772,3 +10772,16 @@ Sintaxis incorrecta cerca de '>'.,    en System.Data.OleDb.OleDbCommand.ExecuteC
    en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\sherlock_ficohsa\SherlockFicohsa_Pro\ListasSarlaft\Classes\cDataBase.cs:línea 30
    en ListasSarlaft.Classes.cCuenta.autenticarUsuario(String Usuario, String Contrasena) en C:\Users\Administrador\Desktop\sherlock_ficohsa\SherlockFicohsa_Pro\ListasSarlaft\Classes\cCuenta.cs:línea 365
 22/04/2022 3:26:48 p. m.
+[DBNETLIB][ConnectionRead (recv()).]Error general de red. Consulte la documentación de la red.,    en System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   en System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   en ListasSarlaft.Classes.cDataBase.ejecutarConsulta(String txtQuery) en C:\Users\Administrador\Desktop\sherlock_ficohsa\SherlockFicohsa_Pro\ListasSarlaft\Classes\cDataBase.cs:línea 44
+   en ListasSarlaft.Classes.clsDALCuadroMandoRiesgosDetalle.LoadInfoControlesRiesgo(String& strErrMsg, Int32 IdRiesgo) en C:\Users\Administrador\Desktop\sherlock_ficohsa\SherlockFicohsa_Pro\ListasSarlaft\Classes\DAL\Riesgos\CuadroMando\Riesgos\clsDALCuadroMandoRiesgosDetalle.cs:línea 436
+28/04/2022 9:01:08 a. m.

@@ -7828,7 +7828,7 @@ namespace ListasSarlaft.Classes
             cDataBase.desconectar();
         }
 
-        public void GuardarGestion2(int id, int gestion, int cumplimiento,string FECHA, int meta)
+        public void GuardarGestion2(int id,string FECHA, int meta)
         {
             DateTime aux = Convert.ToDateTime(FECHA);
             string aux2 = aux.ToString("dd-MM-yyyy");
@@ -7836,9 +7836,7 @@ namespace ListasSarlaft.Classes
             aux2 = aux2 + " 00:00:00.000";
 
             string consulta = "UPDATE riesgos.IndicadorCumplimientoPlanes\n"
-            + "SET Riesgos.IndicadorCumplimientoPlanes.Cumplimiento = " + cumplimiento + ", \n"
-            + "    Riesgos.IndicadorCumplimientoPlanes.Gestion = " + gestion + ", \n"
-            + "     Riesgos.IndicadorCumplimientoPlanes.Periodo ='" + aux2 + "', \n"
+            + "  SET Riesgos.IndicadorCumplimientoPlanes.Periodo ='" + aux2 + "', \n"
             + "  Riesgos.IndicadorCumplimientoPlanes.Meta="+ meta + "\n"
             + "where id =" + id;
             cDataBase.conectar();
