@@ -2885,7 +2885,17 @@ namespace ListasSarlaft.UserControls.Eventos
         {
             try
             {
-                System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVPlanes.DataKeys[Convert.ToInt16(e.CommandArgument)].Values;
+
+                int index = Convert.ToInt32((e.CommandArgument).ToString());
+
+                int nroPag = GVPlanes.PageIndex;  // Obtiene el Numero de Pagina en la que se encuentra el GridView
+                int tamPag = GVPlanes.PageSize; // Obtiene el Tamano de cada Pagina del GridView
+
+                index = (index - tamPag * nroPag); // Calcula el Numero de Fila del GridView dentro de la pagina actual
+
+          
+                System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVPlanes.DataKeys[index].Values;
+                //System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVPlanes.DataKeys[Convert.ToInt16(e.CommandArgument)].Values;
 
                 switch (e.CommandName)
                 {
@@ -2927,7 +2937,16 @@ namespace ListasSarlaft.UserControls.Eventos
         {
             try
             {
-                System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVRiesgos.DataKeys[Convert.ToInt16(e.CommandArgument)].Values;
+                int index = Convert.ToInt32((e.CommandArgument).ToString());
+
+                int nroPag = GVRiesgos.PageIndex;  // Obtiene el Numero de Pagina en la que se encuentra el GridView
+                int tamPag = GVRiesgos.PageSize; // Obtiene el Tamano de cada Pagina del GridView
+
+                index = (index - tamPag * nroPag); // Calcula el Numero de Fila del GridView dentro de la pagina actual
+
+
+                System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVRiesgos.DataKeys[index].Values;
+                //System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVRiesgos.DataKeys[Convert.ToInt16(e.CommandArgument)].Values;
 
                 switch (e.CommandName)
                 {
@@ -2964,8 +2983,9 @@ namespace ListasSarlaft.UserControls.Eventos
                         break;
                 }
             }
-            catch (ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException ex)
             {
+                string error = ex.Message;
             }
             catch (Exception ex)
             {
@@ -2977,7 +2997,17 @@ namespace ListasSarlaft.UserControls.Eventos
         {
             try
             {
-                System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVProcesoO.DataKeys[Convert.ToInt16(e.CommandArgument)].Values;
+                int index = Convert.ToInt32((e.CommandArgument).ToString());
+
+                int nroPag = GVProcesoO.PageIndex;  // Obtiene el Numero de Pagina en la que se encuentra el GridView
+                int tamPag = GVProcesoO.PageSize; // Obtiene el Tamano de cada Pagina del GridView
+
+                index = (index - tamPag * nroPag); // Calcula el Numero de Fila del GridView dentro de la pagina actual
+
+
+                System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVProcesoO.DataKeys[index].Values;
+
+                //System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVProcesoO.DataKeys[Convert.ToInt16(e.CommandArgument)].Values;
 
                 switch (e.CommandName)
                 {
@@ -3019,7 +3049,17 @@ namespace ListasSarlaft.UserControls.Eventos
         {
             try
             {
-                System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVProcesoA.DataKeys[Convert.ToInt16(e.CommandArgument)].Values; ;
+
+                int index = Convert.ToInt32((e.CommandArgument).ToString());
+
+                int nroPag = GVProcesoA.PageIndex;  // Obtiene el Numero de Pagina en la que se encuentra el GridView
+                int tamPag = GVProcesoA.PageSize; // Obtiene el Tamano de cada Pagina del GridView
+
+                index = (index - tamPag * nroPag); // Calcula el Numero de Fila del GridView dentro de la pagina actual
+
+
+                System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVProcesoA.DataKeys[index].Values;
+               // System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVProcesoA.DataKeys[Convert.ToInt16(e.CommandArgument)].Values; ;
                 if (colsNoVisible != null)
                 {
 
