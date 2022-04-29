@@ -832,7 +832,7 @@ namespace ListasSarlaft.Classes
                 if (!Nombre.Equals(""))
                     consulta += $" WHERE Producto LIKE '%{Nombre}%' ";
 
-                consulta += "order by ep.Producto asc, Relacion DESC ";
+                consulta += "ORDER BY Relacion DESC, ep.Producto asc  ";
 
                 cDataBase.conectar();
                 dtInformacion = cDataBase.ejecutarConsulta(consulta);
@@ -5636,434 +5636,10 @@ namespace ListasSarlaft.Classes
         }
 
         #region Reportes
-        //public DataTable ReporteRiesgos(String IdCadenaValor, String IdMacroProceso,
-        //    String IdProceso, String IdClasificacionRiesgo, String IdClasificacionGeneralRiesgo,
-        //    String NombreRiesgoInherente, String NombreRiesgoResidual, String IdEmpresa,
-        //    String numeroQuery, String IdRiesgo, String IdArea, string estado, string idResponsable = "0", string IdProductoAfectado = "---", string IdActivoAfectado = "---", string txtCadenavalor="", string txtMacroproceso="", string txtProceso="")
-        //{
-        //    #region Variables
-        //    DataTable dtInformacion = new DataTable();
-        //    String condicion = string.Empty, strConsulta = string.Empty, strFrom = string.Empty, strSelect = string.Empty, strWhere=string.Empty;
-        //    #endregion Variables
-
-        //    try
-        //    {
-        //        #region
-        //        if (IdCadenaValor != "---")
-        //        {
-        //            condicion = "WHERE (PCV.IdCadenaValor = " + IdCadenaValor + ") ";
-        //        }
-        //        #endregion
-
-        //        #region
-        //        if (IdMacroProceso != "---")
-        //        {
-        //            if (string.IsNullOrEmpty(condicion.Trim()))
-        //            {
-        //                condicion = "WHERE (PM.IdMacroProceso = " + IdMacroProceso + ") ";
-        //            }
-        //            else
-        //            {
-        //                condicion += "AND (PM.IdMacroProceso = " + IdMacroProceso + ") ";
-        //            }
-        //        }
-        //        #endregion
-
-        //        #region
-        //        if (IdProceso != "---")
-        //        {
-        //            if (string.IsNullOrEmpty(condicion.Trim()))
-        //            {
-        //                condicion = "WHERE (PP.IdProceso = " + IdProceso + ") ";
-        //            }
-        //            else
-        //            {
-        //                condicion += "AND (PP.IdProceso = " + IdProceso + ") ";
-        //            }
-        //        }
-        //        #endregion
-
-        //        #region
-        //        if (IdClasificacionRiesgo != "---")
-        //        {
-        //            if (string.IsNullOrEmpty(condicion.Trim()))
-        //            {
-        //                condicion = "WHERE (RR.IdClasificacionRiesgo = " + IdClasificacionRiesgo + ") ";
-        //            }
-        //            else
-        //            {
-        //                condicion += "AND (RR.IdClasificacionRiesgo = " + IdClasificacionRiesgo + ") ";
-        //            }
-        //        }
-        //        #endregion
-
-        //        #region
-        //        if (IdClasificacionGeneralRiesgo != "---")
-        //        {
-        //            if (string.IsNullOrEmpty(condicion.Trim()))
-        //            {
-        //                condicion = "WHERE (PCGR.IdClasificacionGeneralRiesgo = " + IdClasificacionGeneralRiesgo + ") ";
-        //            }
-        //            else
-        //            {
-        //                condicion += "AND (PCGR.IdClasificacionGeneralRiesgo = " + IdClasificacionGeneralRiesgo + ") ";
-        //            }
-        //        }
-        //        #endregion
-
-        //        #region
-        //        if (NombreRiesgoInherente != "---")
-        //        {
-        //            if (string.IsNullOrEmpty(condicion.Trim()))
-        //            {
-        //                condicion = "WHERE (PRI.NombreRiesgoInherente = N'" + NombreRiesgoInherente + "') ";
-        //            }
-        //            else
-        //            {
-        //                condicion += "AND (PRI.NombreRiesgoInherente = N'" + NombreRiesgoInherente + "') ";
-        //            }
-        //        }
-        //        #endregion
-
-        //        #region
-        //        if (NombreRiesgoResidual != "---")
-        //        {
-        //            if (string.IsNullOrEmpty(condicion.Trim()))
-        //            {
-        //                condicion = "WHERE (RiesgoResidual.NombreRiesgoInherente = N'" + NombreRiesgoResidual + "') ";
-        //            }
-        //            else
-        //            {
-        //                condicion += "AND (RiesgoResidual.NombreRiesgoInherente = N'" + NombreRiesgoResidual + "') ";
-        //            }
-        //        }
-        //        #endregion
-
-        //        #region Area
-        //        if (IdArea != "---")
-        //        {
-        //            if (string.IsNullOrEmpty(condicion.Trim()))
-        //            {
-        //                condicion = "WHERE (PDJ.IdArea = " + IdArea + ") ";
-        //            }
-        //            else
-        //            {
-        //                condicion += "AND (PDJ.IdArea = " + IdArea + ") ";
-        //            }
-        //        }
-        //        #endregion Area
-
-        //        #region
-        //        if (IdEmpresa != "---")
-        //        {
-        //            if (string.IsNullOrEmpty(condicion.Trim()))
-        //            {
-        //                condicion = "WHERE (PP.IdEmpresa IN (" + IdEmpresa + ", 3)) ";
-        //            }
-        //            else
-        //            {
-        //                condicion += "AND (PP.IdEmpresa IN (" + IdEmpresa + ", 3)) ";
-        //            }
-        //        }
-        //        #endregion
-
-        //        #region
-        //        if (IdRiesgo != "---")
-        //        {
-        //            if (string.IsNullOrEmpty(condicion.Trim()))
-        //            {
-        //                condicion = "WHERE (RR.IdRiesgo = " + IdRiesgo + ") ";
-        //            }
-        //            else
-        //            {
-        //                condicion += "AND (RR.IdRiesgo = " + IdRiesgo + ") ";
-        //            }
-        //        }
-        //        #endregion
-
-        //        #region Estado
-        //        if (estado != "0")
-        //        {
-        //            if (estado != "---")
-        //            {
-        //                if (string.IsNullOrEmpty(condicion.Trim()))
-        //                {
-        //                    condicion = "WHERE (RR.Estado = " + estado + ") ";
-        //                }
-        //                else
-        //                {
-        //                    condicion += "AND (RR.Estado = " + estado + ") ";
-        //                }
-        //            }
-        //        }
-        //        #endregion Estado
-
-        //        #region
-        //        if (string.IsNullOrEmpty(condicion.Trim()))
-        //        {
-        //            condicion = "WHERE (Anulado = 0) ";
-        //        }
-        //        else
-        //        {
-        //            condicion += "AND (Anulado = 0) ";
-        //        }
-        //        #endregion
-        //        #region
-        //        if (IdActivoAfectado != "---")
-        //        {
-        //            if (string.IsNullOrEmpty(condicion.Trim()))
-        //            {
-        //                condicion = "WHERE (RACT.IdActivoAfectado = " + IdActivoAfectado + ") ";
-        //            }
-        //            else
-        //            {
-        //                condicion += "AND (RACT.IdActivoAfectado = " + IdActivoAfectado + ") ";
-        //            }
-        //        }
-
-        //        if (IdProductoAfectado != "---")
-        //        {
-        //            if (string.IsNullOrEmpty(condicion.Trim()))
-        //            {
-        //                condicion = "WHERE (RPRO.IdProducto = " + IdProductoAfectado + ") ";
-        //            }
-        //            else
-        //            {
-        //                condicion += "AND (RPRO.IdProducto =" + IdProductoAfectado + ") ";
-        //            }
-        //        }
-        //        #endregion
-
-        //        cDataBase.conectar();
-        //        switch (numeroQuery)
-        //        {
-        //            case "1":
-        //                #region Riesgos
-        //                strSelect = "SELECT LTRIM(RTRIM(RR.Codigo)) CodigoRiesgo,"
-        //                        + "LTRIM(RTRIM(LU.Nombres)) + ' ' + LTRIM(RTRIM(LU.Apellidos)) Usuario, "
-        //                        + "LTRIM(RTRIM(RR.Nombre)) NombreRiesgo, "
-        //                        + "LTRIM(RTRIM(RR.Descripcion)) DescripcionRiesgo, PJO.NombreHijo ResponsableRiesgo, "
-        //                        + "LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RR.FechaRegistro, 23), ''))) FechaRegistroRiesgo, "
-        //                        + "LTRIM(RTRIM(ISNULL(PCR.NombreClasificacionRiesgo, ''))) ClasificacionRiesgo, "
-        //                        + "LTRIM(RTRIM(ISNULL(PCGR.NombreClasificacionGeneralRiesgo, ''))) ClasificacionGeneralRiesgo, "
-        //                        + "LTRIM(RTRIM(ISNULL(PCPR.NombreClasificacionParticularRiesgo, ''))) ClasificacionParticularRiesgo, "
-        //                        + "LTRIM(RTRIM(ISNULL(PTEO.NombreTipoEventoOperativo, ''))) TipoEvento, "
-        //                        + "LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionListCausas](RR.ListaCausas, '|'), ''))) Causas, "
-        //                        + "LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionListConsecuencias](RR.ListaConsecuencias, '|'), ''))) Consecuencias, "
-        //                        + "LTRIM(RTRIM(ISNULL(PCV.NombreCadenaValor, ''))) CadenaValor, "
-        //                        + "LTRIM(RTRIM(ISNULL(PM.Nombre, ''))) Macroproceso, "
-        //                        + "LTRIM(RTRIM(ISNULL(PP.Nombre, ''))) Proceso, "
-        //                        + "LTRIM(RTRIM(ISNULL(PS.Nombre, ''))) Subproceso, "
-        //                        + "LTRIM(RTRIM(ISNULL(PA.Nombre, ''))) Actividad, "
-        //                        + "LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionListTreatment](RR.ListaTratamiento, '|'), ''))) ListaTratamiento, "
-        //                        + "LTRIM(RTRIM(ISNULL(PPr.NombreProbabilidad, ''))) FrecuenciaInherente, "
-        //                        + "LTRIM(RTRIM(ISNULL(PPr.ValorProbabilidad, ''))) CodigoFrecuenciaInherente, "
-        //                        + "LTRIM(RTRIM(ISNULL(PIm.NombreImpacto, ''))) ImpactoInherente, "
-        //                        + "LTRIM(RTRIM(ISNULL(PIm.ValorImpacto, ''))) CodigoImpactoInherente, "
-        //                        + "LTRIM(RTRIM(ISNULL(PRI.NombreRiesgoInherente, ''))) RiesgoInherente, "
-        //                        + "LTRIM(RTRIM(ISNULL(PRI.ValorRiesgoInherente, ''))) CodigoRiesgoInherente, "
-        //                        + "LTRIM(RTRIM(ISNULL(pr.NombreProbabilidad, ''))) FrecuenciaResidual, "
-        //                        + "LTRIM(RTRIM(ISNULL(pr.ValorProbabilidad, ''))) CodigoFrecuenciaResidual, "
-        //                        + "LTRIM(RTRIM(ISNULL(im.NombreImpacto, ''))) ImpactoResidual, "
-        //                        + "LTRIM(RTRIM(ISNULL(im.ValorImpacto, ''))) CodigoImpactoResidual, "
-        //                        + "LTRIM(RTRIM(ISNULL(RiesgoResidual.NombreRiesgoInherente, ''))) RiesgoResidual, "
-        //                        + "LTRIM(RTRIM(ISNULL(RiesgoResidual.ValorRiesgoInherente, ''))) CodigoRiesgoResidual,LTRIM(RTRIM(ISNULL(PFRO.NombreFactorRiesgoOperativo, ''))) FactorRiesgoOperativo, "
-        //                        + "LTRIM(RTRIM(ISNULL(PRAO.NombreRiesgoAsociadoOperativo, ''))) RiesgoAsociadoOperativo, "
-        //                        + "LTRIM(RTRIM(ISNULL(PTRO.NombreTipoRiesgoOperativo, ''))) SubFactorRiesgoOperativo, "
-        //                        + "LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionList](RR.LISTARIESGOASOCIADOLA, '|'), ''))) ListaRiesgoAsociadoLA, "
-        //                        + "LTRIM(RTRIM(ISNULL([Procesos].[FnDescriptionListLAFT](RR.LISTAFACTORRIESGOLAFT, '|'), ''))) ListaFactorRiesgoLAFT, 'Region:' + LTRIM(RTRIM(ISNULL(PReg.NombreRegion, ''))) + ' - Pais:' + LTRIM(RTRIM(ISNULL(PPai.NombrePais, ''))) + ' - Depto:' + LTRIM(RTRIM(ISNULL([NombreDepartamento], ''))) + ' - Ciudad:' + LTRIM(RTRIM(ISNULL([NombreCiudad], ''))) + ' - Of:' + LTRIM(RTRIM(ISNULL([NombreOficinaSucursal], ''))) Ubicacion,Parea.NombreArea, PER.NombreEstado 'EstadoRiesgo', ISNULL(RR.TipoMedicion,0) as TipoMedicion, RR.IdRiesgo,LTRIM(RTRIM(ISNULL(EF.Descripcion, ''))) FactorRO,STUFF( (SELECT ', ' + LTRIM(RTRIM(Descripcion)) FROM Eventos.DescLineaUno EDL INNER JOIN Riesgos.Riesgos_LineaNegocios RRL ON EDL.IdDescLineaUno = RRL.IdLineaNegocios WHERE RRL.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Linea Negocio',STUFF( (SELECT ', ' + LTRIM(RTRIM(Producto)) FROM Eventos.ProductoAfectado EPA INNER JOIN Riesgos.Riesgos_Productos RRP ON EPA.IdProductoAfectado = RRP.IdProducto WHERE RRP.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Producto',STUFF( (SELECT ', ' + LTRIM(RTRIM(ETA.Tipo)) FROM Eventos.TipoActivo ETA INNER JOIN Eventos.ActivoAfectado EAA ON ETA.IdTipoActivo = EAA.IdTipoActivo INNER JOIN Riesgos.Riesgos_ActivoAfectado ERA ON ERA.IdActivoAfectado = EAA.IdActivoAfectado WHERE ERA.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Tipo Activo',STUFF( (SELECT ', ' + LTRIM(RTRIM(EAA.Activo)) FROM Eventos.ActivoAfectado EAA INNER JOIN Riesgos.Riesgos_ActivoAfectado RAA ON EAA.IdActivoAfectado = RAA.IdActivoAfectado WHERE RAA.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Activo Afectado',STUFF( (SELECT ', ' + LTRIM(RTRIM(EDV.Dimensiones)) FROM Eventos.DimValoracion EDV INNER JOIN Riesgos.Riesgos_DimValoracion RDV ON EDV.IdDimValoracion = RDV.IdDimValoracion WHERE RDV.IdRiesgo = RR.IdRiesgo FOR XML PATH ('')),1,2, '') AS 'Códigos Dimensión Valoración' "
-        //                        + "FROM "
-        //                            + "Riesgos.Riesgo AS RR "
-        //                            + "LEFT JOIN Parametrizacion.ClasificacionRiesgo AS PCR ON RR.IdClasificacionRiesgo = PCR.IdClasificacionRiesgo "
-        //                            + "LEFT JOIN Parametrizacion.ClasificacionGeneralRiesgo AS PCGR ON RR.IdClasificacionGeneralRiesgo = PCGR.IdClasificacionGeneralRiesgo "
-        //                            + "LEFT JOIN Parametrizacion.ClasificacionParticularRiesgo AS PCPR ON RR.IdClasificacionParticularRiesgo = PCPR.IdClasificacionParticularRiesgo "
-        //                            + "LEFT JOIN Parametrizacion.TipoRiesgoOperativo AS PTRO ON RR.IdTipoRiesgoOperativo = PTRO.IdTipoRiesgoOperativo "
-        //                            + "LEFT JOIN Parametrizacion.TipoEventoOperativo AS PTEO ON RR.IdTipoEventoOperativo = PTEO.IdTipoEventoOperativo "
-        //                            + "LEFT JOIN Procesos.CadenaValor AS PCV ON PCV.IdCadenaValor = RR.IdCadenaValor "
-        //                            + "LEFT JOIN Procesos.Macroproceso AS PM ON RR.IdMacroproceso = PM.IdMacroProceso "
-        //                            + "LEFT JOIN Procesos.Proceso AS PP ON RR.IdProceso = PP.IdProceso "
-        //                            + "LEFT JOIN Procesos.Subproceso AS PS ON PS.IdSubProceso = RR.IdSubProceso "
-        //                            + "LEFT JOIN Procesos.Actividad AS PA ON RR.IdActividad = PA.IdActividad "
-        //                            + "LEFT JOIN Parametrizacion.Probabilidad AS PPr ON PPr.IdProbabilidad = RR.IdProbabilidad "
-        //                            + "LEFT JOIN Parametrizacion.Probabilidad AS pr ON pr.IdProbabilidad = RR.IdProbabilidadResidual "
-        //                            + "LEFT JOIN Parametrizacion.Impacto AS PIm ON PIm.IdImpacto = RR.IdImpacto "
-        //                            + "LEFT JOIN Parametrizacion.Impacto AS im ON im.IdImpacto = RR.IdImpactoResidual "
-        //                            + "LEFT JOIN Parametrizacion.RiesgoInherente AS PRI ON PRI.IdProbabilidad = RR.IdProbabilidad "
-        //                            + "AND PRI.IdImpacto = RR.IdImpacto "
-        //                            + "LEFT JOIN Parametrizacion.RiesgoInherente AS RiesgoResidual ON RR.IdProbabilidadResidual = RiesgoResidual.IdProbabilidad "
-        //                            + "AND RR.IdImpactoResidual = RiesgoResidual.IdImpacto "
-        //                            + "LEFT JOIN Parametrizacion.JerarquiaOrganizacional AS PJO ON PJO.idHijo = RR.IdResponsableRiesgo "
-        //                            + "LEFT JOIN Parametrizacion.FactorRiesgoOperativo AS PFRO ON RR.IdFactorRiesgoOperativo = PFRO.IdFactorRiesgoOperativo "
-        //                            + "LEFT JOIN Parametrizacion.RiesgoAsociadoOperativo AS PRAO ON RR.IdRiesgoAsociadoOperativo = PRAO.IdRiesgoAsociadoOperativo "
-        //                            + "LEFT JOIN Parametrizacion.Regiones AS PReg ON RR.IdRegion = PReg.IdRegion "
-        //                            + "LEFT JOIN Parametrizacion.Paises AS PPai ON RR.IdPais = PPai.IdPais "
-        //                            + "AND PReg.IdRegion = PPai.IdRegion "
-        //                            + "LEFT JOIN Parametrizacion.Departamentos AS PDep ON RR.IdDepartamento = PDep.IdDepartamento "
-        //                            + "AND PPai.IdPais = PDep.IdPais "
-        //                            + "LEFT JOIN Parametrizacion.Ciudades AS PCiu ON RR.IdCiudad = PCiu.IdCiudad "
-        //                            + "AND PDep.IdDepartamento = PCiu.IdDepartamento "
-        //                            + "LEFT JOIN Parametrizacion.OficinaSucursal AS POSuc ON RR.IdOficinaSucursal = POSuc.IdOficinaSucursal "
-        //                            + "AND PCiu.IdCiudad = POSuc.IdCiudad "
-        //                            + "INNER JOIN Listas.Usuarios LU ON RR.IdUsuario = LU.IdUsuario "
-        //                            + "left JOIN [Parametrizacion].[DetalleJerarquiaOrg] AS PDJ ON PDJ.idHijo = PJO.idHijo "
-        //                            + "left JOIN Parametrizacion.Area as Parea on Parea.IdArea = PDJ.IdArea "
-        //                            + "LEFT JOIN Parametrizacion.EstadosRiesgo PER ON RR.Estado = PER.IdEstado "
-        //                            + "LEFT JOIN Eventos.ActivoAfectado EA ON RR.IdActivoAfectado = EA.IdActivoAfectado "
-        //                            + "LEFT JOIN Eventos.DesFactorRO EF ON RR.IdFactorRO = EF.IdDesFactorRO "
-        //                            + "LEFT JOIN Eventos.TipoActivo ET ON RR.IdTipoActivo = ET.IdTipoActivo "
-        //                            + "LEFT JOIN Eventos.DimValoracion ED ON RR.IdDimensiones = ED.IdDimValoracion ";
-
-        //                if (IdProductoAfectado != "---")
-        //                {
-        //                    strFrom += "INNER JOIN Riesgos.Riesgos_Productos AS RPRO ON (RR.IdRiesgo= RPRO.IdRiesgo) ";
-        //                }
-        //                if (IdActivoAfectado != "---")
-        //                {
-        //                    strFrom += "INNER JOIN [Riesgos].[Riesgos_ActivoAfectado] AS RACT ON (RR.IdRiesgo= RACT.IdRiesgo) ";
-        //                }
-
-        //                strConsulta = string.Format("{0} {1} {2} ORDER BY RR.IdRiesgo", strSelect, strFrom, condicion);
-
-        //                dtInformacion = cDataBase.ejecutarConsulta(strConsulta);
-
-        //                #endregion
-        //                break;
-        //            case "2":
-        //                #region Riesgos-Controles
-
-
-        //                    strSelect = "SELECT RVCR.*, '' AS CalificacionControl FROM Riesgos.vwRiesgoControlReporte RVCR WHERE CodigoControl != '' ";
-
-        //                if (txtCadenavalor != "---")
-        //                {
-        //                    strSelect += $" AND (CadenaValor='{txtCadenavalor}')";
-        //                }
-
-        //                if (txtMacroproceso != "---")
-        //                {
-        //                    strSelect += $" AND (Macroproceso='{txtMacroproceso}')";
-        //                }
-
-        //                if (txtProceso != "---")
-        //                {
-        //                    strSelect += $" AND (Proceso='{txtProceso}')";
-        //                }
-
-        //                //strSelect = "SELECT RVCR.*, '' AS CalificacionControl FROM Riesgos.vwRiesgoControlReporte RVCR WHERE CodigoControl != '' ";
-
-        //                if (!idResponsable.Equals(""))
-        //                {
-        //                    strSelect += $" AND (IdResponsableRiesgo = {idResponsable} OR IdResponsableRiesgo IN (SELECT idHijo FROM Parametrizacion.JerarquiaOrganizacional WHERE IdPadre = {idResponsable})) ";
-        //                }
-
-        //                if (!IdProductoAfectado.Equals("---"))
-        //                {
-        //                    strSelect += $" AND ((',' + RTRIM(RVCR.[Códigos Producto]) + ',') LIKE '% {IdProductoAfectado},%' OR (',' + RTRIM(RVCR.[Códigos Producto]) + ',') LIKE '%,{IdProductoAfectado},%') ";
-        //                }
-
-        //                if (!IdActivoAfectado.Equals("---"))
-        //                {
-        //                    strSelect += $" AND ((',' + RTRIM(RVCR.[Códigos Activo Afectado]) + ',') LIKE '% {IdActivoAfectado},%' OR (',' + RTRIM(RVCR.[Códigos Activo Afectado]) + ',') LIKE '%,{IdActivoAfectado},%') ";
-        //                }
-
-        //                strConsulta = string.Format("{0} ORDER BY RVCR.IdRiesgo", strSelect);
-
-        //                dtInformacion = cDataBase.ejecutarConsulta(strConsulta);
-
-        //                if (dtInformacion.Rows.Count > 0)
-        //                {
-        //                    DataTable dtInformacionControl = new DataTable();
-
-        //                    for (int rows = 0; rows < dtInformacion.Rows.Count; rows++)
-        //                    {
-        //                        if (dtInformacion != null)
-        //                        {
-
-        //                            if (dtInformacion.Rows[rows]["CodigoControl"].ToString().Trim() != "")
-        //                            {
-        //                                strSelect = $"SELECT SUM(Peso) AS PesoGral FROM Riesgos.vwControlSeleccionarCategorias WHERE CodigoControl = '{dtInformacion.Rows[rows]["CodigoControl"].ToString().Trim()}'";
-        //                                dtInformacionControl = cDataBase.ejecutarConsulta(strSelect);
-
-        //                                if (dtInformacionControl.Columns.Contains("PesoGral"))
-        //                                {
-        //                                    dtInformacion.Rows[rows]["CalificacionControl"] = dtInformacionControl.Rows[0]["PesoGral"];
-        //                                }
-        //                            }
-        //                        }
-        //                    }
-        //                }
-        //                #endregion
-        //                break;
-        //            case "3":
-        //                #region Riesgos-Eventos
-        //                strSelect = "SELECT * FROM Riesgos.vwRiesgosEventosReporte ";
-
-        //                strConsulta = string.Format("{0} {1} ORDER BY IdRiesgo", strSelect, condicion);
-
-        //                dtInformacion = cDataBase.ejecutarConsulta(strConsulta);
-
-        //                #endregion
-
-        //                break;
-        //            case "4":
-        //                #region Riesgos-Planes Accion
-        //                if (string.IsNullOrEmpty(condicion.Trim()))
-        //                {
-        //                    //condicion = "WHERE (RPA.IdControlUsuario = 3) ";
-        //                    condicion = "";
-        //                }
-        //                else
-        //                {
-        //                    //condicion += "AND (RPA.IdControlUsuario = 3) ";
-        //                    condicion += "";
-        //                }
-        //                strSelect = "select RP.CodigoPlan, RR.Descripcion AS DescripcionRiesgo, RPEA.CodigoEvento, RP.NombrePlan, RPRA.Usuario AS ResponsableRiesgo, RP.DescripcionPlan, PDJPA.NombreResponsable as ResponsablePlan, RP.Estado, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RP.FechaRegistro, 23), ''))) FechaRegistro, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RP.FechaCompromiso, 23), ''))) FechaCompromiso, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RP.FechaExtension, 23), ''))) FechaExtension, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RP.FechaImplementacion, 23), ''))) FechaImplementacion, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, REI.FechaCierre, 23), ''))) EventoFechaCierre, RICP.Meta, RICP.Gestion, RSP.Seguimiento, Parea.NombreArea";
-        //                strFrom = "from Riesgos.Planes RP LEFT JOIN Riesgos.planesEventosAsociados RPEA ON RP.CodigoPlan = RPEA.CodigoPlan LEFT JOIN Riesgos.EventosIncidentes REI ON RPEA.CodigoEvento = REI.CodigoEvsEIncs LEFT JOIN Riesgos.planesRiesgosAsociados RPRA ON RP.CodigoPlan = RPRA.CodigoPlan LEFT JOIN Riesgos.Riesgo RR ON RPRA.CodigoRiesgo = RR.Codigo LEFT JOIN Riesgos.IndicadorCumplimientoPlanes RICP ON RP.CodigoPlan = RICP.CodigoPlan LEFT JOIN Riesgos.SeguimientosPlanes RSP ON RP.CodigoPlan = RSP.CodigoPlan LEFT JOIN Parametrizacion.JerarquiaOrganizacional AS PJO ON PJO.idHijo = RR.IdResponsableRiesgo";
-        //                strFrom += " LEFT JOIN Parametrizacion.JerarquiaOrganizacional PJOPA ON PJOPA.NombreHijo = RP.Responsable"
-        //                       + " LEFT JOIN Parametrizacion.DetalleJerarquiaOrg PDJPA ON PDJPA.idHijo = PJOPA.idHijo";
-        //                strFrom += " LEFT JOIN [Parametrizacion].[DetalleJerarquiaOrg] AS PDJ ON PDJ.idHijo = PJO.idHijo"
-        //                        + " LEFT JOIN Parametrizacion.Area as Parea on Parea.IdArea = PDJ.IdArea"
-        //                        + " LEFT JOIN Procesos.CadenaValor AS PCV ON PCV.IdCadenaValor = RR.IdCadenaValor"
-        //                        + " LEFT JOIN Procesos.Macroproceso AS PM ON RR.IdMacroproceso = PM.IdMacroProceso";
-        //                strConsulta = string.Format("{0} {1} {2} ORDER BY RR.IdRiesgo", strSelect, strFrom, condicion);
-
-        //                dtInformacion = cDataBase.ejecutarConsulta(strConsulta);
-        //                //dtInformacion = cDataBase.ejecutarConsulta("SELECT LTRIM(RTRIM(Riesgos.Riesgo.Codigo)) AS CodigoRiesgo, LTRIM(RTRIM(Riesgos.Riesgo.Nombre)) AS NombreRiesgo, Parametrizacion.JerarquiaOrganizacional.NombreHijo AS ResponsableRiesgo, LTRIM(RTRIM(ISNULL(CONVERT(varchar, Riesgos.Riesgo.FechaRegistro, 23), ''))) AS FechaRegistroRiesgo, LTRIM(RTRIM(ISNULL(Parametrizacion.ClasificacionRiesgo.NombreClasificacionRiesgo, ''))) AS ClasificacionRiesgo, LTRIM(RTRIM(ISNULL(Parametrizacion.ClasificacionGeneralRiesgo.NombreClasificacionGeneralRiesgo, ''))) AS ClasificacionGeneralRiesgo, LTRIM(RTRIM(ISNULL(Parametrizacion.ClasificacionParticularRiesgo.NombreClasificacionParticularRiesgo, ''))) AS ClasificacionParticularRiesgo, LTRIM(RTRIM(ISNULL(Parametrizacion.TipoRiesgoOperativo.NombreTipoRiesgoOperativo, ''))) AS TipoRiesgoOperativo, REPLACE(LTRIM(RTRIM(ISNULL(Riesgos.Riesgo.ListaCausas, ''))), '|', ',') AS Causas, REPLACE(LTRIM(RTRIM(ISNULL(Riesgos.Riesgo.ListaConsecuencias, ''))), '|', ',') AS Consecuencias, LTRIM(RTRIM(ISNULL(Procesos.CadenaValor.NombreCadenaValor, ''))) AS CadenaValor, LTRIM(RTRIM(ISNULL(Procesos.Macroproceso.Nombre, ''))) AS Macroproceso, LTRIM(RTRIM(ISNULL(Procesos.Proceso.Nombre, ''))) AS Proceso, LTRIM(RTRIM(ISNULL(Procesos.Subproceso.Nombre, ''))) AS Subproceso, LTRIM(RTRIM(ISNULL(Procesos.Actividad.Nombre, ''))) AS Actividad, LTRIM(RTRIM(ISNULL(Parametrizacion.Probabilidad.NombreProbabilidad, ''))) AS Frecuencia, LTRIM(RTRIM(ISNULL(Parametrizacion.Impacto.NombreImpacto, ''))) AS Impacto, LTRIM(RTRIM(ISNULL(Parametrizacion.RiesgoInherente.NombreRiesgoInherente, ''))) AS RiesgoInherente, LTRIM(RTRIM(ISNULL(RiesgoResidual.NombreRiesgoInherente, ''))) AS RiesgoResidual, LTRIM(RTRIM(ISNULL(Riesgos.PlanesAccion.DescripcionAccion, ''))) AS DescripcionAccion, LTRIM(RTRIM(ISNULL(Parametrizacion.TipoRecursoPlanAccion.NombreTipoRecursoPlanAccion, ''))) AS NombreTipoRecursoPlanAccion, LTRIM(RTRIM(ISNULL(Riesgos.PlanesAccion.ValorRecurso, ''))) AS ValorRecurso, LTRIM(RTRIM(ISNULL(Parametrizacion.EstadoPlanAccion.NombreEstadoPlanAccion, ''))) AS NombreEstadoPlanAccion, LTRIM(RTRIM(ISNULL(CONVERT(varchar, Riesgos.PlanesAccion.FechaCompromiso, 23), ''))) AS FechaCompromiso, LTRIM(RTRIM(ISNULL(JOPA.NombreHijo, ''))) AS ResponsablePlanAccion FROM Riesgos.Riesgo LEFT JOIN Parametrizacion.ClasificacionRiesgo ON Riesgos.Riesgo.IdClasificacionRiesgo = Parametrizacion.ClasificacionRiesgo.IdClasificacionRiesgo LEFT JOIN Parametrizacion.ClasificacionGeneralRiesgo ON Riesgos.Riesgo.IdClasificacionGeneralRiesgo = Parametrizacion.ClasificacionGeneralRiesgo.IdClasificacionGeneralRiesgo LEFT JOIN Parametrizacion.ClasificacionParticularRiesgo ON Riesgos.Riesgo.IdClasificacionParticularRiesgo = Parametrizacion.ClasificacionParticularRiesgo.IdClasificacionParticularRiesgo LEFT JOIN Parametrizacion.TipoRiesgoOperativo ON Riesgos.Riesgo.IdTipoRiesgoOperativo = Parametrizacion.TipoRiesgoOperativo.IdTipoRiesgoOperativo LEFT JOIN Procesos.CadenaValor ON Procesos.CadenaValor.IdCadenaValor = Riesgos.Riesgo.IdCadenaValor LEFT JOIN Procesos.Macroproceso ON Riesgos.Riesgo.IdMacroproceso = Procesos.Macroproceso.IdMacroProceso LEFT JOIN Procesos.Proceso ON Riesgos.Riesgo.IdProceso = Procesos.Proceso.IdProceso LEFT JOIN Procesos.Subproceso ON Procesos.Subproceso.IdProceso = Riesgos.Riesgo.IdSubProceso LEFT JOIN Procesos.Actividad ON Riesgos.Riesgo.IdActividad = Procesos.Actividad.IdActividad LEFT JOIN Parametrizacion.Probabilidad ON Parametrizacion.Probabilidad.IdProbabilidad = Riesgos.Riesgo.IdProbabilidad LEFT JOIN Parametrizacion.Impacto ON Parametrizacion.Impacto.IdImpacto = Riesgos.Riesgo.IdImpacto LEFT JOIN Parametrizacion.RiesgoInherente ON Parametrizacion.RiesgoInherente.IdProbabilidad = Riesgos.Riesgo.IdProbabilidad AND Parametrizacion.RiesgoInherente.IdImpacto = Riesgos.Riesgo.IdImpacto LEFT JOIN Parametrizacion.RiesgoInherente AS RiesgoResidual ON Riesgos.Riesgo.IdProbabilidadResidual = RiesgoResidual.IdProbabilidad AND Riesgos.Riesgo.IdImpactoResidual = RiesgoResidual.IdImpacto LEFT JOIN Parametrizacion.JerarquiaOrganizacional ON Parametrizacion.JerarquiaOrganizacional.idHijo = Riesgos.Riesgo.IdResponsableRiesgo LEFT JOIN Riesgos.PlanesAccion ON Riesgos.Riesgo.IdRiesgo = Riesgos.PlanesAccion.IdRegistro LEFT JOIN Parametrizacion.TipoRecursoPlanAccion ON Riesgos.PlanesAccion.IdTipoRecursoPlanAccion = Parametrizacion.TipoRecursoPlanAccion.IdTipoRecursoPlanAccion LEFT JOIN Parametrizacion.EstadoPlanAccion ON Riesgos.PlanesAccion.IdEstadoPlanAccion = Parametrizacion.EstadoPlanAccion.IdEstadoPlanAccion LEFT JOIN Parametrizacion.JerarquiaOrganizacional AS JOPA ON JOPA.idHijo = Riesgos.PlanesAccion.Responsable " + condicion + "ORDER BY Riesgos.Riesgo.IdRiesgo");
-        //                #endregion
-
-        //                break;
-
-        //            case "5":
-        //                List<SqlParameter> parametrosConsolidados = new List<SqlParameter>()
-        //                {
-        //                    new SqlParameter() { ParameterName = "@SentenciaWhere", SqlDbType = SqlDbType.VarChar, Value =  condicion }
-        //                };
-        //                dtInformacion = cDataBase.EjecutarSPParametrosReturnDatatable("[Riesgos].[pa_ConsolidadoRCvsRE]", parametrosConsolidados);
-        //                break;
-
-        //            case "11":
-        //                strSelect = "SELECT * FROM Riesgos.vwRiesgoControlPlanEvaluacion;";
-
-        //                dtInformacion = cDataBase.ejecutarConsulta(strSelect);
-        //                break;
-        //        }
-        //        cDataBase.desconectar();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        cDataBase.desconectar();
-        //        cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-        //        throw new Exception(strConsulta);
-        //    }
-        //    return dtInformacion;
-
-
-        //}
-
         public DataTable ReporteRiesgos(String IdCadenaValor, String IdMacroProceso,
             String IdProceso, String IdClasificacionRiesgo, String IdClasificacionGeneralRiesgo,
             String NombreRiesgoInherente, String NombreRiesgoResidual, String IdEmpresa,
-            String numeroQuery, String IdRiesgo, String IdArea, string estado, string idResponsable = "0", string IdProductoAfectado = "---", string IdActivoAfectado = "---", string txtCadenavalor = "", string txtMacroproceso = "", string v = null)
+            String numeroQuery, String IdRiesgo, String IdArea, string estado, string idResponsable = "0", string IdProductoAfectado = "---", string IdActivoAfectado = "---", string txtCadenavalor = "", string txtMacroproceso = "", string txtProceso = "", string v = null)
         {
             #region Variables
             DataTable dtInformacion = new DataTable();
@@ -6279,7 +5855,7 @@ namespace ListasSarlaft.Classes
                         #region Riesgos-Controles
 
 
-                        strSelect = "SELECT RVCR.*, '' AS CalificacionControl FROM Riesgos.vwRiesgoControlReporte RVCR WHERE CodigoControl != '' ";
+                        strSelect = "SELECT RVCR.*, '' AS CalificacionControl FROM Riesgos.vwRiesgoControlReporte RVCR WHERE 1=1 ";
 
                         if (txtCadenavalor != "---")
                         {
@@ -6291,6 +5867,10 @@ namespace ListasSarlaft.Classes
                             strSelect += $" AND (Macroproceso='{txtMacroproceso}')";
                         }
 
+                        if (txtProceso != "---")
+                        {
+                            strSelect += $" AND (Proceso='{txtProceso}')";
+                        }
 
                         //strSelect = "SELECT RVCR.*, '' AS CalificacionControl FROM Riesgos.vwRiesgoControlReporte RVCR WHERE CodigoControl != '' ";
 
@@ -6306,7 +5886,12 @@ namespace ListasSarlaft.Classes
 
                         if (!IdActivoAfectado.Equals("---"))
                         {
-                            strSelect += $" AND ((',' + RTRIM(RVCR.[Códigos Activo Afectado]) + ',') LIKE '% {IdActivoAfectado},%' OR (',' + RTRIM(RVCR.[Códigos Activo Afectado]) + ',') LIKE '%,{IdActivoAfectado},%') ";
+                            strSelect += $" AND ((',' + RTRIM(RVCR.[IdCódigos Activo Afectado]) + ',') LIKE '% {IdActivoAfectado},%' OR (',' + RTRIM(RVCR.[IdCódigos Activo Afectado]) + ',') LIKE '%,{IdActivoAfectado},%') ";
+                        }
+
+                        if (IdArea != "---")
+                        {
+                            strSelect += "AND (IdArea = " + IdArea + ") ";
                         }
 
                         strConsulta = string.Format("{0} ORDER BY RVCR.IdRiesgo", strSelect);
@@ -6472,8 +6057,12 @@ namespace ListasSarlaft.Classes
                         break;
 
                     case "11":
-                        strSelect = "SELECT * FROM Riesgos.vwRiesgoControlPlanEvaluacion;";
+                        strSelect = "SELECT * FROM Riesgos.vwRiesgoControlPlanEvaluacion ";
 
+                        if (IdArea != "---")
+                        {
+                           strSelect += "WHERE (IdArea = " + IdArea + ") "; 
+                        }
                         dtInformacion = cDataBase.ejecutarConsulta(strSelect);
                         break;
                 }
@@ -6489,8 +6078,6 @@ namespace ListasSarlaft.Classes
 
 
         }
-
-
 
         public DataTable ConsultaFrecuenciaImpacto(int IdRiesgo)
         {
@@ -7828,7 +7415,7 @@ namespace ListasSarlaft.Classes
             cDataBase.desconectar();
         }
 
-        public void GuardarGestion2(int id,string FECHA, int meta)
+        public void GuardarGestion2(int id, string FECHA, int meta)
         {
             DateTime aux = Convert.ToDateTime(FECHA);
             string aux2 = aux.ToString("dd-MM-yyyy");
@@ -7837,7 +7424,7 @@ namespace ListasSarlaft.Classes
 
             string consulta = "UPDATE riesgos.IndicadorCumplimientoPlanes\n"
             + "  SET Riesgos.IndicadorCumplimientoPlanes.Periodo ='" + aux2 + "', \n"
-            + "  Riesgos.IndicadorCumplimientoPlanes.Meta="+ meta + "\n"
+            + "  Riesgos.IndicadorCumplimientoPlanes.Meta=" + meta + "\n"
             + "where id =" + id;
             cDataBase.conectar();
             cDataBase.ejecutarQuery(consulta);

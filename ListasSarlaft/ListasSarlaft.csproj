@@ -62,6 +62,14 @@
     <Reference Include="ClosedXML">
       <HintPath>..\..\InspektorCesar\Librerias\ClosedXML.dll</HintPath>
     </Reference>
+    <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=810f687d3d017a43, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\clsDatos\bin\Debug\DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="DLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b39a8aed12feb1e0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\clsLogica\bin\Debug\DLL.dll</HintPath>
+    </Reference>
     <Reference Include="DocumentFormat.OpenXml">
       <HintPath>..\..\InspektorCesar\Librerias\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
@@ -25675,20 +25683,6 @@
     <EmbeddedResource Include="Reportes\SarlaftPorRegistro.rdlc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\clsDatos\DAL.csproj">
-      <Project>{D0981E20-7B7A-491E-A4AA-CCD9645ADBDD}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\clsDTO\DTO.csproj">
-      <Project>{0A52978B-3A70-4FC2-B5F3-884E76BBC3D1}</Project>
-      <Name>DTO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\clsLogica\DLL.csproj">
-      <Project>{79D73723-DBDB-44D6-AB0C-AD74EFEB6AA6}</Project>
-      <Name>DLL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
@@ -25719,6 +25713,12 @@
     <TypeScriptCompile Include="Formularios\assets\plugins\ionicons\types\components.d.ts" />
     <TypeScriptCompile Include="Formularios\assets\plugins\ionicons\types\icon\icon.d.ts" />
     <TypeScriptCompile Include="Formularios\assets\plugins\ionicons\types\stencil.core.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\clsDTO\DTO.csproj">
+      <Project>{0a52978b-3a70-4fc2-b5f3-884e76bbc3d1}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
