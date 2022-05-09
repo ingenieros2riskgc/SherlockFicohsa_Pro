@@ -393,6 +393,24 @@ namespace ListasSarlaft.UserControls.Eventos
         protected global::System.Web.UI.WebControls.DropDownList DDLEstadoReporte;
 
         /// <summary>
+        /// Control Label137.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label137;
+
+        /// <summary>
+        /// Control CompareValidator13.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator13;
+
+        /// <summary>
         /// Control Label5.
         /// </summary>
         /// <remarks>

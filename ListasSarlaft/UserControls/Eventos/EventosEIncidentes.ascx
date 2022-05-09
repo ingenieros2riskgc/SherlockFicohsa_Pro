@@ -407,7 +407,12 @@
                                                 </td>
                                                 <td runat="server">
                                                    <asp:DropDownList ID="DDLEstadoReporte" Width="200px" runat="server" Font-Names="Calibri" Font-Size="Small">
-                                                   </asp:DropDownList>
+                                                       </asp:DropDownList>
+                                                    <asp:Label ID="Label137" runat="server" Text="*" CssClass="text-red" Font-Names="Calibri" Font-Size="Small"></asp:Label>
+                                                    <asp:CompareValidator ID="CompareValidator13" runat="server" ForeColor="Red" ControlToValidate="DDLEstadoReporte" ValidationGroup="Addne" ValueToCompare="0" Operator="NotEqual">
+                                                      Campo obligatorio
+                                                   </asp:CompareValidator>
+                                                   
                                                 </td>
                                                 <td align="center" bgcolor="#BBBBBB" runat="server">
                                                    <asp:Label ID="Label5" runat="server" Text="Código del Banco:" Font-Names="Calibri" Font-Size="Small"></asp:Label>
