@@ -6322,6 +6322,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             txtResponsableT.Text = "";
             Label174.Text = "";
             Panel1.BackColor = System.Drawing.Color.FromName("Transparent");
+            TxtbJustificacionTratamiento.Text = "";
             tbGridRiesgos.Visible = true;
             tbModificarRiesgo.Visible = false;
             tbAgregarRiesgo.Visible = false;
