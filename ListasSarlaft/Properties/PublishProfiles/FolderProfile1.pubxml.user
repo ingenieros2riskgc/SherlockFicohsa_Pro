@@ -4,8 +4,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <History>False|2022-04-29T21:42:19.6315669Z;</History>
-    <_PublishTargetUrl>C:\Users\Administrador\Desktop\publicacion ficohsa 29 abril</_PublishTargetUrl>
+    <History>True|2022-05-02T19:33:33.0450439Z;False|2022-05-02T14:31:18.7456565-05:00;False|2022-05-02T14:07:53.1698714-05:00;False|2022-05-02T14:07:29.9576873-05:00;</History>
+    <_PublishTargetUrl>C:\Users\Administrador\Desktop\2 mayo publicacion ficohsa</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Archivos/Error/Error.txt">
@@ -29136,10 +29136,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/14/2022 09:35:28</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>04/29/2022 14:10:52</publishTime>
+      <publishTime>05/02/2022 14:30:24</publishTime>
     </File>
     <File Include="bin/DAL.pdb">
-      <publishTime>04/29/2022 14:10:52</publishTime>
+      <publishTime>05/02/2022 14:30:24</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.Common.resources.dll">
       <publishTime>03/04/2022 13:08:56</publishTime>
@@ -29160,19 +29160,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:56</publishTime>
     </File>
     <File Include="bin/DLL.dll">
-      <publishTime>04/29/2022 14:10:52</publishTime>
+      <publishTime>05/02/2022 14:30:24</publishTime>
     </File>
     <File Include="bin/DLL.pdb">
-      <publishTime>04/29/2022 14:10:52</publishTime>
+      <publishTime>05/02/2022 14:30:24</publishTime>
     </File>
     <File Include="bin/DocumentFormat.OpenXml.dll">
       <publishTime>09/01/2012 02:24:26</publishTime>
     </File>
     <File Include="bin/DTO.dll">
-      <publishTime>03/04/2022 13:25:39</publishTime>
+      <publishTime>05/02/2022 14:30:24</publishTime>
     </File>
     <File Include="bin/DTO.pdb">
-      <publishTime>03/04/2022 13:25:39</publishTime>
+      <publishTime>05/02/2022 14:30:24</publishTime>
     </File>
     <File Include="bin/EnvDTE.dll">
       <publishTime>03/04/2022 12:43:24</publishTime>
@@ -29280,13 +29280,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:56</publishTime>
     </File>
     <File Include="bin/ListasSarlaft.dll">
-      <publishTime>04/29/2022 16:43:11</publishTime>
+      <publishTime>05/02/2022 14:31:48</publishTime>
     </File>
     <File Include="bin/ListasSarlaft.pdb">
-      <publishTime>04/29/2022 16:43:11</publishTime>
+      <publishTime>05/02/2022 14:31:48</publishTime>
     </File>
     <File Include="bin/ListasSarlaft.XmlSerializers.dll">
-      <publishTime>04/29/2022 16:43:12</publishTime>
+      <publishTime>05/02/2022 14:31:50</publishTime>
     </File>
     <File Include="bin/Microsoft.MSXML.dll">
       <publishTime>03/04/2022 12:43:24</publishTime>
@@ -61053,7 +61053,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/04/2022 13:08:44</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/28/2022 11:10:49</publishTime>
+      <publishTime>05/02/2022 14:31:57</publishTime>
     </File>
   </ItemGroup>
 </Project>

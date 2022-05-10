@@ -1,6 +1,7 @@
 ﻿using ClosedXML.Excel;
 using clsDTO;
 using clsLogica;
+//using clsLogica;
 using Microsoft.Reporting.WebForms;
 //using ListasSarlaft.Classes;
 using Microsoft.Security.Application;

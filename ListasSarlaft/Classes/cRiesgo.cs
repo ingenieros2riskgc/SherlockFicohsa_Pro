@@ -7418,7 +7418,7 @@ namespace ListasSarlaft.Classes
         public void GuardarGestion2(int id, string FECHA, int meta)
         {
             DateTime aux = Convert.ToDateTime(FECHA);
-            string aux2 = aux.ToString("dd-MM-yyyy");
+            string aux2 = aux.ToString("yyyy-MM-dd");//("dd-MM-yyyy");
 
             aux2 = aux2 + " 00:00:00.000";
 
