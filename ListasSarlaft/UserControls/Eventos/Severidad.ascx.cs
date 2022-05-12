@@ -203,7 +203,7 @@ namespace ListasSarlaft.UserControls.Eventos
                 SqlDataSource1.InsertParameters["IdAnio"].DefaultValue = ddlAnio.SelectedValue;
                 SqlDataSource1.InsertParameters["IdDescSeveridad"].DefaultValue = ddlDescSeveridad.SelectedValue;
                 SqlDataSource1.InsertParameters["SvDesdeRO01_25"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtSvDesdeRO01_25.Text.Trim());
-                SqlDataSource1.InsertParameters["SvDesdeRO01_26"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtSvHastaRO01_26.Text.Trim());
+                SqlDataSource1.InsertParameters["SvHastaRO01_26"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtSvHastaRO01_26.Text.Trim());
 
                 SqlDataSource1.InsertParameters["IdUsuario"].DefaultValue = Session["idUsuario"].ToString().Trim(); //Aca va el id del Usuario de la BD
                 SqlDataSource1.InsertParameters["FechaRegistro"].DefaultValue = System.DateTime.Now.ToString().Trim();
