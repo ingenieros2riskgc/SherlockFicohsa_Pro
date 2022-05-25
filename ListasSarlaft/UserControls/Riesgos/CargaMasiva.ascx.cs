@@ -17,7 +17,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace ListasSarlaft.UserControls.Riesgos
-{
+{ //prueba2
     public partial class CargaMasiva : System.Web.UI.UserControl
     {
         private cDataBase cDataBase = new cDataBase();
