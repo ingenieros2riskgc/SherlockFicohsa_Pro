@@ -158,12 +158,12 @@ namespace ListasSarlaft.Classes
                 Variables.Add("IdCritSeveridadE", DDLCriticidadSeveridad);
                 Variables.Add("IdEstatus", DDLEstatus);
                 Variables.Add("FechaCierre", TBFCierre);
-                Variables.Add("Notas", TBNotas);
-                Variables.Add("FechaRegistro", DateNow);
+                Variables.Add("Notas", TBNotas);                
                 Variables.Add("IdUsuarioRegistro", IdUsuario);
 
                 if (idEvsEIncs.Equals(""))
                 {
+                    Variables.Add("FechaRegistro", DateNow);
                     idEvsEIncs = CrearEvsEIncs();
                     Variables.Add("CodigoEvsEIncs", "EI" + idEvsEIncs);
                 }

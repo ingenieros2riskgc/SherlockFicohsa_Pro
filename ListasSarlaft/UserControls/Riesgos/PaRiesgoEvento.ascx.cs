@@ -557,6 +557,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             "p.FechaRegistro, " +
             "p.FechaCompromiso, " +
             "p.FechaExtension, " +
+            "p.FechaImplementacion, " +
             "ISNULL(pea.CodigoEvento, '-') CodigoEvento " +
             "from Riesgos.planes p " +
             "LEFT JOIN[Parametrizacion].[JerarquiaOrganizacional] JO on Jo.idHijo = p.IdResponsable " +
