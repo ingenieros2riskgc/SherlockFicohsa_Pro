@@ -39,9 +39,11 @@ namespace ListasSarlaft.Classes
         private string GenerarDataKeyValue(string key, string value)
         {
             string IsFecha = key.Substring(0, 5);
-            string KeyValue = " [" + key + "] = '" + value + "',";
+            string KeyValue = " [" + key + "] = '" + value + "',";            
             if (IsFecha.Equals("Fecha") && value.Equals(""))
-                KeyValue = "";
+            {
+                KeyValue = " [" + key + "] = NULL ,";
+            }
 
             return KeyValue;
         }
