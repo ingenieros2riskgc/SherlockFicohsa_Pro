@@ -1630,6 +1630,20 @@ namespace ListasSarlaft.UserControls.Riesgos
                                                           "<br />";
                                                 EnviarNotificacion(10, 0, Convert.ToInt32(idResponsable), "", CuerpoCorreo);
                                             }
+                                            if (!string.IsNullOrEmpty(Justificacion.Text))
+                                            {
+                                                CuerpoCorreo = "" +
+                                                          "<h3> MODIFICACIÓN PLAN DE ACCIÓN </h3 > " +
+                                                          "<br /><B> Código del plan: </B>" + CodigoPlan.Text +
+                                                          "<br /><B> Nombre del plan: </B>" + objPlanes.NombrePlan +
+                                                          "<br /><B> Descripción de la Acción: </B>" + objPlanes.DescripcionPlan +
+                                                          "<br /><B> Estado: </B>" + objPlanes.Estado +
+                                                          "<br /><B> Evento asociado: </B>" + AsociarEvento.Text +
+                                                          "<br /><B> Fecha de Compromiso: </B>" + objPlanes.FechaCompromiso.ToString() +
+                                                          "<br /><B> Justificación Modificación: </B>" + Justificacion.Text +
+                                                          "<br />";
+                                                EnviarNotificacion(38, 0, Convert.ToInt32(idResponsable), "", CuerpoCorreo);
+                                            }
 
                                             GrillaPlanes();
                                             GrillaArchivoPlanes();
