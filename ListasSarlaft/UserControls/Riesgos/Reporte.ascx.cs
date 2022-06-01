@@ -1666,6 +1666,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             grid.Columns.Add("Meta", typeof(string));
             grid.Columns.Add("Gestion", typeof(string));
             grid.Columns.Add("Seguimiento", typeof(string));
+            grid.Columns.Add("RiesgoGlobal", typeof(string));
             #endregion Grid
 
             InfoGridReporteRiesgosPlanesAccion = grid;
@@ -1713,7 +1714,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                         dtInfo.Rows[rows]["Meta"].ToString().Trim(),
                         dtInfo.Rows[rows]["Gestion"].ToString().Trim(),
                         dtInfo.Rows[rows]["Seguimiento"].ToString().Trim(),
-
+                        dtInfo.Rows[rows]["RiesgoGlobal"].ToString().Trim(),
                         });
                 }
                 #endregion
