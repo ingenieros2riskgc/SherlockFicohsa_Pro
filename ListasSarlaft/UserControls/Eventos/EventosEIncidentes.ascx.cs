@@ -603,7 +603,8 @@ namespace ListasSarlaft.UserControls.Eventos
             }
             catch (FormatException)
             {
-                ShowMessage($"Error al consultar Severidad (Límite específico): uno de los valores no es un numero", 1, "Atención");
+                //ShowMessage($"Error al consultar Severidad (Límite específico): uno de los valores no es un numero", 1, "Atención");
+                Console.WriteLine("Error al consultar Severidad (Límite específico): uno de los valores no es un numero");
             }
             catch (IndexOutOfRangeException) { DDLCriticidadSeveridad.SelectedValue = "4"; }
             catch (Exception ex)
@@ -2454,8 +2455,6 @@ namespace ListasSarlaft.UserControls.Eventos
                 dtInfo = cEvsEIncs.LoadInfoJustificacion(TBIdEvsEIncs.Text);
 
                 if (dtInfo.Rows.Count > 0)
-
-
                 {
                     if (InfoGridJustificacion.Rows.Count > 0)
                     {
