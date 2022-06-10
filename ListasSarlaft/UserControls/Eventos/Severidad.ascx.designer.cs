@@ -285,6 +285,24 @@ namespace ListasSarlaft.UserControls.Eventos
         protected global::System.Web.UI.WebControls.TextBox txtSvDesdeRO01_25;
 
         /// <summary>
+        /// Control Label7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label7;
+
+        /// <summary>
+        /// Control txtSvHastaRO01_26.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSvHastaRO01_26;
+
+        /// <summary>
         /// Control Label3.
         /// </summary>
         /// <remarks>

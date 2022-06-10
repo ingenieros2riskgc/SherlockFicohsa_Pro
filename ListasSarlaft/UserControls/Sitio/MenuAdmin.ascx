@@ -508,7 +508,7 @@
                                         <asp:MenuItem Text="Cargue de archivos" Value="CargueArchivo" NavigateUrl="~/Formularios/Perfilamiento/CargueArchivo.aspx"></asp:MenuItem>
                                         <asp:MenuItem Text="Configuración Factor de Riesgo" Value="FactoresRiesgo" NavigateUrl="~/Formularios/ConfigEstructura/ConfFactorRiesgo.aspx"></asp:MenuItem>
                                     </asp:MenuItem>
-                                    <asp:MenuItem Text="Instrumentos SARLAFT" Value="Instrumentos SARLAFT">
+                                    <asp:MenuItem Text="Instrumentos AML" Value="Instrumentos AML">
                                         <asp:MenuItem Text="Segmentación" Value="Segmentación">
                                             <asp:MenuItem NavigateUrl="~/Formularios/Sarlaft/Admin/AdminSegmentacion.aspx" Text="Segmentación"
                                                 Value="Segmentación"></asp:MenuItem>

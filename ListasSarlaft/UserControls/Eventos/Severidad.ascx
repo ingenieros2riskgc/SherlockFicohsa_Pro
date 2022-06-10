@@ -14,9 +14,9 @@
 </style>
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SarlaftConnectionString %>"
     DeleteCommand="DELETE FROM [Eventos].[Severidad]  WHERE IdSeveridad = @IdSeveridad"
-    InsertCommand="INSERT INTO [Eventos].[Severidad] ([IdAnio] ,[IdDescSeveridad] ,[SvDesdeRO01_25] ,[IdUsuario] ,[FechaRegistro]) VALUES (@IdAnio, @IdDescSeveridad, @SvDesdeRO01_25, @IdUsuario, @FechaRegistro)"
-    SelectCommand="SELECT [IdSeveridad] ,[Severidad].[IdAnio] , [Anios].[Anio],[Severidad].[IdDescSeveridad] ,[DescSeveridad].[DescripcionFicohsa], [SvDesdeRO01_25] ,[Severidad].[IdUsuario] ,[Severidad].[FechaRegistro], [Usuario] FROM [Eventos].[Severidad], [Eventos].[Anios], [Eventos].[DescSeveridad],[Listas].[Usuarios] WHERE [Severidad].[IdUsuario] = [Usuarios].[idUsuario] AND [Severidad].[IdDescSeveridad] = [DescSeveridad].[IdDescSeveridad] AND [Severidad].[IdAnio] = [Anios].[IdAnio]"
-    UpdateCommand="UPDATE [Eventos].[Severidad] SET [IdAnio] = @IdAnio, [IdDescSeveridad] = @IdDescSeveridad, [SvDesdeRO01_25] = @SvDesdeRO01_25 WHERE IdSeveridad = @IdSeveridad">
+    InsertCommand="INSERT INTO [Eventos].[Severidad] ([IdAnio] ,[IdDescSeveridad] ,[SvDesdeRO01_25], [SvHastaRO01_26] ,[IdUsuario] ,[FechaRegistro]) VALUES (@IdAnio, @IdDescSeveridad, @SvDesdeRO01_25, @SvHastaRO01_26, @IdUsuario, @FechaRegistro)"
+    SelectCommand="SELECT [IdSeveridad] ,[Severidad].[IdAnio] , [Anios].[Anio],[Severidad].[IdDescSeveridad] ,[DescSeveridad].[DescripcionFicohsa], [SvDesdeRO01_25], [SvHastaRO01_26], [Severidad].[IdUsuario] ,[Severidad].[FechaRegistro], [Usuario] FROM [Eventos].[Severidad], [Eventos].[Anios], [Eventos].[DescSeveridad],[Listas].[Usuarios] WHERE [Severidad].[IdUsuario] = [Usuarios].[idUsuario] AND [Severidad].[IdDescSeveridad] = [DescSeveridad].[IdDescSeveridad] AND [Severidad].[IdAnio] = [Anios].[IdAnio]"
+    UpdateCommand="UPDATE [Eventos].[Severidad] SET [IdAnio] = @IdAnio, [IdDescSeveridad] = @IdDescSeveridad, [SvDesdeRO01_25] = @SvDesdeRO01_25, [SvHastaRO01_26] = @SvHastaRO01_26  WHERE IdSeveridad = @IdSeveridad">
     <DeleteParameters>
         <asp:Parameter Name="IdSeveridad" Type="Int32" />
     </DeleteParameters>
@@ -24,6 +24,7 @@
         <asp:Parameter Name="IdAnio" Type="Int32" />
         <asp:Parameter Name="IdDescSeveridad" Type="Int32" />
         <asp:Parameter Name="SvDesdeRO01_25" Type="String" />
+        <asp:Parameter Name="SvHastaRO01_26" Type="String" />
         <asp:Parameter Name="IdUsuario" Type="Int32" />
         <asp:Parameter Name="FechaRegistro" Type="DateTime" />
     </InsertParameters>
@@ -31,6 +32,7 @@
         <asp:Parameter Name="IdAnio" Type="Int32" />
         <asp:Parameter Name="IdDescSeveridad" Type="Int32" />
         <asp:Parameter Name="SvDesdeRO01_25" Type="String" />
+        <asp:Parameter Name="SvHastaRO01_26" Type="String" />
         <asp:Parameter Name="IdSeveridad" Type="Int32" />
     </UpdateParameters>
 </asp:SqlDataSource>
@@ -122,6 +124,11 @@
                                             HtmlEncodeFormatString="False">
                                             <ItemStyle HorizontalAlign="Center" />
                                         </asp:BoundField>
+                                        <asp:BoundField DataField="SvHastaRO01_26" HeaderText="Sev. Hasta RO01"
+                                            SortExpression="SvHastaRO01_26" HtmlEncode="False"
+                                            HtmlEncodeFormatString="False">
+                                            <ItemStyle HorizontalAlign="Center" />
+                                        </asp:BoundField>
                                         <asp:BoundField DataField="Usuario" HeaderText="Usuario"
                                             SortExpression="Usuario" Visible="False" />
                                         <asp:BoundField DataField="FechaRegistro" HeaderText="Fecha de Creación"
@@ -205,7 +212,15 @@
                             <td>
                                 <asp:TextBox ID="txtSvDesdeRO01_25" runat="server" Width="300px" CssClass="Apariencia" MaxLength="50"></asp:TextBox>
                             </td>
-                        </tr>                        
+                        </tr>  
+                        <tr>
+                            <td align="center" bgcolor="#BBBBBB">
+                                <asp:Label ID="Label7" runat="server" Text="Frec. Hasta RO01:" CssClass="Apariencia" style="color:black"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtSvHastaRO01_26" runat="server" Width="300px" CssClass="Apariencia" MaxLength="50"></asp:TextBox>
+                            </td>
+                        </tr>
                         <tr>
                             <td align="center" bgcolor="#BBBBBB">
                                 <asp:Label ID="Label3" runat="server" Text="Usuario:" CssClass="Apariencia" style="color:black"></asp:Label>

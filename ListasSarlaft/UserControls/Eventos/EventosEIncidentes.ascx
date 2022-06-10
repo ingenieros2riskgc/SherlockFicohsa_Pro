@@ -23,13 +23,6 @@
     prm.add_endRequest(EndRequestHandler);
 
 </script>
-<script type="text/javascript" language="javascript">
-    function GenerarControles(args) {
-        var idBoton = args.id;
-        var updatePanel = '<%= UpdatePanel1.UniqueID %>';
-        Sys.WebForms.PageRequestManager.getInstance()._updateControls(["t" + updatePanel], [], [idBoton], 90); //PostBack
-    }
-</script>
 <style type="text/css">
    .gridViewHeader a:link {
    text-decoration: none;
@@ -407,12 +400,7 @@
                                                 </td>
                                                 <td runat="server">
                                                    <asp:DropDownList ID="DDLEstadoReporte" Width="200px" runat="server" Font-Names="Calibri" Font-Size="Small">
-                                                       </asp:DropDownList>
-                                                    <asp:Label ID="Label137" runat="server" Text="*" CssClass="text-red" Font-Names="Calibri" Font-Size="Small"></asp:Label>
-                                                    <asp:CompareValidator ID="CompareValidator13" runat="server" ForeColor="Red" ControlToValidate="DDLEstadoReporte" ValidationGroup="Addne" ValueToCompare="0" Operator="NotEqual">
-                                                      Campo obligatorio
-                                                   </asp:CompareValidator>
-                                                   
+                                                   </asp:DropDownList>
                                                 </td>
                                                 <td align="center" bgcolor="#BBBBBB" runat="server">
                                                    <asp:Label ID="Label5" runat="server" Text="Código del Banco:" Font-Names="Calibri" Font-Size="Small"></asp:Label>
@@ -619,6 +607,7 @@
                                                 </td>
                                              </tr>
                                              <tr  align="center" runat="server">
+
                                                 <td bgcolor="#BBBBBB" colspan="4" runat="server" class="auto-style2">
                                                    <asp:Label ID="Label29" runat="server" Font-Names="Calibri" Font-Size="Small"></asp:Label>
                                                 </td>
@@ -705,9 +694,11 @@
                                                                OnClick="BtnGuardar_Click"
                                                                />
                                                          </td>
+
                                                          <td>
                                                             <asp:ImageButton ID="ImageButton6" runat="server" ImageUrl="~/Imagenes/Icons/cancelV5.png" onclientclick="return confirm('¿Desea reiniciar el formulario?');" ToolTip="Cancelar" OnClick="BtnGuardarCancel_Click" />
                                                          </td>
+
                                                       </tr>
                                                    </table>
                                                 </td>
@@ -1029,7 +1020,7 @@
                            </tr>
                            <tr>
                               <td align="center">
-                                 <asp:TabContainer ID="TabContainer16" runat="server" ActiveTabIndex="1" Font-Names="Calibri" Font-Size="Small" Width="888px" aling="left" style="margin-bottom: 0px;">
+                                 <asp:TabContainer ID="TabContainer16" runat="server" ActiveTabIndex="1" Font-Names="Calibri" Font-Size="Small" Width="888px" aling="left" AutoPostBack="true" style="margin-bottom: 0px;">
                                      <asp:TabPanel ID="TabPanel7" runat="server" HeaderText="PDA" Font-Names="Calibri" Font-Size="Small">
                                        <HeaderTemplate>
                                           Documentos Adjuntos
@@ -1045,7 +1036,6 @@
                                              <Triggers>
                                                 <asp:PostBackTrigger ControlID="BtnSubirArchivo" />
                                              </Triggers>
-     
                                           </asp:UpdatePanel>
                                           <table id="TbArchivos" runat="server">
                                               <tr align="center" runat="server">
@@ -1179,17 +1169,8 @@
                                                          </asp:BoundField>
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/Literal.png" Text="Ver"
                                                             CommandName="Ver" />
-                                                                 <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/enlace.png" Text="DesEnlazar"
-                                                            CommandName="DesEnlazar" Visible="false" />
-                <asp:TemplateField>
-                    <ItemTemplate>
-                     
-                                                                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" CommandName="DesEnlazar"
-                                                                                ImageUrl="~/Imagenes/Icons/enlace.png" Text="DesEnlazar" CommandArgument='<%# Container.DataItemIndex %>' OnClientClick="GenerarControles(this);"  />
-              
-                                                                        </ItemTemplate>
-                   
-                </asp:TemplateField>
+                                                         <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar"
+                                                            CommandName="DesEnlazar" />
                                                       </Columns>
                                                       <EditRowStyle BackColor="#999999" />
                                                       <FooterStyle BackColor="#002649" Font-Bold="True" ForeColor="White" />
@@ -1204,7 +1185,6 @@
                                                    </asp:GridView>
                                                 </td>
                                              </tr>
-                                      
                                           </table>
                                           <table id="Table3" runat="server" align="center">
                                              <tr runat="server">
@@ -1258,7 +1238,7 @@
                                                    <asp:TextBox ID="TBFechaCompromiso" Enabled="False" runat="server" Font-Names="Calibri" Font-Size="Small" TextMode="MultiLine" Width="194px" Height="22px"></asp:TextBox>
                                                 </td>
                                              </tr>
-                                             <tr runat="server">
+                                             <tr>
                                                 <td align="center" bgcolor="#BBBBBB" runat="server">
                                                    <asp:Label ID="Label131" runat="server" Text="Fecha Extensión:" Font-Names="Calibri" Font-Size="Small"></asp:Label>
                                                 </td>
@@ -1300,7 +1280,6 @@
                                              </tr>
                                           </table>
                                        </ContentTemplate>
-
                                     </asp:TabPanel>
                                     <asp:TabPanel ID="TabPanel4" runat="server" HeaderText="Riesgos" Font-Names="Calibri" Font-Size="Small" OnActiveTabChanged="GVRiesgos_reload">
                                        <HeaderTemplate>
@@ -1414,16 +1393,7 @@
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/Literal.png" Text="Ver"
                                                             CommandName="Ver" />
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar"
-                                                            CommandName="DesEnlazar" Visible="false" />
-                                                          <asp:TemplateField>
-                    <ItemTemplate>
-                     
-                                                                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" CommandName="DesEnlazar"
-                                                                                ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar" CommandArgument='<%# Container.DataItemIndex %>' OnClientClick="GenerarControles(this);"  />
-              
-                                                                        </ItemTemplate>
-                   
-                </asp:TemplateField>
+                                                            CommandName="DesEnlazar" />
                                                       </Columns>
                                                       <EditRowStyle BackColor="#999999" />
                                                       <FooterStyle BackColor="#002649" Font-Bold="True" ForeColor="White" />
@@ -1604,16 +1574,7 @@
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/Literal.png" Text="Ver"
                                                             CommandName="Ver" />
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar"
-                                                            CommandName="DesEnlazar" Visible="false" />
-                                                          <asp:TemplateField>
-                    <ItemTemplate>
-                     
-                                                                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" CommandName="DesEnlazar"
-                                                                                ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar" CommandArgument='<%# Container.DataItemIndex %>' OnClientClick="GenerarControles(this);"  />
-              
-                                                                        </ItemTemplate>
-                   
-                </asp:TemplateField>
+                                                            CommandName="DesEnlazar" />
                                                       </Columns>
                                                       <EditRowStyle BackColor="#999999" />
                                                       <FooterStyle BackColor="#002649" Font-Bold="True" ForeColor="White" />
@@ -1756,16 +1717,7 @@
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/Literal.png" Text="Ver"
                                                             CommandName="Ver" />
                                                          <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar"
-                                                            CommandName="DesEnlazar" Visible="false" />
-                                                          <asp:TemplateField>
-                    <ItemTemplate>
-                     
-                                                                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" CommandName="DesEnlazar"
-                                                                                ImageUrl="~/Imagenes/Icons/enlace.png" Text="Enlazar" CommandArgument='<%# Container.DataItemIndex %>' OnClientClick="GenerarControles(this);"  />
-              
-                                                                        </ItemTemplate>
-                   
-                </asp:TemplateField>
+                                                            CommandName="DesEnlazar" />
                                                       </Columns>
                                                       <EditRowStyle BackColor="#999999" />
                                                       <FooterStyle BackColor="#002649" Font-Bold="True" ForeColor="White" />
@@ -1874,8 +1826,6 @@
                </td>
             </tr>
          </table>
-                                  
       </asp:Panel>
-                                         
    </ContentTemplate>
 </asp:UpdatePanel>

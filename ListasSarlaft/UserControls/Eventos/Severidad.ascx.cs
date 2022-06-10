@@ -60,6 +60,7 @@ namespace ListasSarlaft.UserControls.Eventos
                     // Carga los datos en la respectiva caja de texto
                     txtId.Text = GridView1.SelectedRow.Cells[0].Text.Trim();
                     txtSvDesdeRO01_25.Text = GridView1.SelectedRow.Cells[5].Text.Trim();
+                    txtSvHastaRO01_26.Text = GridView1.SelectedRow.Cells[6].Text.Trim();
                     txtUsuario.Text = GridView1.SelectedDataKey[0].ToString().Trim();
                     txtFecha.Text = GridView1.SelectedRow.Cells[7].Text.Trim();
                     ddlAnio.SelectedValue = GridView1.SelectedDataKey[1].ToString().Trim();
@@ -123,6 +124,7 @@ namespace ListasSarlaft.UserControls.Eventos
                 txtId.Text = "";
                 txtId.Enabled = false;
                 txtSvDesdeRO01_25.Text = "";
+                txtSvHastaRO01_26.Text = "";
                 ddlAnio.SelectedIndex = 0;
                 ddlDescSeveridad.SelectedIndex = 0;
                 txtUsuario.Text = Session["loginUsuario"].ToString().Trim(); //Aca va el codigo de usuario logueado
@@ -173,9 +175,11 @@ namespace ListasSarlaft.UserControls.Eventos
             {
                 try
                 {
+                    string text = txtSvHastaRO01_26.Text.Trim().Equals("") ? "" : Sanitizer.GetSafeHtmlFragment(txtSvHastaRO01_26.Text.Trim());
                     SqlDataSource1.UpdateParameters["IdAnio"].DefaultValue = ddlAnio.SelectedValue;
                     SqlDataSource1.UpdateParameters["IdDescSeveridad"].DefaultValue = ddlDescSeveridad.SelectedValue;
                     SqlDataSource1.UpdateParameters["SvDesdeRO01_25"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtSvDesdeRO01_25.Text.Trim());
+                    SqlDataSource1.UpdateParameters["SvHastaRO01_26"].DefaultValue = text;
                     SqlDataSource1.UpdateParameters["IdSeveridad"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtId.Text.Trim());
 
                     var result = SqlDataSource1.Update();
@@ -199,6 +203,7 @@ namespace ListasSarlaft.UserControls.Eventos
                 SqlDataSource1.InsertParameters["IdAnio"].DefaultValue = ddlAnio.SelectedValue;
                 SqlDataSource1.InsertParameters["IdDescSeveridad"].DefaultValue = ddlDescSeveridad.SelectedValue;
                 SqlDataSource1.InsertParameters["SvDesdeRO01_25"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtSvDesdeRO01_25.Text.Trim());
+                SqlDataSource1.InsertParameters["SvHastaRO01_26"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtSvHastaRO01_26.Text.Trim());
 
                 SqlDataSource1.InsertParameters["IdUsuario"].DefaultValue = Session["idUsuario"].ToString().Trim(); //Aca va el id del Usuario de la BD
                 SqlDataSource1.InsertParameters["FechaRegistro"].DefaultValue = System.DateTime.Now.ToString().Trim();

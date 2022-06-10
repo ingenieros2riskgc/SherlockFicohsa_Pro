@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Text.RegularExpressions;
 
 namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
 {
@@ -501,35 +501,23 @@ namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
         {
             DataTable grid = new DataTable();
 
-            grid.Columns.Add("intIdRiesgoIndicador", typeof(string));
-            grid.Columns.Add("strNombreIndicador", typeof(string));
-            grid.Columns.Add("strObjetivoIndicador", typeof(string));
-            grid.Columns.Add("intIProcesoIndicador", typeof(string));
-            grid.Columns.Add("intIdProceso", typeof(string));
-            grid.Columns.Add("strNombreProceso", typeof(string));
-            grid.Columns.Add("intIdResponsableMedicion", typeof(string));
-            grid.Columns.Add("strResponsableMedicion", typeof(string));
-            grid.Columns.Add("intIdFrecuenciaMedicion", typeof(string));
-            grid.Columns.Add("strFrecuenciaMedicion", typeof(string));
-            grid.Columns.Add("strDescripcionFrecuencia", typeof(string));
-            grid.Columns.Add("intIdRiesgoAsociado", typeof(string));
-            grid.Columns.Add("strCodRiesgo", typeof(string));
-            grid.Columns.Add("strNombreRiesgo", typeof(string));
-            grid.Columns.Add("intIdFormula", typeof(string));
-            grid.Columns.Add("strNominador", typeof(string));
-            grid.Columns.Add("strDenominador", typeof(string));
-            grid.Columns.Add("intIdMeta", typeof(string));
-            grid.Columns.Add("dblMeta", typeof(string));
-            grid.Columns.Add("strAño", typeof(string));
-            grid.Columns.Add("strMes", typeof(string));
-            grid.Columns.Add("dblResultado", typeof(string));
-            grid.Columns.Add("strRiesgoAsociado", typeof(string));
-            grid.Columns.Add("strDescripcionSeguimiento", typeof(string));
-            grid.Columns.Add("strColor", typeof(string));
-            grid.Columns.Add("intIdEsquemaSeguimiento", typeof(string));
-            grid.Columns.Add("Usuario", typeof(string));
-            grid.Columns.Add("FechaCreacion", typeof(string));
-            grid.Columns.Add("booActivo", typeof(string));
+            grid.Columns.Add("IdRiesgoIndicador", typeof(string));
+            grid.Columns.Add("NombreIndicador", typeof(string));
+            
+
+            grid.Columns.Add("ObjetivoIndicador", typeof(string));
+            grid.Columns.Add("NombreRiesgo", typeof(string));
+
+            grid.Columns.Add("Responsable medicion", typeof(string));
+            grid.Columns.Add("FrecuenciaMedicion", typeof(string));
+            grid.Columns.Add("DescripcionFrecuencia", typeof(string));
+
+
+            grid.Columns.Add("Meta", typeof(string));
+            grid.Columns.Add("Año", typeof(string));
+            grid.Columns.Add("Mes", typeof(string));
+            grid.Columns.Add("Resultado", typeof(string));
+            grid.Columns.Add("DescripcionSeguimiento", typeof(string));
 
             GVseguimientoRiesgoInsicador.DataSource = grid;
             GVseguimientoRiesgoInsicador.DataBind();
@@ -549,32 +537,23 @@ namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
                 InfoGridRiesgoIndicador.Rows.Add(new Object[] {
                     objRiesgoIndicador.intIdRiesgoIndicador.ToString().Trim(),
                     objRiesgoIndicador.strNombreIndicador.ToString().Trim(),
+                    
+
                     objRiesgoIndicador.strObjetivoIndicador.ToString().Trim(),
-                    objRiesgoIndicador.intIProcesoIndicador.ToString().Trim(),
-                    objRiesgoIndicador.intIdProceso.ToString().Trim(),
-                    objRiesgoIndicador.strNombreProceso.ToString().Trim(),
-                    objRiesgoIndicador.intIdResponsableMedicion.ToString().Trim(),
+                    objRiesgoIndicador.strNombreRiesgo.ToString().Trim(),
+
+
                     objRiesgoIndicador.strResponsableMedicion.ToString().Trim(),
-                    objRiesgoIndicador.intIdFrecuenciaMedicion.ToString().Trim(),
                     objRiesgoIndicador.strFrecuenciaMedicion.ToString().Trim(),
                     objRiesgoIndicador.strDescripcionFrecuencia.ToString().Trim(),
-                    objRiesgoIndicador.intIdRiesgoAsociado.ToString().Trim(),
-                    objRiesgoIndicador.strCodRiesgo.ToString().Trim(),
-                    objRiesgoIndicador.strNombreRiesgo.ToString().Trim(),
-                    objRiesgoIndicador.intIdFormula.ToString().Trim(),
-                    objRiesgoIndicador.strNominador.ToString().Trim(),
-                    objRiesgoIndicador.strDenominador.ToString().Trim(),
-                    objRiesgoIndicador.intIdMeta.ToString().Trim(),
+
                     objRiesgoIndicador.dblMeta.ToString().Trim(),
                     objRiesgoIndicador.strAño.ToString().Trim(),
                     objRiesgoIndicador.strMes.ToString().Trim(),
                     objRiesgoIndicador.dblResultado.ToString().Trim(),
                     objRiesgoIndicador.strDescripcionSeguimiento.ToString().Trim(),
-                    objRiesgoIndicador.strColor.ToString().Trim(),
-                    objRiesgoIndicador.intIdEsquemaSeguimiento.ToString().Trim(),
-                    objRiesgoIndicador.strUsuario.ToString().Trim(),
-                    objRiesgoIndicador.dtFechaCreacion.ToString().Trim(),
-                    objRiesgoIndicador.booActivo.ToString().Trim()
+
+                    
                     });
             }
         }
@@ -666,7 +645,7 @@ namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
 
                 if (dtExc.Rows.Count > 0)
                 {
-                    exportExcel(dtExc, Response, "Seguimiento Indicadores " + DateTime.Now + "");
+                    exportExcel(InfoGridRiesgoIndicador, Response, "Seguimiento Indicadores " + DateTime.Now + "");
                 }
             }
             catch (Exception ex)
@@ -806,6 +785,6 @@ namespace ListasSarlaft.UserControls.Riesgos.Seguimiento
 
         }
 
-       
+
     }
 }
