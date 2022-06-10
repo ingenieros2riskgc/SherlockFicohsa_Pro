@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Globalization;
 using System.IO;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
@@ -251,6 +250,8 @@ namespace ListasSarlaft.UserControls.Eventos
             }
         }
 
+        public TextBox TBCalculoSeveridadDesde { get; private set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             TabPanelCreaEvento.Focus();
@@ -306,6 +307,8 @@ namespace ListasSarlaft.UserControls.Eventos
             camposNumericos.Add(TBValorFrecuencia);
             camposNumericos.Add(TBRecuperacionSeguro);
             camposNumericos.Add(TBRecuperaciones);
+            camposNumericos.Add(TBCalculoSeveridadDesde);
+
 
             foreach (TextBox campo in camposNumericos)
             {
@@ -331,7 +334,7 @@ namespace ListasSarlaft.UserControls.Eventos
                         DDLEstadoReporte.SelectedValue.ToString().Trim(),
                         DDLCodigoBanco.SelectedValue.ToString().Trim(),
                         TBFechaOcurrencia.Text.ToString().Trim(),
-                        TBFechaDescubrimiento.Text.ToString().Trim(), 
+                        TBFechaDescubrimiento.Text.ToString().Trim(),
                         TBDescripcionEvento.Text.ToString().Trim(),
                         TBTituloEvento.Text.ToString().Trim(),
                         DDLCategoria.SelectedValue.ToString().Trim(),
@@ -342,6 +345,7 @@ namespace ListasSarlaft.UserControls.Eventos
                         DDLLineaNegocioDos.SelectedValue.ToString().Trim(),
                         DDLTipoRiesgo.SelectedValue.ToString().Trim(),
                         DDLCausaRiesgoUno.SelectedValue.ToString().Trim(),
+                        
                         DDLCausaRiesgoDos.SelectedValue.ToString().Trim(),
                         DDLFactorRO.SelectedValue.ToString().Trim(),
                         DDLOrigen.SelectedValue.ToString().Trim(),
@@ -365,7 +369,7 @@ namespace ListasSarlaft.UserControls.Eventos
                         TBJustificacion.Text.ToString().Trim());
 
                     string codigoEvsEIncs = TBHiddenCodigoEvsEIncs.Text.ToString().Trim();
-                    codigoEvsEIncs = codigoEvsEIncs.Equals("") ? "EI"+TBIdEvsEIncs.Text : codigoEvsEIncs;
+                    codigoEvsEIncs = codigoEvsEIncs.Equals("") ? "EI" + TBIdEvsEIncs.Text : codigoEvsEIncs;
 
                     ShowMessage($"Evento/Incidente {codigoEvsEIncs} Creado correctamente", 3, "Atención");
                     TBHiddenCodigoEvsEIncs.Text = codigoEvsEIncs;
@@ -373,7 +377,7 @@ namespace ListasSarlaft.UserControls.Eventos
                     MostrarTablasMultiples();
 
                     string CodigoEvento = TBHiddenCodigoEvsEIncs.Text;
-                    
+
                     mtdGenerarNotificacionCreaccionEvento(CodigoEvento, string.Empty, string.Empty, 37, 0);
                 }
 
@@ -415,6 +419,7 @@ namespace ListasSarlaft.UserControls.Eventos
                         DDLLineaNegocioDos.SelectedValue.ToString().Trim(),
                         DDLTipoRiesgo.SelectedValue.ToString().Trim(),
                         DDLCausaRiesgoUno.SelectedValue.ToString().Trim(),
+
                         DDLCausaRiesgoDos.SelectedValue.ToString().Trim(),
                         DDLFactorRO.SelectedValue.ToString().Trim(),
                         DDLOrigen.SelectedValue.ToString().Trim(),
@@ -905,10 +910,10 @@ namespace ListasSarlaft.UserControls.Eventos
                 ShowMessage($"Calculando criticidad de la severidad...", 2, "Atención");
                 PageValidateFirstMounts();
 
-               // PageValidate_AddneRCamposDecimal();
+                // PageValidate_AddneRCamposDecimal();
 
                 string criticidad = cEvsEIncs.ConsultarCriticidadSv(TBMontoExposicion.Text.Replace(',', '.'));
-                
+
 
                 DDLCriticidadSeveridadNota.SelectedValue = criticidad;
                 mpeMsgBox.Hide();
@@ -1178,7 +1183,7 @@ namespace ListasSarlaft.UserControls.Eventos
                 PageValidate_Addne();
                 PageValidate_AddneCamposDecimal();
                 PageValidate_TabRiesgo();
-                
+
 
                 if (string.IsNullOrEmpty(TBHiddenCodigoEvsEIncs.Text))
                 {
@@ -1279,9 +1284,9 @@ namespace ListasSarlaft.UserControls.Eventos
 
                 if (!TBIdRiesgo.Text.Equals(""))
                 {
-                    if(cEvsEIncs.RelacionarRiesgos(TBIdEvsEIncs.Text.ToString(), TBIdRiesgo.Text).Equals("0"))
+                    if (cEvsEIncs.RelacionarRiesgos(TBIdEvsEIncs.Text.ToString(), TBIdRiesgo.Text).Equals("0"))
                     {
-                        ShowMessage("No se puede asociar el riesgo. Supera el límite de eventos relacionados", 1, "Atención"); 
+                        ShowMessage("No se puede asociar el riesgo. Supera el límite de eventos relacionados", 1, "Atención");
                     }
                     else
                     {
@@ -2463,7 +2468,7 @@ namespace ListasSarlaft.UserControls.Eventos
                     {
                         InfoGridJustificacion.Clear();
                     }
-                    
+
                     for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                     {
                         TblJustificacion.Visible = true;
@@ -2533,6 +2538,7 @@ namespace ListasSarlaft.UserControls.Eventos
                 loadDDLOrigen();
                 DDLOrigen.SelectedValue = dtInfoRow["IdOrigen"].ToString().Trim();
 
+                
                 DDLProductoAfectado.SelectedValue = dtInfoRow["IdProductoAfectado"].ToString().Trim();
                 TBMontoBruto.Text = Convert.ToDouble(dtInfoRow["MontoBruto"].ToString().Trim()).ToString().Replace('.', ',');
                 TBMontoExposicion.Text = Convert.ToDouble(dtInfoRow["MontoExposicion"].ToString().Trim()).ToString().Replace('.', ',');
@@ -2818,7 +2824,7 @@ namespace ListasSarlaft.UserControls.Eventos
                 DDLCuentasPerdida.Enabled = TBFRegistroPerdida.Enabled = TBRecuperaciones.Enabled =
                     TBRecuperacionSeguro.Enabled = TBFRegistroContable.Enabled = TBCuentaRecuperacion.Enabled = enabled;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw (ex);
             }
@@ -2833,7 +2839,7 @@ namespace ListasSarlaft.UserControls.Eventos
                 {
                     DDLFiltroLineaDos.SelectedValue = "9";
 
-                    if(cargarLineas) loadDescripcionLineas(DDLLineaNegocioDos, DDLFiltroLineaDos.SelectedValue);
+                    if (cargarLineas) loadDescripcionLineas(DDLLineaNegocioDos, DDLFiltroLineaDos.SelectedValue);
 
                     DDLLineaNegocioDos.SelectedValue = "21";
                 }
@@ -2845,7 +2851,7 @@ namespace ListasSarlaft.UserControls.Eventos
 
                 DDLFiltroLineaDos.Enabled = DDLLineaNegocioDos.Enabled = enabled;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -2895,28 +2901,31 @@ namespace ListasSarlaft.UserControls.Eventos
 
                 index = (index - tamPag * nroPag); // Calcula el Numero de Fila del GridView dentro de la pagina actual
 
-          
+
                 System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVPlanes.DataKeys[index].Values;
                 //System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVPlanes.DataKeys[Convert.ToInt16(e.CommandArgument)].Values;
 
                 switch (e.CommandName)
                 {
-                    case "DesEnlazar":                    
-                        
-                          string idusuario= Session["IdUsuario"].ToString().Trim();
+                    case "DesEnlazar":
+
+                        string idusuario = Session["IdUsuario"].ToString().Trim();
                         string IdPlan = colsNoVisible[0].ToString();
-                        string a1  = colsNoVisible[1].ToString();
+                        string a1 = colsNoVisible[1].ToString();
 
 
                         cEvsEIncs.RelacionarPlanes(TBIdEvsEIncs.Text.ToString(), IdPlan);
+
                         string justificacion = "Se ha enlazado o desenlazado el id de plan: " + a1 + " al evento: "+ TBIdEvsEIncs.Text+".";
+
+
                         cEvsEIncs.GuardarJustificacionanezaplan(TBIdEvsEIncs.Text.ToString(), justificacion, idusuario);
-                            GVPlanes_reload();
+                        GVPlanes_reload();
                         loadInfoJustificacion();
 
-                            break;                        
-                       
-               
+                        break;
+
+
                     case "Ver":
 
                         ShowInfoPlanes(colsNoVisible);
@@ -2955,7 +2964,7 @@ namespace ListasSarlaft.UserControls.Eventos
                     case "DesEnlazar":
 
                         string IdRiesgo = colsNoVisible[0].ToString();
-                        if(cEvsEIncs.RelacionarRiesgos(TBIdEvsEIncs.Text.ToString(), IdRiesgo).Equals("0"))
+                        if (cEvsEIncs.RelacionarRiesgos(TBIdEvsEIncs.Text.ToString(), IdRiesgo).Equals("0"))
                         {
                             ShowMessage("No se puede asociar el riesgo. Supera el límite de eventos relacionados", 1, "Atención");
                         }
@@ -2968,7 +2977,7 @@ namespace ListasSarlaft.UserControls.Eventos
 
                             string justificacion = "Se ha enlazado o desenlazado el riesgo con id : " + IdRiesgo + " al evento: " + TBIdEvsEIncs.Text + ".";
                             cEvsEIncs.GuardarJustificacionanezaplan(TBIdEvsEIncs.Text.ToString(), justificacion, idusuario);
-                          
+
                             loadInfoJustificacion();
                             LoadCriticidadRiesgoByRiesgo(IdRiesgo);
                             GVRiesgos_reload(false);
@@ -3061,7 +3070,7 @@ namespace ListasSarlaft.UserControls.Eventos
 
 
                 System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVProcesoA.DataKeys[index].Values;
-               // System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVProcesoA.DataKeys[Convert.ToInt16(e.CommandArgument)].Values; ;
+                // System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVProcesoA.DataKeys[Convert.ToInt16(e.CommandArgument)].Values; ;
                 if (colsNoVisible != null)
                 {
 
@@ -3313,7 +3322,7 @@ namespace ListasSarlaft.UserControls.Eventos
             }
         }
 
-      
+
 
 
         private void PageValidate_AddneRCamposDecimal()

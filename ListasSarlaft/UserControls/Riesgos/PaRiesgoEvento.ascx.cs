@@ -501,7 +501,7 @@ namespace ListasSarlaft.UserControls.Riesgos
         {
             //string selectCommand = "SELECT rpe.IdPlanes_EvsEIncs as 'Id', rp.CodigoPlan, rei.CodigoEvsEIncs as 'CodigoEvento', rpe.FechaRegistro, rpe.IdUsuario as 'Usuario' FROM Riesgos.planes rp INNER JOIN Riesgos.Planes_EvsEIncs rpe ON rp.Id = rpe.IdPlanes INNER JOIN Riesgos.EventosIncidentes rei " +
             //    "ON rei.IdEvsEIncs = rpe.IdEvsEIncs WHERE rp.CodigoPlan = '" + CodigoPlan + "'";
-            string selectCommand = "SELECT rpe.IdPlanes_EvsEIncs as 'Id', rp.CodigoPlan, rei.CodigoEvsEIncs as CodigoEvento, rpe.FechaRegistro, CONCAT(lu.Nombres, ' ', lu.Apellidos) as 'Usuario'" 
+            string selectCommand = "SELECT rpe.IdPlanes_EvsEIncs as 'Id', rp.CodigoPlan, rei.CodigoEvsEIncs as CodigoEvento, rpe.FechaRegistro, CONCAT(lu.Nombres, ' ', lu.Apellidos) as 'Usuario'"
                                    + " FROM Riesgos.Planes_EvsEIncs rpe "
                                    + " INNER JOIN Riesgos.EventosIncidentes rei ON rpe.IdEvsEIncs = rei.IdEvsEIncs "
                                    + " INNER JOIN Riesgos.planes rp ON rp.Id = rpe.IdPlanes "
@@ -1217,7 +1217,7 @@ namespace ListasSarlaft.UserControls.Riesgos
 
 
                         ModalGestion.Focus();
-                        MPCumplimiento.Show();                       
+                        MPCumplimiento.Show();
                     }
                     break;
 
@@ -2235,14 +2235,15 @@ namespace ListasSarlaft.UserControls.Riesgos
         protected void GuardarCumplimiento_Click(object sender, EventArgs e)
         {
             try
-            {    
+            {
 
                 if ((Meta.Enabled) && (Periodo2.Enabled))
                 {
 
                     GuardarGestion();
                 }
-                else {
+                else
+                {
                     string Gestion = ModalGestion.Text;
                     if (string.IsNullOrEmpty(Gestion))
                     {
@@ -2252,7 +2253,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                     GuardarGestion2();
 
                 }
-     
+
             }
             catch (Exception ex)
             {
@@ -3186,21 +3187,21 @@ namespace ListasSarlaft.UserControls.Riesgos
             bool resultado = false;
             try
             {
-    
-                    cRiesgo.GuardarGestion2(IdGestion,Periodo2.Text,Convert.ToInt32(Meta2.Text));
-                    omb.ShowMessage("Se ha Modificado la información satisfactoriamente!", 3, "Atención");
-                    ModalGestion.Text = string.Empty;
-                    GrillaCumplimiento();
-                    CargarGrillaCumplimiento();
-                    Periodo2.Text = "";
-                    Meta2.Text = "";
-         
+
+                cRiesgo.GuardarGestion2(IdGestion, Periodo2.Text, Convert.ToInt32(Meta2.Text));
+                omb.ShowMessage("Se ha Modificado la información satisfactoriamente!", 3, "Atención");
+                ModalGestion.Text = string.Empty;
+                GrillaCumplimiento();
+                CargarGrillaCumplimiento();
+                Periodo2.Text = "";
+                Meta2.Text = "";
+
             }
             catch (Exception ex)
             {
                 omb.ShowMessage("Error en método GuardarCumplimiento: " + ex.Message.ToString(), 1, "Error");
             }
-            
+
 
             return resultado;
         }

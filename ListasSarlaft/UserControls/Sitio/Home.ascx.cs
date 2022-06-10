@@ -23,7 +23,7 @@ namespace ListasSarlaft.UserControls
                 string strErrMsg = string.Empty;
                 //booResult = mtdLoadReportNLZ(ref strErrMsg);
                 booResult = LoadInfoGraficoNumeroRos(ref strErrMsg);
-                
+
                 booResult = LoadInfoGraficoEstadosRoi(ref strErrMsg);
                 booResult = LoadInfoGraficoRiesgosCadenaValor(ref strErrMsg);
                 //--booResult = mtdLoadReporteRiesgos(ref strErrMsg);
