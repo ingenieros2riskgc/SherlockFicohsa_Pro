@@ -1,4 +1,5 @@
-﻿using ListasSarlaft.Classes;
+﻿using clsDatos;
+using ListasSarlaft.Classes;
 using Microsoft.Security.Application;
 using System;
 using System.Data;
@@ -30,9 +31,9 @@ namespace ListasSarlaft.UserControls.Sitio
                 if (cCuenta.ReestablecerContrasena(strNewPass, dtInformacion.Rows[0]["IdUsuario"].ToString().Trim()))
                 {
                     if (mtdEnviarCorreoContraseña(strUsuario, dtInformacion.Rows[0]["NombreResponsable"].ToString().Trim(),
-                        dtInformacion.Rows[0]["CorreoResponsable"].ToString().Trim(), strNewPass, ref strMensaje))
+                        dtInformacion.Rows[0]["CorreoResponsable"].ToString().Trim(), strNewPass, dtInformacion.Rows[0]["IdUsuario"].ToString().Trim(), ref strMensaje))
                     {
-                        Response.Redirect("~/Formularios/Sitio/Login.aspx", false);
+                        Response.Redirect("~/Formularios/Sitio/NuevoLogin.aspx", false);
                         strMensaje = "El correo con la contraseña reestablecida ha sido enviado.";
                     }
                 }
@@ -47,7 +48,7 @@ namespace ListasSarlaft.UserControls.Sitio
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Formularios/Sitio/Login.aspx", false);
+            Response.Redirect("~/Formularios/Sitio/NuevoLogin.aspx", false);
         }
 
         private void Mensaje(String Mensaje)
@@ -56,7 +57,7 @@ namespace ListasSarlaft.UserControls.Sitio
             mpeMsgBox.Show();
         }
 
-        private bool mtdEnviarCorreoContraseña(string strUsuario, string strNombre, string strCorreo, string strContrasena, ref string strErrMsg)
+        private bool mtdEnviarCorreoContraseña(string strUsuario, string strNombre, string strCorreo, string strContrasena, string intIdUsuario, ref string strErrMsg)
         {
             string strCuerpo = string.Empty;
             bool booResult = true;
@@ -89,6 +90,13 @@ namespace ListasSarlaft.UserControls.Sitio
                     objMessage.To.Add(strCorreo);
 
                     objSmtpClient.Send(objMessage);
+                    #endregion
+                    #region UpdateNotificacioneCorreosEnviados
+
+                    clsDtUtilidades cUtil = new clsDtUtilidades();
+                    cUtil.mtdAgregarCorreoEnviado(39, strCorreo.Trim(), string.Empty, string.Empty,
+                    "SHERLOCK: CORREO PARA REESTABLECER LA CONTRASEÑA", strCuerpo, "ENVIADO", 0, string.Empty,
+                    Convert.ToInt32(intIdUsuario), "RECUPERACION", ref strErrMsg);
                     #endregion
                 }
             }

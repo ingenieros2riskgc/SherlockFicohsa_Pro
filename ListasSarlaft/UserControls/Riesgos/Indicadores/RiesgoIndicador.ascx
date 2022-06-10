@@ -337,7 +337,7 @@
                                  <asp:Label ID="Lresponsable" runat="server" Text="Responsable Medición:" CssClass="Apariencia" Width="300px"></asp:Label>
                               </td>
                               <td>
-                                 <asp:TextBox ID="tbxResponsable" runat="server" Width="300px" CssClass="Apariencia"></asp:TextBox>
+                                 <asp:TextBox ID="tbxResponsable" runat="server" Width="300px" CssClass="Apariencia" Enabled="False"></asp:TextBox>
                               </td>
                               <td>
                                  <asp:Label ID="lblIdDependencia4" runat="server" Visible="False" Font-Names="Calibri"
