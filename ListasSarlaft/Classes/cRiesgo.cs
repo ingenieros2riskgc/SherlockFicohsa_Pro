@@ -6032,8 +6032,8 @@ namespace ListasSarlaft.Classes
                             //condicion += "AND (RPA.IdControlUsuario = 3) ";
                             condicion += "";
                         }
-                        strSelect = "select RP.CodigoPlan, RR.Descripcion AS DescripcionRiesgo, RPEA.CodigoEvento, RP.NombrePlan, RPRA.Usuario AS ResponsableRiesgo, RP.DescripcionPlan, PDJPA.NombreResponsable as ResponsablePlan, RP.Estado, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RP.FechaRegistro, 23), ''))) FechaRegistro, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RP.FechaCompromiso, 23), ''))) FechaCompromiso, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RP.FechaExtension, 23), ''))) FechaExtension, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RP.FechaImplementacion, 23), ''))) FechaImplementacion, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, REI.FechaCierre, 23), ''))) EventoFechaCierre, RICP.Meta, RICP.Gestion, RSP.Seguimiento, Parea.NombreArea";
-                        strFrom = "from Riesgos.Planes RP LEFT JOIN Riesgos.planesEventosAsociados RPEA ON RP.CodigoPlan = RPEA.CodigoPlan LEFT JOIN Riesgos.EventosIncidentes REI ON RPEA.CodigoEvento = REI.CodigoEvsEIncs LEFT JOIN Riesgos.planesRiesgosAsociados RPRA ON RP.CodigoPlan = RPRA.CodigoPlan LEFT JOIN Riesgos.Riesgo RR ON RPRA.CodigoRiesgo = RR.Codigo LEFT JOIN Riesgos.IndicadorCumplimientoPlanes RICP ON RP.CodigoPlan = RICP.CodigoPlan LEFT JOIN Riesgos.SeguimientosPlanes RSP ON RP.CodigoPlan = RSP.CodigoPlan LEFT JOIN Parametrizacion.JerarquiaOrganizacional AS PJO ON PJO.idHijo = RR.IdResponsableRiesgo";
+                        strSelect = "select RP.CodigoPlan, RR.Descripcion AS DescripcionRiesgo, RPEA.CodigoEvento, RP.NombrePlan, PCR.NombreClasificacionRiesgo as RiesgoGlobal, RPRA.Usuario AS ResponsableRiesgo, RP.DescripcionPlan, PDJPA.NombreResponsable as ResponsablePlan, RP.Estado, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RP.FechaRegistro, 23), ''))) FechaRegistro, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RP.FechaCompromiso, 23), ''))) FechaCompromiso, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RP.FechaExtension, 23), ''))) FechaExtension, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, RP.FechaImplementacion, 23), ''))) FechaImplementacion, LTRIM(RTRIM(ISNULL(CONVERT(VARCHAR, REI.FechaCierre, 23), ''))) EventoFechaCierre, RICP.Meta, RICP.Gestion, RSP.Seguimiento, Parea.NombreArea";
+                        strFrom = "from Riesgos.Planes RP LEFT JOIN Riesgos.planesEventosAsociados RPEA ON RP.CodigoPlan = RPEA.CodigoPlan LEFT JOIN Riesgos.EventosIncidentes REI ON RPEA.CodigoEvento = REI.CodigoEvsEIncs LEFT JOIN Parametrizacion.ClasificacionRiesgo PCR ON PCR.IdClasificacionRiesgo = RP.IdClasificacionRiesgo LEFT JOIN Riesgos.planesRiesgosAsociados RPRA ON RP.CodigoPlan = RPRA.CodigoPlan LEFT JOIN Riesgos.Riesgo RR ON RPRA.CodigoRiesgo = RR.Codigo LEFT JOIN Riesgos.IndicadorCumplimientoPlanes RICP ON RP.CodigoPlan = RICP.CodigoPlan LEFT JOIN Riesgos.SeguimientosPlanes RSP ON RP.CodigoPlan = RSP.CodigoPlan LEFT JOIN Parametrizacion.JerarquiaOrganizacional AS PJO ON PJO.idHijo = RR.IdResponsableRiesgo";
                         strFrom += " LEFT JOIN Parametrizacion.JerarquiaOrganizacional PJOPA ON PJOPA.NombreHijo = RP.Responsable"
                                + " LEFT JOIN Parametrizacion.DetalleJerarquiaOrg PDJPA ON PDJPA.idHijo = PJOPA.idHijo";
                         strFrom += " LEFT JOIN [Parametrizacion].[DetalleJerarquiaOrg] AS PDJ ON PDJ.idHijo = PJO.idHijo"
@@ -7418,7 +7418,7 @@ namespace ListasSarlaft.Classes
         public void GuardarGestion2(int id, string FECHA, int meta)
         {
             DateTime aux = Convert.ToDateTime(FECHA);
-            string aux2 = aux.ToString("dd-MM-yyyy");
+            string aux2 = aux.ToString("yyyy-MM-dd");//("dd-MM-yyyy");
 
             aux2 = aux2 + " 00:00:00.000";
 

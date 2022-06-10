@@ -608,7 +608,8 @@ namespace ListasSarlaft.UserControls.Eventos
             }
             catch (FormatException)
             {
-                ShowMessage($"Error al consultar Severidad (Límite específico): uno de los valores no es un numero", 1, "Atención");
+                //ShowMessage($"Error al consultar Severidad (Límite específico): uno de los valores no es un numero", 1, "Atención");
+                Console.WriteLine("Error al consultar Severidad (Límite específico): uno de los valores no es un numero");
             }
             catch (IndexOutOfRangeException) { DDLCriticidadSeveridad.SelectedValue = "4"; }
             catch (Exception ex)
@@ -1323,7 +1324,8 @@ namespace ListasSarlaft.UserControls.Eventos
             DDLBSubproceso.Items.Insert(0, new ListItem("---", "0"));
             DDLBActividad.Items.Insert(0, new ListItem("---", "0"));
 
-            loadInitialData2();
+            loadDataEvsEInc();
+            //loadInitialData2();
 
             TBBCodigoRiesgo.Text = "";
             TBBNombreRiesgo.Text = "";
@@ -1364,7 +1366,8 @@ namespace ListasSarlaft.UserControls.Eventos
 
             TBBPONombre.Text = "";
 
-            loadInitialData2();
+            loadDataEvsEInc();
+            //loadInitialData2();
             GVProcesoO_reload();
         }
 
@@ -1401,8 +1404,9 @@ namespace ListasSarlaft.UserControls.Eventos
 
             TBBPANombre.Text = "";
 
-            loadInitialData2();
-            GVProcesoA_reload();
+            loadDataEvsEInc();
+            //loadInitialData2();
+            GVProcesoA_reload();            
         }
 
         protected void BtnSubirArchivo_Click(object sender, EventArgs e)
@@ -1431,7 +1435,7 @@ namespace ListasSarlaft.UserControls.Eventos
                 loadDDLCodigoBanco();
                 loadDDLCategoria();
                 //loadDDLModalidad();
-                loadDescripcionLineas();
+                loadDescripcionLineas();                
                 //loadDDLTipoRiesgo();
                 loadDDLProductoAfectado();
                 loadDDLsDescFrecuencia();
@@ -2459,8 +2463,6 @@ namespace ListasSarlaft.UserControls.Eventos
                 dtInfo = cEvsEIncs.LoadInfoJustificacion(TBIdEvsEIncs.Text);
 
                 if (dtInfo.Rows.Count > 0)
-
-
                 {
                     if (InfoGridJustificacion.Rows.Count > 0)
                     {

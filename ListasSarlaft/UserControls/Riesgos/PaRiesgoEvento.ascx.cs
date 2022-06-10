@@ -557,6 +557,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             "p.FechaRegistro, " +
             "p.FechaCompromiso, " +
             "p.FechaExtension, " +
+            "p.FechaImplementacion, " +
             "ISNULL(pea.CodigoEvento, '-') CodigoEvento " +
             "from Riesgos.planes p " +
             "LEFT JOIN[Parametrizacion].[JerarquiaOrganizacional] JO on Jo.idHijo = p.IdResponsable " +
@@ -1628,6 +1629,20 @@ namespace ListasSarlaft.UserControls.Riesgos
                                                           "<br /><B> Fecha de Compromiso: </B>" + objPlanes.FechaCompromiso.ToString() +
                                                           "<br />";
                                                 EnviarNotificacion(10, 0, Convert.ToInt32(idResponsable), "", CuerpoCorreo);
+                                            }
+                                            if (!string.IsNullOrEmpty(Justificacion.Text))
+                                            {
+                                                CuerpoCorreo = "" +
+                                                          "<h3> MODIFICACIÓN PLAN DE ACCIÓN </h3 > " +
+                                                          "<br /><B> Código del plan: </B>" + CodigoPlan.Text +
+                                                          "<br /><B> Nombre del plan: </B>" + objPlanes.NombrePlan +
+                                                          "<br /><B> Descripción de la Acción: </B>" + objPlanes.DescripcionPlan +
+                                                          "<br /><B> Estado: </B>" + objPlanes.Estado +
+                                                          "<br /><B> Evento asociado: </B>" + AsociarEvento.Text +
+                                                          "<br /><B> Fecha de Compromiso: </B>" + objPlanes.FechaCompromiso.ToString() +
+                                                          "<br /><B> Justificación Modificación: </B>" + Justificacion.Text +
+                                                          "<br />";
+                                                EnviarNotificacion(38, 0, Convert.ToInt32(idResponsable), "", CuerpoCorreo);
                                             }
 
                                             GrillaPlanes();

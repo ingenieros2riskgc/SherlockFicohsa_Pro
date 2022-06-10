@@ -62,16 +62,17 @@
     <Reference Include="ClosedXML">
       <HintPath>..\..\InspektorCesar\Librerias\ClosedXML.dll</HintPath>
     </Reference>
-    <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=810f687d3d017a43, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\clsDatos\bin\Debug\DAL.dll</HintPath>
+    <Reference Include="DAL">
+      <HintPath>..\clsLogica\bin\Debug\DAL.dll</HintPath>
     </Reference>
-    <Reference Include="DLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b39a8aed12feb1e0, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="DLL">
       <HintPath>..\clsLogica\bin\Debug\DLL.dll</HintPath>
     </Reference>
     <Reference Include="DocumentFormat.OpenXml">
       <HintPath>..\..\InspektorCesar\Librerias\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DTO">
+      <HintPath>..\clsLogica\bin\Debug\DTO.dll</HintPath>
     </Reference>
     <Reference Include="Excel">
       <HintPath>..\..\InspektorCesar\Librerias\Excel.dll</HintPath>
@@ -25713,12 +25714,6 @@
     <TypeScriptCompile Include="Formularios\assets\plugins\ionicons\types\components.d.ts" />
     <TypeScriptCompile Include="Formularios\assets\plugins\ionicons\types\icon\icon.d.ts" />
     <TypeScriptCompile Include="Formularios\assets\plugins\ionicons\types\stencil.core.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\clsDTO\DTO.csproj">
-      <Project>{0a52978b-3a70-4fc2-b5f3-884e76bbc3d1}</Project>
-      <Name>DTO</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
