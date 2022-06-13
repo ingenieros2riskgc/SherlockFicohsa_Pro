@@ -3113,9 +3113,24 @@ namespace ListasSarlaft.Classes
                     #region Areas
                     if (!string.IsNullOrEmpty(IdAreas))
                     {
-                        strFrom = "INNER JOIN Procesos.Proceso ON RR.IdProceso = Procesos.Proceso.IdProceso ";
-                        condicion =
-                            string.Format("{0} AND (SELECT COUNT(*) Conteo FROM Procesos.FnSplitTable(Procesos.Proceso.IdArea,',') T WHERE T.Col1 IN (SELECT COL1 FROM Procesos.FnSplitTable('{1}',','))) > 0", condicion, IdAreas);
+                        strFrom = "INNER JOIN Parametrizacion.JerarquiaOrganizacional PJO ON PJO.idHijo = rr.IdResponsableRiesgo ";
+                        strFrom += "INNER JOIN Parametrizacion.DetalleJerarquiaOrg AS PDJ ON PDJ.idHijo = PJO.idHijo ";
+                        strFrom += "INNER JOIN Parametrizacion.Area as Parea on Parea.IdArea = PDJ.IdArea ";
+                        string[] Ids = IdAreas.Split(',');
+                        int cantIds = Ids.Length;
+                        int counterId = 0;
+                        condicion += " AND (";
+                        foreach (string itemId in Ids)
+                        {
+                            counterId++;
+                            condicion += string.Format("Parea.IdArea={0} ", itemId);
+                            if (counterId < cantIds)
+                            {
+                                condicion += "or ";
+                            }
+                        }
+
+                        condicion += ")";                             
                     }
                     #endregion Areas
 
@@ -3202,7 +3217,7 @@ namespace ListasSarlaft.Classes
         {
             #region Variables Locales
             DataTable dtInformacion = new DataTable();
-            string condicion = "WHERE (Riesgos.Riesgo.Anulado = 0)", strFrom = string.Empty, strConsulta = string.Empty,
+            string condicion = "WHERE (RR.Anulado = 0)", strFrom = string.Empty, strConsulta = string.Empty,
                 strFechaIni = string.Empty, strFechaFin = string.Empty, strFechaFinal = string.Empty;
             #endregion Variables Locales
             if (Estado == "0") { Estado = "---"; }
@@ -3415,42 +3430,42 @@ namespace ListasSarlaft.Classes
                     #region Filtros Viejos
                     if (Estado != "---")
                     {
-                        condicion = condicion + " AND (Riesgos.Riesgo.Estado = " + Estado + ")";
+                        condicion = condicion + " AND (RR.Estado = " + Estado + ")";
                     }
 
                     if (IdCadenaValor != "---")
                     {
-                        condicion = condicion + " AND (Riesgos.Riesgo.IdCadenaValor = " + IdCadenaValor + ")";
+                        condicion = condicion + " AND (RR.IdCadenaValor = " + IdCadenaValor + ")";
                     }
 
                     if (IdMacroproceso != "---")
                     {
-                        condicion = condicion + " AND (Riesgos.Riesgo.IdMacroproceso = " + IdMacroproceso + ")";
+                        condicion = condicion + " AND (RR.IdMacroproceso = " + IdMacroproceso + ")";
                     }
 
                     if (IdProceso != "---")
                     {
-                        condicion = condicion + " AND (Riesgos.Riesgo.IdProceso = " + IdProceso + ")";
+                        condicion = condicion + " AND (RR.IdProceso = " + IdProceso + ")";
                     }
 
                     if (IdSubProceso != "---")
                     {
-                        condicion = condicion + " AND (Riesgos.Riesgo.IdSubProceso = " + IdSubProceso + ")";
+                        condicion = condicion + " AND (RR.IdSubProceso = " + IdSubProceso + ")";
                     }
 
                     if (IdClasificacionRiesgo != "---")
                     {
-                        condicion = condicion + " AND (Riesgos.Riesgo.IdClasificacionRiesgo = " + IdClasificacionRiesgo + ")";
+                        condicion = condicion + " AND (RR.IdClasificacionRiesgo = " + IdClasificacionRiesgo + ")";
                     }
 
                     if (IdClasificacionGeneralRiesgo != "---")
                     {
-                        condicion = condicion + " AND (Riesgos.Riesgo.IdClasificacionGeneralRiesgo = " + IdClasificacionGeneralRiesgo + ")";
+                        condicion = condicion + " AND (RR.IdClasificacionGeneralRiesgo = " + IdClasificacionGeneralRiesgo + ")";
                     }
 
                     if (IdClasificacionParticularRiesgo != "---")
                     {
-                        condicion = condicion + " AND (Riesgos.Riesgo.IdClasificacionParticularRiesgo = " + IdClasificacionParticularRiesgo + ")";
+                        condicion = condicion + " AND (RR.IdClasificacionParticularRiesgo = " + IdClasificacionParticularRiesgo + ")";
                     }
 
                     #endregion Filtros Viejos
@@ -3458,16 +3473,31 @@ namespace ListasSarlaft.Classes
                     #region Filtro Factor Riesgos LAFT
                     if (strIdFactorRiesgoLAFT != "---")
                     {
-                        condicion = condicion + " AND ('" + strIdFactorRiesgoLAFT + "' IN (SELECT COL1 FROM Procesos.FnSplitTable(Riesgos.Riesgo.ListaFactorRiesgoLAFT,'|'))) ";
+                        condicion = condicion + " AND ('" + strIdFactorRiesgoLAFT + "' IN (SELECT COL1 FROM Procesos.FnSplitTable(RR.ListaFactorRiesgoLAFT,'|'))) ";
                     }
                     #endregion Filtro Factor Riesgos LAFT
 
                     #region Areas
                     if (!string.IsNullOrEmpty(IdAreas))
                     {
-                        strFrom = "INNER JOIN Procesos.Proceso ON Riesgos.Riesgo.IdProceso = Procesos.Proceso.IdProceso ";
-                        condicion =
-                            string.Format("{0} AND (SELECT COUNT(*) Conteo FROM Procesos.FnSplitTable(Procesos.Proceso.IdArea,',') T WHERE T.Col1 IN (SELECT COL1 FROM Procesos.FnSplitTable('{1}',','))) > 0", condicion, IdAreas);
+                        strFrom = "INNER JOIN Parametrizacion.JerarquiaOrganizacional PJO ON PJO.idHijo = RR.IdResponsableRiesgo ";
+                        strFrom += "INNER JOIN Parametrizacion.DetalleJerarquiaOrg AS PDJ ON PDJ.idHijo = PJO.idHijo ";
+                        strFrom += "INNER JOIN Parametrizacion.Area as Parea on Parea.IdArea = PDJ.IdArea ";
+                        string[] Ids = IdAreas.Split(',');
+                        int cantIds = Ids.Length;
+                        int counterId = 0;
+                        condicion += " AND (";
+                        foreach (string itemId in Ids)
+                        {
+                            counterId++;
+                            condicion += string.Format("Parea.IdArea={0} ", itemId);
+                            if (counterId < cantIds)
+                            {
+                                condicion += "or ";
+                            }
+                        }
+
+                        condicion += ")";
                     }
                     #endregion Areas
 
@@ -3476,7 +3506,7 @@ namespace ListasSarlaft.Classes
                     {
                         if (string.IsNullOrEmpty(strFrom))
                         {
-                            strFrom = "INNER JOIN Procesos.Proceso ON Riesgos.Riesgo.IdProceso = Procesos.Proceso.IdProceso ";
+                            strFrom = "INNER JOIN Procesos.Proceso ON RR.IdProceso = Procesos.Proceso.IdProceso ";
                         }
 
                         if (string.IsNullOrEmpty(condicion))
@@ -3512,20 +3542,20 @@ namespace ListasSarlaft.Classes
                     if (strIdObjetivo != "---" && strIdObjetivo != "0")
                     {
                         condicion = condicion + " AND (GOE.IdObjetivo = " + strIdObjetivo + ")";
-                        string strInnerJoinObjetivos = "inner join [Riesgos].[ObjetivosRiesgo] as ROR on  ROR.IdRiesgo = Riesgos.Riesgo.IdRiesgo"
+                        string strInnerJoinObjetivos = "inner join [Riesgos].[ObjetivosRiesgo] as ROR on  ROR.IdRiesgo = RR.IdRiesgo"
                         + " inner join Gestion.ObjetivosEstrategicos as GOE on GOE.IdObjetivo = ROR.IdObjetivos";
 
-                        string strSelNormal = string.Format("SELECT COUNT(Riesgos.Riesgo.IdRiesgo) AS NumeroRegistros, Riesgos.Riesgo.IdProbabilidadResidual, Riesgos.Riesgo.IdImpactoResidual");
-                        string strFromNormal = string.Format("FROM	Riesgos.Riesgo {2} {0} {1}", strFrom, condicion, strInnerJoinObjetivos);
+                        string strSelNormal = string.Format("SELECT COUNT(RR.IdRiesgo) AS NumeroRegistros, RR.IdProbabilidadResidual, RR.IdImpactoResidual");
+                        string strFromNormal = string.Format("FROM	Riesgos.Riesgo RR {2} {0} {1}", strFrom, condicion, strInnerJoinObjetivos);
 
-                        strConsulta = string.Format("{0} {1} GROUP BY Riesgos.Riesgo.IdProbabilidadResidual, Riesgos.Riesgo.IdImpactoResidual", strSelNormal, strFromNormal);
+                        strConsulta = string.Format("{0} {1} GROUP BY RR.IdProbabilidadResidual, RR.IdImpactoResidual", strSelNormal, strFromNormal);
                     }
                     else
                     {
-                        string strSelNormal = string.Format("SELECT COUNT(Riesgos.Riesgo.IdRiesgo) AS NumeroRegistros, Riesgos.Riesgo.IdProbabilidadResidual, Riesgos.Riesgo.IdImpactoResidual");
-                        string strFromNormal = string.Format("FROM	Riesgos.Riesgo {0} {1}", strFrom, condicion);
+                        string strSelNormal = string.Format("SELECT COUNT(RR.IdRiesgo) AS NumeroRegistros, RR.IdProbabilidadResidual, RR.IdImpactoResidual");
+                        string strFromNormal = string.Format("FROM	Riesgos.Riesgo RR {0} {1}", strFrom, condicion);
 
-                        strConsulta = string.Format("{0} {1} GROUP BY Riesgos.Riesgo.IdProbabilidadResidual, Riesgos.Riesgo.IdImpactoResidual", strSelNormal, strFromNormal);
+                        strConsulta = string.Format("{0} {1} GROUP BY RR.IdProbabilidadResidual, RR.IdImpactoResidual", strSelNormal, strFromNormal);
                     }
                     #endregion Filtros por Objetivos Estrategicos
                     #endregion Filtros
@@ -3828,9 +3858,24 @@ namespace ListasSarlaft.Classes
                     #region Areas
                     if (!string.IsNullOrEmpty(IdAreas))
                     {
-                        strFrom = "INNER JOIN Procesos.Proceso ON Riesgos.Riesgo.IdProceso = Procesos.Proceso.IdProceso ";
-                        condicion =
-                            string.Format("{0} AND (SELECT COUNT(*) Conteo FROM Procesos.FnSplitTable(Procesos.Proceso.IdArea,',') T WHERE T.Col1 IN (SELECT COL1 FROM Procesos.FnSplitTable('{1}',','))) > 0", condicion, IdAreas);
+                        strFrom = "INNER JOIN Parametrizacion.JerarquiaOrganizacional PJO ON PJO.idHijo = Riesgos.Riesgo.IdResponsableRiesgo ";
+                        strFrom += "INNER JOIN Parametrizacion.DetalleJerarquiaOrg AS PDJ ON PDJ.idHijo = PJO.idHijo ";
+                        strFrom += "INNER JOIN Parametrizacion.Area as Parea on Parea.IdArea = PDJ.IdArea ";
+                        string[] Ids = IdAreas.Split(',');
+                        int cantIds = Ids.Length;
+                        int counterId = 0;
+                        condicion += " AND (";
+                        foreach (string itemId in Ids)
+                        {
+                            counterId++;
+                            condicion += string.Format("Parea.IdArea={0} ", itemId);
+                            if (counterId < cantIds)
+                            {
+                                condicion += "or ";
+                            }
+                        }
+
+                        condicion += ")";
                     }
                     #endregion Areas
 
@@ -4182,9 +4227,24 @@ namespace ListasSarlaft.Classes
                     #region Areas
                     if (!string.IsNullOrEmpty(IdAreas))
                     {
-                        strFrom = "INNER JOIN Procesos.Proceso ON Riesgos.Riesgo.IdProceso = Procesos.Proceso.IdProceso ";
-                        condicion =
-                            string.Format("{0} AND (SELECT COUNT(*) Conteo FROM Procesos.FnSplitTable(Procesos.Proceso.IdArea,',') T WHERE T.Col1 IN (SELECT COL1 FROM Procesos.FnSplitTable('{1}',','))) > 0", condicion, IdAreas);
+                        strFrom = "INNER JOIN Parametrizacion.JerarquiaOrganizacional PJO ON PJO.idHijo = Riesgos.Riesgo.IdResponsableRiesgo ";
+                        strFrom += "INNER JOIN Parametrizacion.DetalleJerarquiaOrg AS PDJ ON PDJ.idHijo = PJO.idHijo ";
+                        strFrom += "INNER JOIN Parametrizacion.Area as Parea on Parea.IdArea = PDJ.IdArea ";
+                        string[] Ids = IdAreas.Split(',');
+                        int cantIds = Ids.Length;
+                        int counterId = 0;
+                        condicion += " AND (";
+                        foreach (string itemId in Ids)
+                        {
+                            counterId++;
+                            condicion += string.Format("Parea.IdArea={0} ", itemId);
+                            if (counterId < cantIds)
+                            {
+                                condicion += "or ";
+                            }
+                        }
+
+                        condicion += ")";
                     }
                     #endregion
 
@@ -4519,9 +4579,24 @@ namespace ListasSarlaft.Classes
                     #region Areas
                     if (!string.IsNullOrEmpty(IdAreas))
                     {
-                        strFrom = "INNER JOIN Procesos.Proceso ON RR.IdProceso = Procesos.Proceso.IdProceso ";
-                        condicion =
-                            string.Format("{0} AND (SELECT COUNT(*) Conteo FROM Procesos.FnSplitTable(Procesos.Proceso.IdArea,',') T WHERE T.Col1 IN (SELECT COL1 FROM Procesos.FnSplitTable('{1}',','))) > 0", condicion, IdAreas);
+                        strFrom = "INNER JOIN Parametrizacion.JerarquiaOrganizacional PJO ON PJO.idHijo = RR.IdResponsableRiesgo ";
+                        strFrom += "INNER JOIN Parametrizacion.DetalleJerarquiaOrg AS PDJ ON PDJ.idHijo = PJO.idHijo ";
+                        strFrom += "INNER JOIN Parametrizacion.Area as Parea on Parea.IdArea = PDJ.IdArea ";
+                        string[] Ids = IdAreas.Split(',');
+                        int cantIds = Ids.Length;
+                        int counterId = 0;
+                        condicion += " AND (";
+                        foreach (string itemId in Ids)
+                        {
+                            counterId++;
+                            condicion += string.Format("Parea.IdArea={0} ", itemId);
+                            if (counterId < cantIds)
+                            {
+                                condicion += "or ";
+                            }
+                        }
+
+                        condicion += ")";
                     }
                     #endregion
 
