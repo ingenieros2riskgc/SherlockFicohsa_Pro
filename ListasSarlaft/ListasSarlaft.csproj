@@ -15811,6 +15811,7 @@
     <Content Include="Formularios\Eventos\CuentasContablesPerdida.aspx" />
     <Content Include="Formularios\Eventos\DesCausaNDos.aspx" />
     <Content Include="Formularios\Eventos\Categoria.aspx" />
+    <Content Include="Formularios\Eventos\LimGblFrecuencia.aspx" />
     <Content Include="Formularios\Eventos\LimEspSeveridad.aspx" />
     <Content Include="Formularios\Eventos\LimEspFrecuencia.aspx" />
     <Content Include="Formularios\Eventos\Modalidad.aspx" />
@@ -20228,6 +20229,7 @@
     <Content Include="UserControls\ConfigEstructura\ConfPerfilVariable.ascx" />
     <Content Include="UserControls\Eventos\Activo.ascx" />
     <Content Include="UserControls\Eventos\Categoria.ascx" />
+    <Content Include="UserControls\Eventos\LimGblFrecuencia.ascx" />
     <Content Include="UserControls\Eventos\LimEspSeveridad.ascx" />
     <Content Include="UserControls\Eventos\LimEspFrecuencia.ascx" />
     <Content Include="UserControls\Eventos\Modalidad.ascx" />
@@ -21349,6 +21351,13 @@
     </Compile>
     <Compile Include="Formularios\Eventos\Categoria.aspx.designer.cs">
       <DependentUpon>Categoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Eventos\LimGblFrecuencia.aspx.cs">
+      <DependentUpon>LimGblFrecuencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\Eventos\LimGblFrecuencia.aspx.designer.cs">
+      <DependentUpon>LimGblFrecuencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Eventos\LimEspSeveridad.aspx.cs">
       <DependentUpon>LimEspSeveridad.aspx</DependentUpon>
@@ -23391,6 +23400,13 @@
     </Compile>
     <Compile Include="UserControls\Eventos\Categoria.ascx.designer.cs">
       <DependentUpon>Categoria.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Eventos\LimGblFrecuencia.ascx.cs">
+      <DependentUpon>LimGblFrecuencia.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Eventos\LimGblFrecuencia.ascx.designer.cs">
+      <DependentUpon>LimGblFrecuencia.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Eventos\LimEspSeveridad.ascx.cs">
       <DependentUpon>LimEspSeveridad.ascx</DependentUpon>

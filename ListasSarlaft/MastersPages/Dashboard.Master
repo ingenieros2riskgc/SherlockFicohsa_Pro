@@ -286,6 +286,8 @@
                                     <ul class="sub-menu">
                                         <li><a href="../../../Formularios/Eventos/LimEspFrecuencia.aspx">Lím. Esp. Frecuencia</a></li>
                                         <li><a href="../../../Formularios/Eventos/LimEspSeveridad.aspx">Lím. Esp. Severidad</a></li>
+                                        <li><a href="../../../Formularios/Eventos/LimGblFrecuencia.aspx">Lím. Gbl. Frecuencia</a></li>
+                                        <li><a href="../../../Formularios/Eventos/LimGblSeveridad.aspx">Lím. Gbl. Severidad</a></li>
                                        <hr>
                                        <%-- -----------------------------------------------------%>
                                        <li><a href="../../../Formularios/Eventos/Anios.aspx">Años</a></li>
