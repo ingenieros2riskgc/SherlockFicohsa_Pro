@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 
 namespace ListasSarlaft.UserControls.Eventos
 {
-    public partial class LimGblFrecuencia : System.Web.UI.UserControl
+    public partial class LimGblSeveridad : System.Web.UI.UserControl
     {
         string IdFormulario = "5010";
         cCuenta cCuenta = new cCuenta();
@@ -48,17 +48,17 @@ namespace ListasSarlaft.UserControls.Eventos
                 if (GridView1.SelectedRow.RowType == DataControlRowType.DataRow)
                 {
                     txtId.Enabled = false;
-                    
+
                     // Carga los datos en la respectiva caja de texto
-                    txtId.Text = GridView1.SelectedDataKey[0].ToString().Trim();
-                    ddlFrecuencia.SelectedValue = GridView1.SelectedDataKey[1].ToString().Trim();
-                    txtMinimo.Text = GridView1.SelectedDataKey[2].ToString().Trim();
+                    txtId.Text = GridView1.SelectedDataKey[0].ToString().Trim();                    
+                    ddlSeveridad.SelectedValue = GridView1.SelectedDataKey[1].ToString().Trim();
+                    txtMinimo.Text = GridView1.SelectedRow.Cells[2].Text.Trim();
                     txtMaximo.Text = GridView1.SelectedDataKey[3].ToString().Trim();
                     txtUsuario.Text = GridView1.SelectedRow.Cells[4].Text.Trim();
                     txtFecha.Text = GridView1.SelectedRow.Cells[5].Text.Trim();
 
-                    filaGrids.Visible = false;
-                    filaDetalles.Visible = true;
+                    filaGrid.Visible = false;
+                    filaDetalle.Visible = true;
                     btnImgInsertar.Visible = false;
                     btnImgActualizar.Visible = true;
 
@@ -100,8 +100,8 @@ namespace ListasSarlaft.UserControls.Eventos
         #region Button
         protected void btnImgCancelar_Click(object sender, ImageClickEventArgs e)
         {
-            filaGrids.Visible = true;
-            filaDetalles.Visible = false;
+            filaGrid.Visible = true;
+            filaDetalle.Visible = false;
         }
 
         protected void imgBtnInsertar_Click(object sender, ImageClickEventArgs e)
@@ -114,15 +114,15 @@ namespace ListasSarlaft.UserControls.Eventos
             {
                 txtId.Text = "";
                 txtId.Enabled = false;
-                txtId.Text = "";
-                ddlFrecuencia.SelectedValue = null;
+                txtId.Text = "";                
+                ddlSeveridad.SelectedValue = null;
                 txtMinimo.Text = "";
                 txtMaximo.Text = "";
                 txtUsuario.Text = Session["loginUsuario"].ToString().Trim(); //Aca va el Estado de usuario logueado
                 txtFecha.Text = System.DateTime.Now.ToString("dd/MM/yyyy");
 
-                filaGrids.Visible = false;
-                filaDetalles.Visible = true;
+                filaGrid.Visible = false;
+                filaDetalle.Visible = true;
                 btnImgInsertar.Visible = true;
                 btnImgActualizar.Visible = false;
             }
@@ -147,7 +147,7 @@ namespace ListasSarlaft.UserControls.Eventos
 
             try
             {
-                SqlDataSource1.DeleteParameters["IdMtGblFrecuencia"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtId.Text.Trim());
+                SqlDataSource1.DeleteParameters["IdMtGblSeveridad"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtId.Text.Trim());
                 SqlDataSource1.Delete();
                 omb.ShowMessage("La información se eliminó con éxito en la Base de Datos.", 3, "Atención");
             }
@@ -167,16 +167,16 @@ namespace ListasSarlaft.UserControls.Eventos
             {
                 try
                 {
-                    SqlDataSource1.UpdateParameters["IdMtGblFrecuencia"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtId.Text.Trim());
-                    SqlDataSource1.UpdateParameters["Minimo"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtMinimo.Text.Trim());
-                    SqlDataSource1.UpdateParameters["Maximo"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtMaximo.Text.Trim());
-                    SqlDataSource1.UpdateParameters["IdDescFrecuencia"].DefaultValue = Sanitizer.GetSafeHtmlFragment(ddlFrecuencia.SelectedValue);                    
+                    SqlDataSource1.UpdateParameters["IdMtGblSeveridad"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtId.Text.Trim());
+                    SqlDataSource1.UpdateParameters["Minimo"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtMinimo.Text.Trim().Replace(".", "").Replace(",", "."));
+                    SqlDataSource1.UpdateParameters["Maximo"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtMaximo.Text.Trim().Replace(".", "").Replace(",", "."));
+                    SqlDataSource1.UpdateParameters["IdDescSeveridad"].DefaultValue = Sanitizer.GetSafeHtmlFragment(ddlSeveridad.SelectedValue);                    
 
                     SqlDataSource1.Update();
                     omb.ShowMessage("La información se actualizó con éxito en la Base de Datos.", 3, "Atención");
 
-                    filaDetalles.Visible = false;
-                    filaGrids.Visible = true;
+                    filaDetalle.Visible = false;
+                    filaGrid.Visible = true;
                 }
                 catch (Exception except)
                 {
@@ -190,16 +190,16 @@ namespace ListasSarlaft.UserControls.Eventos
             //Inserta el maestro del nodo hijo
             try
             {
-                SqlDataSource1.InsertParameters["Minimo"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtMinimo.Text.Trim());
-                SqlDataSource1.InsertParameters["Maximo"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtMaximo.Text.Trim());
-                SqlDataSource1.InsertParameters["IdDescFrecuencia"].DefaultValue = Sanitizer.GetSafeHtmlFragment(ddlFrecuencia.SelectedValue);                
+                SqlDataSource1.InsertParameters["Minimo"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtMinimo.Text.Trim().Replace(".", "").Replace(",", "."));
+                SqlDataSource1.InsertParameters["Maximo"].DefaultValue = Sanitizer.GetSafeHtmlFragment(txtMaximo.Text.Trim().Replace(".", "").Replace(",", "."));
+                SqlDataSource1.InsertParameters["IdDescSeveridad"].DefaultValue = Sanitizer.GetSafeHtmlFragment(ddlSeveridad.SelectedValue);                
                 SqlDataSource1.InsertParameters["IdUsuario"].DefaultValue = Session["idUsuario"].ToString().Trim(); //Aca va el id del Usuario de la BD
                 SqlDataSource1.InsertParameters["FechaRegistro"].DefaultValue = System.DateTime.Now.ToString().Trim();
 
                 SqlDataSource1.Insert();
                 omb.ShowMessage("La información se insertó con éxito en la Base de Datos.", 3, "Atención");
-                filaDetalles.Visible = false;
-                filaGrids.Visible = true;
+                filaDetalle.Visible = false;
+                filaGrid.Visible = true;
             }
             catch (Exception except)
             {
