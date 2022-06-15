@@ -208,8 +208,8 @@ namespace ListasSarlaft.Classes
                         objRiesgoIndicador.intIdFormula = Convert.ToInt32(dr["IdFormula"].ToString().Trim());
                         objRiesgoIndicador.booPorcentaje = (Convert.ToBoolean(dr["porcentaje"].ToString().Trim()) == true) ? 1 : 0;
                         objRiesgoIndicador.intIdMeta = Convert.ToInt32(dr["IdMeta"].ToString().Trim());
-
-                        calcularDblResultado(ref resultFormula, ref strErrMsg, dr, objRiesgoIndicador.intIdFrecuenciaMedicion);
+                       
+                        calcularDblResultado(ref resultFormula, ref strErrMsg, dr, objRiesgoIndicador.intIdFrecuenciaMedicion, objRiesgoIndicador.booPorcentaje);
                         objRiesgoIndicador.dblResultado = resultFormula;
 
                         objRiesgoIndicador.strDescripcionSeguimiento = calcularDescripcion(booResutl, ref strErrMsg, dr, ref color, resultFormula);
@@ -272,7 +272,7 @@ namespace ListasSarlaft.Classes
                         objRiesgoIndicador.strObjetivoIndicador = dr["ObjetivoIndicador"].ToString().Trim();
                         objRiesgoIndicador.strFrecuenciaMedicion = dr["FrecuenciaMedicion"].ToString().Trim();
 
-                        calcularDblResultado(ref resultFormula, ref strErrMsg, dr,2);
+                        calcularDblResultado(ref resultFormula, ref strErrMsg, dr,2, (Convert.ToBoolean(dr["porcentaje"].ToString().Trim()) == true) ? 1 : 0);
                         objRiesgoIndicador.dblResultado = resultFormula;
 
                         objRiesgoIndicador.strDescripcionSeguimiento = calcularDescripcion(booResutl, ref strErrMsg, dr, ref color, resultFormula);
@@ -292,7 +292,7 @@ namespace ListasSarlaft.Classes
             return lstRiesgoIndicador;
         }
 
-        private void calcularDblResultado(ref double resultFormula, ref string strErrMsg, DataRow dr,int idFrecuencia)
+        private void calcularDblResultado(ref double resultFormula, ref string strErrMsg, DataRow dr,int idFrecuencia, int percentage)
         {
             bool booResult = false;
             List<clsDTOdetalleFormulaRiesgoIndicador> lstDetalle = new List<clsDTOdetalleFormulaRiesgoIndicador>();
@@ -314,7 +314,7 @@ namespace ListasSarlaft.Classes
                         objMetas.strMes= string.Empty;
                     }
                     booResult = proceso.mtdValidateMeta(ref resultFormula, objMetas.strValorOtraFrecuencia, objMetas.intIdDetalleFrecuencia,
-                        objMetas.strAño, objMetas.strMes, lstDetalle, Convert.ToInt32(dr["IdRiesgoIndicador"].ToString().Trim()), objRiesgoIndicador.booPorcentaje);
+                        objMetas.strAño, objMetas.strMes, lstDetalle, Convert.ToInt32(dr["IdRiesgoIndicador"].ToString().Trim()), percentage);
                 }
             }
         }
