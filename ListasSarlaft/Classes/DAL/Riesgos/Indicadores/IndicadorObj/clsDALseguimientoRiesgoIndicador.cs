@@ -9,15 +9,30 @@ namespace ListasSarlaft.Classes
         {
             #region Vars
             bool booResult = false;
+            string valMin, valMax;
             string strConsulta = string.Empty;
             cDataBase cDatabase = new cDataBase();
             #endregion Vars
+            
 
             try
             {
+                valMin = objSeguimiento.dblValorMinimo.ToString();
+                valMax = objSeguimiento.dblValorMaximo.ToString();
+
+                if (objSeguimiento.dblValorMinimo.ToString().Contains(","))
+                {
+                    valMin = valMin.Replace(",",".");
+                }                
+
+                if (objSeguimiento.dblValorMaximo.ToString().Contains(","))
+                {
+                    valMax = valMax.Replace(",", ".");
+                }
+
                 strConsulta = string.Format("INSERT INTO [Riesgos].[RiesgosIndicadoresSeguimiento] ([IdRiesgoIndicador],[ValorMinimo],[ValorMaximo]"
                 + ",[DescripcionSeguimiento],[UsuarioCreacion],[FechaCreacion],[Color])" +
-                    "VALUES({0},{1},{2},'{3}',{4},GETDATE(),'{6}') ", objSeguimiento.intIdRiesgoIndicador, objSeguimiento.dblValorMinimo, objSeguimiento.dblValorMaximo,
+                    "VALUES({0},{1},{2},'{3}',{4},GETDATE(),'{6}') ", objSeguimiento.intIdRiesgoIndicador, valMin, valMax,
                     objSeguimiento.strDescripcionSeguimiento, objSeguimiento.intUsuarioCreacion, objSeguimiento.dtFechaCreacion, objSeguimiento.strColor
                     );
 
