@@ -1399,7 +1399,9 @@ namespace ListasSarlaft.UserControls.Riesgos
                 if (dtInfo.Rows.Count > 0)
                 {
                     #region Recorrido para llenar informacion
-                    string NombreResponsableControlEjecucion = string.Empty, Activo = string.Empty, Producto = string.Empty;
+                    string NombreResponsableControlEjecucion = string.Empty, Activo = string.Empty, Producto = string.Empty;                   
+                    dtInfo = ValidateControlesAsociados(dtInfo);
+
                     for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                     {
                         if (dtInfo != null)
@@ -1500,6 +1502,129 @@ namespace ListasSarlaft.UserControls.Riesgos
 
         }
         #endregion Reporte Riesgos-Controles
+
+
+        private DataTable ValidateControlesAsociados(DataTable dtInfo)
+        {
+            DataTable dtResult = new DataTable();
+            DataRow[] foundRows, query;
+            string code, CodigoRiesgo, CodigoControl;
+
+            #region Grid1
+            DataTable grid = new DataTable();
+            grid.Columns.Add("CodigoRiesgo", typeof(string));
+            grid.Columns.Add("Usuario", typeof(string));
+            grid.Columns.Add("NombreRiesgo", typeof(string));
+            grid.Columns.Add("DescripcionRiesgo", typeof(string));
+            grid.Columns.Add("ResponsableRiesgo", typeof(string));
+            grid.Columns.Add("FechaRegistroRiesgo", typeof(string));
+            grid.Columns.Add("Ubicacion", typeof(string));
+            grid.Columns.Add("ClasificacionRiesgo", typeof(string));
+            grid.Columns.Add("ClasificacionGeneralRiesgo", typeof(string));
+            grid.Columns.Add("ClasificacionParticularRiesgo", typeof(string));
+            grid.Columns.Add("ListaRiesgoAsociadoLA", typeof(string));
+            grid.Columns.Add("ListaFactorRiesgoLAFT", typeof(string));
+            grid.Columns.Add("TipoEvento", typeof(string));
+            grid.Columns.Add("RiesgoAsociadoOperativo", typeof(string));
+            grid.Columns.Add("Causas", typeof(string));
+            grid.Columns.Add("Consecuencias", typeof(string));
+            grid.Columns.Add("CadenaValor", typeof(string));
+            grid.Columns.Add("Macroproceso", typeof(string));
+            grid.Columns.Add("Proceso", typeof(string));
+            grid.Columns.Add("Subproceso", typeof(string));
+            grid.Columns.Add("Actividad", typeof(string));
+            grid.Columns.Add("ListaTratamiento", typeof(string));
+            grid.Columns.Add("FrecuenciaInherente", typeof(string));
+            grid.Columns.Add("CodigoFrecuenciaInherente", typeof(string));
+            grid.Columns.Add("ImpactoInherente", typeof(string));
+            grid.Columns.Add("CodigoImpactoInherente", typeof(string));
+            grid.Columns.Add("RiesgoInherente", typeof(string));
+            grid.Columns.Add("CodigoRiesgoInherente", typeof(string));
+            grid.Columns.Add("FrecuenciaResidual", typeof(string));
+            grid.Columns.Add("CodigoFrecuenciaResidual", typeof(string));
+            grid.Columns.Add("ImpactoResidual", typeof(string));
+            grid.Columns.Add("CodigoImpactoResidual", typeof(string));
+            grid.Columns.Add("RiesgoResidual", typeof(string));
+            grid.Columns.Add("CodigoRiesgoResidual", typeof(string));
+            grid.Columns.Add("FactorRO", typeof(string));
+            grid.Columns.Add("Códigos Linea Negocio", typeof(string));
+            grid.Columns.Add("Códigos Producto", typeof(string));
+            grid.Columns.Add("Códigos Tipo Activo", typeof(string));
+            grid.Columns.Add("Códigos Activo Afectado", typeof(string));
+            grid.Columns.Add("Códigos Dimensión Valoración", typeof(string));
+            grid.Columns.Add("CodigoControl", typeof(string));
+            grid.Columns.Add("NombreControl", typeof(string));
+            grid.Columns.Add("DescripcionControl", typeof(string));
+            grid.Columns.Add("ResponsableControlEjecucion", typeof(string));
+            grid.Columns.Add("ResponsableControlCalificacion", typeof(string));
+            grid.Columns.Add("FechaRegistroControl", typeof(string));
+            grid.Columns.Add("CalificacionControl", typeof(string));
+            grid.Columns.Add("NombrePeriodicidad", typeof(string));
+            grid.Columns.Add("NombreTest", typeof(string));
+            grid.Columns.Add("Variable1", typeof(string));
+            grid.Columns.Add("Variable2", typeof(string));
+            grid.Columns.Add("Variable3", typeof(string));
+            grid.Columns.Add("Variable4", typeof(string));
+            grid.Columns.Add("Variable5", typeof(string));
+            grid.Columns.Add("Variable6", typeof(string));
+            grid.Columns.Add("Variable7", typeof(string));
+            grid.Columns.Add("Variable8", typeof(string));
+            grid.Columns.Add("Variable9", typeof(string));
+            grid.Columns.Add("Variable10", typeof(string));
+            grid.Columns.Add("Variable11", typeof(string));
+            grid.Columns.Add("Variable12", typeof(string));
+            grid.Columns.Add("Variable13", typeof(string));
+            grid.Columns.Add("Variable14", typeof(string));
+            grid.Columns.Add("Variable15", typeof(string));
+            grid.Columns.Add("NombreEscala", typeof(string));
+            grid.Columns.Add("ValorEscala", typeof(string));
+            grid.Columns.Add("NombreMitiga", typeof(string));
+            grid.Columns.Add("DesviacionImpacto", typeof(string));
+            grid.Columns.Add("DesviacionFrecuencia", typeof(string));
+            grid.Columns.Add("NombreArea", typeof(string));
+            grid.Columns.Add("EstadoRiesgo", typeof(string));
+
+            dtResult = grid;
+            #endregion Grid1
+                                    
+            foreach (DataRow row in dtInfo.Rows)
+            {                
+                code = row["CodigoRiesgo"].ToString().Trim();
+                foundRows = dtInfo.Select("CodigoRiesgo = '" + code + "'");
+
+                if (foundRows.Length > 1)
+                {
+                    foreach (DataRow item in foundRows)
+                    {
+                        CodigoRiesgo = item["CodigoRiesgo"].ToString().Trim();
+                        CodigoControl = item["CodigoControl"].ToString().Trim();
+                        var Causas = item["Causas"];
+                        if (Causas == DBNull.Value)
+                        {
+                            query = dtResult.Select("CodigoRiesgo = '" + CodigoRiesgo + "' AND CodigoControl='" + CodigoControl + "'");
+                        }
+                        else
+                        {
+                            query = dtResult.Select("CodigoRiesgo = '" + CodigoRiesgo + "' AND CodigoControl='" + CodigoControl + "' AND Causas='" + Causas.ToString() + "'");
+                        }
+                        
+                        if (query.Length == 0)
+                        {
+                            if (!(item["CodigoControl"].ToString() == "Sin control asociado"))
+                            {
+                                dtResult.ImportRow(item);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    dtResult.ImportRow(row);
+                }
+            }            
+
+            return dtResult;
+        }
 
         #region Reporte Riesgos-Eventos
         private void loadGridReporteRiesgosEventos()
