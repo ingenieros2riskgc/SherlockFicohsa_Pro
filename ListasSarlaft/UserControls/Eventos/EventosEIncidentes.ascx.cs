@@ -250,7 +250,7 @@ namespace ListasSarlaft.UserControls.Eventos
             }
         }
 
-        public TextBox TBCalculoSeveridadDesde { get; private set; }
+        //public TextBox TBCalculoSeveridadDesde { get; private set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -307,7 +307,7 @@ namespace ListasSarlaft.UserControls.Eventos
             camposNumericos.Add(TBValorFrecuencia);
             camposNumericos.Add(TBRecuperacionSeguro);
             camposNumericos.Add(TBRecuperaciones);
-            camposNumericos.Add(TBCalculoSeveridadDesde);
+            //camposNumericos.Add(TBCalculoSeveridadDesde);
 
 
             foreach (TextBox campo in camposNumericos)
