@@ -5930,7 +5930,7 @@ namespace ListasSarlaft.Classes
                         #region Riesgos-Controles
 
 
-                        strSelect = "SELECT RVCR.*, '' AS CalificacionControl FROM Riesgos.vwRiesgoControlReporte RVCR WHERE 1=1 ";
+                        strSelect = "SELECT RVCR.*, '' AS CalificacionControl FROM Riesgos.vwRiesgoControlReporte RVCR WHERE RVCR.Anulado=0";
 
                         if (txtCadenavalor != "---")
                         {
@@ -6150,8 +6150,6 @@ namespace ListasSarlaft.Classes
                 throw new Exception(strConsulta);
             }
             return dtInformacion;
-
-
         }
 
         public DataTable ConsultaFrecuenciaImpacto(int IdRiesgo)
