@@ -51,7 +51,7 @@
             </ChartAreas>
         </asp:Chart>--%>
 
-<asp:Chart ID="ChartInh" runat="server" Height="200px" Width="350px" BorderlineDashStyle="Solid" BorderlineColor="Black"
+<asp:Chart ID="ChartInh" runat="server" Height="200px" Width="370px" BorderlineDashStyle="Solid" BorderlineColor="Black"
                     OnPrePaint="ChartInherente_PrePaint" >
     <Titles>
         <asp:Title ShadowOffset="3" Name="Items" Alignment="TopCenter"/>
@@ -70,7 +70,7 @@
 
 
 
-                <asp:Chart ID="ChartSaro" runat="server" Height="200px" Width="350px" BorderlineDashStyle="Solid" BorderlineColor="Black"
+                <asp:Chart ID="ChartSaro" runat="server" Height="200px" Width="370px" BorderlineDashStyle="Solid" BorderlineColor="Black"
                     OnPrePaint="ChartSaro_PrePaint" >
     <Titles>
         <asp:Title ShadowOffset="3" Name="Items" Alignment="TopCenter"/>
@@ -86,7 +86,7 @@
     </ChartAreas>
 </asp:Chart> 
                 <br />
-                 <asp:Chart ID="ChartRiesgoCadenaValor" runat="server" Height="200px" Width="703px"  BorderlineDashStyle="Solid"
+                 <asp:Chart ID="ChartRiesgoCadenaValor" runat="server" Height="200px" Width="743px"  BorderlineDashStyle="Solid"
             BorderlineColor="black">
                     <Titles>
                         <asp:Title Alignment="TopCenter" Text="RIESGOS POR CADENA DE VALOR"></asp:Title>
@@ -231,7 +231,7 @@
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
         
-        <asp:Chart ID="ChartEstadoRoi" runat="server" Height="200px" Width="350px" 
+        <asp:Chart ID="ChartEstadoRoi" runat="server" Height="200px" Width="370px" 
                     BorderlineDashStyle="Solid" BorderlineColor="Black"
             OnPrePaint="ChartEstadoRoi_PrePaint"
                      >
@@ -251,7 +251,7 @@
     </ChartAreas>
 </asp:Chart> 
 
-            <asp:Chart ID="ChartNumeroRos" runat="server" Height="200px" Width="350px" 
+            <asp:Chart ID="ChartNumeroRos" runat="server" Height="200px" Width="370px" 
                     BorderlineDashStyle="Solid" BorderlineColor="Black"
                      >
     <Titles>
