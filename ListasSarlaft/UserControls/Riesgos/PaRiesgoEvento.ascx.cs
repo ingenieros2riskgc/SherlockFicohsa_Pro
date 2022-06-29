@@ -838,6 +838,8 @@ namespace ListasSarlaft.UserControls.Riesgos
             GvPlanes.Visible = true;
             ddlEstadoFiltro.SelectedIndex = 0;
             tbxResponsable.Text = string.Empty;
+            RequiredEstadoPlan.Text = "";
+            RequiredRiesgoGlobal.Text = "";
         }
 
         private bool mtdCargarEstadosPlanAccion()
@@ -1238,6 +1240,31 @@ namespace ListasSarlaft.UserControls.Riesgos
 
         }
 
+        private bool validateFields()
+        {
+            bool validate=false;
+            if (PDARiesgoGLobal.Text.Equals("---") || PDARiesgoGLobal.Text.Equals(""))
+            {
+                RequiredRiesgoGlobal.Text = "Por favor seleccione un riesgo global";
+                validate = true;
+            }
+            else
+            {
+                RequiredRiesgoGlobal.Text = "";
+            }
+
+            if (EstadoPlan.Text.Equals("---") || EstadoPlan.Text.Equals("") || EstadoPlan.Text.Equals("0"))
+            {
+                RequiredEstadoPlan.Text = "Por favor seleccione un estado";
+                validate = true;
+            }
+            else
+            {
+                RequiredEstadoPlan.Text = "";
+            }
+            return validate;
+        }
+
         // Aceptar - Guardar todo
         protected void Aceptar_Click(object sender, ImageClickEventArgs e)
         {
@@ -1253,6 +1280,13 @@ namespace ListasSarlaft.UserControls.Riesgos
                 objPlanes.Responsable = Responsable.Text;
 
                 objPlanes.RiesgoGlobal = PDARiesgoGLobal.Text;
+                bool resultValidate = validateFields();
+
+                if (resultValidate)
+                {
+                    return;
+                }
+
                 if (objPlanes.RiesgoGlobal == "0")
                 {
                     DataTable dt = mtdconsultaResponsable(objPlanes.Codigo);
@@ -3725,6 +3759,43 @@ namespace ListasSarlaft.UserControls.Riesgos
         protected void Responsable_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void FechaCompromiso_TextChanged(object sender, EventArgs e)
+        {
+            LabelCompareValidator.Text = ValidateCalendars();
+        }
+
+        protected void FechaExtension_TextChanged1(object sender, EventArgs e)
+        {
+            LabelCompareValidator.Text= ValidateCalendars();
+        }
+
+        private string ValidateCalendars()
+        {
+            string mensaje = "";
+            if (!FechaCompromiso.Text.Equals(""))
+            {
+                if (!FechaExtension.Text.Equals(""))
+                {
+                    DateTime FechaBase = Convert.ToDateTime(FechaCompromiso.Text);
+                    DateTime FComparar = Convert.ToDateTime(FechaExtension.Text);
+                    if (FComparar < FechaBase)
+                    {
+                        mensaje = "Fecha Inválida. La fecha de extensión del evento no puede ser anterior a la fecha de compromiso";
+                    }
+                }
+                else
+                {
+                    mensaje = "Por favor seleccione una fecha de extensión";
+                }
+            }
+            else
+            {
+                mensaje = "Por favor seleccione una fecha de compromiso";
+            }
+
+            return mensaje;
         }
     } // Fin nombre de espacios
 }

@@ -9486,7 +9486,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 MtdLoadIndicadoresVsRiesgo();
                 mtdLoadIndicadoresVsRiesgo(lstRiesgoInd);
-                GvIndicadores.DataSource = lstRiesgoInd;
+                GvIndicadores.DataSource = InfoGridIR;
                 GvIndicadores.PageIndex = PagIndexInfoGridIR;
                 GvIndicadores.DataBind();
                 booResult = true;

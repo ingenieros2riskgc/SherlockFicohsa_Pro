@@ -816,7 +816,7 @@ namespace ListasSarlaft.UserControls.Riesgos.Gestion
             /*GVevaluacionDesempeño.PageIndex = PagIndex1;
             GVevaluacionDesempeño.DataBind();*/
             string strErrMsg = "";
-            mtdLoadRiesgosIndicadores(ref strErrMsg, string.Empty);
+            mtdLoadRiesgosIndicadores(ref strErrMsg, lblIdDependencia4.Text);
         }
 
         protected void IBconsultar_Click(object sender, ImageClickEventArgs e)
