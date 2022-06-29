@@ -130,6 +130,9 @@
     .auto-style1 {
         height: 34px;
     }
+    .auto-style2 {
+        height: 28px;
+    }
 </style>
 
 <asp:SqlDataSource ID="SqlDataSource200" runat="server" ConnectionString="<%$ ConnectionStrings:Sherlock_TestConnectionString %>"
@@ -547,7 +550,7 @@
                         <table id="TbRegistrarPlan" style="margin-left: 13%;" runat="server" visible="false">
                             <tr>
                                 <td>
-                                    <asp:TabContainer ID="TcPrincipal" runat="server" ActiveTabIndex="3" Font-Names="Calibri"
+                                    <asp:TabContainer ID="TcPrincipal" runat="server" ActiveTabIndex="0" Font-Names="Calibri"
                                         Font-Size="Small" Width="900px">
                                         <asp:TabPanel ID="tpPlanes" runat="server" HeaderText="Planes" Font-Names="Calibri" Font-Size="Small">
                                             <HeaderTemplate>
@@ -626,17 +629,18 @@
                                                             <asp:DropDownList ID="PDARiesgoGLobal" runat="server" AutoPostBack="True" Width="200px" Font-Names="Calibri" Font-Size="Small">
                                                                 <asp:ListItem Value="0">---</asp:ListItem>
                                                             </asp:DropDownList>
+                                                            <asp:Label ID="RequiredRiesgoGlobal" runat="server" Font-Names="Calibri" Font-Size="Small" ForeColor="Red" Text="*"></asp:Label>
                                                         </td>
                                                     </tr>
                                                     <tr align="left">
-                                                        <td align="center" bgcolor="#BBBBBB">
+                                                        <td align="center" bgcolor="#BBBBBB" class="auto-style2">
                                                             <asp:Label ID="Label144" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Estado"></asp:Label>
                                                         </td>
-                                                        <td bgcolor="#f0eef0">
+                                                        <td bgcolor="#f0eef0" class="auto-style2">
                                                             <asp:DropDownList ID="EstadoPlan" runat="server" AutoPostBack="True" Font-Names="Calibri" Font-Size="Small" OnSelectedIndexChanged="EstadoPlan_SelectedIndexChanged" Width="200px">
                                                                 <asp:ListItem Value="0">---</asp:ListItem>
                                                             </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="rv5" runat="server" ControlToValidate="EstadoPlan" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
+                                                            <asp:Label ID="RequiredEstadoPlan" runat="server" Font-Names="Calibri" Font-Size="Small" ForeColor="Red" Text="*"></asp:Label>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -644,8 +648,8 @@
                                                             <asp:Label ID="Label60" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Fecha compromiso"></asp:Label>
                                                         </td>
                                                         <td bgcolor="#f0eef0">
-                                                            <asp:TextBox ID="FechaCompromiso" runat="server" autocomplete="off" Font-Names="Calibri" Font-Size="Small" MaxLength="10" placeholder="AAAA/MM/dd" Width="150px"></asp:TextBox>
-                                                            <asp:CalendarExtender ID="TextBox15_CalendarExtender" runat="server" BehaviorID="_content_TextBox15_CalendarExtender" Format="yyyy-MM-dd" TargetControlID="FechaCompromiso" />
+                                                            <asp:TextBox ID="FechaCompromiso" runat="server" autocomplete="off" Font-Names="Calibri" Font-Size="Small" MaxLength="10" placeholder="dd/MM/AAAA" Width="150px" AutoPostBack="true" OnTextChanged="FechaCompromiso_TextChanged"></asp:TextBox>
+                                                            <asp:CalendarExtender ID="TextBox15_CalendarExtender" runat="server" BehaviorID="_content_TextBox15_CalendarExtender" Format="dd/MM/yyyy" TargetControlID="FechaCompromiso" />
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator62" runat="server" ControlToValidate="FechaCompromiso" ForeColor="Red" ValidationGroup="agregarRiesgo">*</asp:RequiredFieldValidator>
                                                         </td>
                                                     </tr>
@@ -654,10 +658,10 @@
                                                             <asp:Label ID="Label26" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Fecha de Extensión"></asp:Label>
                                                         </td>
                                                         <td bgcolor="#f0eef0">
-                                                            <asp:TextBox ID="FechaExtension" runat="server" autocomplete="off" Font-Names="Calibri" Font-Size="Small" MaxLength="10" placeholder="AAAA/MM/dd" Width="150px"></asp:TextBox>
-                                                            <asp:CalendarExtender ID="CalendarExtender2" runat="server" BehaviorID="_content_FechaExtension_CalendarExtender" Format="yyyy-MM-dd" TargetControlID="FechaExtension" />
-                                                            <asp:CompareValidator ID="CompareValidator" runat="server" ControlToCompare="FechaCompromiso" ControlToValidate="FechaExtension" Display="Dynamic" ErrorMessage="Fecha Inválida. La fecha de extensión del evento no puede ser anterior a la fecha de extensión" Font-Names="Calibri" Font-Size="Small" ForeColor="Red" Operator="GreaterThanEqual" Type="Date" ValidationGroup="Addne"></asp:CompareValidator>
-                                                        </td>
+                                                            <asp:TextBox ID="FechaExtension" runat="server" autocomplete="off" Font-Names="Calibri" Font-Size="Small" MaxLength="10" placeholder="dd/MM/AAAA" Width="150px" AutoPostBack="true" OnTextChanged="FechaExtension_TextChanged1"></asp:TextBox>
+                                                            <asp:CalendarExtender ID="CalendarExtender2" runat="server" BehaviorID="_content_FechaExtension_CalendarExtender" Format="dd/MM/yyyy" TargetControlID="FechaExtension" />
+                                                            <asp:Label ID="LabelCompareValidator" runat="server" Font-Names="Calibri" Font-Size="Small" ForeColor="Red" Text=".."></asp:Label>
+                                                        </td>                                                                                                                                                                           
                                                     </tr>
                                                     <tr>
                                                         <td align="center" bgcolor="#BBBBBB">

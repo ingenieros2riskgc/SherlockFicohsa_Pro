@@ -255,7 +255,7 @@ namespace ListasSarlaft.Classes
             bool booResutl = false;
             #endregion Vars
 
-            booResutl = cDtRiesgoInd.mtdConsultarRiesgosIndicadores(ref dtInfo, ref strErrMsg, CodRiesgo);
+            booResutl = cDtRiesgoInd.mtdConsultarRiesgosIndicadores(ref dtInfo, ref strErrMsg, CodRiesgo,0,0,0);
 
             if (dtInfo != null)
             {
