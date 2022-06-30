@@ -61,7 +61,7 @@ namespace ListasSarlaft.Classes
 
             try
             {
-                strConsulta = string.Format("SELECT IdEstadoPlanAccion, NombreEstadoPlanAccion FROM Parametrizacion.EstadoPlanAccion");
+                strConsulta = string.Format("SELECT IdEstadoPlanAccion, NombreEstadoPlanAccion FROM Parametrizacion.EstadoPlanAccion order by NombreEstadoPlanAccion asc");
 
                 cDataBase.conectar();
                 dtInformacion = cDataBase.ejecutarConsulta(strConsulta);

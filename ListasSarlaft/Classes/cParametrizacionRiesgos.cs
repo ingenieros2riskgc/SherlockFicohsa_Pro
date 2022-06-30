@@ -215,7 +215,7 @@ namespace ListasSarlaft.Classes
             try
             {
                 cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("SELECT IdEstadoPlanAccion, NombreEstadoPlanAccion FROM Parametrizacion.EstadoPlanAccion");
+                dtInformacion = cDataBase.ejecutarConsulta("SELECT IdEstadoPlanAccion, NombreEstadoPlanAccion FROM Parametrizacion.EstadoPlanAccion order by NombreEstadoPlanAccion asc");
                 cDataBase.desconectar();
             }
             catch (Exception ex)
