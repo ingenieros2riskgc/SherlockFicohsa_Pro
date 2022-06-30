@@ -856,7 +856,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 lstEstados = cMacroproceso.mtdConsultarEstado(ref strErrMsg);
                 EstadoPlan.Items.Clear();
-                EstadoPlan.Items.Insert(0, new System.Web.UI.WebControls.ListItem("", "0"));
+                EstadoPlan.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---", "0"));
 
                 if (string.IsNullOrEmpty(strErrMsg))
                 {
