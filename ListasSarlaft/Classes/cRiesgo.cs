@@ -5896,17 +5896,21 @@ namespace ListasSarlaft.Classes
                     }
                 }
 
-                if (IdProductoAfectado != "---")
+                if (!numeroQuery.Equals("1"))
                 {
-                    if (string.IsNullOrEmpty(condicion.Trim()))
+                    if (IdProductoAfectado != "---")
                     {
-                        condicion = "WHERE (RPRO.IdProducto =" + IdProductoAfectado + ") ";
-                    }
-                    else
-                    {
-                        condicion += "AND (RPRO.IdProducto =" + IdProductoAfectado + ") ";
+                        if (string.IsNullOrEmpty(condicion.Trim()))
+                        {
+                            condicion = "WHERE (RPRO.IdProducto =" + IdProductoAfectado + ") ";
+                        }
+                        else
+                        {
+                            condicion += "AND (RPRO.IdProducto =" + IdProductoAfectado + ") ";
+                        }
                     }
                 }
+                
                 #endregion
 
                 cDataBase.conectar();
@@ -6111,6 +6115,12 @@ namespace ListasSarlaft.Classes
                         strFrom = "from Riesgos.Planes RP LEFT JOIN Riesgos.planesEventosAsociados RPEA ON RP.CodigoPlan = RPEA.CodigoPlan LEFT JOIN Riesgos.EventosIncidentes REI ON RPEA.CodigoEvento = REI.CodigoEvsEIncs LEFT JOIN Parametrizacion.ClasificacionRiesgo PCR ON PCR.IdClasificacionRiesgo = RP.IdClasificacionRiesgo LEFT JOIN Riesgos.planesRiesgosAsociados RPRA ON RP.CodigoPlan = RPRA.CodigoPlan LEFT JOIN Riesgos.Riesgo RR ON RPRA.CodigoRiesgo = RR.Codigo LEFT JOIN Riesgos.IndicadorCumplimientoPlanes RICP ON RP.CodigoPlan = RICP.CodigoPlan LEFT JOIN Riesgos.SeguimientosPlanes RSP ON RP.CodigoPlan = RSP.CodigoPlan LEFT JOIN Parametrizacion.JerarquiaOrganizacional AS PJO ON PJO.idHijo = RR.IdResponsableRiesgo";
                         strFrom += " LEFT JOIN Parametrizacion.JerarquiaOrganizacional PJOPA ON PJOPA.NombreHijo = RP.Responsable"
                                + " LEFT JOIN Parametrizacion.DetalleJerarquiaOrg PDJPA ON PDJPA.idHijo = PJOPA.idHijo";
+
+                        if (IdProceso != "---")
+                        {
+                            strFrom += " LEFT JOIN Procesos.Proceso AS PP ON RR.IdProceso = PP.IdProceso";
+                        }
+
                         strFrom += " LEFT JOIN [Parametrizacion].[DetalleJerarquiaOrg] AS PDJ ON PDJ.idHijo = PJO.idHijo"
                                 + " LEFT JOIN Parametrizacion.Area as Parea on Parea.IdArea = PDJ.IdArea"
                                 + " LEFT JOIN Procesos.CadenaValor AS PCV ON PCV.IdCadenaValor = RR.IdCadenaValor"
