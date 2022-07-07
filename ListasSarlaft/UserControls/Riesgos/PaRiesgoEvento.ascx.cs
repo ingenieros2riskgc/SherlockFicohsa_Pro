@@ -771,6 +771,8 @@ namespace ListasSarlaft.UserControls.Riesgos
             LimpiarSeguimiento();
             EstadoPlan.Items.Clear();
             mtdCargarEstadosPlanAccion();
+            PDARiesgoGLobal.Items.Clear();
+            mtdCargarRoesgosGlobales();
             TbCarga.Visible = false;
             CodigoPlan.Text = string.Empty;
             NombrePlan.Text = string.Empty;
@@ -1006,7 +1008,16 @@ namespace ListasSarlaft.UserControls.Riesgos
                         PDARiesgoGLobal.Items.Clear();
                         mtdCargarRoesgosGlobales();
                         DataTable dt1 = mtdCargarPlan(codigoPlan);
-                        PDARiesgoGLobal.SelectedItem.Text = dt1.Rows[0]["RiesgoGlobal"].ToString().Trim();
+                        if (dt1 == null )
+                        {
+                            PDARiesgoGLobal.SelectedValue = "0";
+                        }
+                        else
+                        {
+                            PDARiesgoGLobal.SelectedValue = dt1.Rows[0]["IdClasificacionRiesgo"].ToString();
+                        }
+                        
+                        //PDARiesgoGLobal.SelectedItem.Text = dt1.Rows[0]["RiesgoGlobal"].ToString().Trim();
 
                         int trans = 8;
                         TcPrincipal.ActiveTabIndex = 0;
@@ -1104,7 +1115,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 lstRiesgosGlobales = cMacroproceso.mtdConsultarRiesgosGlobales(ref strErrMsg);
                 PDARiesgoGLobal.Items.Clear();
-                PDARiesgoGLobal.Items.Insert(0, new System.Web.UI.WebControls.ListItem("", "0"));
+                PDARiesgoGLobal.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---", "0"));
 
                 if (string.IsNullOrEmpty(strErrMsg))
                 {
@@ -2322,7 +2333,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             grid.Columns.Add("Usuario", typeof(string));
             grid.Columns.Add("FechaRegistro", typeof(string));
             grid.Columns.Add("Estado", typeof(string));
-            grid.Columns.Add("EditarRegistro", typeof(string));
+            grid.Columns.Add("EditarRegistro", typeof(string));            
 
             GvPlanes.DataSource = grid;
             GvPlanes.DataBind();
@@ -2505,17 +2516,16 @@ namespace ListasSarlaft.UserControls.Riesgos
         }
         private void CargaPlanes(List<clsDTOPlanes> listaPlanes)
         {
-            string strErrMsg = string.Empty;
+            string strErrMsg = string.Empty;            
 
             foreach (clsDTOPlanes objPlanes in listaPlanes)
-            {
-
+            {                                          
                 TodosPlanes.Rows.Add(new object[] {
                     objPlanes.Codigo.ToString().Trim(),
                     objPlanes.NombrePlan.ToString().Trim(),
                     objPlanes.Usuario.ToString().Trim(),
                     objPlanes.FechaRegistro.ToString().Trim(),
-                    objPlanes.Usuario.ToString().Trim()
+                    objPlanes.Estado.ToString().Trim()                    
                     });
             }
         }
@@ -2538,12 +2548,10 @@ namespace ListasSarlaft.UserControls.Riesgos
                         FechaExtension.Text = item.FechaExtension == Convert.ToDateTime("1900-01-01 00:00:00.000") ? "9999-12-31" : Convert.ToString(item.FechaExtension);
 
                         EstadoPlan.Items.Clear();
-                        mtdCargarEstadosPlanAccion();
-                        DataTable dtInfo = new DataTable();
-                        //dtInfo = cRiesgo.loadDDLNombreEstado(Convert.ToInt32(item.Estado));
-                        dtInfo = cRiesgo.loadDDLNombreEstado(Convert.ToString(item.Estado));
-                        //EstadoPlan.SelectedItem.Text = dtInfo.Rows[0][0].ToString().Trim();
-                        EstadoPlan.SelectedItem.Text = dtInfo.Rows[0]["NombreEstadoPlanAccion"].ToString().Trim();
+                        mtdCargarEstadosPlanAccion();                        
+                        string valuePlanAccion = SearchIdEstadoPlanAccion(estadoPlan);                                                
+                        
+                        EstadoPlan.SelectedValue = valuePlanAccion;                        
                     }
                 }
             }
@@ -2552,6 +2560,19 @@ namespace ListasSarlaft.UserControls.Riesgos
                 omb.ShowMessage("Error al registrar plan: " + ex.Message.ToString(), 1, "Error");
             }
             return resultado;
+        }
+
+        private string SearchIdEstadoPlanAccion(string namePlan)
+        {            
+            for (int i=0; i < EstadoPlan.Items.Count; i++)
+            {
+                if (EstadoPlan.Items[i].Text.Equals(namePlan))
+                {                    
+                    return EstadoPlan.Items[i].Value;
+                }
+            }
+
+            return "0";
         }
         private void rellenarFechas()
         {
@@ -3695,6 +3716,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             tbxResponsable.Text = string.Empty;
             GrillaPlanes();
             CargarGrillaPlanes();
+            Response.Redirect("paRiesgoEvento.aspx");
         }
 
         private DataTable ConsultaFiltroPlanes(string Responsable, string responsableText, string IdEstado, string IdArea)
@@ -3787,7 +3809,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                 }
                 else
                 {
-                    mensaje = "Por favor seleccione una fecha de extensión";
+                    mensaje = "";
                 }
             }
             else

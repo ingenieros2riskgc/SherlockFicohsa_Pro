@@ -836,6 +836,7 @@ namespace ListasSarlaft.UserControls.Riesgos.Gestion
         protected void IBcancel_Click(object sender, ImageClickEventArgs e)
         {
             tbxResponsable.Text = string.Empty;
+            Response.Redirect("GestionRiesgoIndicador.aspx");
         }
 
         protected void TreeView4_SelectedNodeChanged(object sender, EventArgs e)
