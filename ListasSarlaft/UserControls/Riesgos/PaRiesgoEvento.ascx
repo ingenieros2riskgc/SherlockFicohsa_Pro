@@ -660,7 +660,7 @@
                                                         <td bgcolor="#f0eef0">
                                                             <asp:TextBox ID="FechaExtension" runat="server" autocomplete="off" Font-Names="Calibri" Font-Size="Small" MaxLength="10" placeholder="dd/MM/AAAA" Width="150px" AutoPostBack="true" OnTextChanged="FechaExtension_TextChanged1"></asp:TextBox>
                                                             <asp:CalendarExtender ID="CalendarExtender2" runat="server" BehaviorID="_content_FechaExtension_CalendarExtender" Format="dd/MM/yyyy" TargetControlID="FechaExtension" />
-                                                            <asp:Label ID="LabelCompareValidator" runat="server" Font-Names="Calibri" Font-Size="Small" ForeColor="Red" Text=".."></asp:Label>
+                                                            <asp:Label ID="LabelCompareValidator" runat="server" Font-Names="Calibri" Font-Size="Small" ForeColor="Red" Text=""></asp:Label>
                                                         </td>                                                                                                                                                                           
                                                     </tr>
                                                     <tr>
