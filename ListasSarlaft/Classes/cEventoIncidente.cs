@@ -527,7 +527,7 @@ namespace ListasSarlaft.Classes
         }
 
         public DataTable LoadCriticidadRiesgoByRiesgo(string IdRiesgo, int bConsultarLimite = 0)
-        {
+        {            
             DataTable dtInformacion = new DataTable();
             try
             {
@@ -969,6 +969,26 @@ namespace ListasSarlaft.Classes
             {
                 cDataBase.conectar();
                 consulta = $"SELECT TOP 1 Resultado FROM Eventos.MatrizMedRiesgo emm INNER JOIN Eventos.DescFrecuencia edf ON edf.IdDescFrecuencia = emm.IdDescFrecuencia INNER JOIN Eventos.DescSeveridad eds ON emm.IdDescSeveridad = eds.IdDescSeveridad WHERE edf.DescripcionFicohsa = '{Frecuencia.Trim()}' AND eds.DescripcionFicohsa = '{Severidad.Trim()}'";
+                dtInformacion = cDataBase.ejecutarConsulta(consulta);
+                cDataBase.desconectar();
+            }
+            catch (Exception ex)
+            {
+                cDataBase.desconectar();
+                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
+                throw new Exception(consulta);
+            }
+            return dtInformacion;
+        }
+
+        public DataTable LoadMedicionRiesgo2(string Probabilidad, string Impacto)
+        {
+            DataTable dtInformacion = new DataTable();
+            string consulta = "";
+            try
+            {
+                cDataBase.conectar();
+                consulta = $"SELECT ISNULL(NombreRiesgoInherente, '') as NombreRiesgoInherente, Color FROM Parametrizacion.RiesgoInherente WHERE ( IdProbabilidad = (SELECT IdProbabilidad FROM Parametrizacion.Probabilidad where NombreProbabilidad = '{Probabilidad.Trim()}') AND IdImpacto = (SELECT IdImpacto FROM Parametrizacion.Impacto where NombreImpacto = '{Impacto.Trim()}'))";
                 dtInformacion = cDataBase.ejecutarConsulta(consulta);
                 cDataBase.desconectar();
             }

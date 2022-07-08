@@ -501,7 +501,50 @@ namespace ListasSarlaft.UserControls.Eventos
                     TBFrecuenciaPrevia.Text = dtInfoRow["ProbabilidadResidual"].ToString();
                     TBSeveridadPrevia.Text = dtInfoRow["ImpactoResidual"].ToString();
 
-                    LoadMedicionRiesgo(TBFrecuenciaPrevia.Text, TBSeveridadPrevia.Text, TBNRiesgoPrevio);
+                    TBNRiesgoPrevio.Text = LoadMedicionRiesgo(TBFrecuenciaPrevia.Text, TBSeveridadPrevia.Text);
+                }
+                else
+                {
+                    TBFrecuenciaPrevia.Text = "";
+                    TBSeveridadPrevia.Text = "";
+                    TBNRiesgoPrevio.Text = "";
+                }
+            }
+            catch (FormatException)
+            {
+                ShowMessage($"Error al consultar la criticidad del riesgo: uno de los valores no es un numero", 1, "Atención");
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Error cargando la criticidad del riesgo: {ex}", 1, "Atención");
+            }
+        }
+
+        private void LoadCriticidadRiesgoByRiesgo2(string IdRiesgo, string Relacion)
+        {
+            try
+            {
+                DataTable dtInfo = new DataTable();
+                DataRow dtInfoRow = null;
+
+                if (Relacion != string.Empty)
+                {
+                    dtInfo = cEvsEIncs.LoadCriticidadRiesgoByRiesgo(IdRiesgo);
+                }
+                else
+                {
+                    dtInfo = cEvsEIncs.LoadCriticidadRiesgoByRiesgo(IdRiesgo,1);
+                }
+
+                
+                if (dtInfo.Rows.Count > 0)
+                {
+                    dtInfoRow = dtInfo.Rows[0];
+
+                    TBFrecuenciaPrevia.Text = dtInfoRow["ProbabilidadResidual"].ToString();
+                    TBSeveridadPrevia.Text = dtInfoRow["ImpactoResidual"].ToString();
+
+                    TBNRiesgoPrevio.Text = LoadMedicionRiesgo(TBFrecuenciaPrevia.Text, TBSeveridadPrevia.Text);
                 }
                 else
                 {
@@ -536,7 +579,7 @@ namespace ListasSarlaft.UserControls.Eventos
 
                         TBFrecuenciaPrevia.Text = dtInfoRow["ProbabilidadResidual"].ToString();
                         TBSeveridadPrevia.Text = dtInfoRow["ImpactoResidual"].ToString();
-                        LoadMedicionRiesgo(TBFrecuenciaPrevia.Text, TBSeveridadPrevia.Text, TBNRiesgoPrevio);
+                        TBNRiesgoPrevio.Text = LoadMedicionRiesgo(TBFrecuenciaPrevia.Text, TBSeveridadPrevia.Text);
                     }
                     else
                     {
@@ -554,6 +597,21 @@ namespace ListasSarlaft.UserControls.Eventos
                     ShowMessage($"Error cargando la criticidad del riesgo: {ex}", 1, "Atención");
                 }
             }
+        }
+
+        private string LoadMedicionRiesgo(string Probabilidad, string Impacto)
+        {
+            if (!Probabilidad.Equals("") && !Impacto.Equals(""))
+            {
+                DataTable dtInfo = new DataTable();
+
+                dtInfo = cEvsEIncs.LoadMedicionRiesgo2(Probabilidad, Impacto);
+                if (dtInfo.Rows.Count > 0)
+                {
+                    return dtInfo.Rows[0][0].ToString();
+                }
+            }
+            return string.Empty;
         }
 
         private void LoadMedicionRiesgo(string Frecuencia, string Severidad, TextBox TBNivel)
@@ -2870,7 +2928,7 @@ namespace ListasSarlaft.UserControls.Eventos
                     TBHiddenCodigoEvsEIncs.Text = colsNoVisible[1].ToString();
 
                     loadDataEvsEInc();
-
+                    
                     TbConEventos.Visible = true;
                     TbRelMultiple.Visible = true;
 
@@ -2882,7 +2940,7 @@ namespace ListasSarlaft.UserControls.Eventos
                     GVProcesoO_reload();
                     GVProcesoA_reload();
                     GVArchivos_reload();
-
+                    
                     break;
                 default:
                     break;
@@ -2964,6 +3022,7 @@ namespace ListasSarlaft.UserControls.Eventos
                     case "DesEnlazar":
 
                         string IdRiesgo = colsNoVisible[0].ToString();
+                        string Relacion = colsNoVisible[10].ToString();
                         if (cEvsEIncs.RelacionarRiesgos(TBIdEvsEIncs.Text.ToString(), IdRiesgo).Equals("0"))
                         {
                             ShowMessage("No se puede asociar el riesgo. Supera el límite de eventos relacionados", 1, "Atención");
@@ -2979,7 +3038,7 @@ namespace ListasSarlaft.UserControls.Eventos
                             cEvsEIncs.GuardarJustificacionanezaplan(TBIdEvsEIncs.Text.ToString(), justificacion, idusuario);
 
                             loadInfoJustificacion();
-                            LoadCriticidadRiesgoByRiesgo(IdRiesgo);
+                            LoadCriticidadRiesgoByRiesgo2(IdRiesgo, Relacion);
                             GVRiesgos_reload(false);
                         }
 
