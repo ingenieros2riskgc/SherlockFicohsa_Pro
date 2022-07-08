@@ -357,7 +357,7 @@
                         <table id="TbConEventos" runat="server" visible="false" align="center">
                            <tr>
                               <td align="center">
-                                 <asp:TabContainer ID="TabContainerEventos" runat="server" ActiveTabIndex="0" Font-Names="Calibri" Font-Size="Small" Width="800px" aling="left" AutoPostBack="true" style="margin-bottom: 0px;">
+                                 <asp:TabContainer ID="TabContainerEventos" runat="server" ActiveTabIndex="1" Font-Names="Calibri" Font-Size="Small" Width="800px" aling="left" AutoPostBack="true" style="margin-bottom: 0px;">
                                     <asp:TabPanel ID="TabPanelCreaEvento"  runat="server" HeaderText="Creación Evento" Font-Names="Calibri" Font-Size="Small">
                                        <HeaderTemplate>
                                           Creación Evento
@@ -1020,7 +1020,7 @@
                            </tr>
                            <tr>
                               <td align="center">
-                                 <asp:TabContainer ID="TabContainer16" runat="server" ActiveTabIndex="1" Font-Names="Calibri" Font-Size="Small" Width="888px" aling="left" AutoPostBack="true" style="margin-bottom: 0px;">
+                                 <asp:TabContainer ID="TabContainer16" runat="server" ActiveTabIndex="2" Font-Names="Calibri" Font-Size="Small" Width="888px" aling="left" AutoPostBack="true" style="margin-bottom: 0px;">
                                      <asp:TabPanel ID="TabPanel7" runat="server" HeaderText="PDA" Font-Names="Calibri" Font-Size="Small">
                                        <HeaderTemplate>
                                           Documentos Adjuntos
@@ -1375,7 +1375,7 @@
                                                    <asp:GridView ID="GVRiesgos" runat="server" AutoGenerateColumns="False" CellPadding="4"
                                                       ForeColor="#333333" GridLines="Vertical" ShowHeaderWhenEmpty="True"
                                                       BorderStyle="Solid" HorizontalAlign="Justify" Font-Names="Calibri" Font-Size="Small"
-                                                      DataKeyNames="IdRiesgo,Codigo,Nombre,Descripcion,NCadenaValor,NMacroproceso,NProceso,NSubproceso,NActividad,FechaRegistro" 
+                                                      DataKeyNames="IdRiesgo,Codigo,Nombre,Descripcion,NCadenaValor,NMacroproceso,NProceso,NSubproceso,NActividad,FechaRegistro,Relacion" 
                                                       OnPageIndexChanging="GVRiesgos_PageIndexChanging"
                                                       OnRowCommand="GVRiesgos_RowCommand"
                                                       AllowPaging="True" AllowSorting="True">

@@ -208,7 +208,6 @@ namespace ListasSarlaft.Classes
                         objRiesgoIndicador.intIdFormula = Convert.ToInt32(dr["IdFormula"].ToString().Trim());
                         objRiesgoIndicador.booPorcentaje = (Convert.ToBoolean(dr["porcentaje"].ToString().Trim()) == true) ? 1 : 0;
                         objRiesgoIndicador.intIdMeta = Convert.ToInt32(dr["IdMeta"].ToString().Trim());
-                       
                         calcularDblResultado(ref resultFormula, ref strErrMsg, dr, objRiesgoIndicador.intIdFrecuenciaMedicion, objRiesgoIndicador.booPorcentaje);
                         objRiesgoIndicador.dblResultado = resultFormula;
 

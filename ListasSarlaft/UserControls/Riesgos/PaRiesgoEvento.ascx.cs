@@ -840,8 +840,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             GvPlanes.Visible = true;
             ddlEstadoFiltro.SelectedIndex = 0;
             tbxResponsable.Text = string.Empty;
-            RequiredEstadoPlan.Text = "";
-            RequiredRiesgoGlobal.Text = "";
+            RequiredEstadoPlan.Text = string.Empty;
+            RequiredRiesgoGlobal.Text = string.Empty;
+            LabelCompareValidator.Text = string.Empty;
         }
 
         private bool mtdCargarEstadosPlanAccion()
@@ -3714,6 +3715,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             DDLArea.Items.Insert(0, new ListItem("---", "---"));
             loadDDLArea();
             tbxResponsable.Text = string.Empty;
+            RequiredEstadoPlan.Text = string.Empty;
+            RequiredRiesgoGlobal.Text = string.Empty;
+            LabelCompareValidator.Text = string.Empty;
             GrillaPlanes();
             CargarGrillaPlanes();
             Response.Redirect("paRiesgoEvento.aspx");

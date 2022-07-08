@@ -1030,7 +1030,7 @@ namespace ListasSarlaft.UserControls.Riesgos.Indicadores
             if (!mtdLoadSeguimientoRiesgosIndicadores(ref strErrMsg))
                 omb.ShowMessage(strErrMsg, 2, "Atención");
             if (!mtdLoadFormulaRiesgosIndicadores(ref strErrMsg))
-                omb.ShowMessage(strErrMsg, 2, "Atención");
+                omb.ShowMessage(strErrMsg, 2, "Atención");            
             if (!mtdLoadRiesgosAsociado(ref strErrMsg))
             {
                 trTitutloConsultarRiesgo.Visible = true;
@@ -2436,6 +2436,10 @@ namespace ListasSarlaft.UserControls.Riesgos.Indicadores
                 int IteracionFormulaNominador = Convert.ToInt32(Session["IteracionFormulaNominador"].ToString());
                 IteracionFormulaNominador = 0;
                 Session["IteracionFormulaNominador"] = IteracionFormulaNominador;
+
+                List<clsDTOdetalleFormulaRiesgoIndicador> strFormulaVariableNominador = (List<clsDTOdetalleFormulaRiesgoIndicador>)Session["strFormulaVariableNominador"];
+                strFormulaVariableNominador.Clear();
+                Session["strFormulaVariableNominador"] = strFormulaVariableNominador;
             }
             if (Label26.Text == "Denominador")
             {
@@ -2444,6 +2448,10 @@ namespace ListasSarlaft.UserControls.Riesgos.Indicadores
                 int IteracionFormulaDenominador = Convert.ToInt32(Session["IteracionFormulaDenominador"].ToString());
                 IteracionFormulaDenominador = 0;
                 Session["IteracionFormulaDenominador"] = IteracionFormulaDenominador;
+                
+                List<clsDTOdetalleFormulaRiesgoIndicador> strFormulaVariableDenominador = (List<clsDTOdetalleFormulaRiesgoIndicador>)Session["strFormulaVariableDenominador"];
+                strFormulaVariableDenominador.Clear();
+                Session["strFormulaVariableDenominador"] = strFormulaVariableDenominador;
             }
             if (Label26.Text == "Label")
             {
