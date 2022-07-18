@@ -367,6 +367,7 @@ namespace ListasSarlaft.UserControls.Riesgos.Iframe
             string strErrMsg = string.Empty;
             try
             {
+                LabelValidateSave.Text = string.Empty;
                 int scope = agregarControl(ref strErrMsg);
                 if (scope > 0)
                 {
@@ -482,7 +483,8 @@ namespace ListasSarlaft.UserControls.Riesgos.Iframe
             {
 
                 cControlEntity controlEntity = new cControlEntity();
-                int contadorVariable = 1;
+                int contadorVariable = 1;                
+
                 string IdCalificacionControl = Session["IdCalificacionControl"].ToString();
 
                 // Se comienza a llenar el objeto control para hacer la inserción de datos
@@ -531,6 +533,10 @@ namespace ListasSarlaft.UserControls.Riesgos.Iframe
                 scope = cControl.InsertControl(controlEntity);
 
                 return scope;
+            }
+            catch (NullReferenceException e)
+            {
+                strError = "El control no ha sido calificado, Por favor seleccionar las variables de calificación del control.";
             }
             catch (Exception ex)
             {
@@ -695,8 +701,16 @@ namespace ListasSarlaft.UserControls.Riesgos.Iframe
 
         private void Mensaje(String Mensaje)
         {
-            lblMsgBox.Text = Mensaje;
-            mpeMsgBox.Show();
+            if (Mensaje.Equals("El control no ha sido calificado, Por favor seleccionar las variables de calificación del control."))
+            {
+                LabelValidateSave.Text = Mensaje;
+                LabelValidateSave.Visible = true;
+            }
+            else
+            {
+                lblMsgBox.Text = Mensaje;
+                mpeMsgBox.Show();
+            }            
         }
 
         private Boolean boolEnviarNotificacion(int idEvento, int idRegistro, int idNodoJerarquia, string FechaFinal, string textoAdicional)
@@ -1089,6 +1103,15 @@ namespace ListasSarlaft.UserControls.Riesgos.Iframe
             try
             {
                 string strErrMsg = string.Empty;
+
+                if (string.IsNullOrEmpty(Request.QueryString["ResponsableEjecucion"].ToString()))
+                {
+                    lblActControlFailed.Visible = true;
+                    lblActControlSuccess.Visible = false;
+                    lblActRiesgos.Visible = false;
+                    lblActControlFailed.InnerText = "Por favor seleccione un responsable de ejecución.";
+                    return;
+                }
 
                 // Actualiza la calificación de control e insertar los comentarios
                 ActualizarControl(ref strErrMsg);

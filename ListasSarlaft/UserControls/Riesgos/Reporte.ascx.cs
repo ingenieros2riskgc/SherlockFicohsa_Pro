@@ -662,6 +662,8 @@ namespace ListasSarlaft.UserControls.Riesgos
                     DDLareas.Enabled = false;
                     TxtFechaIni.Enabled = false;
                     TxtFechaFin.Enabled = false;
+                    DDLProductoAfectado.Enabled = false;
+                    DDLActivoAfectado.Enabled = false;
                 }
                 else
                 {
@@ -674,6 +676,8 @@ namespace ListasSarlaft.UserControls.Riesgos
                     DropDownList56.Enabled = true;
                     DropDownList57.Enabled = true;
                     DDLareas.Enabled = true;
+                    DDLProductoAfectado.Enabled = true;
+                    DDLActivoAfectado.Enabled = true;
                     TxtFechaIni.Enabled = false;
                     TxtFechaFin.Enabled = false;
                 }
@@ -681,7 +685,7 @@ namespace ListasSarlaft.UserControls.Riesgos
         }
         #endregion DDL
 
-        #region Buttons
+        #region ButtonsF
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             try

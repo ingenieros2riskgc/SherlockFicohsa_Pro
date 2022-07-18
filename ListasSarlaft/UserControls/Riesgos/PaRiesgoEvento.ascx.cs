@@ -1192,10 +1192,6 @@ namespace ListasSarlaft.UserControls.Riesgos
 
                         ModalGestion.Focus();
                         MPCumplimiento.Show();
-
-
-
-
                     }
                     break;
 
@@ -1213,9 +1209,9 @@ namespace ListasSarlaft.UserControls.Riesgos
                         string Id = colsNoVisible[0].ToString();
                         string Meta = colsNoVisible[1].ToString();
                         string Periodo = colsNoVisible[2].ToString();
-
-
+                        
                         IdGestion = Convert.ToInt32(Id);
+                        BuscarGestion(IdGestion);
                         MetaGestion = Convert.ToInt32(Meta);
                         ModalMeta.Text = Meta + "%";
 
@@ -1354,6 +1350,11 @@ namespace ListasSarlaft.UserControls.Riesgos
                 }
                 else
                 {
+                    if (Meta.Text.Contains("-"))
+                    {
+                        omb.ShowMessage("La meta debe ser un valor positivo.", 1, "Atención");
+                        return;
+                    }
                     objPlanes.Meta = Convert.ToInt32(Meta.Text);
                 }
                 objPlanes.Usuario = nombreUsuario;
@@ -2285,21 +2286,33 @@ namespace ListasSarlaft.UserControls.Riesgos
 
                 if ((Meta.Enabled) && (Periodo2.Enabled))
                 {
-
-                    GuardarGestion();
+                    if (Meta2.Text.Contains("-"))
+                    {
+                        omb.ShowMessage("No se pudo Editar. La meta debe ser un valor positivo." , 1, "Atención");                        
+                    }
+                    else
+                    {
+                        GuardarGestion();
+                    }
                 }
                 else
                 {
                     string Gestion = ModalGestion.Text;
-                    if (string.IsNullOrEmpty(Gestion))
+                    if (Gestion.Contains("-"))
                     {
-                        Gestion = "0";
+                        omb.ShowMessage("La gestión debe ser un valor positivo.", 1, "Atención");
+                        ModalGestion.Text = string.Empty;
                     }
-                    objPlanes.Gestion = Convert.ToInt32(Gestion);
-                    GuardarGestion2();
-
+                    else
+                    {
+                        if (string.IsNullOrEmpty(Gestion))
+                        {
+                            Gestion = "0";
+                        }
+                        objPlanes.Gestion = Convert.ToInt32(Gestion);
+                        GuardarGestion2();
+                    }                    
                 }
-
             }
             catch (Exception ex)
             {
@@ -3236,6 +3249,18 @@ namespace ListasSarlaft.UserControls.Riesgos
             return resultado;
 
 
+        }
+
+        private void BuscarGestion(int id)
+        {            
+            try
+            {
+                ModalGestion.Text = cRiesgo.BuscarGestion(id);               
+            }
+            catch (Exception ex)
+            {
+                omb.ShowMessage("Error: " + ex.Message.ToString(), 1, "Error");
+            }           
         }
 
         private bool GuardarGestion()

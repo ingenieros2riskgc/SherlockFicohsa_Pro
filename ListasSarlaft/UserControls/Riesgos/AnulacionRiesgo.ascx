@@ -69,7 +69,7 @@
 </asp:SqlDataSource>
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
-        <table align="center" bgcolor="#EEEEEE">
+        <table align="center" style="margin-left:20em; width:80%;" bgcolor="#EEEEEE">
             <tr align="center" bgcolor="#002649">
                 <td>
                     <asp:Label ID="Label1" runat="server" Font-Bold="False" Font-Names="Calibri" Font-Size="Large"
@@ -305,19 +305,19 @@
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:BoundField HeaderText="Código" DataField="Codigo" >
-                                <ItemStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" Width="2%" />
                                         </asp:BoundField>
                             <asp:BoundField HeaderText="Nombre Riesgo" DataField="Nombre" >
-                                <ItemStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" Wrap="true" Width="10px"/>
                                         </asp:BoundField>
                             <asp:BoundField HeaderText="Fecha Anulación" DataField="FechaAnulacion" >
-                                <ItemStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" Width="10%"/>
                                         </asp:BoundField>
                             <asp:BoundField HeaderText="Motivo Anulación" DataField="MotivoAnulacion" >
-                                <ItemStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" Wrap="true" Width="30px"/>
                                         </asp:BoundField>
                             <asp:BoundField HeaderText="Usuario" DataField="NombreUsuario" >
-                                <ItemStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" Width="10%"/>
                                         </asp:BoundField>
                         </Columns>
                         <EditRowStyle BackColor="#999999" />

@@ -3147,6 +3147,13 @@ namespace ListasSarlaft.UserControls.Riesgos
                 Session["DescripcionControl"] = DescripcionControl;
                 //string ObjetivoControl = Sanitizer.GetSafeHtmlFragment(TextBox4.Text);
                 Session["ObjetivoControl"] = Server.HtmlDecode(TextBox4.Text);//ObjetivoControl;
+
+                if (string.IsNullOrEmpty(TxbResponsableEjecución.Text))
+                {
+                    omb.ShowMessage("Por favor seleccione un responsable de ejecución", 1, "Atención");
+                    return;
+                }
+
                 string ResponsableEjecucion = Sanitizer.GetSafeHtmlFragment(TxbResponsableEjecución.Text);
                 string IdResponsablesEjecucion = Sanitizer.GetSafeHtmlFragment(LblResponsableEjecucion.Text);
                 string IdResponsableCalificacion = Sanitizer.GetSafeHtmlFragment(lblIdDependencia1.Text);
@@ -3262,6 +3269,13 @@ namespace ListasSarlaft.UserControls.Riesgos
                     Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
                 else
                 {
+
+                    if (string.IsNullOrEmpty(TxbResponsableEjecución.Text))
+                    {
+                        Mensaje("Por favor seleccione un responsable de ejecución.");                        
+                        return;
+                    }
+
                     modificarControl();
                     mtdActualizarRiesgosControles();
                     mtdGenerarNotificacion();
