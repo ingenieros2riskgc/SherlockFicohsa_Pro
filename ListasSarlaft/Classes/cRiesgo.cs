@@ -7500,18 +7500,51 @@ namespace ListasSarlaft.Classes
 
         public void GuardarGestion2(int id, string FECHA, int meta)
         {
-            DateTime aux = Convert.ToDateTime(FECHA);
-            string aux2 = aux.ToString("yyyy-MM-dd");//("dd-MM-yyyy");
+            try
+            {
+                DateTime aux = Convert.ToDateTime(FECHA);
+                string aux2 = aux.ToString("yyyy-MM-dd");//("dd-MM-yyyy");
 
-            aux2 = aux2 + " 00:00:00.000";
+                aux2 = aux2 + "T00:00:00.000";
 
-            string consulta = "UPDATE riesgos.IndicadorCumplimientoPlanes\n"
-            + "  SET Riesgos.IndicadorCumplimientoPlanes.Periodo ='" + aux2 + "', \n"
-            + "  Riesgos.IndicadorCumplimientoPlanes.Meta=" + meta + "\n"
-            + "where id =" + id;
-            cDataBase.conectar();
-            cDataBase.ejecutarQuery(consulta);
-            cDataBase.desconectar();
+                string consulta = "UPDATE riesgos.IndicadorCumplimientoPlanes\n"
+                + "  SET Riesgos.IndicadorCumplimientoPlanes.Periodo ='" + aux2 + "', \n"
+                + "  Riesgos.IndicadorCumplimientoPlanes.Meta=" + meta + "\n"
+                + "where id =" + id;
+                cDataBase.conectar();
+                cDataBase.ejecutarQuery(consulta);                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error en método GuardarGestion2: " + ex.Message.ToString(), 1, "Error");
+            }
+            finally
+            {
+                cDataBase.desconectar();
+            }            
+        }
+
+        public string BuscarGestion(int id)
+        {
+            DataTable dtInformacion = new DataTable();
+            string gestion = string.Empty;
+            try
+            {
+                string consulta = "select gestion from riesgos.IndicadorCumplimientoPlanes where id =" + id;
+                cDataBase.conectar();
+                dtInformacion = cDataBase.ejecutarConsulta(consulta);
+                gestion = dtInformacion.Rows[0]["gestion"].ToString().Trim();
+            }
+            catch (Exception ex)
+            {                
+                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cDataBase.desconectar();
+            }
+            return gestion;
         }
 
         #endregion Notificacion Anulacion Riesgo

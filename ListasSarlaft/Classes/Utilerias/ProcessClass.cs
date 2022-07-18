@@ -228,15 +228,8 @@ namespace ListasSarlaft.Classes.Utilerias
             string seguimiento = string.Empty;
             foreach (clsDTOseguimientoRiesgoIndicador objSeguimiento in lstSeguimiento)
             {
-                if (resultFormula > objSeguimiento.dblValorMinimo && resultFormula <= objSeguimiento.dblValorMaximo)
+                if (resultFormula >= objSeguimiento.dblValorMinimo && resultFormula <= objSeguimiento.dblValorMaximo)
                 {
-                    color = objSeguimiento.strColor;
-                    seguimiento = objSeguimiento.strDescripcionSeguimiento;
-                }
-                if (resultFormula == 0 && resultFormula >= objSeguimiento.dblValorMinimo && resultFormula <= objSeguimiento.dblValorMaximo)
-                {
-                    //color = "Rojo";
-                    //seguimiento = "No cumplió";
                     color = objSeguimiento.strColor;
                     seguimiento = objSeguimiento.strDescripcionSeguimiento;
                 }

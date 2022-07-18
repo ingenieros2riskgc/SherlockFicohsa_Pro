@@ -115,7 +115,7 @@
             <table width="100%">
                 <tr class="topHandle" style="background-color: #5D7B9D">
                     <td colspan="2" align="center" runat="server" id="tdCaption">&nbsp;
-                        <asp:Label ID="lblCaption" runat="server" Text="Atención" Font-Names="Calibri" Font-Size="Small" style="color:#000000"></asp:Label><br />
+                        <asp:Label ID="lblCaption" runat="server" Text="Atención" Font-Names="Calibri" Font-Size="Small" style="color:black"></asp:Label><br />
                     </td>
                 </tr>
                 <tr>
@@ -123,7 +123,7 @@
                         <asp:Image ID="imgInfo" runat="server" ImageUrl="~/Imagenes/Icons/icontexto-webdev-about.png" />
                     </td>
                     <td valign="middle" align="left">
-                        <asp:Label ID="lblMsgBox" runat="server" Font-Names="Calibri" Font-Size="Small" ForeColor="Black" style="color:#000000"></asp:Label>
+                        <asp:Label ID="lblMsgBox" runat="server" Font-Names="Calibri" Font-Size="Small" ForeColor="Black" style="color:black"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -206,7 +206,10 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <table id="tbBotonesUpdate" runat="server" border="1" bordercolor="White" cellpadding="2" cellspacing="0" style="width: 100%">
+                                <table id="tbBotonesUpdate" runat="server" border="1" bordercolor="White" cellpadding="2" cellspacing="0" style="width: 100%">                                    
+                                    <tr>
+                                        <td align="center"><asp:Label ID="LabelValidateSave" Text=" " runat="server" Font-Names="Calibri" Visible="false" Font-Size="Small" ForeColor="Black" style="color:red"></asp:Label></td>
+                                    </tr>
                                     <tr>
                                         <td align="center">
                                             <asp:ImageButton ID="IBinsert" runat="server" ImageUrl="~/Imagenes/Icons/guardar.png" 
