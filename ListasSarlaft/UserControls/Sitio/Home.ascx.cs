@@ -828,7 +828,7 @@ namespace ListasSarlaft.UserControls
                 //Chart4.Legends[0].Enabled = true;
                 iteracion++;
                 ChartRiesgoCadenaValor.Series.Add(series);
-                ChartRiesgoCadenaValor.ChartAreas["ChartAreaRiesgoCadenaValor"].AxisY.Interval = 10;
+                ChartRiesgoCadenaValor.ChartAreas["ChartAreaRiesgoCadenaValor"].AxisY.Interval = 1;
             }
 
         }
