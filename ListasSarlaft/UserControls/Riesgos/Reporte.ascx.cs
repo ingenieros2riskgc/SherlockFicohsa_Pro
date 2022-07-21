@@ -2352,20 +2352,10 @@ namespace ListasSarlaft.UserControls.Riesgos
             //EVENTOS
             grid.Columns.Add("CodigoEvento", typeof(string));
             grid.Columns.Add("FechaEvento", typeof(string));
-            grid.Columns.Add("DescripcionEvento", typeof(string));
-            grid.Columns.Add("Responsable_Evento", typeof(string));
-            grid.Columns.Add("CadenaValor_Evento", typeof(string));
-            grid.Columns.Add("Macroproceso_Evento", typeof(string));
-            grid.Columns.Add("Proceso_Evento", typeof(string));
-            grid.Columns.Add("Subproceso_Evento", typeof(string));
-            grid.Columns.Add("Actividad_Evento", typeof(string));
-            grid.Columns.Add("FechaInicio_Evento", typeof(string));
-            grid.Columns.Add("HoraInicio", typeof(string));
-            grid.Columns.Add("FechaFinalizacion_Evento", typeof(string));
-            grid.Columns.Add("HoraFinalizacion", typeof(string));
-            grid.Columns.Add("FechaDescubrimiento_Evento", typeof(string));
-            grid.Columns.Add("HoraDescubrimiento", typeof(string));
-
+            grid.Columns.Add("DescripcionEvento", typeof(string));           
+            grid.Columns.Add("Categoria", typeof(string));            
+            grid.Columns.Add("FechaDescubrimiento", typeof(string));
+            grid.Columns.Add("FechaCierre", typeof(string));
 
             InfoGridReporteREvsRC = grid;
             gvRCvsRE.DataSource = InfoGridReporteREvsRC;
@@ -2454,17 +2444,9 @@ namespace ListasSarlaft.UserControls.Riesgos
                         dtInfo.Rows[rows]["CodigoEvento"].ToString().Trim(),
                         dtInfo.Rows[rows]["FechaEvento"].ToString().Trim(),
                         Server.HtmlDecode(dtInfo.Rows[rows]["DescripcionEvento"].ToString().Trim()),
-                        dtInfo.Rows[rows]["Responsable_Evento"].ToString().Trim(),
-                        dtInfo.Rows[rows]["CadenaValor_Evento"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Macroproceso_Evento"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Proceso_Evento"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Subproceso_Evento"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Actividad_Evento"].ToString().Trim(),
-                        dtInfo.Rows[rows]["FechaInicio_Evento"].ToString().Trim(),
-                        dtInfo.Rows[rows]["HoraInicio"].ToString().Trim(),
-                        dtInfo.Rows[rows]["FechaFinalizacion_Evento"].ToString().Trim(),
-                        dtInfo.Rows[rows]["FechaDescubrimiento_Evento"].ToString().Trim(),
-                        dtInfo.Rows[rows]["HoraDescubrimiento"].ToString().Trim(),
+                        dtInfo.Rows[rows]["Categoria"].ToString().Trim(),
+                        dtInfo.Rows[rows]["FechaDescubrimiento"].ToString().Trim(),
+                        dtInfo.Rows[rows]["FechaCierre"].ToString().Trim(),
                         });
             }
             gvRCvsRE.PageIndex = PagIndexInfoGridRCvsRE;
